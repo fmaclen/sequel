@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::SQL::PlaceholderLiteralString - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="GenericExpression.html">Sequel::SQL::GenericExpression</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-with_parens">#with_parens</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::SQL::PlaceholderLiteralString">
+  <h1 id="class-Sequel::SQL::PlaceholderLiteralString" class="class">
+    class Sequel::SQL::PlaceholderLiteralString
+  </h1>
+
+  <section class="description">
+    
+<p>Represents a literal string with placeholders and arguments. This is necessary to ensure delayed literalization of the arguments required for the prepared statement support and for database-specific literalization.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-args" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">args</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The arguments that will be subsituted into the placeholders. Either an array of unnamed placeholders (which will be substituted in order for ? characters), or a hash of named placeholders (which will be substituted for :key phrases).</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-parens" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">parens</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Whether to surround the expression with parantheses</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-str" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">str</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The literal string containing placeholders.  This can also be an array of strings, where each arg in args goes between the string elements.</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(str, args, parens=false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Create an object with the given string, placeholder arguments, and parens flag.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1623</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">str</span>, <span class="ruby-identifier">args</span>, <span class="ruby-identifier">parens</span>=<span class="ruby-keyword">false</span>)
+<span class="line-num">1624</span>   <span class="ruby-ivar">@str</span> = <span class="ruby-identifier">str</span>
+<span class="line-num">1625</span>   <span class="ruby-ivar">@args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">v</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]).<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">args</span>
+<span class="line-num">1626</span>   <span class="ruby-ivar">@parens</span> = <span class="ruby-identifier">parens</span>
+<span class="line-num">1627</span>   <span class="ruby-identifier">freeze</span>
+<span class="line-num">1628</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-with_parens" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">with_parens</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a copy of the that will be surrounded by parantheses.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="with_parens-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1631</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">with_parens</span>
+<span class="line-num">1632</span>   <span class="ruby-ivar">@parens</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@str</span>, <span class="ruby-ivar">@args</span>, <span class="ruby-keyword">true</span>)
+<span class="line-num">1633</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

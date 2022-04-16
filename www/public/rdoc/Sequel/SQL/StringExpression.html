@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::SQL::StringExpression - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ComplexExpression.html">Sequel::SQL::ComplexExpression</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="StringMethods.html">Sequel::SQL::StringMethods</a>
+  
+  
+  
+    <li><a class="include" href="StringConcatenationMethods.html">Sequel::SQL::StringConcatenationMethods</a>
+  
+  
+  
+    <li><a class="include" href="InequalityMethods.html">Sequel::SQL::InequalityMethods</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-like">::like</a>
+    
+    <li ><a href="#method-i-sql_string">#sql_string</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::SQL::StringExpression">
+  <h1 id="class-Sequel::SQL::StringExpression" class="class">
+    class Sequel::SQL::StringExpression
+  </h1>
+
+  <section class="description">
+    
+<p>Subclass of <code>ComplexExpression</code> where the expression results in a text/string/varchar value in <a href="../SQL.html"><code>SQL</code></a>.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="LIKE_MAP">LIKE_MAP
+        
+        <dd><p>Map of [regexp, case_insenstive] to <code>ComplexExpression</code> operator symbol</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-like" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">like</span><span
+            class="method-args">(l, *ces)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a <a href="../SQL.html"><code>SQL</code></a> pattern match exprssion. left (l) is the <a href="../SQL.html"><code>SQL</code></a> string we are matching against, and ces are the patterns we are matching. The match succeeds if any of the patterns match (SQL OR).</p>
+
+<p>If a regular expression is used as a pattern, an <a href="../SQL.html"><code>SQL</code></a> regular expression will be used, which is currently only supported on some databases.  Be aware that <a href="../SQL.html"><code>SQL</code></a> regular expression syntax is similar to ruby regular expression syntax, but it not exactly the same, especially for advanced regular expression features.  <a href="../../Sequel.html"><code>Sequel</code></a> just uses the source of the ruby regular expression verbatim as the <a href="../SQL.html"><code>SQL</code></a> regular expression string.</p>
+
+<p>If any other object is used as a regular expression, the <a href="../SQL.html"><code>SQL</code></a> LIKE operator will be used, and should be supported by most databases.</p>
+
+<p>The pattern match will be case insensitive if the last argument is a hash with a key of :case_insensitive that is not false or nil. Also, if a case insensitive regular expression is used (//i), that particular pattern which will always be case insensitive.</p>
+
+<pre class="ruby"><span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">like</span>(<span class="ruby-value">:a</span>, <span class="ruby-string">&#39;a%&#39;</span>) <span class="ruby-comment"># (&quot;a&quot; LIKE &#39;a%&#39; ESCAPE &#39;\&#39;)</span>
+<span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">like</span>(<span class="ruby-value">:a</span>, <span class="ruby-string">&#39;a%&#39;</span>, <span class="ruby-value">case_insensitive:</span> <span class="ruby-keyword">true</span>) <span class="ruby-comment"># (&quot;a&quot; ILIKE &#39;a%&#39; ESCAPE &#39;\&#39;)</span>
+<span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">like</span>(<span class="ruby-value">:a</span>, <span class="ruby-string">&#39;a%&#39;</span>, <span class="ruby-regexp">/^a/i</span>) <span class="ruby-comment"># ((&quot;a&quot; LIKE &#39;a%&#39; ESCAPE &#39;\&#39;) OR (&quot;a&quot; ~* &#39;^a&#39;))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="like-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1769</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">like</span>(<span class="ruby-identifier">l</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">ces</span>)
+<span class="line-num">1770</span>   <span class="ruby-identifier">l</span>, <span class="ruby-identifier">lre</span>, <span class="ruby-identifier">lci</span> = <span class="ruby-identifier">like_element</span>(<span class="ruby-identifier">l</span>)
+<span class="line-num">1771</span>   <span class="ruby-identifier">lci</span> = (<span class="ruby-identifier">ces</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">ces</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> <span class="ruby-constant">OPTS</span>)[<span class="ruby-value">:case_insensitive</span>] <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">lci</span>
+<span class="line-num">1772</span>   <span class="ruby-identifier">ces</span>.<span class="ruby-identifier">map!</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ce</span><span class="ruby-operator">|</span>
+<span class="line-num">1773</span>     <span class="ruby-identifier">r</span>, <span class="ruby-identifier">rre</span>, <span class="ruby-identifier">rci</span> = <span class="ruby-identifier">like_element</span>(<span class="ruby-identifier">ce</span>)
+<span class="line-num">1774</span>     <span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">LIKE_MAP</span>[[<span class="ruby-identifier">lre</span><span class="ruby-operator">||</span><span class="ruby-identifier">rre</span>, <span class="ruby-identifier">lci</span><span class="ruby-operator">||</span><span class="ruby-identifier">rci</span>]], <span class="ruby-identifier">l</span>, <span class="ruby-identifier">r</span>)
+<span class="line-num">1775</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">1776</span>   <span class="ruby-identifier">ces</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">ces</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:OR</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">ces</span>)
+<span class="line-num">1777</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-sql_string" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_string</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return self instead of creating a new object to save on memory.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_string-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1793</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_string</span>
+<span class="line-num">1794</span>   <span class="ruby-keyword">self</span>
+<span class="line-num">1795</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

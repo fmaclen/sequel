@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::DefaultsSetter - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-configure">::configure</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::DefaultsSetter">
+  <h1 id="module-Sequel::Plugins::DefaultsSetter" class="module">
+    module Sequel::Plugins::DefaultsSetter
+  </h1>
+
+  <section class="description">
+    
+<p>The defaults_setter plugin makes the column getter methods return the default values for new objects, if the values have not already been set.  Example:</p>
+
+<pre class="ruby"><span class="ruby-comment"># column a default NULL</span>
+<span class="ruby-comment"># column b default 2</span>
+<span class="ruby-identifier">album</span> = <span class="ruby-constant">Album</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">album</span>.<span class="ruby-identifier">a</span> <span class="ruby-comment"># =&gt; nil</span>
+<span class="ruby-identifier">album</span>.<span class="ruby-identifier">b</span> <span class="ruby-comment"># =&gt; 2</span>
+<span class="ruby-identifier">album</span> = <span class="ruby-constant">Album</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">a:</span> <span class="ruby-value">1</span>, <span class="ruby-value">b:</span> <span class="ruby-value">3</span>)
+<span class="ruby-identifier">album</span>.<span class="ruby-identifier">a</span> <span class="ruby-comment"># =&gt; 1</span>
+<span class="ruby-identifier">album</span>.<span class="ruby-identifier">b</span> <span class="ruby-comment"># =&gt; 3</span>
+</pre>
+
+<p>You can manually set default values as well:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">default_values</span>[<span class="ruby-value">:a</span>] = <span class="ruby-value">4</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">a</span> <span class="ruby-comment"># =&gt; 4</span>
+</pre>
+
+<p>You can also provide procs to set default values:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">default_values</span>[<span class="ruby-value">:a</span>] = <span class="ruby-identifier">lambda</span>{<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>}
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">a</span> <span class="ruby-comment"># =&gt; Date.today</span>
+</pre>
+
+<p>By default, default values returned are not cached:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">a</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-constant">Album</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">a</span>) <span class="ruby-comment"># =&gt; false</span>
+</pre>
+
+<p>However, you can turn on caching of default values:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:defaults_setter</span>, <span class="ruby-value">cache:</span> <span class="ruby-keyword">true</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">a</span>.<span class="ruby-identifier">equal?</span>(<span class="ruby-constant">Album</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">a</span>) <span class="ruby-comment"># =&gt; false</span>
+</pre>
+
+<p>Note that if the cache is turned on, the cached values are stored in the values hash:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:defaults_setter</span>, <span class="ruby-value">cache:</span> <span class="ruby-keyword">true</span>
+<span class="ruby-identifier">album</span> = <span class="ruby-constant">Album</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">album</span>.<span class="ruby-identifier">values</span> <span class="ruby-comment"># =&gt; {}</span>
+<span class="ruby-identifier">album</span>.<span class="ruby-identifier">a</span>
+<span class="ruby-identifier">album</span>.<span class="ruby-identifier">values</span> <span class="ruby-comment"># =&gt; {:a =&gt; Date.today}</span>
+</pre>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Make all model subclass instances set defaults (called before loading subclasses)</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:defaults_setter</span>
+
+<span class="ruby-comment"># Make the Album class set defaults</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:defaults_setter</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-configure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">configure</span><span
+            class="method-args">(model, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the default values based on the model schema. Options:</p>
+<dl class="rdoc-list note-list"><dt>:cache 
+<dd>
+<p>Cache default values returned in the model&#39;s values hash.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="configure-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/defaults_setter.rb</span>
+<span class="line-num">55</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">configure</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">56</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">57</span>     <span class="ruby-identifier">set_default_values</span>
+<span class="line-num">58</span>     <span class="ruby-ivar">@cache_default_values</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:cache</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:cache</span>)
+<span class="line-num">59</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">60</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::AutoValidations - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-apply">::apply</a>
+    
+    <li ><a href="#method-c-configure">::configure</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::AutoValidations">
+  <h1 id="module-Sequel::Plugins::AutoValidations" class="module">
+    module Sequel::Plugins::AutoValidations
+  </h1>
+
+  <section class="description">
+    
+<p>The auto_validations plugin automatically sets up the following types of validations for your model columns:</p>
+<ol><li>
+<p>type validations for all columns</p>
+</li><li>
+<p>not_null validations on NOT NULL columns (optionally, presence validations)</p>
+</li><li>
+<p>unique validations on columns or sets of columns with unique indexes</p>
+</li><li>
+<p>max length validations on string columns</p>
+</li></ol>
+
+<p>To determine the columns to use for the type/not_null/max_length validations, the plugin looks at the database schema for the model&#39;s table.  To determine the unique validations, <a href="../../Sequel.html"><code>Sequel</code></a> looks at the indexes on the table.  In order for this plugin to be fully functional, the underlying database adapter needs to support both schema and index parsing.  Additionally, unique validations are only added for models that select from a simple table, they are not added for models that select from a subquery or joined dataset.</p>
+
+<p>This plugin uses the validation_helpers plugin underneath to implement the validations.  It does not allow for any per-column validation message customization, but you can alter the messages for the given type of validation on a per-model basis (see the validation_helpers documentation).</p>
+
+<p>You can skip certain types of validations from being automatically added via:</p>
+
+<pre class="ruby"><span class="ruby-constant">Model</span>.<span class="ruby-identifier">skip_auto_validations</span>(<span class="ruby-value">:not_null</span>)
+</pre>
+
+<p>If you want to skip all auto validations (only useful if loading the plugin in a superclass):</p>
+
+<pre class="ruby"><span class="ruby-constant">Model</span>.<span class="ruby-identifier">skip_auto_validations</span>(<span class="ruby-value">:all</span>)
+</pre>
+
+<p>It is possible to skip auto validations on a per-model-instance basis via:</p>
+
+<pre class="ruby"><span class="ruby-identifier">instance</span>.<span class="ruby-identifier">skip_auto_validations</span>(<span class="ruby-value">:unique</span>, <span class="ruby-value">:not_null</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">valid?</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>By default, the plugin uses a not_null validation for NOT NULL columns, but that can be changed to a presence validation using an option:</p>
+
+<pre class="ruby"><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:auto_validations</span>, <span class="ruby-value">not_null:</span> <span class="ruby-value">:presence</span>
+</pre>
+
+<p>This is useful if you want to enforce that NOT NULL string columns do not allow empty values.</p>
+
+<p>You can also supply hashes to pass options through to the underlying validators:</p>
+
+<pre class="ruby"><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:auto_validations</span>, <span class="ruby-value">unique_opts:</span> {<span class="ruby-value">only_if_modified:</span> <span class="ruby-keyword">true</span>}
+</pre>
+
+<p>This works for unique_opts, max_length_opts, schema_types_opts, explicit_not_null_opts, and not_null_opts.</p>
+
+<p>If you only want auto_validations to add validations to columns that do not already have an error associated with them, you can use the skip_invalid option:</p>
+
+<pre class="ruby"><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:auto_validations</span>, <span class="ruby-value">skip_invalid:</span> <span class="ruby-keyword">true</span>
+</pre>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Make all model subclass use auto validations (called before loading subclasses)</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:auto_validations</span>
+
+<span class="ruby-comment"># Make the Album class use auto validations</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:auto_validations</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="EMPTY_ARRAY">EMPTY_ARRAY
+        
+        <dd>
+        
+      
+        <dt id="EXPLICIT_NOT_NULL_OPTIONS">EXPLICIT_NOT_NULL_OPTIONS
+        
+        <dd>
+        
+      
+        <dt id="MAX_LENGTH_OPTIONS">MAX_LENGTH_OPTIONS
+        
+        <dd>
+        
+      
+        <dt id="NOT_NULL_OPTIONS">NOT_NULL_OPTIONS
+        
+        <dd>
+        
+      
+        <dt id="NO_NULL_BYTE_OPTIONS">NO_NULL_BYTE_OPTIONS
+        
+        <dd>
+        
+      
+        <dt id="SCHEMA_TYPES_OPTIONS">SCHEMA_TYPES_OPTIONS
+        
+        <dd>
+        
+      
+        <dt id="UNIQUE_OPTIONS">UNIQUE_OPTIONS
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-apply" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">apply</span><span
+            class="method-args">(model, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="apply-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/auto_validations.rb</span>
+<span class="line-num">77</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">apply</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">78</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">79</span>     <span class="ruby-identifier">plugin</span> <span class="ruby-value">:validation_helpers</span>
+<span class="line-num">80</span>     <span class="ruby-ivar">@auto_validate_presence</span> = <span class="ruby-keyword">false</span>
+<span class="line-num">81</span>     <span class="ruby-ivar">@auto_validate_no_null_byte_columns</span> = []
+<span class="line-num">82</span>     <span class="ruby-ivar">@auto_validate_not_null_columns</span> = []
+<span class="line-num">83</span>     <span class="ruby-ivar">@auto_validate_explicit_not_null_columns</span> = []
+<span class="line-num">84</span>     <span class="ruby-ivar">@auto_validate_max_length_columns</span> = []
+<span class="line-num">85</span>     <span class="ruby-ivar">@auto_validate_unique_columns</span> = []
+<span class="line-num">86</span>     <span class="ruby-ivar">@auto_validate_types</span> = <span class="ruby-keyword">true</span>
+<span class="line-num">87</span> 
+<span class="line-num">88</span>     <span class="ruby-ivar">@auto_validate_options</span> = {
+<span class="line-num">89</span>         <span class="ruby-value">:no_null_byte</span><span class="ruby-operator">=&gt;</span><span class="ruby-constant">NO_NULL_BYTE_OPTIONS</span>,
+<span class="line-num">90</span>         <span class="ruby-value">:not_null</span><span class="ruby-operator">=&gt;</span><span class="ruby-constant">NOT_NULL_OPTIONS</span>,
+<span class="line-num">91</span>         <span class="ruby-value">:explicit_not_null</span><span class="ruby-operator">=&gt;</span><span class="ruby-constant">EXPLICIT_NOT_NULL_OPTIONS</span>,
+<span class="line-num">92</span>         <span class="ruby-value">:max_length</span><span class="ruby-operator">=&gt;</span><span class="ruby-constant">MAX_LENGTH_OPTIONS</span>,
+<span class="line-num">93</span>         <span class="ruby-value">:schema_types</span><span class="ruby-operator">=&gt;</span><span class="ruby-constant">SCHEMA_TYPES_OPTIONS</span>,
+<span class="line-num">94</span>         <span class="ruby-value">:unique</span><span class="ruby-operator">=&gt;</span><span class="ruby-constant">UNIQUE_OPTIONS</span>
+<span class="line-num">95</span>     }.<span class="ruby-identifier">freeze</span>
+<span class="line-num">96</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">97</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-configure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">configure</span><span
+            class="method-args">(model, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Setup auto validations for the model if it has a dataset.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="configure-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/auto_validations.rb</span>
+<span class="line-num">100</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">configure</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">101</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">102</span>     <span class="ruby-identifier">setup_auto_validations</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@dataset</span>
+<span class="line-num">103</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:not_null</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:presence</span>
+<span class="line-num">104</span>       <span class="ruby-ivar">@auto_validate_presence</span> = <span class="ruby-keyword">true</span>
+<span class="line-num">105</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">106</span> 
+<span class="line-num">107</span>     <span class="ruby-identifier">h</span> = <span class="ruby-ivar">@auto_validate_options</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">108</span>     [<span class="ruby-value">:not_null</span>, <span class="ruby-value">:explicit_not_null</span>, <span class="ruby-value">:max_length</span>, <span class="ruby-value">:no_null_byte</span>, <span class="ruby-value">:schema_types</span>, <span class="ruby-value">:unique</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type</span><span class="ruby-operator">|</span>
+<span class="line-num">109</span>       <span class="ruby-keyword">if</span> <span class="ruby-identifier">type_opts</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:&quot;#{type}_opts&quot;</span>]
+<span class="line-num">110</span>         <span class="ruby-identifier">h</span>[<span class="ruby-identifier">type</span>] = <span class="ruby-identifier">h</span>[<span class="ruby-identifier">type</span>].<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">type_opts</span>).<span class="ruby-identifier">freeze</span>
+<span class="line-num">111</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">112</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">113</span> 
+<span class="line-num">114</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:skip_invalid</span>]
+<span class="line-num">115</span>       [<span class="ruby-value">:not_null</span>, <span class="ruby-value">:explicit_not_null</span>, <span class="ruby-value">:no_null_byte</span>, <span class="ruby-value">:max_length</span>, <span class="ruby-value">:schema_types</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type</span><span class="ruby-operator">|</span>
+<span class="line-num">116</span>         <span class="ruby-identifier">h</span>[<span class="ruby-identifier">type</span>] = <span class="ruby-identifier">h</span>[<span class="ruby-identifier">type</span>].<span class="ruby-identifier">merge</span>(<span class="ruby-value">:skip_invalid</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>).<span class="ruby-identifier">freeze</span>
+<span class="line-num">117</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">118</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">119</span> 
+<span class="line-num">120</span>     <span class="ruby-ivar">@auto_validate_options</span> = <span class="ruby-identifier">h</span>.<span class="ruby-identifier">freeze</span>
+<span class="line-num">121</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">122</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

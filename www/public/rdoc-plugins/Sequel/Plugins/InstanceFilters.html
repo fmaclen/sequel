@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::InstanceFilters - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-configure">::configure</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::InstanceFilters">
+  <h1 id="module-Sequel::Plugins::InstanceFilters" class="module">
+    module Sequel::Plugins::InstanceFilters
+  </h1>
+
+  <section class="description">
+    
+<p>This plugin allows you to add filters on a per object basis that restrict updating or deleting the object.  It&#39;s designed for cases where you would normally have to drop down to the dataset level to get the necessary control, because you only want to delete or update the rows in certain cases based on the current status of the row in the database.  The main purpose of this plugin is to avoid race conditions by relying on the atomic properties of database transactions.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Item</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>
+  <span class="ruby-identifier">plugin</span> <span class="ruby-value">:instance_filters</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># These are two separate objects that represent the same</span>
+<span class="ruby-comment"># database row.</span>
+<span class="ruby-identifier">i1</span> = <span class="ruby-constant">Item</span>.<span class="ruby-identifier">first</span>(<span class="ruby-value">id:</span> <span class="ruby-value">1</span>, <span class="ruby-value">delete_allowed:</span> <span class="ruby-keyword">false</span>)
+<span class="ruby-identifier">i2</span> = <span class="ruby-constant">Item</span>.<span class="ruby-identifier">first</span>(<span class="ruby-value">id:</span> <span class="ruby-value">1</span>, <span class="ruby-value">delete_allowed:</span> <span class="ruby-keyword">false</span>)
+
+<span class="ruby-comment"># Add an instance filter to the object. This filter is in effect</span>
+<span class="ruby-comment"># until the object is successfully updated or deleted.</span>
+<span class="ruby-identifier">i1</span>.<span class="ruby-identifier">instance_filter</span>(<span class="ruby-value">delete_allowed:</span> <span class="ruby-keyword">true</span>)
+
+<span class="ruby-comment"># Attempting to delete the object where the filter doesn&#39;t</span>
+<span class="ruby-comment"># match any rows raises an error.</span>
+<span class="ruby-identifier">i1</span>.<span class="ruby-identifier">delete</span> <span class="ruby-comment"># raises Sequel::NoExistingObject</span>
+
+<span class="ruby-comment"># The other object that represents the same row has no</span>
+<span class="ruby-comment"># instance filters, and can be updated normally.</span>
+<span class="ruby-identifier">i2</span>.<span class="ruby-identifier">update</span>(<span class="ruby-value">delete_allowed:</span> <span class="ruby-keyword">true</span>)
+
+<span class="ruby-comment"># Even though the filter is now still in effect, since the</span>
+<span class="ruby-comment"># database row has been updated to allow deleting,</span>
+<span class="ruby-comment"># delete now works.</span>
+<span class="ruby-identifier">i1</span>.<span class="ruby-identifier">delete</span>
+</pre>
+
+<p>This plugin sets the require_modification flag on the model, so if the model&#39;s dataset doesn&#39;t provide an accurate number of matched rows, this could result in invalid exceptions being raised.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="Error">Error
+        
+        <dd><p>Exception class raised when updating or deleting an object does not affect exactly one row.</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-configure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">configure</span><span
+            class="method-args">(model)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the require_modification flag to true for the model.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="configure-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/instance_filters.rb</span>
+<span class="line-num">49</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">configure</span>(<span class="ruby-identifier">model</span>)
+<span class="line-num">50</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">require_modification</span> = <span class="ruby-keyword">true</span>
+<span class="line-num">51</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

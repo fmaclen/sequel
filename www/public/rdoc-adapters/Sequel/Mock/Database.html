@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::Mock::Database - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Sequel::Database
+  
+</div>
+
+    
+    <div id="extends-section" class="nav-section">
+  <h3>Extended With Modules</h3>
+
+  <ul class="link-list">
+    
+  
+    <li><a class="extend" href="../UnmodifiedIdentifiers/DatabaseMethods.html">Sequel::UnmodifiedIdentifiers::DatabaseMethods</a>
+  
+  
+  </ul>
+</div>
+
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-autoid-3D">#autoid=</a>
+    
+    <li ><a href="#method-i-connect">#connect</a>
+    
+    <li ><a href="#method-i-disconnect_connection">#disconnect_connection</a>
+    
+    <li ><a href="#method-i-execute">#execute</a>
+    
+    <li ><a href="#method-i-execute_ddl">#execute_ddl</a>
+    
+    <li ><a href="#method-i-execute_dui">#execute_dui</a>
+    
+    <li ><a href="#method-i-execute_insert">#execute_insert</a>
+    
+    <li ><a href="#method-i-sqls">#sqls</a>
+    
+    <li class="calls-super" ><a href="#method-i-supports_savepoints-3F">#supports_savepoints?</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::Mock::Database">
+  <h1 id="class-Sequel::Mock::Database" class="class">
+    class Sequel::Mock::Database
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-columns" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">columns</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Set the columns to set in the dataset when the dataset fetches rows.  Argument types supported:</p>
+<dl class="rdoc-list note-list"><dt>nil 
+<dd>
+<p>Set no columns</p>
+</dd><dt>Array of Symbols 
+<dd>
+<p>Used for all datasets</p>
+</dd><dt>Array (otherwise) 
+<dd>
+<p>First retrieval gets the first value in the array, second gets the second value, etc.</p>
+</dd><dt>Proc 
+<dd>
+<p>Called with the select SQL query, uses the value returned, which should be an array of symbols</p>
+</dd></dl>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-fetch" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fetch</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Set the hashes to yield by execute when retrieving rows. Argument types supported:</p>
+<dl class="rdoc-list note-list"><dt>nil 
+<dd>
+<p>Yield no rows</p>
+</dd><dt>Hash 
+<dd>
+<p>Always yield a single row with this hash</p>
+</dd><dt>Array of Hashes 
+<dd>
+<p>Yield separately for each hash in this array</p>
+</dd><dt>Array (otherwise) 
+<dd>
+<p>First retrieval gets the first value in the array, second gets the second value, etc.</p>
+</dd><dt>Proc 
+<dd>
+<p>Called with the select SQL query, uses the value returned, which should be a hash or array of hashes.</p>
+</dd><dt>Class 
+<dd>
+<p>Should be an Exception subclass, will create a new instance an raise it wrapped in a DatabaseError.</p>
+</dd></dl>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-numrows" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">numrows</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Set the number of rows to return from update or delete. Argument types supported:</p>
+<dl class="rdoc-list note-list"><dt>nil 
+<dd>
+<p>Return 0 for all updates and deletes</p>
+</dd><dt>Integer 
+<dd>
+<p>Used for all updates and deletes</p>
+</dd><dt>Array 
+<dd>
+<p>First update/delete gets the first value in the array, second gets the second value, etc.</p>
+</dd><dt>Proc 
+<dd>
+<p>Called with the update/delete SQL query, uses the value returned.</p>
+</dd><dt>Class 
+<dd>
+<p>Should be an Exception subclass, will create a new instance an raise it wrapped in a DatabaseError.</p>
+</dd></dl>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-server_version" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">server_version</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="../Mock.html"><code>Mock</code></a> the server version, useful when using the shared adapters</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-autoid-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">autoid=</span><span
+            class="method-args">(v)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the autogenerated primary key integer to be returned when running an insert query. Argument types supported:</p>
+<dl class="rdoc-list note-list"><dt>nil 
+<dd>
+<p>Return nil for all inserts</p>
+</dd><dt>Integer 
+<dd>
+<p>Starting integer for next insert, with futher inserts getting an incremented value</p>
+</dd><dt>Array 
+<dd>
+<p>First insert gets the first value in the array, second gets the second value, etc.</p>
+</dd><dt>Proc 
+<dd>
+<p>Called with the insert SQL query, uses the value returned</p>
+</dd><dt>Class 
+<dd>
+<p>Should be an Exception subclass, will create a new instance an raise it wrapped in a DatabaseError.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="autoid-3D-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/adapters/mock.rb</span>
+<span class="line-num">49</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">autoid=</span>(<span class="ruby-identifier">v</span>)
+<span class="line-num">50</span>   <span class="ruby-ivar">@autoid</span> = <span class="ruby-keyword">case</span> <span class="ruby-identifier">v</span>
+<span class="line-num">51</span>   <span class="ruby-keyword">when</span> <span class="ruby-constant">Integer</span>
+<span class="line-num">52</span>     <span class="ruby-identifier">i</span> = <span class="ruby-identifier">v</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+<span class="line-num">53</span>     <span class="ruby-identifier">proc</span>{<span class="ruby-ivar">@mutex</span>.<span class="ruby-identifier">synchronize</span>{<span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>}}
+<span class="line-num">54</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">55</span>     <span class="ruby-identifier">v</span>
+<span class="line-num">56</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">57</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-connect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">connect</span><span
+            class="method-args">(server)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a related <a href="Connection.html"><code>Connection</code></a> option connecting to the given shard.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="connect-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mock.rb</span>
+<span class="line-num">101</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">connect</span>(<span class="ruby-identifier">server</span>)
+<span class="line-num">102</span>   <span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">server</span>, <span class="ruby-identifier">server_opts</span>(<span class="ruby-identifier">server</span>))
+<span class="line-num">103</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-disconnect_connection" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">disconnect_connection</span><span
+            class="method-args">(c)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="disconnect_connection-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mock.rb</span>
+<span class="line-num">105</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">disconnect_connection</span>(<span class="ruby-identifier">c</span>)
+<span class="line-num">106</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-execute" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute</span><span
+            class="method-args">(sql, opts=OPTS, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Store the sql used for later retrieval with <a href="Database.html#method-i-sqls"><code>sqls</code></a>, and return the appropriate value using either the autoid, <a href="Database.html#attribute-i-fetch"><code>fetch</code></a>, or <a href="Database.html#attribute-i-numrows"><code>numrows</code></a> methods.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="execute-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mock.rb</span>
+<span class="line-num">111</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">execute</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">112</span>   <span class="ruby-identifier">synchronize</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:server</span>]){<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">_execute</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)} 
+<span class="line-num">113</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Database.html#method-i-execute_ddl">execute_ddl</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-execute_ddl" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">execute_ddl</span><span
+            class="method-args">(sql, opts=OPTS, &amp;block)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Database.html#method-i-execute">execute</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-execute_dui" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute_dui</span><span
+            class="method-args">(sql, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Store the sql used, and return the value of the <a href="Database.html#attribute-i-numrows"><code>numrows</code></a> method.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="execute_dui-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mock.rb</span>
+<span class="line-num">117</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">execute_dui</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">118</span>   <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:meth</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">:numrows</span>))
+<span class="line-num">119</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-execute_insert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute_insert</span><span
+            class="method-args">(sql, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Store the sql used, and return the value of the autoid method.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="execute_insert-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mock.rb</span>
+<span class="line-num">122</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">execute_insert</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">123</span>   <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:meth</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">:autoid</span>))
+<span class="line-num">124</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sqls" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sqls</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return all stored SQL queries, and clear the cache of SQL queries.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sqls-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mock.rb</span>
+<span class="line-num">128</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sqls</span>
+<span class="line-num">129</span>   <span class="ruby-ivar">@mutex</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+<span class="line-num">130</span>     <span class="ruby-identifier">s</span> = <span class="ruby-ivar">@sqls</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">131</span>     <span class="ruby-ivar">@sqls</span>.<span class="ruby-identifier">clear</span>
+<span class="line-num">132</span>     <span class="ruby-identifier">s</span>
+<span class="line-num">133</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">134</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-supports_savepoints-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">supports_savepoints?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Enable use of savepoints.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="supports_savepoints-3F-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mock.rb</span>
+<span class="line-num">137</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">supports_savepoints?</span>
+<span class="line-num">138</span>   <span class="ruby-identifier">shared_adapter?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">super</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+<span class="line-num">139</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::AssociationPks - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::AssociationPks">
+  <h1 id="module-Sequel::Plugins::AssociationPks" class="module">
+    module Sequel::Plugins::AssociationPks
+  </h1>
+
+  <section class="description">
+    
+<p>The association_pks plugin adds association_pks, association_pks=, and association_pks_dataset instance methods to the model class for each one_to_many and many_to_many association added.  These methods allow for easily returning the primary keys of the associated objects, and easily modifying which objects are associated:</p>
+
+<pre class="ruby"><span class="ruby-constant">Artist</span>.<span class="ruby-identifier">one_to_many</span> <span class="ruby-value">:albums</span>
+<span class="ruby-identifier">artist</span> = <span class="ruby-constant">Artist</span>[<span class="ruby-value">1</span>]
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">album_pks_dataset</span>
+<span class="ruby-comment"># SELECT id FROM albums WHERE (albums.artist_id = 1)</span>
+
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">album_pks</span> <span class="ruby-comment"># [1, 2, 3]</span>
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">album_pks</span> = [<span class="ruby-value">2</span>, <span class="ruby-value">4</span>]
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">album_pks</span> <span class="ruby-comment"># [2, 4]</span>
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">save</span>
+<span class="ruby-comment"># Persist changes</span>
+</pre>
+
+<p>Note that it uses the singular form of the association name. Also note that the setter both associates to new primary keys not in the assocation and disassociates from primary keys not provided to the method.</p>
+
+<p>This plugin makes modifications directly to the underlying tables, it does not create or return any model objects, and therefore does not call any callbacks.  If you have any association callbacks, you probably should not use the setter methods this plugin adds.</p>
+
+<p>By default, changes to the association will not happen until the object is saved.  However, using the delay_pks: false association option, you can have the changes made immediately when the association_pks setter method is called.</p>
+
+<p>By default, repeated calls to the association_pks getter method will not be cached, unless the setter method has been used and the delay_pks: false association option is not used.  You can set caching of repeated calls to the association_pks getter method using the :cache_pks association option.  You can pass the :refresh option when calling the getter method to ignore any existing cached values, similar to how the :refresh option works with associations.</p>
+
+<p>By default, if you pass a nil value to the setter, an exception will be raised. You can change this behavior by using the :association_pks_nil association option. If set to :ignore, the setter will take no action if nil is given. If set to :remove, the setter will treat the nil as an empty array, removing the association all currently associated values.</p>
+
+<p>For many_to_many associations, association_pks assumes the related pks can be accessed directly from the join table.  This works in most cases, but in cases where the :right_primary_key association option is used to specify a different primary key in the associated table, association_pks will return the value of the association primary keys (foreign key values to associated table in the join table), not the associated model primary keys.  If you would like to use the associated model primary keys, you need to use the :association_pks_use_associated_table association option. If the :association_pks_use_associated_table association option is used, no setter method will be added.</p>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Make all model subclass *_to_many associations have association_pks</span>
+<span class="ruby-comment"># methods (called before loading subclasses)</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:association_pks</span>
+
+<span class="ruby-comment"># Make the Album *_to_many associations have association_pks</span>
+<span class="ruby-comment"># methods (called before the association methods)</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:association_pks</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

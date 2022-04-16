@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./doc/core_extensions_rdoc.html">core_extensions</a>
+  
+  </ul>
+</div>
+
+    <div id="classindex-section" class="nav-section">
+  <h3>Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Array.html">Array</a>
+  
+    <li><a href="./Database.html">Database</a>
+  
+    <li><a href="./Database/AsyncThreadPool.html">Database::AsyncThreadPool</a>
+  
+    <li><a href="./Database/RunTransactionHooks.html">Database::RunTransactionHooks</a>
+  
+    <li><a href="./Database/SQLComments.html">Database::SQLComments</a>
+  
+    <li><a href="./Database/SQLComments/DatasetSQLComments.html">Database::SQLComments::DatasetSQLComments</a>
+  
+    <li><a href="./FalseClass.html">FalseClass</a>
+  
+    <li><a href="./Hash.html">Hash</a>
+  
+    <li><a href="./NilClass.html">NilClass</a>
+  
+    <li><a href="./Numeric.html">Numeric</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./Range.html">Range</a>
+  
+    <li><a href="./Sequel.html">Sequel</a>
+  
+    <li><a href="./Sequel/AnyNotEmpty.html">Sequel::AnyNotEmpty</a>
+  
+    <li><a href="./Sequel/ArbitraryServers.html">Sequel::ArbitraryServers</a>
+  
+    <li><a href="./Sequel/CallerLogging.html">Sequel::CallerLogging</a>
+  
+    <li><a href="./Sequel/ColumnsIntrospection.html">Sequel::ColumnsIntrospection</a>
+  
+    <li><a href="./Sequel/ConnectionExpiration.html">Sequel::ConnectionExpiration</a>
+  
+    <li><a href="./Sequel/ConnectionExpiration/Retry.html">Sequel::ConnectionExpiration::Retry</a>
+  
+    <li><a href="./Sequel/ConnectionValidator.html">Sequel::ConnectionValidator</a>
+  
+    <li><a href="./Sequel/ConnectionValidator/Retry.html">Sequel::ConnectionValidator::Retry</a>
+  
+    <li><a href="./Sequel/ConstantSqlOverride.html">Sequel::ConstantSqlOverride</a>
+  
+    <li><a href="./Sequel/ConstantSqlOverride/DatabaseMethods.html">Sequel::ConstantSqlOverride::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/ConstantSqlOverride/DatasetMethods.html">Sequel::ConstantSqlOverride::DatasetMethods</a>
+  
+    <li><a href="./Sequel/ConstraintValidations.html">Sequel::ConstraintValidations</a>
+  
+    <li><a href="./Sequel/ConstraintValidations/AlterTableGeneratorMethods.html">Sequel::ConstraintValidations::AlterTableGeneratorMethods</a>
+  
+    <li><a href="./Sequel/ConstraintValidations/CreateTableGeneratorMethods.html">Sequel::ConstraintValidations::CreateTableGeneratorMethods</a>
+  
+    <li><a href="./Sequel/ConstraintValidations/Generator.html">Sequel::ConstraintValidations::Generator</a>
+  
+    <li><a href="./Sequel/CoreRefinements.html">Sequel::CoreRefinements</a>
+  
+    <li><a href="./Sequel/CurrentDateTimeTimestamp.html">Sequel::CurrentDateTimeTimestamp</a>
+  
+    <li><a href="./Sequel/CurrentDateTimeTimestamp/DatasetMethods.html">Sequel::CurrentDateTimeTimestamp::DatasetMethods</a>
+  
+    <li><a href="./Sequel/CurrentDateTimeTimestamp/DateTime.html">Sequel::CurrentDateTimeTimestamp::DateTime</a>
+  
+    <li><a href="./Sequel/CurrentDateTimeTimestamp/Time.html">Sequel::CurrentDateTimeTimestamp::Time</a>
+  
+    <li><a href="./Sequel/Database/AsyncThreadPool/BaseProxy.html">Sequel::Database::AsyncThreadPool::BaseProxy</a>
+  
+    <li><a href="./Sequel/Database/AsyncThreadPool/DatabaseMethods.html">Sequel::Database::AsyncThreadPool::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/Database/AsyncThreadPool/DatasetMethods.html">Sequel::Database::AsyncThreadPool::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Database/AsyncThreadPool/PreemptableProxy.html">Sequel::Database::AsyncThreadPool::PreemptableProxy</a>
+  
+    <li><a href="./Sequel/Database/AsyncThreadPool/Proxy.html">Sequel::Database::AsyncThreadPool::Proxy</a>
+  
+    <li><a href="./Sequel/DatabaseError.html">Sequel::DatabaseError</a>
+  
+    <li><a href="./Sequel/DatabaseQuery.html">Sequel::DatabaseQuery</a>
+  
+    <li><a href="./Sequel/Dataset.html">Sequel::Dataset</a>
+  
+    <li><a href="./Sequel/Dataset/AutoLiteralStrings.html">Sequel::Dataset::AutoLiteralStrings</a>
+  
+    <li><a href="./Sequel/Dataset/DatasetSourceAlias.html">Sequel::Dataset::DatasetSourceAlias</a>
+  
+    <li><a href="./Sequel/Dataset/ImplicitSubquery.html">Sequel::Dataset::ImplicitSubquery</a>
+  
+    <li><a href="./Sequel/Dataset/NullDataset.html">Sequel::Dataset::NullDataset</a>
+  
+    <li><a href="./Sequel/Dataset/Nullifiable.html">Sequel::Dataset::Nullifiable</a>
+  
+    <li><a href="./Sequel/Dataset/Pagination.html">Sequel::Dataset::Pagination</a>
+  
+    <li><a href="./Sequel/Dataset/Query.html">Sequel::Dataset::Query</a>
+  
+    <li><a href="./Sequel/Dataset/RoundTimestamps.html">Sequel::Dataset::RoundTimestamps</a>
+  
+    <li><a href="./Sequel/Dataset/SplitArrayNil.html">Sequel::Dataset::SplitArrayNil</a>
+  
+    <li><a href="./Sequel/Dataset/SynchronizeSQL.html">Sequel::Dataset::SynchronizeSQL</a>
+  
+    <li><a href="./Sequel/DatasetPagination.html">Sequel::DatasetPagination</a>
+  
+    <li><a href="./Sequel/DatasetPrinter.html">Sequel::DatasetPrinter</a>
+  
+    <li><a href="./Sequel/DatasetQuery.html">Sequel::DatasetQuery</a>
+  
+    <li><a href="./Sequel/DateParseInputHandler.html">Sequel::DateParseInputHandler</a>
+  
+    <li><a href="./Sequel/DateTimeParseToTime.html">Sequel::DateTimeParseToTime</a>
+  
+    <li><a href="./Sequel/DuplicateColumnError.html">Sequel::DuplicateColumnError</a>
+  
+    <li><a href="./Sequel/DuplicateColumnsHandler.html">Sequel::DuplicateColumnsHandler</a>
+  
+    <li><a href="./Sequel/EmptyArrayConsiderNulls.html">Sequel::EmptyArrayConsiderNulls</a>
+  
+    <li><a href="./Sequel/ErrorSQL.html">Sequel::ErrorSQL</a>
+  
+    <li><a href="./Sequel/EvalInspect.html">Sequel::EvalInspect</a>
+  
+    <li><a href="./Sequel/ExcludeOrNull.html">Sequel::ExcludeOrNull</a>
+  
+    <li><a href="./Sequel/FiberConcurrency.html">Sequel::FiberConcurrency</a>
+  
+    <li><a href="./Sequel/GraphEach.html">Sequel::GraphEach</a>
+  
+    <li><a href="./Sequel/IdentifierMangling.html">Sequel::IdentifierMangling</a>
+  
+    <li><a href="./Sequel/IdentifierMangling/DatabaseMethods.html">Sequel::IdentifierMangling::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/IdentifierMangling/DatasetMethods.html">Sequel::IdentifierMangling::DatasetMethods</a>
+  
+    <li><a href="./Sequel/IndexCaching.html">Sequel::IndexCaching</a>
+  
+    <li><a href="./Sequel/Integer64.html">Sequel::Integer64</a>
+  
+    <li><a href="./Sequel/IntegerMigrator.html">Sequel::IntegerMigrator</a>
+  
+    <li><a href="./Sequel/LiteralString.html">Sequel::LiteralString</a>
+  
+    <li><a href="./Sequel/LooserTypecasting.html">Sequel::LooserTypecasting</a>
+  
+    <li><a href="./Sequel/MSSQL.html">Sequel::MSSQL</a>
+  
+    <li><a href="./Sequel/MSSQL/EmulateLateralWithApply.html">Sequel::MSSQL::EmulateLateralWithApply</a>
+  
+    <li><a href="./Sequel/Migration.html">Sequel::Migration</a>
+  
+    <li><a href="./Sequel/MigrationAlterTableReverser.html">Sequel::MigrationAlterTableReverser</a>
+  
+    <li><a href="./Sequel/MigrationDSL.html">Sequel::MigrationDSL</a>
+  
+    <li><a href="./Sequel/MigrationReverser.html">Sequel::MigrationReverser</a>
+  
+    <li><a href="./Sequel/Migrator.html">Sequel::Migrator</a>
+  
+    <li><a href="./Sequel/Migrator/Error.html">Sequel::Migrator::Error</a>
+  
+    <li><a href="./Sequel/Migrator/NotCurrentError.html">Sequel::Migrator::NotCurrentError</a>
+  
+    <li><a href="./Sequel/Model.html">Sequel::Model</a>
+  
+    <li><a href="./Sequel/Model/Associations.html">Sequel::Model::Associations</a>
+  
+    <li><a href="./Sequel/NamedTimezones.html">Sequel::NamedTimezones</a>
+  
+    <li><a href="./Sequel/NamedTimezones/DatabaseMethods.html">Sequel::NamedTimezones::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/Plugins.html">Sequel::Plugins</a>
+  
+    <li><a href="./Sequel/Plugins/AccessedColumns.html">Sequel::Plugins::AccessedColumns</a>
+  
+    <li><a href="./Sequel/Plugins/AccessedColumns/InstanceMethods.html">Sequel::Plugins::AccessedColumns::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ActiveModel.html">Sequel::Plugins::ActiveModel</a>
+  
+    <li><a href="./Sequel/Plugins/ActiveModel/ClassMethods.html">Sequel::Plugins::ActiveModel::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ActiveModel/Errors.html">Sequel::Plugins::ActiveModel::Errors</a>
+  
+    <li><a href="./Sequel/Plugins/ActiveModel/InstanceMethods.html">Sequel::Plugins::ActiveModel::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AfterInitialize.html">Sequel::Plugins::AfterInitialize</a>
+  
+    <li><a href="./Sequel/Plugins/AfterInitialize/ClassMethods.html">Sequel::Plugins::AfterInitialize::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AfterInitialize/InstanceMethods.html">Sequel::Plugins::AfterInitialize::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationDependencies.html">Sequel::Plugins::AssociationDependencies</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationDependencies/ClassMethods.html">Sequel::Plugins::AssociationDependencies::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationDependencies/InstanceMethods.html">Sequel::Plugins::AssociationDependencies::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationLazyEagerOption.html">Sequel::Plugins::AssociationLazyEagerOption</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationLazyEagerOption/InstanceMethods.html">Sequel::Plugins::AssociationLazyEagerOption::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationMultiAddRemove.html">Sequel::Plugins::AssociationMultiAddRemove</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationMultiAddRemove/ClassMethods.html">Sequel::Plugins::AssociationMultiAddRemove::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationPks.html">Sequel::Plugins::AssociationPks</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationPks/ClassMethods.html">Sequel::Plugins::AssociationPks::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationPks/InstanceMethods.html">Sequel::Plugins::AssociationPks::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationProxies.html">Sequel::Plugins::AssociationProxies</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationProxies/AssociationProxy.html">Sequel::Plugins::AssociationProxies::AssociationProxy</a>
+  
+    <li><a href="./Sequel/Plugins/AssociationProxies/ClassMethods.html">Sequel::Plugins::AssociationProxies::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AsyncThreadPool.html">Sequel::Plugins::AsyncThreadPool</a>
+  
+    <li><a href="./Sequel/Plugins/AsyncThreadPool/ClassMethods.html">Sequel::Plugins::AsyncThreadPool::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AsyncThreadPool/DatasetMethods.html">Sequel::Plugins::AsyncThreadPool::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AutoRestrictEagerGraph.html">Sequel::Plugins::AutoRestrictEagerGraph</a>
+  
+    <li><a href="./Sequel/Plugins/AutoRestrictEagerGraph/ClassMethods.html">Sequel::Plugins::AutoRestrictEagerGraph::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AutoValidations.html">Sequel::Plugins::AutoValidations</a>
+  
+    <li><a href="./Sequel/Plugins/AutoValidations/ClassMethods.html">Sequel::Plugins::AutoValidations::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AutoValidations/InstanceMethods.html">Sequel::Plugins::AutoValidations::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/AutoValidationsConstraintValidationsPresenceMessage.html">Sequel::Plugins::AutoValidationsConstraintValidationsPresenceMessage</a>
+  
+    <li><a href="./Sequel/Plugins/AutoValidationsConstraintValidationsPresenceMessage/ClassMethods.html">Sequel::Plugins::AutoValidationsConstraintValidationsPresenceMessage::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/BeforeAfterSave.html">Sequel::Plugins::BeforeAfterSave</a>
+  
+    <li><a href="./Sequel/Plugins/BlacklistSecurity.html">Sequel::Plugins::BlacklistSecurity</a>
+  
+    <li><a href="./Sequel/Plugins/BlacklistSecurity/ClassMethods.html">Sequel::Plugins::BlacklistSecurity::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/BlacklistSecurity/ExceptionList.html">Sequel::Plugins::BlacklistSecurity::ExceptionList</a>
+  
+    <li><a href="./Sequel/Plugins/BlacklistSecurity/InstanceMethods.html">Sequel::Plugins::BlacklistSecurity::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/BooleanReaders.html">Sequel::Plugins::BooleanReaders</a>
+  
+    <li><a href="./Sequel/Plugins/BooleanReaders/ClassMethods.html">Sequel::Plugins::BooleanReaders::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/BooleanSubsets.html">Sequel::Plugins::BooleanSubsets</a>
+  
+    <li><a href="./Sequel/Plugins/BooleanSubsets/ClassMethods.html">Sequel::Plugins::BooleanSubsets::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Caching.html">Sequel::Plugins::Caching</a>
+  
+    <li><a href="./Sequel/Plugins/Caching/ClassMethods.html">Sequel::Plugins::Caching::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Caching/InstanceMethods.html">Sequel::Plugins::Caching::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ClassTableInheritance.html">Sequel::Plugins::ClassTableInheritance</a>
+  
+    <li><a href="./Sequel/Plugins/ClassTableInheritance/ClassMethods.html">Sequel::Plugins::ClassTableInheritance::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ClassTableInheritance/InstanceMethods.html">Sequel::Plugins::ClassTableInheritance::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnConflicts.html">Sequel::Plugins::ColumnConflicts</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnConflicts/ClassMethods.html">Sequel::Plugins::ColumnConflicts::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnConflicts/InstanceMethods.html">Sequel::Plugins::ColumnConflicts::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnEncryption.html">Sequel::Plugins::ColumnEncryption</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnEncryption/ClassMethods.html">Sequel::Plugins::ColumnEncryption::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnEncryption/DatasetMethods.html">Sequel::Plugins::ColumnEncryption::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnEncryption/InstanceMethods.html">Sequel::Plugins::ColumnEncryption::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnSelect.html">Sequel::Plugins::ColumnSelect</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnSelect/ClassMethods.html">Sequel::Plugins::ColumnSelect::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnsUpdated.html">Sequel::Plugins::ColumnsUpdated</a>
+  
+    <li><a href="./Sequel/Plugins/ColumnsUpdated/InstanceMethods.html">Sequel::Plugins::ColumnsUpdated::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Composition.html">Sequel::Plugins::Composition</a>
+  
+    <li><a href="./Sequel/Plugins/Composition/ClassMethods.html">Sequel::Plugins::Composition::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Composition/InstanceMethods.html">Sequel::Plugins::Composition::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ConcurrentEagerLoading.html">Sequel::Plugins::ConcurrentEagerLoading</a>
+  
+    <li><a href="./Sequel/Plugins/ConcurrentEagerLoading/ClassMethods.html">Sequel::Plugins::ConcurrentEagerLoading::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ConcurrentEagerLoading/DatasetMethods.html">Sequel::Plugins::ConcurrentEagerLoading::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ConstraintValidations.html">Sequel::Plugins::ConstraintValidations</a>
+  
+    <li><a href="./Sequel/Plugins/ConstraintValidations/ClassMethods.html">Sequel::Plugins::ConstraintValidations::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ConstraintValidations/DatabaseMethods.html">Sequel::Plugins::ConstraintValidations::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ConstraintValidations/InstanceMethods.html">Sequel::Plugins::ConstraintValidations::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/CsvSerializer.html">Sequel::Plugins::CsvSerializer</a>
+  
+    <li><a href="./Sequel/Plugins/CsvSerializer/ClassMethods.html">Sequel::Plugins::CsvSerializer::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/CsvSerializer/DatasetMethods.html">Sequel::Plugins::CsvSerializer::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/CsvSerializer/InstanceMethods.html">Sequel::Plugins::CsvSerializer::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/DatasetAssociations.html">Sequel::Plugins::DatasetAssociations</a>
+  
+    <li><a href="./Sequel/Plugins/DatasetAssociations/ClassMethods.html">Sequel::Plugins::DatasetAssociations::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/DatasetAssociations/DatasetMethods.html">Sequel::Plugins::DatasetAssociations::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/DefDatasetMethod.html">Sequel::Plugins::DefDatasetMethod</a>
+  
+    <li><a href="./Sequel/Plugins/DefDatasetMethod/ClassMethods.html">Sequel::Plugins::DefDatasetMethod::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/DefaultsSetter.html">Sequel::Plugins::DefaultsSetter</a>
+  
+    <li><a href="./Sequel/Plugins/DefaultsSetter/ClassMethods.html">Sequel::Plugins::DefaultsSetter::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/DefaultsSetter/InstanceMethods.html">Sequel::Plugins::DefaultsSetter::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/DelayAddAssociation.html">Sequel::Plugins::DelayAddAssociation</a>
+  
+    <li><a href="./Sequel/Plugins/DelayAddAssociation/InstanceMethods.html">Sequel::Plugins::DelayAddAssociation::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Dirty.html">Sequel::Plugins::Dirty</a>
+  
+    <li><a href="./Sequel/Plugins/Dirty/InstanceMethods.html">Sequel::Plugins::Dirty::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/EagerEach.html">Sequel::Plugins::EagerEach</a>
+  
+    <li><a href="./Sequel/Plugins/EagerEach/DatasetMethods.html">Sequel::Plugins::EagerEach::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/EagerGraphEager.html">Sequel::Plugins::EagerGraphEager</a>
+  
+    <li><a href="./Sequel/Plugins/EagerGraphEager/DatasetMethods.html">Sequel::Plugins::EagerGraphEager::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/EmptyFailureBacktraces.html">Sequel::Plugins::EmptyFailureBacktraces</a>
+  
+    <li><a href="./Sequel/Plugins/EmptyFailureBacktraces/InstanceMethods.html">Sequel::Plugins::EmptyFailureBacktraces::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Enum.html">Sequel::Plugins::Enum</a>
+  
+    <li><a href="./Sequel/Plugins/Enum/ClassMethods.html">Sequel::Plugins::Enum::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ErrorSplitter.html">Sequel::Plugins::ErrorSplitter</a>
+  
+    <li><a href="./Sequel/Plugins/ErrorSplitter/InstanceMethods.html">Sequel::Plugins::ErrorSplitter::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Finder.html">Sequel::Plugins::Finder</a>
+  
+    <li><a href="./Sequel/Plugins/Finder/ClassMethods.html">Sequel::Plugins::Finder::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ForbidLazyLoad.html">Sequel::Plugins::ForbidLazyLoad</a>
+  
+    <li><a href="./Sequel/Plugins/ForbidLazyLoad/ClassMethods.html">Sequel::Plugins::ForbidLazyLoad::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ForbidLazyLoad/DatasetMethods.html">Sequel::Plugins::ForbidLazyLoad::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ForbidLazyLoad/Error.html">Sequel::Plugins::ForbidLazyLoad::Error</a>
+  
+    <li><a href="./Sequel/Plugins/ForbidLazyLoad/InstanceMethods.html">Sequel::Plugins::ForbidLazyLoad::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ForceEncoding.html">Sequel::Plugins::ForceEncoding</a>
+  
+    <li><a href="./Sequel/Plugins/ForceEncoding/ClassMethods.html">Sequel::Plugins::ForceEncoding::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ForceEncoding/InstanceMethods.html">Sequel::Plugins::ForceEncoding::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/HookClassMethods.html">Sequel::Plugins::HookClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/HookClassMethods/ClassMethods.html">Sequel::Plugins::HookClassMethods::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/HookClassMethods/InstanceMethods.html">Sequel::Plugins::HookClassMethods::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/InputTransformer.html">Sequel::Plugins::InputTransformer</a>
+  
+    <li><a href="./Sequel/Plugins/InputTransformer/ClassMethods.html">Sequel::Plugins::InputTransformer::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/InputTransformer/InstanceMethods.html">Sequel::Plugins::InputTransformer::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/InsertConflict.html">Sequel::Plugins::InsertConflict</a>
+  
+    <li><a href="./Sequel/Plugins/InsertConflict/InstanceMethods.html">Sequel::Plugins::InsertConflict::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/InsertReturningSelect.html">Sequel::Plugins::InsertReturningSelect</a>
+  
+    <li><a href="./Sequel/Plugins/InsertReturningSelect/ClassMethods.html">Sequel::Plugins::InsertReturningSelect::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/InsertReturningSelect/InstanceMethods.html">Sequel::Plugins::InsertReturningSelect::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/InstanceFilters.html">Sequel::Plugins::InstanceFilters</a>
+  
+    <li><a href="./Sequel/Plugins/InstanceFilters/InstanceMethods.html">Sequel::Plugins::InstanceFilters::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/InstanceHooks.html">Sequel::Plugins::InstanceHooks</a>
+  
+    <li><a href="./Sequel/Plugins/InstanceHooks/InstanceMethods.html">Sequel::Plugins::InstanceHooks::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/InstanceSpecificDefault.html">Sequel::Plugins::InstanceSpecificDefault</a>
+  
+    <li><a href="./Sequel/Plugins/InstanceSpecificDefault/ClassMethods.html">Sequel::Plugins::InstanceSpecificDefault::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/InvertedSubsets.html">Sequel::Plugins::InvertedSubsets</a>
+  
+    <li><a href="./Sequel/Plugins/InvertedSubsets/DatasetModuleMethods.html">Sequel::Plugins::InvertedSubsets::DatasetModuleMethods</a>
+  
+    <li><a href="./Sequel/Plugins/JsonSerializer.html">Sequel::Plugins::JsonSerializer</a>
+  
+    <li><a href="./Sequel/Plugins/JsonSerializer/ClassMethods.html">Sequel::Plugins::JsonSerializer::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/JsonSerializer/DatasetMethods.html">Sequel::Plugins::JsonSerializer::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/JsonSerializer/InstanceMethods.html">Sequel::Plugins::JsonSerializer::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/JsonSerializer/Literal.html">Sequel::Plugins::JsonSerializer::Literal</a>
+  
+    <li><a href="./Sequel/Plugins/LazyAttributes.html">Sequel::Plugins::LazyAttributes</a>
+  
+    <li><a href="./Sequel/Plugins/LazyAttributes/ClassMethods.html">Sequel::Plugins::LazyAttributes::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/LazyAttributes/InstanceMethods.html">Sequel::Plugins::LazyAttributes::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/List.html">Sequel::Plugins::List</a>
+  
+    <li><a href="./Sequel/Plugins/List/ClassMethods.html">Sequel::Plugins::List::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/List/InstanceMethods.html">Sequel::Plugins::List::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ManyThroughMany.html">Sequel::Plugins::ManyThroughMany</a>
+  
+    <li><a href="./Sequel/Plugins/ManyThroughMany/ClassMethods.html">Sequel::Plugins::ManyThroughMany::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ManyThroughMany/DatasetMethods.html">Sequel::Plugins::ManyThroughMany::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ManyThroughMany/ManyThroughManyAssociationReflection.html">Sequel::Plugins::ManyThroughMany::ManyThroughManyAssociationReflection</a>
+  
+    <li><a href="./Sequel/Plugins/ManyThroughMany/OneThroughManyAssociationReflection.html">Sequel::Plugins::ManyThroughMany::OneThroughManyAssociationReflection</a>
+  
+    <li><a href="./Sequel/Plugins/ModificationDetection.html">Sequel::Plugins::ModificationDetection</a>
+  
+    <li><a href="./Sequel/Plugins/ModificationDetection/ClassMethods.html">Sequel::Plugins::ModificationDetection::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ModificationDetection/InstanceMethods.html">Sequel::Plugins::ModificationDetection::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/MssqlOptimisticLocking.html">Sequel::Plugins::MssqlOptimisticLocking</a>
+  
+    <li><a href="./Sequel/Plugins/MssqlOptimisticLocking/ClassMethods.html">Sequel::Plugins::MssqlOptimisticLocking::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/MssqlOptimisticLocking/InstanceMethods.html">Sequel::Plugins::MssqlOptimisticLocking::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/NestedAttributes.html">Sequel::Plugins::NestedAttributes</a>
+  
+    <li><a href="./Sequel/Plugins/NestedAttributes/ClassMethods.html">Sequel::Plugins::NestedAttributes::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/NestedAttributes/InstanceMethods.html">Sequel::Plugins::NestedAttributes::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/OptimisticLocking.html">Sequel::Plugins::OptimisticLocking</a>
+  
+    <li><a href="./Sequel/Plugins/OptimisticLocking/ClassMethods.html">Sequel::Plugins::OptimisticLocking::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/OptimisticLocking/InstanceMethods.html">Sequel::Plugins::OptimisticLocking::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PgArrayAssociations.html">Sequel::Plugins::PgArrayAssociations</a>
+  
+    <li><a href="./Sequel/Plugins/PgArrayAssociations/ClassMethods.html">Sequel::Plugins::PgArrayAssociations::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PgArrayAssociations/DatasetMethods.html">Sequel::Plugins::PgArrayAssociations::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PgArrayAssociations/ManyToPgArrayAssociationReflection.html">Sequel::Plugins::PgArrayAssociations::ManyToPgArrayAssociationReflection</a>
+  
+    <li><a href="./Sequel/Plugins/PgArrayAssociations/PgArrayToManyAssociationReflection.html">Sequel::Plugins::PgArrayAssociations::PgArrayToManyAssociationReflection</a>
+  
+    <li><a href="./Sequel/Plugins/PgAutoConstraintValidations.html">Sequel::Plugins::PgAutoConstraintValidations</a>
+  
+    <li><a href="./Sequel/Plugins/PgAutoConstraintValidations/ClassMethods.html">Sequel::Plugins::PgAutoConstraintValidations::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PgAutoConstraintValidations/InstanceMethods.html">Sequel::Plugins::PgAutoConstraintValidations::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PgRow.html">Sequel::Plugins::PgRow</a>
+  
+    <li><a href="./Sequel/Plugins/PgRow/ClassMethods.html">Sequel::Plugins::PgRow::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PgRow/DatabaseMethods.html">Sequel::Plugins::PgRow::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PgRow/InstanceMethods.html">Sequel::Plugins::PgRow::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PreparedStatements.html">Sequel::Plugins::PreparedStatements</a>
+  
+    <li><a href="./Sequel/Plugins/PreparedStatements/ClassMethods.html">Sequel::Plugins::PreparedStatements::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PreparedStatements/InstanceMethods.html">Sequel::Plugins::PreparedStatements::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PreparedStatementsSafe.html">Sequel::Plugins::PreparedStatementsSafe</a>
+  
+    <li><a href="./Sequel/Plugins/PreparedStatementsSafe/ClassMethods.html">Sequel::Plugins::PreparedStatementsSafe::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/PreparedStatementsSafe/InstanceMethods.html">Sequel::Plugins::PreparedStatementsSafe::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/RcteTree.html">Sequel::Plugins::RcteTree</a>
+  
+    <li><a href="./Sequel/Plugins/Serialization.html">Sequel::Plugins::Serialization</a>
+  
+    <li><a href="./Sequel/Plugins/Serialization/ClassMethods.html">Sequel::Plugins::Serialization::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Serialization/InstanceMethods.html">Sequel::Plugins::Serialization::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SerializationModificationDetection.html">Sequel::Plugins::SerializationModificationDetection</a>
+  
+    <li><a href="./Sequel/Plugins/SerializationModificationDetection/InstanceMethods.html">Sequel::Plugins::SerializationModificationDetection::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Sharding.html">Sequel::Plugins::Sharding</a>
+  
+    <li><a href="./Sequel/Plugins/Sharding/ClassMethods.html">Sequel::Plugins::Sharding::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Sharding/DatasetMethods.html">Sequel::Plugins::Sharding::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Sharding/InstanceMethods.html">Sequel::Plugins::Sharding::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SingleTableInheritance.html">Sequel::Plugins::SingleTableInheritance</a>
+  
+    <li><a href="./Sequel/Plugins/SingleTableInheritance/ClassMethods.html">Sequel::Plugins::SingleTableInheritance::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SingleTableInheritance/InstanceMethods.html">Sequel::Plugins::SingleTableInheritance::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SingularTableNames.html">Sequel::Plugins::SingularTableNames</a>
+  
+    <li><a href="./Sequel/Plugins/SingularTableNames/ClassMethods.html">Sequel::Plugins::SingularTableNames::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SkipCreateRefresh.html">Sequel::Plugins::SkipCreateRefresh</a>
+  
+    <li><a href="./Sequel/Plugins/SkipCreateRefresh/InstanceMethods.html">Sequel::Plugins::SkipCreateRefresh::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SkipSavingColumns.html">Sequel::Plugins::SkipSavingColumns</a>
+  
+    <li><a href="./Sequel/Plugins/SkipSavingColumns/ClassMethods.html">Sequel::Plugins::SkipSavingColumns::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SkipSavingColumns/InstanceMethods.html">Sequel::Plugins::SkipSavingColumns::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SplitValues.html">Sequel::Plugins::SplitValues</a>
+  
+    <li><a href="./Sequel/Plugins/SplitValues/ClassMethods.html">Sequel::Plugins::SplitValues::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SplitValues/InstanceMethods.html">Sequel::Plugins::SplitValues::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SqlComments.html">Sequel::Plugins::SqlComments</a>
+  
+    <li><a href="./Sequel/Plugins/SqlComments/ClassMethods.html">Sequel::Plugins::SqlComments::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SqlComments/DatasetMethods.html">Sequel::Plugins::SqlComments::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SqlComments/InstanceMethods.html">Sequel::Plugins::SqlComments::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/StaticCache.html">Sequel::Plugins::StaticCache</a>
+  
+    <li><a href="./Sequel/Plugins/StaticCache/ClassMethods.html">Sequel::Plugins::StaticCache::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/StaticCache/InstanceMethods.html">Sequel::Plugins::StaticCache::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/StaticCacheCache.html">Sequel::Plugins::StaticCacheCache</a>
+  
+    <li><a href="./Sequel/Plugins/StaticCacheCache/ClassMethods.html">Sequel::Plugins::StaticCacheCache::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/StringStripper.html">Sequel::Plugins::StringStripper</a>
+  
+    <li><a href="./Sequel/Plugins/StringStripper/ClassMethods.html">Sequel::Plugins::StringStripper::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Subclasses.html">Sequel::Plugins::Subclasses</a>
+  
+    <li><a href="./Sequel/Plugins/Subclasses/ClassMethods.html">Sequel::Plugins::Subclasses::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/SubsetConditions.html">Sequel::Plugins::SubsetConditions</a>
+  
+    <li><a href="./Sequel/Plugins/SubsetConditions/DatasetModuleMethods.html">Sequel::Plugins::SubsetConditions::DatasetModuleMethods</a>
+  
+    <li><a href="./Sequel/Plugins/TableSelect.html">Sequel::Plugins::TableSelect</a>
+  
+    <li><a href="./Sequel/Plugins/TableSelect/ClassMethods.html">Sequel::Plugins::TableSelect::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/TacticalEagerLoading.html">Sequel::Plugins::TacticalEagerLoading</a>
+  
+    <li><a href="./Sequel/Plugins/TacticalEagerLoading/DatasetMethods.html">Sequel::Plugins::TacticalEagerLoading::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/TacticalEagerLoading/InstanceMethods.html">Sequel::Plugins::TacticalEagerLoading::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ThrowFailures.html">Sequel::Plugins::ThrowFailures</a>
+  
+    <li><a href="./Sequel/Plugins/ThrowFailures/InstanceMethods.html">Sequel::Plugins::ThrowFailures::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Timestamps.html">Sequel::Plugins::Timestamps</a>
+  
+    <li><a href="./Sequel/Plugins/Timestamps/ClassMethods.html">Sequel::Plugins::Timestamps::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Timestamps/InstanceMethods.html">Sequel::Plugins::Timestamps::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Touch.html">Sequel::Plugins::Touch</a>
+  
+    <li><a href="./Sequel/Plugins/Touch/ClassMethods.html">Sequel::Plugins::Touch::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Touch/InstanceMethods.html">Sequel::Plugins::Touch::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Tree.html">Sequel::Plugins::Tree</a>
+  
+    <li><a href="./Sequel/Plugins/Tree/ClassMethods.html">Sequel::Plugins::Tree::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Tree/DatasetMethods.html">Sequel::Plugins::Tree::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Tree/InstanceMethods.html">Sequel::Plugins::Tree::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Tree/SingleRoot.html">Sequel::Plugins::Tree::SingleRoot</a>
+  
+    <li><a href="./Sequel/Plugins/Tree/SingleRoot/ClassMethods.html">Sequel::Plugins::Tree::SingleRoot::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Tree/SingleRoot/InstanceMethods.html">Sequel::Plugins::Tree::SingleRoot::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Tree/TreeMultipleRootError.html">Sequel::Plugins::Tree::TreeMultipleRootError</a>
+  
+    <li><a href="./Sequel/Plugins/TypecastOnLoad.html">Sequel::Plugins::TypecastOnLoad</a>
+  
+    <li><a href="./Sequel/Plugins/TypecastOnLoad/ClassMethods.html">Sequel::Plugins::TypecastOnLoad::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/TypecastOnLoad/InstanceMethods.html">Sequel::Plugins::TypecastOnLoad::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/UnlimitedUpdate.html">Sequel::Plugins::UnlimitedUpdate</a>
+  
+    <li><a href="./Sequel/Plugins/UnlimitedUpdate/InstanceMethods.html">Sequel::Plugins::UnlimitedUpdate::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/UnusedAssociations.html">Sequel::Plugins::UnusedAssociations</a>
+  
+    <li><a href="./Sequel/Plugins/UnusedAssociations/ClassMethods.html">Sequel::Plugins::UnusedAssociations::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/UpdateOrCreate.html">Sequel::Plugins::UpdateOrCreate</a>
+  
+    <li><a href="./Sequel/Plugins/UpdateOrCreate/ClassMethods.html">Sequel::Plugins::UpdateOrCreate::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/UpdatePrimaryKey.html">Sequel::Plugins::UpdatePrimaryKey</a>
+  
+    <li><a href="./Sequel/Plugins/UpdatePrimaryKey/InstanceMethods.html">Sequel::Plugins::UpdatePrimaryKey::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/UpdateRefresh.html">Sequel::Plugins::UpdateRefresh</a>
+  
+    <li><a href="./Sequel/Plugins/UpdateRefresh/ClassMethods.html">Sequel::Plugins::UpdateRefresh::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/UpdateRefresh/InstanceMethods.html">Sequel::Plugins::UpdateRefresh::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Uuid.html">Sequel::Plugins::Uuid</a>
+  
+    <li><a href="./Sequel/Plugins/Uuid/ClassMethods.html">Sequel::Plugins::Uuid::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/Uuid/InstanceMethods.html">Sequel::Plugins::Uuid::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ValidateAssociated.html">Sequel::Plugins::ValidateAssociated</a>
+  
+    <li><a href="./Sequel/Plugins/ValidateAssociated/InstanceMethods.html">Sequel::Plugins::ValidateAssociated::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ValidationClassMethods.html">Sequel::Plugins::ValidationClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ValidationClassMethods/ClassMethods.html">Sequel::Plugins::ValidationClassMethods::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ValidationClassMethods/ClassMethods/Generator.html">Sequel::Plugins::ValidationClassMethods::ClassMethods::Generator</a>
+  
+    <li><a href="./Sequel/Plugins/ValidationClassMethods/InstanceMethods.html">Sequel::Plugins::ValidationClassMethods::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ValidationContexts.html">Sequel::Plugins::ValidationContexts</a>
+  
+    <li><a href="./Sequel/Plugins/ValidationContexts/InstanceMethods.html">Sequel::Plugins::ValidationContexts::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/ValidationHelpers.html">Sequel::Plugins::ValidationHelpers</a>
+  
+    <li><a href="./Sequel/Plugins/ValidationHelpers/InstanceMethods.html">Sequel::Plugins::ValidationHelpers::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/WhitelistSecurity.html">Sequel::Plugins::WhitelistSecurity</a>
+  
+    <li><a href="./Sequel/Plugins/WhitelistSecurity/ClassMethods.html">Sequel::Plugins::WhitelistSecurity::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/WhitelistSecurity/InstanceMethods.html">Sequel::Plugins::WhitelistSecurity::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Plugins/XmlSerializer.html">Sequel::Plugins::XmlSerializer</a>
+  
+    <li><a href="./Sequel/Plugins/XmlSerializer/ClassMethods.html">Sequel::Plugins::XmlSerializer::ClassMethods</a>
+  
+    <li><a href="./Sequel/Plugins/XmlSerializer/DatasetMethods.html">Sequel::Plugins::XmlSerializer::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Plugins/XmlSerializer/InstanceMethods.html">Sequel::Plugins::XmlSerializer::InstanceMethods</a>
+  
+    <li><a href="./Sequel/Postgres.html">Sequel::Postgres</a>
+  
+    <li><a href="./Sequel/Postgres/ArrayOp.html">Sequel::Postgres::ArrayOp</a>
+  
+    <li><a href="./Sequel/Postgres/ArrayOpMethods.html">Sequel::Postgres::ArrayOpMethods</a>
+  
+    <li><a href="./Sequel/Postgres/EnumDatabaseMethods.html">Sequel::Postgres::EnumDatabaseMethods</a>
+  
+    <li><a href="./Sequel/Postgres/ExtendedDateSupport.html">Sequel::Postgres::ExtendedDateSupport</a>
+  
+    <li><a href="./Sequel/Postgres/ExtendedDateSupport/DatasetMethods.html">Sequel::Postgres::ExtendedDateSupport::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Postgres/HStore.html">Sequel::Postgres::HStore</a>
+  
+    <li><a href="./Sequel/Postgres/HStore/DatabaseMethods.html">Sequel::Postgres::HStore::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/Postgres/HStore/Parser.html">Sequel::Postgres::HStore::Parser</a>
+  
+    <li><a href="./Sequel/Postgres/HStoreOp.html">Sequel::Postgres::HStoreOp</a>
+  
+    <li><a href="./Sequel/Postgres/HStoreOpMethods.html">Sequel::Postgres::HStoreOpMethods</a>
+  
+    <li><a href="./Sequel/Postgres/HStoreSubscriptOp.html">Sequel::Postgres::HStoreSubscriptOp</a>
+  
+    <li><a href="./Sequel/Postgres/InetDatabaseMethods.html">Sequel::Postgres::InetDatabaseMethods</a>
+  
+    <li><a href="./Sequel/Postgres/InetDatasetMethods.html">Sequel::Postgres::InetDatasetMethods</a>
+  
+    <li><a href="./Sequel/Postgres/InetOp.html">Sequel::Postgres::InetOp</a>
+  
+    <li><a href="./Sequel/Postgres/InetOpMethods.html">Sequel::Postgres::InetOpMethods</a>
+  
+    <li><a href="./Sequel/Postgres/IntervalDatabaseMethods.html">Sequel::Postgres::IntervalDatabaseMethods</a>
+  
+    <li><a href="./Sequel/Postgres/IntervalDatabaseMethods/Parser.html">Sequel::Postgres::IntervalDatabaseMethods::Parser</a>
+  
+    <li><a href="./Sequel/Postgres/IntervalDatasetMethods.html">Sequel::Postgres::IntervalDatasetMethods</a>
+  
+    <li><a href="./Sequel/Postgres/JSONArray.html">Sequel::Postgres::JSONArray</a>
+  
+    <li><a href="./Sequel/Postgres/JSONBArray.html">Sequel::Postgres::JSONBArray</a>
+  
+    <li><a href="./Sequel/Postgres/JSONBHash.html">Sequel::Postgres::JSONBHash</a>
+  
+    <li><a href="./Sequel/Postgres/JSONBObject.html">Sequel::Postgres::JSONBObject</a>
+  
+    <li><a href="./Sequel/Postgres/JSONBOp.html">Sequel::Postgres::JSONBOp</a>
+  
+    <li><a href="./Sequel/Postgres/JSONBSubscriptOp.html">Sequel::Postgres::JSONBSubscriptOp</a>
+  
+    <li><a href="./Sequel/Postgres/JSONBaseOp.html">Sequel::Postgres::JSONBaseOp</a>
+  
+    <li><a href="./Sequel/Postgres/JSONDatabaseMethods.html">Sequel::Postgres::JSONDatabaseMethods</a>
+  
+    <li><a href="./Sequel/Postgres/JSONHash.html">Sequel::Postgres::JSONHash</a>
+  
+    <li><a href="./Sequel/Postgres/JSONObject.html">Sequel::Postgres::JSONObject</a>
+  
+    <li><a href="./Sequel/Postgres/JSONOp.html">Sequel::Postgres::JSONOp</a>
+  
+    <li><a href="./Sequel/Postgres/JSONOpMethods.html">Sequel::Postgres::JSONOpMethods</a>
+  
+    <li><a href="./Sequel/Postgres/LooseCount.html">Sequel::Postgres::LooseCount</a>
+  
+    <li><a href="./Sequel/Postgres/PGArray.html">Sequel::Postgres::PGArray</a>
+  
+    <li><a href="./Sequel/Postgres/PGArray/Creator.html">Sequel::Postgres::PGArray::Creator</a>
+  
+    <li><a href="./Sequel/Postgres/PGArray/DatabaseMethods.html">Sequel::Postgres::PGArray::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/Postgres/PGArray/Parser.html">Sequel::Postgres::PGArray::Parser</a>
+  
+    <li><a href="./Sequel/Postgres/PGMultiRange.html">Sequel::Postgres::PGMultiRange</a>
+  
+    <li><a href="./Sequel/Postgres/PGMultiRange/Creator.html">Sequel::Postgres::PGMultiRange::Creator</a>
+  
+    <li><a href="./Sequel/Postgres/PGMultiRange/DatabaseMethods.html">Sequel::Postgres::PGMultiRange::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/Postgres/PGMultiRange/Parser.html">Sequel::Postgres::PGMultiRange::Parser</a>
+  
+    <li><a href="./Sequel/Postgres/PGRange.html">Sequel::Postgres::PGRange</a>
+  
+    <li><a href="./Sequel/Postgres/PGRange/DatabaseMethods.html">Sequel::Postgres::PGRange::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/Postgres/PGRange/DatasetMethods.html">Sequel::Postgres::PGRange::DatasetMethods</a>
+  
+    <li><a href="./Sequel/Postgres/PGRange/Parser.html">Sequel::Postgres::PGRange::Parser</a>
+  
+    <li><a href="./Sequel/Postgres/PGRow.html">Sequel::Postgres::PGRow</a>
+  
+    <li><a href="./Sequel/Postgres/PGRow/ArrayRow.html">Sequel::Postgres::PGRow::ArrayRow</a>
+  
+    <li><a href="./Sequel/Postgres/PGRow/DatabaseMethods.html">Sequel::Postgres::PGRow::DatabaseMethods</a>
+  
+    <li><a href="./Sequel/Postgres/PGRow/HashRow.html">Sequel::Postgres::PGRow::HashRow</a>
+  
+    <li><a href="./Sequel/Postgres/PGRow/Parser.html">Sequel::Postgres::PGRow::Parser</a>
+  
+    <li><a href="./Sequel/Postgres/PGRow/Splitter.html">Sequel::Postgres::PGRow::Splitter</a>
+  
+    <li><a href="./Sequel/Postgres/PGRowOp.html">Sequel::Postgres::PGRowOp</a>
+  
+    <li><a href="./Sequel/Postgres/PGRowOp/ExpressionMethods.html">Sequel::Postgres::PGRowOp::ExpressionMethods</a>
+  
+    <li><a href="./Sequel/Postgres/RangeOp.html">Sequel::Postgres::RangeOp</a>
+  
+    <li><a href="./Sequel/Postgres/RangeOpMethods.html">Sequel::Postgres::RangeOpMethods</a>
+  
+    <li><a href="./Sequel/Postgres/StaticCacheUpdater.html">Sequel::Postgres::StaticCacheUpdater</a>
+  
+    <li><a href="./Sequel/Postgres/Timestamptz.html">Sequel::Postgres::Timestamptz</a>
+  
+    <li><a href="./Sequel/PrettyTable.html">Sequel::PrettyTable</a>
+  
+    <li><a href="./Sequel/S.html">Sequel::S</a>
+  
+    <li><a href="./Sequel/SQL.html">Sequel::SQL</a>
+  
+    <li><a href="./Sequel/SQL/Builders.html">Sequel::SQL::Builders</a>
+  
+    <li><a href="./Sequel/SQL/CaseExpression.html">Sequel::SQL::CaseExpression</a>
+  
+    <li><a href="./Sequel/SQL/ComplexExpression.html">Sequel::SQL::ComplexExpression</a>
+  
+    <li><a href="./Sequel/SQL/Constant.html">Sequel::SQL::Constant</a>
+  
+    <li><a href="./Sequel/SQL/DateAdd.html">Sequel::SQL::DateAdd</a>
+  
+    <li><a href="./Sequel/SQL/DateAdd/DatasetMethods.html">Sequel::SQL::DateAdd::DatasetMethods</a>
+  
+    <li><a href="./Sequel/SQL/EscapedLikeExpression.html">Sequel::SQL::EscapedLikeExpression</a>
+  
+    <li><a href="./Sequel/SQL/Expression.html">Sequel::SQL::Expression</a>
+  
+    <li><a href="./Sequel/SQL/Function.html">Sequel::SQL::Function</a>
+  
+    <li><a href="./Sequel/SQL/GenericExpression.html">Sequel::SQL::GenericExpression</a>
+  
+    <li><a href="./Sequel/SQL/JoinOnClause.html">Sequel::SQL::JoinOnClause</a>
+  
+    <li><a href="./Sequel/SQL/JoinUsingClause.html">Sequel::SQL::JoinUsingClause</a>
+  
+    <li><a href="./Sequel/SQL/OrderedExpression.html">Sequel::SQL::OrderedExpression</a>
+  
+    <li><a href="./Sequel/SQL/StringAgg.html">Sequel::SQL::StringAgg</a>
+  
+    <li><a href="./Sequel/SQL/StringAgg/DatasetMethods.html">Sequel::SQL::StringAgg::DatasetMethods</a>
+  
+    <li><a href="./Sequel/SQL/StringMethods.html">Sequel::SQL::StringMethods</a>
+  
+    <li><a href="./Sequel/SQL/VirtualRow.html">Sequel::SQL::VirtualRow</a>
+  
+    <li><a href="./Sequel/SQLComments.html">Sequel::SQLComments</a>
+  
+    <li><a href="./Sequel/SQLLogNormalizer.html">Sequel::SQLLogNormalizer</a>
+  
+    <li><a href="./Sequel/SQLite.html">Sequel::SQLite</a>
+  
+    <li><a href="./Sequel/SQLite/JSONOp.html">Sequel::SQLite::JSONOp</a>
+  
+    <li><a href="./Sequel/SQLite/JSONOpMethods.html">Sequel::SQLite::JSONOpMethods</a>
+  
+    <li><a href="./Sequel/Schema.html">Sequel::Schema</a>
+  
+    <li><a href="./Sequel/Schema/CreateTableGenerator.html">Sequel::Schema::CreateTableGenerator</a>
+  
+    <li><a href="./Sequel/SchemaCaching.html">Sequel::SchemaCaching</a>
+  
+    <li><a href="./Sequel/SchemaDumper.html">Sequel::SchemaDumper</a>
+  
+    <li><a href="./Sequel/SelectRemove.html">Sequel::SelectRemove</a>
+  
+    <li><a href="./Sequel/Sequel4DatasetMethods.html">Sequel::Sequel4DatasetMethods</a>
+  
+    <li><a href="./Sequel/ServerBlock.html">Sequel::ServerBlock</a>
+  
+    <li><a href="./Sequel/ServerLogging.html">Sequel::ServerLogging</a>
+  
+    <li><a href="./Sequel/SimpleMigration.html">Sequel::SimpleMigration</a>
+  
+    <li><a href="./Sequel/SymbolAref.html">Sequel::SymbolAref</a>
+  
+    <li><a href="./Sequel/SymbolAs.html">Sequel::SymbolAs</a>
+  
+    <li><a href="./Sequel/ThreadLocalTimezones.html">Sequel::ThreadLocalTimezones</a>
+  
+    <li><a href="./Sequel/ThreadedServerBlock.html">Sequel::ThreadedServerBlock</a>
+  
+    <li><a href="./Sequel/TimestampMigrator.html">Sequel::TimestampMigrator</a>
+  
+    <li><a href="./Sequel/ToDot.html">Sequel::ToDot</a>
+  
+    <li><a href="./Sequel/ToDot/DatasetMethods.html">Sequel::ToDot::DatasetMethods</a>
+  
+    <li><a href="./Sequel/UnthreadedServerBlock.html">Sequel::UnthreadedServerBlock</a>
+  
+    <li><a href="./String.html">String</a>
+  
+    <li><a href="./String/Inflections.html">String::Inflections</a>
+  
+    <li><a href="./Symbol.html">Symbol</a>
+  
+    <li><a href="./TrueClass.html">TrueClass</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main">
+
+<p>This is the API documentation for Sequel: The Database Toolkit for Ruby.
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::Postgres::PGArray - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">DelegateClass(Array)
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">Sequel::SQL::AliasMethods</span>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-op">#op</a>
+    
+    <li ><a href="#method-i-sql_literal_append">#sql_literal_append</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::Postgres::PGArray">
+  <h1 id="class-Sequel::Postgres::PGArray" class="class">
+    class Sequel::Postgres::PGArray
+  </h1>
+
+  <section class="description">
+    
+<p>Represents a PostgreSQL array column value.</p>
+
+<p>:nocov:</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-array_type" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">array_type</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The type of this array.  May be nil if no type was given. If a type is provided, the array is automatically casted to this type when literalizing.  This type is the underlying type, not the array type itself, so for an int4[] database type, it should be :int4 or &#39;int4&#39;</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(array, type=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the array to delegate to, and a database type.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_array.rb</span>
+<span class="line-num">439</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">type</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">440</span>   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">array</span>)
+<span class="line-num">441</span>   <span class="ruby-ivar">@array_type</span> = <span class="ruby-identifier">type</span>
+<span class="line-num">442</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-op" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">op</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Wrap the <a href="PGArray.html"><code>PGArray</code></a> instance in an <a href="ArrayOp.html"><code>ArrayOp</code></a>, allowing you to easily use the PostgreSQL array functions and operators with literal arrays.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="op-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_array_ops.rb</span>
+<span class="line-num">294</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">op</span>
+<span class="line-num">295</span>   <span class="ruby-constant">ArrayOp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">296</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_literal_append" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_literal_append</span><span
+            class="method-args">(ds, sql)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Append the array <a href="../SQL.html"><code>SQL</code></a> to the given sql string.  If the receiver has a type, add a cast to the database array type.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_literal_append-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_array.rb</span>
+<span class="line-num">447</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_literal_append</span>(<span class="ruby-identifier">ds</span>, <span class="ruby-identifier">sql</span>)
+<span class="line-num">448</span>   <span class="ruby-identifier">at</span> = <span class="ruby-identifier">array_type</span>
+<span class="line-num">449</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">at</span>
+<span class="line-num">450</span>     <span class="ruby-identifier">sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;&#39;{}&#39;&quot;</span>
+<span class="line-num">451</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">452</span>     <span class="ruby-identifier">sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;ARRAY&quot;</span>
+<span class="line-num">453</span>     <span class="ruby-identifier">_literal_append</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">ds</span>, <span class="ruby-identifier">to_a</span>)
+<span class="line-num">454</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">455</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">at</span>
+<span class="line-num">456</span>     <span class="ruby-identifier">sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;::&#39;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">at</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;[]&#39;</span>
+<span class="line-num">457</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">458</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

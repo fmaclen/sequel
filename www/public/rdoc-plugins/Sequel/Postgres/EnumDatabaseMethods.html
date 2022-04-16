@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Postgres::EnumDatabaseMethods - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-extended">::extended</a>
+    
+    <li ><a href="#method-i-add_enum_value">#add_enum_value</a>
+    
+    <li ><a href="#method-i-create_enum">#create_enum</a>
+    
+    <li ><a href="#method-i-drop_enum">#drop_enum</a>
+    
+    <li ><a href="#method-i-rename_enum">#rename_enum</a>
+    
+    <li ><a href="#method-i-rename_enum_value">#rename_enum_value</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Postgres::EnumDatabaseMethods">
+  <h1 id="module-Sequel::Postgres::EnumDatabaseMethods" class="module">
+    module Sequel::Postgres::EnumDatabaseMethods
+  </h1>
+
+  <section class="description">
+    
+<p>Methods enabling <a href="../../Database.html"><code>Database</code></a> object integration with enum types.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-extended" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">extended</span><span
+            class="method-args">(db)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Parse the available enum values when loading this extension into your database.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="extended-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/pg_enum.rb</span>
+<span class="line-num">78</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">extended</span>(<span class="ruby-identifier">db</span>)
+<span class="line-num">79</span>   <span class="ruby-identifier">db</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">80</span>     <span class="ruby-ivar">@enum_labels</span> = {}
+<span class="line-num">81</span>     <span class="ruby-identifier">parse_enum_labels</span>
+<span class="line-num">82</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">83</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-add_enum_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_enum_value</span><span
+            class="method-args">(enum, value, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Run the <a href="../SQL.html"><code>SQL</code></a> to add the given value to the existing enum type. Options:</p>
+<dl class="rdoc-list note-list"><dt>:after 
+<dd>
+<p>Add the new value after this existing value.</p>
+</dd><dt>:before 
+<dd>
+<p>Add the new value before this existing value.</p>
+</dd><dt>:if_not_exists 
+<dd>
+<p>Do not raise an error if the value already exists in the enum.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="add_enum_value-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/pg_enum.rb</span>
+<span class="line-num">90</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_enum_value</span>(<span class="ruby-identifier">enum</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">91</span>   <span class="ruby-identifier">sql</span> = <span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>
+<span class="line-num">92</span>   <span class="ruby-identifier">sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;ALTER TYPE #{quote_schema_table(enum)} ADD VALUE#{&#39; IF NOT EXISTS&#39; if opts[:if_not_exists]} #{literal(value.to_s)}&quot;</span>
+<span class="line-num">93</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:before</span>]
+<span class="line-num">94</span>     <span class="ruby-identifier">sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; BEFORE #{literal(v.to_s)}&quot;</span>
+<span class="line-num">95</span>   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">v</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:after</span>]
+<span class="line-num">96</span>     <span class="ruby-identifier">sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; AFTER #{literal(v.to_s)}&quot;</span>
+<span class="line-num">97</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">98</span>   <span class="ruby-identifier">_process_enum_change_sql</span>(<span class="ruby-identifier">sql</span>)
+<span class="line-num">99</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-create_enum" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_enum</span><span
+            class="method-args">(enum, values)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Run the <a href="../SQL.html"><code>SQL</code></a> to create an enum type with the given name and values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="create_enum-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_enum.rb</span>
+<span class="line-num">102</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_enum</span>(<span class="ruby-identifier">enum</span>, <span class="ruby-identifier">values</span>)
+<span class="line-num">103</span>   <span class="ruby-identifier">_process_enum_change_sql</span>(<span class="ruby-node">&quot;CREATE TYPE #{quote_schema_table(enum)} AS ENUM (#{values.map{|v| literal(v.to_s)}.join(&#39;, &#39;)})&quot;</span>)
+<span class="line-num">104</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-drop_enum" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">drop_enum</span><span
+            class="method-args">(enum, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Run the <a href="../SQL.html"><code>SQL</code></a> to drop the enum type with the given name. Options:</p>
+<dl class="rdoc-list note-list"><dt>:if_exists 
+<dd>
+<p>Do not raise an error if the enum type does not exist</p>
+</dd><dt>:cascade 
+<dd>
+<p>Also drop other objects that depend on the enum type</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="drop_enum-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_enum.rb</span>
+<span class="line-num">122</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">drop_enum</span>(<span class="ruby-identifier">enum</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">123</span>   <span class="ruby-identifier">_process_enum_change_sql</span>(<span class="ruby-node">&quot;DROP TYPE#{&#39; IF EXISTS&#39; if opts[:if_exists]} #{quote_schema_table(enum)}#{&#39; CASCADE&#39; if opts[:cascade]}&quot;</span>)
+<span class="line-num">124</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-rename_enum" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rename_enum</span><span
+            class="method-args">(enum, new_name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Run the <a href="../SQL.html"><code>SQL</code></a> to rename the enum type with the given name to the another given name.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="rename_enum-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_enum.rb</span>
+<span class="line-num">108</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rename_enum</span>(<span class="ruby-identifier">enum</span>, <span class="ruby-identifier">new_name</span>)
+<span class="line-num">109</span>   <span class="ruby-identifier">_process_enum_change_sql</span>(<span class="ruby-node">&quot;ALTER TYPE #{quote_schema_table(enum)} RENAME TO #{quote_schema_table(new_name)}&quot;</span>)
+<span class="line-num">110</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-rename_enum_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rename_enum_value</span><span
+            class="method-args">(enum, old_name, new_name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Run the <a href="../SQL.html"><code>SQL</code></a> to rename the enum value with the given name to the another given name.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="rename_enum_value-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_enum.rb</span>
+<span class="line-num">114</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rename_enum_value</span>(<span class="ruby-identifier">enum</span>, <span class="ruby-identifier">old_name</span>, <span class="ruby-identifier">new_name</span>)
+<span class="line-num">115</span>   <span class="ruby-identifier">_process_enum_change_sql</span>(<span class="ruby-node">&quot;ALTER TYPE #{quote_schema_table(enum)} RENAME VALUE #{literal(old_name.to_s)} TO #{literal(new_name.to_s)}&quot;</span>)
+<span class="line-num">116</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

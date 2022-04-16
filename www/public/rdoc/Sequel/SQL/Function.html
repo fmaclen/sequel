@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::SQL::Function - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="GenericExpression.html">Sequel::SQL::GenericExpression</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li class="calls-super" ><a href="#method-i-2A">#*</a>
+    
+    <li ><a href="#method-i-distinct">#distinct</a>
+    
+    <li ><a href="#method-i-filter">#filter</a>
+    
+    <li ><a href="#method-i-lateral">#lateral</a>
+    
+    <li ><a href="#method-i-order">#order</a>
+    
+    <li ><a href="#method-i-over">#over</a>
+    
+    <li ><a href="#method-i-quoted">#quoted</a>
+    
+    <li ><a href="#method-i-unquoted">#unquoted</a>
+    
+    <li ><a href="#method-i-with_ordinality">#with_ordinality</a>
+    
+    <li ><a href="#method-i-within_group">#within_group</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::SQL::Function">
+  <h1 id="class-Sequel::SQL::Function" class="class">
+    class Sequel::SQL::Function
+  </h1>
+
+  <section class="description">
+    
+<p>Represents an <a href="../SQL.html"><code>SQL</code></a> function call.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="COMMA_ARRAY">COMMA_ARRAY
+        
+        <dd>
+        
+      
+        <dt id="DISTINCT">DISTINCT
+        
+        <dd>
+        
+      
+        <dt id="WILDCARD">WILDCARD
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-args" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">args</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The array of arguments to pass to the function (may be blank)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">name</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The <a href="../SQL.html"><code>SQL</code></a> function to call</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-opts" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">opts</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Options for this function</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(name, *args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the name and args for the function</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1376</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">1377</span>   <span class="ruby-identifier">_initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">args</span>, <span class="ruby-constant">OPTS</span>)
+<span class="line-num">1378</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-2A" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">*</span><span
+            class="method-args">(ce=(arg=false;nil))</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>If no arguments are given, return a new function with the wildcard prepended to the arguments.</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:count</span>).<span class="ruby-identifier">*</span>  <span class="ruby-comment"># count(*)</span>
+</pre>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="2A-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1388</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">*</span>(<span class="ruby-identifier">ce</span>=(<span class="ruby-identifier">arg</span>=<span class="ruby-keyword">false</span>;<span class="ruby-keyword">nil</span>))
+<span class="line-num">1389</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+<span class="line-num">1390</span>     <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">&quot;Cannot apply * to functions with arguments&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">1391</span>     <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:&quot;*&quot;</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>)
+<span class="line-num">1392</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">1393</span>     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">ce</span>)
+<span class="line-num">1394</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">1395</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-distinct" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">distinct</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a new function with <a href="Function.html#DISTINCT"><code>DISTINCT</code></a> before the method arguments.</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:count</span>, <span class="ruby-value">:col</span>).<span class="ruby-identifier">distinct</span> <span class="ruby-comment"># count(DISTINCT col)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="distinct-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1400</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">distinct</span>
+<span class="line-num">1401</span>   <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:distinct</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>)
+<span class="line-num">1402</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-filter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">filter</span><span
+            class="method-args">(*args, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a new function with FILTER added to it, for filtered aggregate functions:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:foo</span>, <span class="ruby-value">:col</span>).<span class="ruby-identifier">filter</span>(<span class="ruby-value">a:</span> <span class="ruby-value">1</span>) <span class="ruby-comment"># foo(col) FILTER (WHERE (a = 1))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="filter-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1408</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">filter</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">1409</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+<span class="line-num">1410</span>     <span class="ruby-identifier">args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+<span class="line-num">1411</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">1412</span>     <span class="ruby-identifier">args</span>.<span class="ruby-identifier">freeze</span>
+<span class="line-num">1413</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">1414</span> 
+<span class="line-num">1415</span>   <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:filter</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">args</span>, <span class="ruby-value">:filter_block</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">1416</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-lateral" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lateral</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a function which will use LATERAL when literalized:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:foo</span>, <span class="ruby-value">:col</span>).<span class="ruby-identifier">lateral</span> <span class="ruby-comment"># LATERAL foo(col)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="lateral-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1421</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lateral</span>
+<span class="line-num">1422</span>   <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:lateral</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>)
+<span class="line-num">1423</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-order" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">order</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a new function where the function will be ordered.  Only useful for aggregate functions that are order dependent.</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:foo</span>, <span class="ruby-value">:a</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:a</span>, <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">desc</span>(<span class="ruby-value">:b</span>)) <span class="ruby-comment"># foo(a ORDER BY a, b DESC)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="order-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1429</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">1430</span>   <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:order</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">args</span>.<span class="ruby-identifier">freeze</span>)
+<span class="line-num">1431</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-over" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">over</span><span
+            class="method-args">(window=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a new function with an OVER clause (making it a window function). See <a href="Window.html"><code>Sequel::SQL::Window</code></a> for the list of options <code>over</code> can receive.</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:row_number</span>).<span class="ruby-identifier">over</span>(<span class="ruby-value">partition:</span> <span class="ruby-value">:col</span>) <span class="ruby-comment"># row_number() OVER (PARTITION BY col)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="over-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1437</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">over</span>(<span class="ruby-identifier">window</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">1438</span>   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">&quot;function already has a window applied to it&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:over</span>]
+<span class="line-num">1439</span>   <span class="ruby-identifier">window</span> = <span class="ruby-constant">Window</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">window</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">window</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Window</span>)
+<span class="line-num">1440</span>   <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:over</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">window</span>)
+<span class="line-num">1441</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-quoted" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">quoted</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a new function where the function name will be quoted if the database supports quoted functions:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:foo</span>).<span class="ruby-identifier">quoted</span> <span class="ruby-comment"># &quot;foo&quot;()</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="quoted-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1447</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">quoted</span>
+<span class="line-num">1448</span>   <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:quoted</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>)
+<span class="line-num">1449</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-unquoted" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">unquoted</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a new function where the function name will not be quoted even if the database supports quoted functions:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>[<span class="ruby-value">:foo</span>][<span class="ruby-value">:bar</span>].<span class="ruby-identifier">function</span>.<span class="ruby-identifier">unquoted</span> <span class="ruby-comment"># foo.bar()</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="unquoted-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1455</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unquoted</span>
+<span class="line-num">1456</span>   <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:quoted</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">false</span>)
+<span class="line-num">1457</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-with_ordinality" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">with_ordinality</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a new function that will use WITH ORDINALITY to also return a row number for every row the function returns:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:foo</span>).<span class="ruby-identifier">with_ordinality</span> <span class="ruby-comment"># foo() WITH ORDINALITY</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="with_ordinality-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1463</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">with_ordinality</span>
+<span class="line-num">1464</span>   <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:with_ordinality</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>)
+<span class="line-num">1465</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-within_group" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">within_group</span><span
+            class="method-args">(*expressions)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a new function that uses WITHIN GROUP ordered by the given expression, useful for ordered-set and hypothetical-set aggregate functions:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:rank</span>, <span class="ruby-value">:a</span>).<span class="ruby-identifier">within_group</span>(<span class="ruby-value">:b</span>, <span class="ruby-value">:c</span>)
+<span class="ruby-comment"># rank(a) WITHIN GROUP (ORDER BY b, c)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="within_group-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1472</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">within_group</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">expressions</span>)
+<span class="line-num">1473</span>   <span class="ruby-identifier">with_opts</span>(<span class="ruby-value">:within_group</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">expressions</span>.<span class="ruby-identifier">freeze</span>)
+<span class="line-num">1474</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

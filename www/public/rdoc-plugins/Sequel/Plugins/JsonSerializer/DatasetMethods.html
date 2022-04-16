@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::JsonSerializer::DatasetMethods - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+  var index_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/navigation.js" defer></script>
+<script src="../../../js/search.js" defer></script>
+<script src="../../../js/search_index.js" defer></script>
+<script src="../../../js/searcher.js" defer></script>
+<script src="../../../js/darkfish.js" defer></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-json_serializer_opts">#json_serializer_opts</a>
+    
+    <li ><a href="#method-i-to_json">#to_json</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::JsonSerializer::DatasetMethods">
+  <h1 id="module-Sequel::Plugins::JsonSerializer::DatasetMethods" class="module">
+    module Sequel::Plugins::JsonSerializer::DatasetMethods
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-json_serializer_opts" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">json_serializer_opts</span><span
+            class="method-args">(opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Store default options used when calling <a href="DatasetMethods.html#method-i-to_json"><code>to_json</code></a> on this dataset. These options take precedence over the class level options, and can be overridden by passing options directly to to_json.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="json_serializer_opts-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/json_serializer.rb</span>
+<span class="line-num">386</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">json_serializer_opts</span>(<span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">387</span>   <span class="ruby-identifier">clone</span>(<span class="ruby-value">:json_serializer_opts</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">opts</span>)
+<span class="line-num">388</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_json</span><span
+            class="method-args">(*a) { |res| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a JSON string representing an array of all objects in this dataset.  Takes the same options as the instance method, and passes them to every instance.  Additionally, respects the following options:</p>
+<dl class="rdoc-list note-list"><dt>:array 
+<dd>
+<p>An array of instances.  If this is not provided, calls all on the receiver to get the array.</p>
+</dd><dt>:instance_block 
+<dd>
+<p>A block to pass to <a href="DatasetMethods.html#method-i-to_json"><code>to_json</code></a> for each value in the dataset (or :array option).</p>
+</dd><dt>:root 
+<dd>
+<p>If set to :collection, wraps the collection in a root object using the pluralized, underscored model name as the key.  If set to :instance, only wraps the instances in a root object.  If set to :both, wraps both the collection and instances in a root object.  If set to a string, wraps the collection in a root object using the string as the key.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="to_json-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/json_serializer.rb</span>
+<span class="line-num">406</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
+<span class="line-num">407</span>   <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">json_serializer_opts</span>
+<span class="line-num">408</span> 
+<span class="line-num">409</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">ds_opts</span> = <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:json_serializer_opts</span>]
+<span class="line-num">410</span>     <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">ds_opts</span>)
+<span class="line-num">411</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">412</span> 
+<span class="line-num">413</span>   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">arg</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+<span class="line-num">414</span>     <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">arg</span>)
+<span class="line-num">415</span>     <span class="ruby-identifier">a</span> = []
+<span class="line-num">416</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">417</span> 
+<span class="line-num">418</span>   <span class="ruby-keyword">case</span> <span class="ruby-identifier">collection_root</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:root</span>]
+<span class="line-num">419</span>   <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">:instance</span>
+<span class="line-num">420</span>     <span class="ruby-identifier">collection_root</span> = <span class="ruby-keyword">false</span>
+<span class="line-num">421</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">422</span>     <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">423</span>     <span class="ruby-keyword">unless</span> <span class="ruby-identifier">collection_root</span> <span class="ruby-operator">==</span> <span class="ruby-value">:both</span>
+<span class="line-num">424</span>       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:root</span>)
+<span class="line-num">425</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">426</span>     <span class="ruby-keyword">unless</span> <span class="ruby-identifier">collection_root</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+<span class="line-num">427</span>       <span class="ruby-identifier">collection_root</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:pluralize</span>, <span class="ruby-identifier">model</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:underscore</span>, <span class="ruby-identifier">model</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:demodulize</span>, <span class="ruby-identifier">model</span>.<span class="ruby-identifier">to_s</span>)))
+<span class="line-num">428</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">429</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">430</span> 
+<span class="line-num">431</span>   <span class="ruby-identifier">res</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">row_proc</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:eager_graph</span>] 
+<span class="line-num">432</span>     <span class="ruby-identifier">array</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:array</span>]
+<span class="line-num">433</span>       <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">434</span>       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:array</span>)
+<span class="line-num">435</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">436</span>       <span class="ruby-identifier">all</span>
+<span class="line-num">437</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">438</span>     <span class="ruby-constant">JsonSerializer</span>.<span class="ruby-identifier">object_to_json_data</span>(<span class="ruby-identifier">array</span>, <span class="ruby-identifier">opts</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">opts</span>[<span class="ruby-value">:instance_block</span>])
+<span class="line-num">439</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">440</span>     <span class="ruby-identifier">all</span>
+<span class="line-num">441</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">442</span> 
+<span class="line-num">443</span>   <span class="ruby-identifier">res</span> = {<span class="ruby-identifier">collection_root</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">res</span>} <span class="ruby-keyword">if</span> <span class="ruby-identifier">collection_root</span>
+<span class="line-num">444</span>   <span class="ruby-identifier">res</span> = <span class="ruby-keyword">yield</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-keyword">yield</span>)
+<span class="line-num">445</span> 
+<span class="line-num">446</span>   <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">object_to_json</span>(<span class="ruby-identifier">res</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>)
+<span class="line-num">447</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

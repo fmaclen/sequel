@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::NestedAttributes::ClassMethods - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+  var index_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/navigation.js" defer></script>
+<script src="../../../js/search.js" defer></script>
+<script src="../../../js/search_index.js" defer></script>
+<script src="../../../js/searcher.js" defer></script>
+<script src="../../../js/darkfish.js" defer></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-i-freeze">#freeze</a>
+    
+    <li ><a href="#method-i-nested_attributes">#nested_attributes</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::NestedAttributes::ClassMethods">
+  <h1 id="module-Sequel::Plugins::NestedAttributes::ClassMethods" class="module">
+    module Sequel::Plugins::NestedAttributes::ClassMethods
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-freeze" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">freeze</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Freeze nested_attributes_module when freezing model class.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="freeze-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/nested_attributes.rb</span>
+<span class="line-num"> 96</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">freeze</span>
+<span class="line-num"> 97</span>   <span class="ruby-ivar">@nested_attributes_module</span>.<span class="ruby-identifier">freeze</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@nested_attributes_module</span>
+<span class="line-num"> 98</span> 
+<span class="line-num"> 99</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">100</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nested_attributes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nested_attributes</span><span
+            class="method-args">(*associations, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Allow nested attributes to be set for the given associations.  Options:</p>
+<dl class="rdoc-list note-list"><dt>:destroy 
+<dd>
+<p>Allow destruction of nested records.</p>
+</dd><dt>:fields 
+<dd>
+<p>If provided, should be an <a href="../../../Array.html"><code>Array</code></a> or proc. If it is an array, restricts the fields allowed to be modified through the association_attributes= method to the specific fields given. If it is a proc, it will be called with the associated object and should return an array of the allowable fields.</p>
+</dd><dt>:limit 
+<dd>
+<p>For *_to_many associations, a limit on the number of records that will be processed, to prevent denial of service attacks.</p>
+</dd><dt>:reject_if 
+<dd>
+<p>A proc that is called with each attribute hash before it is passed to its associated object. If the proc returns a truthy value, the attribute hash is ignored.</p>
+</dd><dt>:reject_nil 
+<dd>
+<p>Ignore nil objects passed to nested attributes setter methods.</p>
+</dd><dt>:remove 
+<dd>
+<p>Allow disassociation of nested records (can remove the associated object from the parent object, but not destroy the associated object).</p>
+</dd><dt>:require_modification 
+<dd>
+<p>Whether to require modification of nested objects when updating or deleting them (checking that a single row was updated).  By default, uses the default require_modification setting for the nested object.</p>
+</dd><dt>:transform 
+<dd>
+<p>A proc to transform attribute hashes before they are passed to associated object. Takes two arguments, the parent object and the attribute hash. Uses the return value as the new attribute hash.</p>
+</dd><dt>:unmatched_pk 
+<dd>
+<p>Specify the action to be taken if a primary key is provided in a record, but it doesn&#39;t match an existing associated object. Set to :create to create a new object with that primary key, :ignore to ignore the record, or :raise to raise an error. The default is :raise.</p>
+</dd></dl>
+
+<p>If a block is provided, it is used to set the :reject_if option.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nested_attributes-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/nested_attributes.rb</span>
+<span class="line-num">131</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nested_attributes</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">associations</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">132</span>   <span class="ruby-identifier">include</span>(<span class="ruby-ivar">@nested_attributes_module</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Module</span>.<span class="ruby-identifier">new</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@nested_attributes_module</span>
+<span class="line-num">133</span>   <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">associations</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">associations</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> <span class="ruby-constant">OPTS</span>
+<span class="line-num">134</span>   <span class="ruby-identifier">reflections</span> = <span class="ruby-identifier">associations</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">association_reflection</span>(<span class="ruby-identifier">a</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">raise</span>(<span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;no association named #{a} for #{self}&quot;</span>)}
+<span class="line-num">135</span>   <span class="ruby-identifier">reflections</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+<span class="line-num">136</span>     <span class="ruby-identifier">r</span>[<span class="ruby-value">:nested_attributes</span>] = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">137</span>     <span class="ruby-identifier">r</span>[<span class="ruby-value">:nested_attributes</span>][<span class="ruby-value">:unmatched_pk</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">:raise</span>
+<span class="line-num">138</span>     <span class="ruby-identifier">r</span>[<span class="ruby-value">:nested_attributes</span>][<span class="ruby-value">:reject_if</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">block</span>
+<span class="line-num">139</span>     <span class="ruby-identifier">def_nested_attribute_method</span>(<span class="ruby-identifier">r</span>)
+<span class="line-num">140</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">141</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

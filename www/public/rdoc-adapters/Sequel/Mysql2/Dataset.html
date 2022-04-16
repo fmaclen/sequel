@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::Mysql2::Dataset - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="../Dataset.html">Sequel::Dataset</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="../MySQL/DatasetMethods.html">Sequel::MySQL::DatasetMethods</a>
+  
+  
+  
+    <li><a class="include" href="../MySQL/MysqlMysql2/DatasetMethods.html">Sequel::MySQL::MysqlMysql2::DatasetMethods</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-fetch_rows">#fetch_rows</a>
+    
+    <li class="calls-super" ><a href="#method-i-paged_each">#paged_each</a>
+    
+    <li ><a href="#method-i-stream">#stream</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::Mysql2::Dataset">
+  <h1 id="class-Sequel::Mysql2::Dataset" class="class">
+    class Sequel::Mysql2::Dataset
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="PreparedStatementMethods">PreparedStatementMethods
+        
+        <dd>
+        
+      
+        <dt id="STREAMING_SUPPORTED">STREAMING_SUPPORTED
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-fetch_rows" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetch_rows</span><span
+            class="method-args">(sql) { |h| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="fetch_rows-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mysql2.rb</span>
+<span class="line-num">240</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch_rows</span>(<span class="ruby-identifier">sql</span>)
+<span class="line-num">241</span>   <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+<span class="line-num">242</span>     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">columns</span> = <span class="ruby-identifier">r</span>.<span class="ruby-identifier">fields</span>.<span class="ruby-identifier">map!</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">output_identifier</span>(<span class="ruby-identifier">c</span>.<span class="ruby-identifier">to_s</span>)}
+<span class="line-num">243</span>     <span class="ruby-identifier">r</span>.<span class="ruby-identifier">each</span>(<span class="ruby-value">:cast_booleans</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">convert_tinyint_to_bool?</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">h</span>}
+<span class="line-num">244</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">245</span>   <span class="ruby-keyword">self</span>
+<span class="line-num">246</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-paged_each" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">paged_each</span><span
+            class="method-args">(opts=OPTS) { || ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Use streaming to implement paging if <a href="../Mysql2.html"><code>Mysql2</code></a> supports it and it hasn&#39;t been disabled.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="paged_each-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mysql2.rb</span>
+<span class="line-num">250</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">paged_each</span>(<span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">251</span>   <span class="ruby-keyword">if</span> <span class="ruby-constant">STREAMING_SUPPORTED</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:stream</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span>
+<span class="line-num">252</span>     <span class="ruby-keyword">unless</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-keyword">yield</span>)
+<span class="line-num">253</span>       <span class="ruby-keyword">return</span> <span class="ruby-identifier">enum_for</span>(<span class="ruby-value">:paged_each</span>, <span class="ruby-identifier">opts</span>)
+<span class="line-num">254</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">255</span>     <span class="ruby-identifier">stream</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">256</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">257</span>     <span class="ruby-keyword">super</span>
+<span class="line-num">258</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">259</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-stream" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">stream</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a clone of the dataset that will stream rows when iterating over the result set, so it can handle large datasets that won&#39;t fit in memory (Requires mysql 0.3.12+ to have an effect).</p>
+          
+          
+
+          
+          <div class="method-source-code" id="stream-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/mysql2.rb</span>
+<span class="line-num">264</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">stream</span>
+<span class="line-num">265</span>   <span class="ruby-identifier">clone</span>(<span class="ruby-value">:stream</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>)
+<span class="line-num">266</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Hash - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-26">#&amp;</a>
+    
+    <li ><a href="#method-i-case">#case</a>
+    
+    <li ><a href="#method-i-hstore">#hstore</a>
+    
+    <li ><a href="#method-i-pg_json">#pg_json</a>
+    
+    <li ><a href="#method-i-pg_jsonb">#pg_jsonb</a>
+    
+    <li ><a href="#method-i-sql_expr">#sql_expr</a>
+    
+    <li ><a href="#method-i-sql_negate">#sql_negate</a>
+    
+    <li ><a href="#method-i-sql_or">#sql_or</a>
+    
+    <li ><a href="#method-i-7C">#|</a>
+    
+    <li ><a href="#method-i-~">#~</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Hash">
+  <h1 id="class-Hash" class="class">
+    class Hash
+  </h1>
+
+  <section class="description">
+    
+<p><a href="Sequel.html"><code>Sequel</code></a> extends <code>Hash</code> to add methods to implement the SQL DSL.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-26" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">&amp;</span><span
+            class="method-args">(ce)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this hash, matching all of the conditions in this hash and the condition specified by the given argument.</p>
+
+<pre class="ruby">{<span class="ruby-value">a:</span> <span class="ruby-value">1</span>} <span class="ruby-operator">&amp;</span> <span class="ruby-value">:b</span> <span class="ruby-comment"># SQL: ((a = 1) AND b)</span>
+{<span class="ruby-value">a:</span> <span class="ruby-keyword">true</span>} <span class="ruby-operator">&amp;</span> <span class="ruby-operator">~</span><span class="ruby-value">:b</span> <span class="ruby-comment"># SQL: ((a IS TRUE) AND NOT b)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="26-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">105</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&amp;</span>(<span class="ruby-identifier">ce</span>)
+<span class="line-num">106</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:AND</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">ce</span>)
+<span class="line-num">107</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-case" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">case</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::CaseExpression</code> with this hash as the conditions and the given default value.</p>
+
+<pre class="ruby">{{<span class="ruby-value">a:</span> [<span class="ruby-value">2</span>,<span class="ruby-value">3</span>]}<span class="ruby-operator">=&gt;</span><span class="ruby-value">1</span>}.<span class="ruby-identifier">case</span>(<span class="ruby-value">0</span>) <span class="ruby-comment"># SQL: CASE WHEN (a IN (2, 3)) THEN 1 ELSE 0 END</span>
+{<span class="ruby-value">a:</span> <span class="ruby-value">1</span>, <span class="ruby-value">b:</span> <span class="ruby-value">2</span>}.<span class="ruby-identifier">case</span>(<span class="ruby-value">:d</span>, <span class="ruby-value">:c</span>) <span class="ruby-comment"># SQL: CASE c WHEN a THEN 1 WHEN b THEN 2 ELSE d END</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="case-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">133</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">case</span>(<span class="ruby-operator">*</span><span class="ruby-identifier ruby-title">args</span>)
+<span class="line-num">134</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">CaseExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">to_a</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">135</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-hstore" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hstore</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Create a new HStore using the receiver as the input hash.  Note that the HStore created will not use the receiver as the backing store, since it has to modify the hash.  To get the new backing store, use:</p>
+
+<pre class="ruby"><span class="ruby-identifier">hash</span>.<span class="ruby-identifier">hstore</span>.<span class="ruby-identifier">to_hash</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="hstore-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_hstore.rb</span>
+<span class="line-num">333</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hstore</span>
+<span class="line-num">334</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">HStore</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">335</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pg_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pg_json</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <a href="Sequel/Postgres/JSONHash.html"><code>Sequel::Postgres::JSONHash</code></a> proxy to the receiver. This is mostly useful as a short cut for creating JSONHash objects that didn&#39;t come from the database.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pg_json-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json.rb</span>
+<span class="line-num">608</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pg_json</span>
+<span class="line-num">609</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">JSONHash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">610</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pg_jsonb" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pg_jsonb</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <a href="Sequel/Postgres/JSONHash.html"><code>Sequel::Postgres::JSONHash</code></a> proxy to the receiver. This is mostly useful as a short cut for creating JSONHash objects that didn&#39;t come from the database.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pg_jsonb-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json.rb</span>
+<span class="line-num">615</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pg_jsonb</span>
+<span class="line-num">616</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">JSONBHash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">617</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_expr" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_expr</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this hash, matching all of the conditions.  Rarely do you need to call this explicitly, as <a href="Sequel.html"><code>Sequel</code></a> generally assumes that hashes specify this type of condition.</p>
+
+<pre class="ruby">{<span class="ruby-value">a:</span> <span class="ruby-keyword">true</span>}.<span class="ruby-identifier">sql_expr</span> <span class="ruby-comment"># SQL: (a IS TRUE)</span>
+{<span class="ruby-value">a:</span> <span class="ruby-value">1</span>, <span class="ruby-value">b:</span> [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]}.<span class="ruby-identifier">sql_expr</span> <span class="ruby-comment"># SQL: ((a = 1) AND (b IN (2, 3)))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_expr-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">143</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_expr</span>
+<span class="line-num">144</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">from_value_pairs</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">145</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_negate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_negate</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this hash, matching none of the conditions.</p>
+
+<pre class="ruby">{<span class="ruby-value">a:</span> <span class="ruby-keyword">true</span>}.<span class="ruby-identifier">sql_negate</span> <span class="ruby-comment"># SQL: (a IS NOT TRUE)</span>
+{<span class="ruby-value">a:</span> <span class="ruby-value">1</span>, <span class="ruby-value">b:</span> [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]}.<span class="ruby-identifier">sql_negate</span> <span class="ruby-comment"># SQL: ((a != 1) AND (b NOT IN (2, 3)))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_negate-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">152</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_negate</span>
+<span class="line-num">153</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">from_value_pairs</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:AND</span>, <span class="ruby-keyword">true</span>)
+<span class="line-num">154</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_or" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_or</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this hash, matching any of the conditions.</p>
+
+<pre class="ruby">{<span class="ruby-value">a:</span> <span class="ruby-keyword">true</span>}.<span class="ruby-identifier">sql_or</span> <span class="ruby-comment"># SQL: (a IS TRUE)</span>
+{<span class="ruby-value">a:</span> <span class="ruby-value">1</span>, <span class="ruby-value">b:</span> [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]}.<span class="ruby-identifier">sql_or</span> <span class="ruby-comment"># SQL: ((a = 1) OR (b IN (2, 3)))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_or-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">161</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_or</span>
+<span class="line-num">162</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">from_value_pairs</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:OR</span>)
+<span class="line-num">163</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-7C" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">|</span><span
+            class="method-args">(ce)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this hash, matching all of the conditions in this hash or the condition specified by the given argument.</p>
+
+<pre class="ruby">{<span class="ruby-value">a:</span> <span class="ruby-value">1</span>} <span class="ruby-operator">|</span> <span class="ruby-value">:b</span> <span class="ruby-comment"># SQL: ((a = 1) OR b)</span>
+{<span class="ruby-value">a:</span> <span class="ruby-keyword">true</span>} <span class="ruby-operator">|</span> <span class="ruby-operator">~</span><span class="ruby-value">:b</span> <span class="ruby-comment"># SQL: ((a IS TRUE) OR NOT b)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="7C-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">115</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">|</span>(<span class="ruby-identifier">ce</span>)
+<span class="line-num">116</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:OR</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">ce</span>)
+<span class="line-num">117</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-~" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">~</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this hash, not matching all of the conditions.</p>
+
+<pre class="ruby"><span class="ruby-operator">~</span>{<span class="ruby-value">a:</span> <span class="ruby-keyword">true</span>} <span class="ruby-comment"># SQL: (a IS NOT TRUE)</span>
+<span class="ruby-operator">~</span>{<span class="ruby-value">a:</span> <span class="ruby-value">1</span>, <span class="ruby-value">b:</span> [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]} <span class="ruby-comment"># SQL: ((a != 1) OR (b NOT IN (2, 3)))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="~-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">124</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">~</span>
+<span class="line-num">125</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">from_value_pairs</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:OR</span>, <span class="ruby-keyword">true</span>)
+<span class="line-num">126</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

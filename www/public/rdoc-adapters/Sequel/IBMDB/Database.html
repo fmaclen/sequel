@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::IBMDB::Database - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Sequel::Database
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="../DB2/DatabaseMethods.html">Sequel::DB2::DatabaseMethods</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-connect">#connect</a>
+    
+    <li ><a href="#method-i-execute">#execute</a>
+    
+    <li ><a href="#method-i-execute_insert">#execute_insert</a>
+    
+    <li ><a href="#method-i-execute_prepared_statement">#execute_prepared_statement</a>
+    
+    <li class="calls-super" ><a href="#method-i-freeze">#freeze</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::IBMDB::Database">
+  <h1 id="class-Sequel::IBMDB::Database" class="class">
+    class Sequel::IBMDB::Database
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-conversion_procs" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">conversion_procs</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Hash of connection procs for converting</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-convert_smallint_to_bool" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">convert_smallint_to_bool</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Whether to convert smallint values to bool for this <a href="Database.html"><code>Database</code></a> instance</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-connect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">connect</span><span
+            class="method-args">(server)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Create a new connection object for the given server.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="connect-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/ibmdb.rb</span>
+<span class="line-num">188</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">connect</span>(<span class="ruby-identifier">server</span>)
+<span class="line-num">189</span>   <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">server_opts</span>(<span class="ruby-identifier">server</span>)
+<span class="line-num">190</span> 
+<span class="line-num">191</span>   <span class="ruby-identifier">connection_params</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:host</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:port</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:database</span>]
+<span class="line-num">192</span>     <span class="ruby-comment"># use a cataloged connection</span>
+<span class="line-num">193</span>     <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-value">:database</span>, <span class="ruby-value">:user</span>, <span class="ruby-value">:password</span>)
+<span class="line-num">194</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">195</span>     <span class="ruby-comment"># use uncataloged connection so that host and port can be supported</span>
+<span class="line-num">196</span>     <span class="ruby-string">&#39;Driver={IBM DB2 ODBC DRIVER};&#39;</span> \
+<span class="line-num">197</span>     <span class="ruby-node">&quot;Database=#{opts[:database]};&quot;</span> \
+<span class="line-num">198</span>     <span class="ruby-node">&quot;Hostname=#{opts[:host]};&quot;</span> \
+<span class="line-num">199</span>     <span class="ruby-node">&quot;Port=#{opts[:port] || 50000};&quot;</span> \
+<span class="line-num">200</span>     <span class="ruby-string">&#39;Protocol=TCPIP;&#39;</span> \
+<span class="line-num">201</span>     <span class="ruby-node">&quot;Uid=#{opts[:user]};&quot;</span> \
+<span class="line-num">202</span>     <span class="ruby-node">&quot;Pwd=#{opts[:password]};&quot;</span> \
+<span class="line-num">203</span>   <span class="ruby-keyword">end</span> 
+<span class="line-num">204</span> 
+<span class="line-num">205</span>   <span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">connection_params</span>)
+<span class="line-num">206</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-execute" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute</span><span
+            class="method-args">(sql, opts=OPTS, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="execute-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/ibmdb.rb</span>
+<span class="line-num">208</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">execute</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">209</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">sql</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+<span class="line-num">210</span>     <span class="ruby-identifier">execute_prepared_statement</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">211</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">212</span>     <span class="ruby-identifier">synchronize</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:server</span>]){<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">_execute</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)}
+<span class="line-num">213</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">214</span> <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Connection</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">e</span>
+<span class="line-num">215</span>   <span class="ruby-identifier">raise_error</span>(<span class="ruby-identifier">e</span>)
+<span class="line-num">216</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-execute_insert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute_insert</span><span
+            class="method-args">(sql, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="execute_insert-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/ibmdb.rb</span>
+<span class="line-num">218</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">execute_insert</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">219</span>   <span class="ruby-identifier">synchronize</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:server</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+<span class="line-num">220</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">sql</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+<span class="line-num">221</span>       <span class="ruby-identifier">execute_prepared_statement</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>)
+<span class="line-num">222</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">223</span>       <span class="ruby-identifier">_execute</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>)
+<span class="line-num">224</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">225</span>     <span class="ruby-identifier">_execute</span>(<span class="ruby-identifier">c</span>, <span class="ruby-string">&quot;SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1&quot;</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">stmt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span> = <span class="ruby-identifier">stmt</span>.<span class="ruby-identifier">fetch_array</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_i</span>; <span class="ruby-identifier">i</span>}
+<span class="line-num">226</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">227</span> <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Connection</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">e</span>
+<span class="line-num">228</span>   <span class="ruby-identifier">raise_error</span>(<span class="ruby-identifier">e</span>)
+<span class="line-num">229</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-execute_prepared_statement" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute_prepared_statement</span><span
+            class="method-args">(ps_name, opts) { || ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Execute a prepared statement named by name on the database.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="execute_prepared_statement-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/ibmdb.rb</span>
+<span class="line-num">232</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">execute_prepared_statement</span>(<span class="ruby-identifier">ps_name</span>, <span class="ruby-identifier">opts</span>)
+<span class="line-num">233</span>   <span class="ruby-identifier">args</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:arguments</span>]
+<span class="line-num">234</span>   <span class="ruby-identifier">ps</span> = <span class="ruby-identifier">prepared_statement</span>(<span class="ruby-identifier">ps_name</span>)
+<span class="line-num">235</span>   <span class="ruby-identifier">sql</span> = <span class="ruby-identifier">ps</span>.<span class="ruby-identifier">prepared_sql</span>
+<span class="line-num">236</span>   <span class="ruby-identifier">synchronize</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:server</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">conn</span><span class="ruby-operator">|</span>
+<span class="line-num">237</span>     <span class="ruby-keyword">unless</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">prepared_statements</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">ps_name</span>, []).<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sql</span>
+<span class="line-num">238</span>       <span class="ruby-identifier">log_connection_yield</span>(<span class="ruby-node">&quot;PREPARE #{ps_name}: #{sql}&quot;</span>, <span class="ruby-identifier">conn</span>){<span class="ruby-identifier">conn</span>.<span class="ruby-identifier">prepare</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">ps_name</span>)}
+<span class="line-num">239</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">240</span>     <span class="ruby-identifier">args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">prepared_statement_arg</span>(<span class="ruby-identifier">v</span>)}
+<span class="line-num">241</span>     <span class="ruby-identifier">log_sql</span> = <span class="ruby-node">&quot;EXECUTE #{ps_name}&quot;</span>
+<span class="line-num">242</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">ps</span>.<span class="ruby-identifier">log_sql</span>
+<span class="line-num">243</span>       <span class="ruby-identifier">log_sql</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; (&quot;</span>
+<span class="line-num">244</span>       <span class="ruby-identifier">log_sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">sql</span>
+<span class="line-num">245</span>       <span class="ruby-identifier">log_sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;)&quot;</span>
+<span class="line-num">246</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">247</span>     <span class="ruby-keyword">begin</span>
+<span class="line-num">248</span>       <span class="ruby-identifier">stmt</span> = <span class="ruby-identifier">log_connection_yield</span>(<span class="ruby-identifier">log_sql</span>, <span class="ruby-identifier">conn</span>, <span class="ruby-identifier">args</span>){<span class="ruby-identifier">conn</span>.<span class="ruby-identifier">execute_prepared</span>(<span class="ruby-identifier">ps_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)}
+<span class="line-num">249</span>       <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-keyword">yield</span>)
+<span class="line-num">250</span>         <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">stmt</span>)
+<span class="line-num">251</span>       <span class="ruby-keyword">else</span>  
+<span class="line-num">252</span>         <span class="ruby-identifier">stmt</span>.<span class="ruby-identifier">affected</span>
+<span class="line-num">253</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">254</span>     <span class="ruby-keyword">ensure</span>
+<span class="line-num">255</span>       <span class="ruby-identifier">stmt</span>.<span class="ruby-identifier">free_result</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">stmt</span>
+<span class="line-num">256</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">257</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">258</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-freeze" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">freeze</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="../DB2/DatabaseMethods.html#method-i-freeze"><code>Sequel::DB2::DatabaseMethods#freeze</code></a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="freeze-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/ibmdb.rb</span>
+<span class="line-num">260</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">freeze</span>
+<span class="line-num">261</span>   <span class="ruby-ivar">@conversion_procs</span>.<span class="ruby-identifier">freeze</span>
+<span class="line-num">262</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">263</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

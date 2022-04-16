@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::ForbidLazyLoad - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::ForbidLazyLoad">
+  <h1 id="module-Sequel::Plugins::ForbidLazyLoad" class="module">
+    module Sequel::Plugins::ForbidLazyLoad
+  </h1>
+
+  <section class="description">
+    
+<p>The forbid_lazy_load plugin forbids lazy loading of associations for objects in cases where the object wasn&#39;t loaded with a method that only returns a single object.</p>
+
+<p>The main reason for doing this is it makes it easier to detect N+1 query issues. Note that <a href="../../Sequel.html"><code>Sequel</code></a> also offers a tactical_eager_loading plugin which will automatically eagerly load associations for all objects retrived in the same query if any object would attempt to lazily load an association. That approach may be simpler if you are trying to prevent N+1 issues, though it does retain more objects in memory.</p>
+
+<p>This plugin offers multiple different ways to forbid lazy loading.  You can forbid lazy loading associations for individual model instances:</p>
+
+<pre class="ruby"><span class="ruby-identifier">obj</span> = <span class="ruby-constant">Album</span>[<span class="ruby-value">1</span>]
+<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">forbid_lazy_load</span>
+<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">artist</span> <span class="ruby-comment"># raises Sequel::Plugins::ForbidLazyLoad::Error</span>
+</pre>
+
+<p><code>forbid_lazy_load</code> is automatically called on instances if the instances are loaded via a method such as Dataset#all, Dataset#each, and other methods that load multiple instances at once.  These are the cases where lazily loading associations for such instances can cause N+1 issues.</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">artist</span>
+<span class="ruby-identifier">objs</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">artist</span> <span class="ruby-comment"># raises Sequel::Plugins::ForbidLazyLoad::Error</span>
+
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">artist</span> <span class="ruby-comment"># raises Sequel::Plugins::ForbidLazyLoad::Error</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-constant">Album</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">artist</span> <span class="ruby-comment"># no error</span>
+
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">artist</span> <span class="ruby-comment"># no error</span>
+</pre>
+
+<p>You can allow lazy loading associations for an instance that it was previously forbidden for:</p>
+
+<pre class="ruby"><span class="ruby-identifier">obj</span> = <span class="ruby-constant">Album</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">first</span>
+<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">allow_lazy_load</span>
+<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">artist</span> <span class="ruby-comment"># no error</span>
+</pre>
+
+<p>You can forbid lazy loading associations on a per-call basis, even if lazy loading of associations is allowed for the instance:</p>
+
+<pre class="ruby"><span class="ruby-identifier">obj</span> = <span class="ruby-constant">Album</span>[<span class="ruby-value">1</span>]
+<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">artist</span>(<span class="ruby-value">forbid_lazy_load:</span> <span class="ruby-keyword">true</span>)
+<span class="ruby-comment"># raises Sequel::Plugins::ForbidLazyLoad::Error</span>
+</pre>
+
+<p>This also works for allowing lazy loading associations for a specific association load even if it is forbidden for the instance:</p>
+
+<pre class="ruby"><span class="ruby-identifier">obj</span> = <span class="ruby-constant">Album</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">first</span>
+<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">artist</span>(<span class="ruby-value">forbid_lazy_load:</span> <span class="ruby-keyword">false</span>)
+<span class="ruby-comment"># nothing raised</span>
+</pre>
+
+<p>You can also forbid lazy loading on a per-association basis using the <code>:forbid_lazy_load</code> association option with a <code>true</code> value:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">many_to_one</span> <span class="ruby-value">:artist</span>, <span class="ruby-value">forbid_lazy_load:</span> <span class="ruby-keyword">true</span>
+<span class="ruby-constant">Album</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">artist</span> <span class="ruby-comment"># raises Sequel::Plugins::ForbidLazyLoad::Error</span>
+</pre>
+
+<p>However, you probably don&#39;t want to do this as it will forbid any lazy loading of the association, even if the loading could not result in an N+1 issue.</p>
+
+<p>On the flip side, you can allow lazy loading using the  <code>:forbid_lazy_load</code> association option with a <code>false</code> value:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">many_to_one</span> <span class="ruby-value">:artist</span>, <span class="ruby-value">forbid_lazy_load:</span> <span class="ruby-keyword">false</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">artist</span> <span class="ruby-comment"># no error</span>
+</pre>
+
+<p>One reason to do this is when using a plugin like static_cache on the associated model, where a query is not actually issued when doing a lazy association load.  To make that particular case easier, this plugin makes Model.finalize_associations automatically set the association option if the associated class uses the static_cache plugin.</p>
+
+<p>Note that even with this plugin, there can still be N+1 issues, such as:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span> <span class="ruby-comment"># 1 query for all albums</span>
+  <span class="ruby-constant">Artist</span>[<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">artist_id</span>] <span class="ruby-comment"># 1 query per album for each artist</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Make all model subclasses support forbidding lazy load</span>
+<span class="ruby-comment"># (called before loading subclasses)</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:forbid_lazy_load</span>
+
+<span class="ruby-comment"># Make the Album class support forbidding lazy load</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:forbid_lazy_load</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

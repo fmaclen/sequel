@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Array - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-case">#case</a>
+    
+    <li ><a href="#method-i-pg_array">#pg_array</a>
+    
+    <li ><a href="#method-i-pg_json">#pg_json</a>
+    
+    <li ><a href="#method-i-pg_jsonb">#pg_jsonb</a>
+    
+    <li ><a href="#method-i-pg_row">#pg_row</a>
+    
+    <li ><a href="#method-i-sql_expr">#sql_expr</a>
+    
+    <li ><a href="#method-i-sql_negate">#sql_negate</a>
+    
+    <li ><a href="#method-i-sql_or">#sql_or</a>
+    
+    <li ><a href="#method-i-sql_string_join">#sql_string_join</a>
+    
+    <li ><a href="#method-i-sql_value_list">#sql_value_list</a>
+    
+    <li ><a href="#method-i-~">#~</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Array">
+  <h1 id="class-Array" class="class">
+    class Array
+  </h1>
+
+  <section class="description">
+    
+<p><a href="Sequel.html"><code>Sequel</code></a> extends <code>Array</code> to add methods to implement the SQL DSL. Most of these methods require that the array not be empty and that it must consist solely of other arrays that have exactly two elements.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-case" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">case</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::CaseExpression</code> with this array as the conditions and the given default value and expression.</p>
+
+<pre class="ruby">[[{<span class="ruby-value">a:</span> [<span class="ruby-value">2</span>,<span class="ruby-value">3</span>]}, <span class="ruby-value">1</span>]].<span class="ruby-identifier">case</span>(<span class="ruby-value">0</span>) <span class="ruby-comment"># SQL: CASE WHEN (a IN (2, 3)) THEN 1 ELSE 0 END</span>
+[[<span class="ruby-value">:a</span>, <span class="ruby-value">1</span>], [<span class="ruby-value">:b</span>, <span class="ruby-value">2</span>]].<span class="ruby-identifier">case</span>(<span class="ruby-value">:d</span>, <span class="ruby-value">:c</span>) <span class="ruby-comment"># SQL: CASE c WHEN a THEN 1 WHEN b THEN 2 ELSE d END</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="case-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">35</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">case</span>(<span class="ruby-operator">*</span><span class="ruby-identifier ruby-title">args</span>)
+<span class="line-num">36</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">CaseExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">37</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pg_array" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pg_array</span><span
+            class="method-args">(type=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a PGArray proxy to the receiver, using a specific database type if given.  This is mostly useful as a short cut for creating PGArray objects that didn&#39;t come from the database.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pg_array-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_array.rb</span>
+<span class="line-num">512</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pg_array</span>(<span class="ruby-identifier">type</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">513</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">type</span>)
+<span class="line-num">514</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pg_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pg_json</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <a href="Sequel/Postgres/JSONArray.html"><code>Sequel::Postgres::JSONArray</code></a> proxy to the receiver. This is mostly useful as a short cut for creating JSONArray objects that didn&#39;t come from the database.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pg_json-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json.rb</span>
+<span class="line-num">592</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pg_json</span>
+<span class="line-num">593</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">JSONArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">594</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pg_jsonb" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pg_jsonb</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <a href="Sequel/Postgres/JSONArray.html"><code>Sequel::Postgres::JSONArray</code></a> proxy to the receiver. This is mostly useful as a short cut for creating JSONArray objects that didn&#39;t come from the database.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pg_jsonb-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json.rb</span>
+<span class="line-num">599</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pg_jsonb</span>
+<span class="line-num">600</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">JSONBArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">601</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pg_row" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pg_row</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Wraps the receiver in an anonymous <a href="Sequel/Postgres/PGRow/ArrayRow.html"><code>Sequel::Postgres::PGRow::ArrayRow</code></a> instance.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pg_row-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_row.rb</span>
+<span class="line-num">567</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pg_row</span>
+<span class="line-num">568</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Postgres</span><span class="ruby-operator">::</span><span class="ruby-constant">PGRow</span><span class="ruby-operator">::</span><span class="ruby-constant">ArrayRow</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">569</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_expr" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_expr</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this array, matching all of the conditions.  Rarely do you need to call this explicitly, as <a href="Sequel.html"><code>Sequel</code></a> generally assumes that arrays of two element arrays specify this type of condition.  One case where it can be necessary to use this is if you are using the object as a value in a filter hash and want to use the = operator instead of the IN operator (which is used by default for arrays of two element arrays).</p>
+
+<pre class="ruby">[[<span class="ruby-value">:a</span>, <span class="ruby-keyword">true</span>]].<span class="ruby-identifier">sql_expr</span> <span class="ruby-comment"># SQL: (a IS TRUE)</span>
+[[<span class="ruby-value">:a</span>, <span class="ruby-value">1</span>], [<span class="ruby-value">:b</span>, [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]]].<span class="ruby-identifier">sql_expr</span> <span class="ruby-comment"># SQL: ((a = 1) AND (b IN (2, 3)))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_expr-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">61</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_expr</span>
+<span class="line-num">62</span>   <span class="ruby-constant">Sequel</span>[<span class="ruby-keyword">self</span>]
+<span class="line-num">63</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_negate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_negate</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this array, matching none of the conditions.</p>
+
+<pre class="ruby">[[<span class="ruby-value">:a</span>, <span class="ruby-keyword">true</span>]].<span class="ruby-identifier">sql_negate</span> <span class="ruby-comment"># SQL: (a IS NOT TRUE)</span>
+[[<span class="ruby-value">:a</span>, <span class="ruby-value">1</span>], [<span class="ruby-value">:b</span>, [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]]].<span class="ruby-identifier">sql_negate</span> <span class="ruby-comment"># SQL: ((a != 1) AND (b NOT IN (2, 3)))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_negate-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">70</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_negate</span>
+<span class="line-num">71</span>   <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">negate</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">72</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_or" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_or</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this array, matching any of the conditions.</p>
+
+<pre class="ruby">[[<span class="ruby-value">:a</span>, <span class="ruby-keyword">true</span>]].<span class="ruby-identifier">sql_or</span> <span class="ruby-comment"># SQL: (a IS TRUE)</span>
+[[<span class="ruby-value">:a</span>, <span class="ruby-value">1</span>], [<span class="ruby-value">:b</span>, [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]]].<span class="ruby-identifier">sql_or</span> <span class="ruby-comment"># SQL: ((a = 1) OR (b IN (2, 3)))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_or-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">79</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_or</span>
+<span class="line-num">80</span>   <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">or</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">81</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_string_join" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_string_join</span><span
+            class="method-args">(joiner=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::StringExpression</code> representing an SQL string made up of the concatenation of this array&#39;s elements.  If an argument is passed it is used in between each element of the array in the SQL concatenation.</p>
+
+<pre class="ruby">[<span class="ruby-value">:a</span>].<span class="ruby-identifier">sql_string_join</span> <span class="ruby-comment"># SQL: a</span>
+[<span class="ruby-value">:a</span>, <span class="ruby-value">:b</span>].<span class="ruby-identifier">sql_string_join</span> <span class="ruby-comment"># SQL: (a || b)</span>
+[<span class="ruby-value">:a</span>, <span class="ruby-string">&#39;b&#39;</span>].<span class="ruby-identifier">sql_string_join</span> <span class="ruby-comment"># SQL: (a || &#39;b&#39;)</span>
+[<span class="ruby-string">&#39;a&#39;</span>, <span class="ruby-value">:b</span>].<span class="ruby-identifier">sql_string_join</span>(<span class="ruby-string">&#39; &#39;</span>) <span class="ruby-comment"># SQL: (&#39;a&#39; || &#39; &#39; || b)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_string_join-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">92</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_string_join</span>(<span class="ruby-identifier">joiner</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">93</span>   <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">join</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">joiner</span>)
+<span class="line-num">94</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_value_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_value_list</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::ValueList</code> created from this array.  Used if this array contains all two element arrays and you want it treated as an SQL value list (IN predicate)  instead of as a conditions specifier (similar to a hash).  This is not necessary if you are using this array as a value in a filter, but may be necessary if you are using it as a value with placeholder SQL:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:a</span>].<span class="ruby-identifier">where</span>([<span class="ruby-value">:a</span>, <span class="ruby-value">:b</span>]<span class="ruby-operator">=&gt;</span>[[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>], [<span class="ruby-value">3</span>, <span class="ruby-value">4</span>]]) <span class="ruby-comment"># SQL: ((a, b) IN ((1, 2), (3, 4)))</span>
+<span class="ruby-constant">DB</span>[<span class="ruby-value">:a</span>].<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;(a, b) IN ?&#39;</span>, [[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>], [<span class="ruby-value">3</span>, <span class="ruby-value">4</span>]]) <span class="ruby-comment"># SQL: ((a, b) IN ((1 = 2) AND (3 = 4)))</span>
+<span class="ruby-constant">DB</span>[<span class="ruby-value">:a</span>].<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;(a, b) IN ?&#39;</span>, [[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>], [<span class="ruby-value">3</span>, <span class="ruby-value">4</span>]].<span class="ruby-identifier">sql_value_list</span>) <span class="ruby-comment"># SQL: ((a, b) IN ((1, 2), (3, 4)))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_value_list-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">48</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_value_list</span>
+<span class="line-num">49</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">ValueList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">50</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-~" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">~</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <code>Sequel::SQL::BooleanExpression</code> created from this array, not matching all of the conditions.</p>
+
+<pre class="ruby"><span class="ruby-operator">~</span>[[<span class="ruby-value">:a</span>, <span class="ruby-keyword">true</span>]] <span class="ruby-comment"># SQL: (a IS NOT TRUE)</span>
+<span class="ruby-operator">~</span>[[<span class="ruby-value">:a</span>, <span class="ruby-value">1</span>], [<span class="ruby-value">:b</span>, [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]]] <span class="ruby-comment"># SQL: ((a != 1) OR (b NOT IN (2, 3)))</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="~-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">26</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">~</span>
+<span class="line-num">27</span>   <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">~</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">28</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

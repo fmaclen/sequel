@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::Enum - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::Enum">
+  <h1 id="module-Sequel::Plugins::Enum" class="module">
+    module Sequel::Plugins::Enum
+  </h1>
+
+  <section class="description">
+    
+<p>The enum plugin allows for easily adding methods to modify the value of a column.  It allows treating the column itself as an enum, returning a symbol for the related enum value.  It also allows for setting up dataset methods to easily find records having or not having each enum value.</p>
+
+<p>After loading the plugin, you can call the <code>enum</code> method to define the methods.  The <code>enum</code> method accepts a symbol for the underlying database column, and a hash with symbol keys for the enum values. For example, the following call:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">enum</span> <span class="ruby-value">:status_id</span>, <span class="ruby-value">good:</span> <span class="ruby-value">1</span>, <span class="ruby-value">bad:</span> <span class="ruby-value">2</span>
+</pre>
+
+<p>Will define the following instance methods:</p>
+<dl class="rdoc-list note-list"><dt>Album#good! 
+<dd>
+<p>Change <code>status_id</code> to <code>1</code> (does not save the receiver)</p>
+</dd><dt>Album#bad! 
+<dd>
+<p>Change <code>status_id</code> to <code>2</code> (does not save the receiver)</p>
+</dd><dt>Album#good? 
+<dd>
+<p>Return whether <code>status_id</code> is <code>1</code></p>
+</dd><dt>Album#bad? 
+<dd>
+<p>Return whether <code>status_id</code> is <code>2</code></p>
+</dd></dl>
+
+<p>It will override the following instance methods:</p>
+<dl class="rdoc-list note-list"><dt>Album#status_id 
+<dd>
+<p>Return <code>:good</code>/<code>:bad</code> instead of <code>1</code>/<code>2</code> (other values returned as-is)</p>
+</dd><dt>Album#status_id= 
+<dd>
+<p>Allow calling with <code>:good</code>/<code>:bad</code> to set <code>status_id</code> to <code>1</code>/<code>2</code> (other values, such as <code>&#39;good&#39;</code>/<code>&#39;bad&#39;</code> set as-is)</p>
+</dd></dl>
+
+<p>If will define the following dataset methods:</p>
+<dl class="rdoc-list note-list"><dt>Album.dataset.good 
+<dd>
+<p>Return a dataset filtered to rows where <code>status_id</code> is <code>1</code></p>
+</dd><dt>Album.dataset.not_good 
+<dd>
+<p>Return a dataset filtered to rows where <code>status_id</code> is not <code>1</code></p>
+</dd><dt>Album.dataset.bad
+<dd>
+<p>Return a dataset filtered to rows where <code>status_id</code> is <code>2</code></p>
+</dd><dt>Album.dataset.not_bad
+<dd>
+<p>Return a dataset filtered to rows where <code>status_id</code> is not <code>2</code></p>
+</dd></dl>
+
+<p>When calling <code>enum</code>, you can also provide the following options:</p>
+<dl class="rdoc-list note-list"><dt>:prefix 
+<dd>
+<p>Use a prefix for methods defined for each enum value. If <code>true</code> is provided at the value, use the column name as the prefix. For example, with <code>prefix: &#39;status&#39;</code>, the instance methods defined above would be <code>status_good?</code>, <code>status_bad?</code>, <code>status_good!</code>, and <code>status_bad!</code>, and the dataset methods defined would be <code>status_good</code>, <code>status_not_good</code>, <code>status_bad</code>, and <code>status_not_bad</code>.</p>
+</dd><dt>:suffix 
+<dd>
+<p>Use a suffix for methods defined for each enum value. If <code>true</code> is provided at the value, use the column name as the suffix. For example, with <code>suffix: &#39;status&#39;</code>, the instance methods defined above would be <code>good_status?</code>, <code>bad_status?</code>, <code>good_status!</code>, and <code>bad_status!</code>, and the dataset methods defined would be <code>good_status</code>, <code>not_good_status</code>, <code>bad_status</code>, and <code>not_bad_status</code>.</p>
+</dd><dt>:override_accessors 
+<dd>
+<p>Set to <code>false</code> to not override the column accessor methods.</p>
+</dd><dt>:dataset_methods 
+<dd>
+<p>Set to <code>false</code> to not define dataset methods.</p>
+</dd></dl>
+
+<p>Note that this does not use a true enum column in the database.  If you are looking for enum support in the database, and your are using PostgreSQL, <a href="../../Sequel.html"><code>Sequel</code></a> supports that via the pg_enum <a href="../../Database.html"><code>Database</code></a> extension.</p>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Make all model subclasses handle enums</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:enum</span>
+
+<span class="ruby-comment"># Make the Album class handle enums</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:enum</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

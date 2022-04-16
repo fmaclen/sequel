@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>3.23.0 - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-New+Features">New Features</a>
+    <li><a href="#label-Other+Improvements">Other Improvements</a>
+    <li><a href="#label-Backwards+Compatibility">Backwards Compatibility</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../CHANGELOG.html">CHANGELOG</a>
+  
+    <li><a href="../../MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="../../README_rdoc.html">README</a>
+  
+    <li><a href="../../doc/CHANGELOG_old.html">CHANGELOG.old</a>
+  
+    <li><a href="../../doc/advanced_associations_rdoc.html">advanced_associations</a>
+  
+    <li><a href="../../doc/association_basics_rdoc.html">association_basics</a>
+  
+    <li><a href="../../doc/bin_sequel_rdoc.html">bin_sequel</a>
+  
+    <li><a href="../../doc/cheat_sheet_rdoc.html">cheat_sheet</a>
+  
+    <li><a href="../../doc/code_order_rdoc.html">code_order</a>
+  
+    <li><a href="../../doc/core_extensions_rdoc.html">core_extensions</a>
+  
+    <li><a href="../../doc/dataset_basics_rdoc.html">dataset_basics</a>
+  
+    <li><a href="../../doc/dataset_filtering_rdoc.html">dataset_filtering</a>
+  
+    <li><a href="../../doc/extensions_rdoc.html">extensions</a>
+  
+    <li><a href="../../doc/fork_safety_rdoc.html">fork_safety</a>
+  
+    <li><a href="../../doc/mass_assignment_rdoc.html">mass_assignment</a>
+  
+    <li><a href="../../doc/migration_rdoc.html">migration</a>
+  
+    <li><a href="../../doc/model_dataset_method_design_rdoc.html">model_dataset_method_design</a>
+  
+    <li><a href="../../doc/model_hooks_rdoc.html">model_hooks</a>
+  
+    <li><a href="../../doc/model_plugins_rdoc.html">model_plugins</a>
+  
+    <li><a href="../../doc/mssql_stored_procedures_rdoc.html">mssql_stored_procedures</a>
+  
+    <li><a href="../../doc/object_model_rdoc.html">object_model</a>
+  
+    <li><a href="../../doc/opening_databases_rdoc.html">opening_databases</a>
+  
+    <li><a href="../../doc/postgresql_rdoc.html">postgresql</a>
+  
+    <li><a href="../../doc/prepared_statements_rdoc.html">prepared_statements</a>
+  
+    <li><a href="../../doc/querying_rdoc.html">querying</a>
+  
+    <li><a href="../../doc/reflection_rdoc.html">reflection</a>
+  
+    <li><a href="../../doc/release_notes/1_0_txt.html">1.0</a>
+  
+    <li><a href="../../doc/release_notes/1_1_txt.html">1.1</a>
+  
+    <li><a href="../../doc/release_notes/1_3_txt.html">1.3</a>
+  
+    <li><a href="../../doc/release_notes/1_4_0_txt.html">1.4.0</a>
+  
+    <li><a href="../../doc/release_notes/1_5_0_txt.html">1.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_0_0_txt.html">2.0.0</a>
+  
+    <li><a href="../../doc/release_notes/2_1_0_txt.html">2.1.0</a>
+  
+    <li><a href="../../doc/release_notes/2_10_0_txt.html">2.10.0</a>
+  
+    <li><a href="../../doc/release_notes/2_11_0_txt.html">2.11.0</a>
+  
+    <li><a href="../../doc/release_notes/2_12_0_txt.html">2.12.0</a>
+  
+    <li><a href="../../doc/release_notes/2_2_0_txt.html">2.2.0</a>
+  
+    <li><a href="../../doc/release_notes/2_3_0_txt.html">2.3.0</a>
+  
+    <li><a href="../../doc/release_notes/2_4_0_txt.html">2.4.0</a>
+  
+    <li><a href="../../doc/release_notes/2_5_0_txt.html">2.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_6_0_txt.html">2.6.0</a>
+  
+    <li><a href="../../doc/release_notes/2_7_0_txt.html">2.7.0</a>
+  
+    <li><a href="../../doc/release_notes/2_8_0_txt.html">2.8.0</a>
+  
+    <li><a href="../../doc/release_notes/2_9_0_txt.html">2.9.0</a>
+  
+    <li><a href="../../doc/release_notes/3_0_0_txt.html">3.0.0</a>
+  
+    <li><a href="../../doc/release_notes/3_1_0_txt.html">3.1.0</a>
+  
+    <li><a href="../../doc/release_notes/3_10_0_txt.html">3.10.0</a>
+  
+    <li><a href="../../doc/release_notes/3_11_0_txt.html">3.11.0</a>
+  
+    <li><a href="../../doc/release_notes/3_12_0_txt.html">3.12.0</a>
+  
+    <li><a href="../../doc/release_notes/3_13_0_txt.html">3.13.0</a>
+  
+    <li><a href="../../doc/release_notes/3_14_0_txt.html">3.14.0</a>
+  
+    <li><a href="../../doc/release_notes/3_15_0_txt.html">3.15.0</a>
+  
+    <li><a href="../../doc/release_notes/3_16_0_txt.html">3.16.0</a>
+  
+    <li><a href="../../doc/release_notes/3_17_0_txt.html">3.17.0</a>
+  
+    <li><a href="../../doc/release_notes/3_18_0_txt.html">3.18.0</a>
+  
+    <li><a href="../../doc/release_notes/3_19_0_txt.html">3.19.0</a>
+  
+    <li><a href="../../doc/release_notes/3_2_0_txt.html">3.2.0</a>
+  
+    <li><a href="../../doc/release_notes/3_20_0_txt.html">3.20.0</a>
+  
+    <li><a href="../../doc/release_notes/3_21_0_txt.html">3.21.0</a>
+  
+    <li><a href="../../doc/release_notes/3_22_0_txt.html">3.22.0</a>
+  
+    <li><a href="../../doc/release_notes/3_23_0_txt.html">3.23.0</a>
+  
+    <li><a href="../../doc/release_notes/3_24_0_txt.html">3.24.0</a>
+  
+    <li><a href="../../doc/release_notes/3_25_0_txt.html">3.25.0</a>
+  
+    <li><a href="../../doc/release_notes/3_26_0_txt.html">3.26.0</a>
+  
+    <li><a href="../../doc/release_notes/3_27_0_txt.html">3.27.0</a>
+  
+    <li><a href="../../doc/release_notes/3_28_0_txt.html">3.28.0</a>
+  
+    <li><a href="../../doc/release_notes/3_29_0_txt.html">3.29.0</a>
+  
+    <li><a href="../../doc/release_notes/3_3_0_txt.html">3.3.0</a>
+  
+    <li><a href="../../doc/release_notes/3_30_0_txt.html">3.30.0</a>
+  
+    <li><a href="../../doc/release_notes/3_31_0_txt.html">3.31.0</a>
+  
+    <li><a href="../../doc/release_notes/3_32_0_txt.html">3.32.0</a>
+  
+    <li><a href="../../doc/release_notes/3_33_0_txt.html">3.33.0</a>
+  
+    <li><a href="../../doc/release_notes/3_34_0_txt.html">3.34.0</a>
+  
+    <li><a href="../../doc/release_notes/3_35_0_txt.html">3.35.0</a>
+  
+    <li><a href="../../doc/release_notes/3_36_0_txt.html">3.36.0</a>
+  
+    <li><a href="../../doc/release_notes/3_37_0_txt.html">3.37.0</a>
+  
+    <li><a href="../../doc/release_notes/3_38_0_txt.html">3.38.0</a>
+  
+    <li><a href="../../doc/release_notes/3_39_0_txt.html">3.39.0</a>
+  
+    <li><a href="../../doc/release_notes/3_4_0_txt.html">3.4.0</a>
+  
+    <li><a href="../../doc/release_notes/3_40_0_txt.html">3.40.0</a>
+  
+    <li><a href="../../doc/release_notes/3_41_0_txt.html">3.41.0</a>
+  
+    <li><a href="../../doc/release_notes/3_42_0_txt.html">3.42.0</a>
+  
+    <li><a href="../../doc/release_notes/3_43_0_txt.html">3.43.0</a>
+  
+    <li><a href="../../doc/release_notes/3_44_0_txt.html">3.44.0</a>
+  
+    <li><a href="../../doc/release_notes/3_45_0_txt.html">3.45.0</a>
+  
+    <li><a href="../../doc/release_notes/3_46_0_txt.html">3.46.0</a>
+  
+    <li><a href="../../doc/release_notes/3_47_0_txt.html">3.47.0</a>
+  
+    <li><a href="../../doc/release_notes/3_48_0_txt.html">3.48.0</a>
+  
+    <li><a href="../../doc/release_notes/3_5_0_txt.html">3.5.0</a>
+  
+    <li><a href="../../doc/release_notes/3_6_0_txt.html">3.6.0</a>
+  
+    <li><a href="../../doc/release_notes/3_7_0_txt.html">3.7.0</a>
+  
+    <li><a href="../../doc/release_notes/3_8_0_txt.html">3.8.0</a>
+  
+    <li><a href="../../doc/release_notes/3_9_0_txt.html">3.9.0</a>
+  
+    <li><a href="../../doc/release_notes/4_0_0_txt.html">4.0.0</a>
+  
+    <li><a href="../../doc/release_notes/4_1_0_txt.html">4.1.0</a>
+  
+    <li><a href="../../doc/release_notes/4_10_0_txt.html">4.10.0</a>
+  
+    <li><a href="../../doc/release_notes/4_11_0_txt.html">4.11.0</a>
+  
+    <li><a href="../../doc/release_notes/4_12_0_txt.html">4.12.0</a>
+  
+    <li><a href="../../doc/release_notes/4_13_0_txt.html">4.13.0</a>
+  
+    <li><a href="../../doc/release_notes/4_14_0_txt.html">4.14.0</a>
+  
+    <li><a href="../../doc/release_notes/4_15_0_txt.html">4.15.0</a>
+  
+    <li><a href="../../doc/release_notes/4_16_0_txt.html">4.16.0</a>
+  
+    <li><a href="../../doc/release_notes/4_17_0_txt.html">4.17.0</a>
+  
+    <li><a href="../../doc/release_notes/4_18_0_txt.html">4.18.0</a>
+  
+    <li><a href="../../doc/release_notes/4_19_0_txt.html">4.19.0</a>
+  
+    <li><a href="../../doc/release_notes/4_2_0_txt.html">4.2.0</a>
+  
+    <li><a href="../../doc/release_notes/4_20_0_txt.html">4.20.0</a>
+  
+    <li><a href="../../doc/release_notes/4_21_0_txt.html">4.21.0</a>
+  
+    <li><a href="../../doc/release_notes/4_22_0_txt.html">4.22.0</a>
+  
+    <li><a href="../../doc/release_notes/4_23_0_txt.html">4.23.0</a>
+  
+    <li><a href="../../doc/release_notes/4_24_0_txt.html">4.24.0</a>
+  
+    <li><a href="../../doc/release_notes/4_25_0_txt.html">4.25.0</a>
+  
+    <li><a href="../../doc/release_notes/4_26_0_txt.html">4.26.0</a>
+  
+    <li><a href="../../doc/release_notes/4_27_0_txt.html">4.27.0</a>
+  
+    <li><a href="../../doc/release_notes/4_28_0_txt.html">4.28.0</a>
+  
+    <li><a href="../../doc/release_notes/4_29_0_txt.html">4.29.0</a>
+  
+    <li><a href="../../doc/release_notes/4_3_0_txt.html">4.3.0</a>
+  
+    <li><a href="../../doc/release_notes/4_30_0_txt.html">4.30.0</a>
+  
+    <li><a href="../../doc/release_notes/4_31_0_txt.html">4.31.0</a>
+  
+    <li><a href="../../doc/release_notes/4_32_0_txt.html">4.32.0</a>
+  
+    <li><a href="../../doc/release_notes/4_33_0_txt.html">4.33.0</a>
+  
+    <li><a href="../../doc/release_notes/4_34_0_txt.html">4.34.0</a>
+  
+    <li><a href="../../doc/release_notes/4_35_0_txt.html">4.35.0</a>
+  
+    <li><a href="../../doc/release_notes/4_36_0_txt.html">4.36.0</a>
+  
+    <li><a href="../../doc/release_notes/4_37_0_txt.html">4.37.0</a>
+  
+    <li><a href="../../doc/release_notes/4_38_0_txt.html">4.38.0</a>
+  
+    <li><a href="../../doc/release_notes/4_39_0_txt.html">4.39.0</a>
+  
+    <li><a href="../../doc/release_notes/4_4_0_txt.html">4.4.0</a>
+  
+    <li><a href="../../doc/release_notes/4_40_0_txt.html">4.40.0</a>
+  
+    <li><a href="../../doc/release_notes/4_41_0_txt.html">4.41.0</a>
+  
+    <li><a href="../../doc/release_notes/4_42_0_txt.html">4.42.0</a>
+  
+    <li><a href="../../doc/release_notes/4_43_0_txt.html">4.43.0</a>
+  
+    <li><a href="../../doc/release_notes/4_44_0_txt.html">4.44.0</a>
+  
+    <li><a href="../../doc/release_notes/4_45_0_txt.html">4.45.0</a>
+  
+    <li><a href="../../doc/release_notes/4_46_0_txt.html">4.46.0</a>
+  
+    <li><a href="../../doc/release_notes/4_47_0_txt.html">4.47.0</a>
+  
+    <li><a href="../../doc/release_notes/4_48_0_txt.html">4.48.0</a>
+  
+    <li><a href="../../doc/release_notes/4_49_0_txt.html">4.49.0</a>
+  
+    <li><a href="../../doc/release_notes/4_5_0_txt.html">4.5.0</a>
+  
+    <li><a href="../../doc/release_notes/4_6_0_txt.html">4.6.0</a>
+  
+    <li><a href="../../doc/release_notes/4_7_0_txt.html">4.7.0</a>
+  
+    <li><a href="../../doc/release_notes/4_8_0_txt.html">4.8.0</a>
+  
+    <li><a href="../../doc/release_notes/4_9_0_txt.html">4.9.0</a>
+  
+    <li><a href="../../doc/release_notes/5_0_0_txt.html">5.0.0</a>
+  
+    <li><a href="../../doc/release_notes/5_1_0_txt.html">5.1.0</a>
+  
+    <li><a href="../../doc/release_notes/5_10_0_txt.html">5.10.0</a>
+  
+    <li><a href="../../doc/release_notes/5_11_0_txt.html">5.11.0</a>
+  
+    <li><a href="../../doc/release_notes/5_12_0_txt.html">5.12.0</a>
+  
+    <li><a href="../../doc/release_notes/5_13_0_txt.html">5.13.0</a>
+  
+    <li><a href="../../doc/release_notes/5_14_0_txt.html">5.14.0</a>
+  
+    <li><a href="../../doc/release_notes/5_15_0_txt.html">5.15.0</a>
+  
+    <li><a href="../../doc/release_notes/5_16_0_txt.html">5.16.0</a>
+  
+    <li><a href="../../doc/release_notes/5_17_0_txt.html">5.17.0</a>
+  
+    <li><a href="../../doc/release_notes/5_18_0_txt.html">5.18.0</a>
+  
+    <li><a href="../../doc/release_notes/5_19_0_txt.html">5.19.0</a>
+  
+    <li><a href="../../doc/release_notes/5_2_0_txt.html">5.2.0</a>
+  
+    <li><a href="../../doc/release_notes/5_20_0_txt.html">5.20.0</a>
+  
+    <li><a href="../../doc/release_notes/5_21_0_txt.html">5.21.0</a>
+  
+    <li><a href="../../doc/release_notes/5_22_0_txt.html">5.22.0</a>
+  
+    <li><a href="../../doc/release_notes/5_23_0_txt.html">5.23.0</a>
+  
+    <li><a href="../../doc/release_notes/5_24_0_txt.html">5.24.0</a>
+  
+    <li><a href="../../doc/release_notes/5_25_0_txt.html">5.25.0</a>
+  
+    <li><a href="../../doc/release_notes/5_26_0_txt.html">5.26.0</a>
+  
+    <li><a href="../../doc/release_notes/5_27_0_txt.html">5.27.0</a>
+  
+    <li><a href="../../doc/release_notes/5_28_0_txt.html">5.28.0</a>
+  
+    <li><a href="../../doc/release_notes/5_29_0_txt.html">5.29.0</a>
+  
+    <li><a href="../../doc/release_notes/5_3_0_txt.html">5.3.0</a>
+  
+    <li><a href="../../doc/release_notes/5_30_0_txt.html">5.30.0</a>
+  
+    <li><a href="../../doc/release_notes/5_31_0_txt.html">5.31.0</a>
+  
+    <li><a href="../../doc/release_notes/5_32_0_txt.html">5.32.0</a>
+  
+    <li><a href="../../doc/release_notes/5_33_0_txt.html">5.33.0</a>
+  
+    <li><a href="../../doc/release_notes/5_34_0_txt.html">5.34.0</a>
+  
+    <li><a href="../../doc/release_notes/5_35_0_txt.html">5.35.0</a>
+  
+    <li><a href="../../doc/release_notes/5_36_0_txt.html">5.36.0</a>
+  
+    <li><a href="../../doc/release_notes/5_37_0_txt.html">5.37.0</a>
+  
+    <li><a href="../../doc/release_notes/5_38_0_txt.html">5.38.0</a>
+  
+    <li><a href="../../doc/release_notes/5_39_0_txt.html">5.39.0</a>
+  
+    <li><a href="../../doc/release_notes/5_4_0_txt.html">5.4.0</a>
+  
+    <li><a href="../../doc/release_notes/5_40_0_txt.html">5.40.0</a>
+  
+    <li><a href="../../doc/release_notes/5_41_0_txt.html">5.41.0</a>
+  
+    <li><a href="../../doc/release_notes/5_42_0_txt.html">5.42.0</a>
+  
+    <li><a href="../../doc/release_notes/5_43_0_txt.html">5.43.0</a>
+  
+    <li><a href="../../doc/release_notes/5_44_0_txt.html">5.44.0</a>
+  
+    <li><a href="../../doc/release_notes/5_45_0_txt.html">5.45.0</a>
+  
+    <li><a href="../../doc/release_notes/5_46_0_txt.html">5.46.0</a>
+  
+    <li><a href="../../doc/release_notes/5_47_0_txt.html">5.47.0</a>
+  
+    <li><a href="../../doc/release_notes/5_48_0_txt.html">5.48.0</a>
+  
+    <li><a href="../../doc/release_notes/5_49_0_txt.html">5.49.0</a>
+  
+    <li><a href="../../doc/release_notes/5_5_0_txt.html">5.5.0</a>
+  
+    <li><a href="../../doc/release_notes/5_50_0_txt.html">5.50.0</a>
+  
+    <li><a href="../../doc/release_notes/5_51_0_txt.html">5.51.0</a>
+  
+    <li><a href="../../doc/release_notes/5_52_0_txt.html">5.52.0</a>
+  
+    <li><a href="../../doc/release_notes/5_53_0_txt.html">5.53.0</a>
+  
+    <li><a href="../../doc/release_notes/5_54_0_txt.html">5.54.0</a>
+  
+    <li><a href="../../doc/release_notes/5_55_0_txt.html">5.55.0</a>
+  
+    <li><a href="../../doc/release_notes/5_6_0_txt.html">5.6.0</a>
+  
+    <li><a href="../../doc/release_notes/5_7_0_txt.html">5.7.0</a>
+  
+    <li><a href="../../doc/release_notes/5_8_0_txt.html">5.8.0</a>
+  
+    <li><a href="../../doc/release_notes/5_9_0_txt.html">5.9.0</a>
+  
+    <li><a href="../../doc/schema_modification_rdoc.html">schema_modification</a>
+  
+    <li><a href="../../doc/security_rdoc.html">security</a>
+  
+    <li><a href="../../doc/sharding_rdoc.html">sharding</a>
+  
+    <li><a href="../../doc/sql_rdoc.html">sql</a>
+  
+    <li><a href="../../doc/testing_rdoc.html">testing</a>
+  
+    <li><a href="../../doc/thread_safety_rdoc.html">thread_safety</a>
+  
+    <li><a href="../../doc/transactions_rdoc.html">transactions</a>
+  
+    <li><a href="../../doc/validations_rdoc.html">validations</a>
+  
+    <li><a href="../../doc/virtual_rows_rdoc.html">virtual_rows</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/release_notes/3.23.0.txt">
+
+<h1 id="label-New+Features">New Features<span><a href="#label-New+Features">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> now allows dynamic customization for eager loading. Previously, the parameters for eager loading were fixed at association creation time.  Now, they can be modified at query time.  To dynamically modify an eager load, you use a hash with the proc as the value. For example, if you have this code:</p>
+
+<pre class="ruby"><span class="ruby-constant">Artist</span>.<span class="ruby-identifier">eager</span>(<span class="ruby-value">:albums</span>)
+</pre>
+
+<p>And you only want to eagerly load albums where the id is greater than or equal to some number provided by the user, you do:</p>
+
+<pre class="ruby"><span class="ruby-identifier">min</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:min</span>].<span class="ruby-identifier">to_i</span>
+<span class="ruby-constant">Artist</span>.<span class="ruby-identifier">eager</span>(<span class="ruby-value">:albums</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">proc</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ds</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">id</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">min</span>}})
+</pre>
+
+<p>This also works when eager loading via eager_graph:</p>
+
+<pre class="ruby"><span class="ruby-constant">Artist</span>.<span class="ruby-identifier">eager_graph</span>(<span class="ruby-value">:albums</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">proc</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ds</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">id</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">min</span>}})
+</pre>
+
+<p>For eager_graph, the dataset is the dataset to graph into the current dataset, and filtering it will result in an SQL query that joins to a subquery.</p>
+
+<p>You can also use dynamic customization while cascading to also eagerly load dependent associations, by making the hash value a single entry hash with a proc key and the value being the dependent associations to eagerly load. For example, if you want to eagerly load tracks for those albums:</p>
+
+<pre class="ruby"><span class="ruby-constant">Artist</span>.<span class="ruby-identifier">eager</span>(<span class="ruby-value">:albums</span><span class="ruby-operator">=&gt;</span>{<span class="ruby-identifier">proc</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ds</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">id</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">min</span>}}<span class="ruby-operator">=&gt;</span><span class="ruby-value">:tracks</span>})
+</pre>
+</li><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> also now allows dynamic customization for regular association loading.  Previously, this was possible by using the association&#39;s dataset:</p>
+
+<pre class="ruby"><span class="ruby-identifier">albums</span> = <span class="ruby-identifier">artist</span>.<span class="ruby-identifier">albums_dataset</span>.<span class="ruby-identifier">filter</span>{<span class="ruby-identifier">id</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">min</span>}
+</pre>
+
+<p>However, then there was no handling of caching, callbacks, or reciprocals.  For example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">albums</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">album</span><span class="ruby-operator">|</span> <span class="ruby-identifier">album</span>.<span class="ruby-identifier">artist</span>}
+</pre>
+
+<p>Would issue one query per album to get the artist, because the reciprocal association was not set.  Now you can provide a block to the association method:</p>
+
+<pre class="ruby"><span class="ruby-identifier">albums</span> = <span class="ruby-identifier">artist</span>.<span class="ruby-identifier">albums</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ds</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">filter</span>{<span class="ruby-identifier">id</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">min</span>}}
+</pre>
+
+<p>This block is called with the dataset used to retrieve the associated objects, and should return a modified version of that dataset.</p>
+
+<p>Note that ruby 1.8.6 doesn&#39;t allow blocks to take block arguments, so you have to pass the block as a separate proc argument to the association method if you are still using 1.8.6.</p>
+</li><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> now supports filtering by associations.  This wasn&#39;t previously supported as filtering is a dataset level feature and associations are a model level feature, and datasets do not depend on models.  Now, model datasets have the ability to filter by associations.  For example, to get all albums for a given artist, you could do:</p>
+
+<pre class="ruby"><span class="ruby-identifier">artist</span> = <span class="ruby-constant">Artist</span>[<span class="ruby-value">1</span>]
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">filter</span>(<span class="ruby-value">:artist</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">artist</span>)
+</pre>
+
+<p>Since the above can also be accomplished with:</p>
+
+<pre class="ruby"><span class="ruby-identifier">artist</span>.<span class="ruby-identifier">albums</span>
+</pre>
+
+<p>this may not seem like a big improvement, but it allows you to filter on multiple associations simultaneously:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">filter</span>(<span class="ruby-value">:artist</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">artist</span>, <span class="ruby-value">:publisher</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">publisher</span>)
+</pre>
+
+<p>For simple many_to_one associations, the above is just a simpler way to do:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">filter</span>(<span class="ruby-value">:artist_id</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">artist</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:publisher_id</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">publisher</span>.<span class="ruby-identifier">id</span>)
+</pre>
+
+<p><a href="../../Sequel.html"><code>Sequel</code></a> supports this for all association types, including many_to_many and many_through_many, where a subquery is used, and it also works when composite key associations are used:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">filter</span>(<span class="ruby-value">:artist</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">artist</span>, <span class="ruby-value">:tags</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">tag</span>)
+</pre>
+
+<p>This will give you the albums for that artist that are also tagged with that tag.  To provide multiple values for the same association, mostly useful for many_to_many associations, you can either use separate filter calls or specify the conditions as an array:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">filter</span>(<span class="ruby-value">:tags</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">tag1</span>).<span class="ruby-identifier">filter</span>(<span class="ruby-value">:tags</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">tag2</span>)
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">filter</span>([[<span class="ruby-value">:tags</span>, <span class="ruby-identifier">tag1</span>], [<span class="ruby-value">:tags</span>, <span class="ruby-identifier">tag2</span>]])
+</pre>
+</li><li>
+<p>A columns_introspection extension has been added that makes datasets attempt to guess their columns in some cases instead of issuing a database query.  This can improve performance in cases where the columns are needed implicitly, such as graphing.  After loading the extension, you can enable the support for specific datasets by extending them with Sequel::ColumnIntrospection.  To enable introspection for all datasets, use:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Dataset</span>.<span class="ruby-identifier">introspect_all_columns</span>
+</pre>
+</li><li>
+<p>A serialization_modification_detection plugin has been added. Previously, <a href="../../Sequel.html"><code>Sequel</code></a> could not detect modifications made to serialized objects.  It could detect modification if you assigned a new value:</p>
+
+<pre class="ruby"><span class="ruby-identifier">model</span>.<span class="ruby-identifier">hash_column</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">hash_column</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:foo</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">:bar</span>)
+</pre>
+
+<p>but not if you just modified the object directly:</p>
+
+<pre class="ruby"><span class="ruby-identifier">model</span>.<span class="ruby-identifier">hash_columns</span>[<span class="ruby-value">:foo</span>] = <span class="ruby-value">:bar</span>
+</pre>
+
+<p>With this plugin, such modifications can be detected, at a potentially significant performance cost.</p>
+</li></ul>
+
+<h1 id="label-Other+Improvements">Other Improvements<span><a href="#label-Other+Improvements">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>When using a migration directory containing both older integer migrations and newer timestamp migrations, where some integer migrations have not been applied, make sure to apply the remaining integer migrations before the timestamp migrations.  Previously, they could be applied out of order due to a lexicographic sort being used instead of a numeric sort.</p>
+</li><li>
+<p>If a model does not select all columns from its table, the insert_select optimization is no longer used.  Previously, creating a new model object for such a model could result in the object containing columns that the model does not select.</p>
+</li><li>
+<p>You can now use :select=&gt;[] as an option for many_to_many associations to select all columns from both the associated table and the join table.  Previously, this raised an error and required you do :select=&gt;&#39;*&#39;.lit as a workaround.  The default remains to select all columns in the associated table and none from the join table.</p>
+</li><li>
+<p>The xml_serializer plugin now handles namespaced models by using __ instead of / as the namespace separator.  Previously, / was used and caused problems as it is not valid XML.</p>
+</li><li>
+<p>The :eager_grapher association option can now accept a proc that takes a single hash of options instead of a fixed 3 arguments. This is the recommended way going forward of writing custom :eager_graphers, and all of the internal ones have been converted. The previous way of using 3 arguments is still supported.</p>
+</li><li>
+<p>A bug in the identity_map plugin for many_to_one associations without full association reflection information has been fixed.</p>
+</li><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> is now using GitHub Issues for issue tracking.  Old issues have been migrated from Google Code.</p>
+</li></ul>
+
+<h1 id="label-Backwards+Compatibility">Backwards Compatibility<span><a href="#label-Backwards+Compatibility">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>The filter by associations support breaks backward compatibilty for users who previously added an sql_literal instance method to <a href="../../Sequel/Model.html"><code>Sequel::Model</code></a>.  Usually, that was done to for reasons similar to but inferior than the filter by association support.  The following code can be used as a temporary workaround until you can modify your program to use the new filter by associations support:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span><span class="ruby-operator">::</span><span class="ruby-constant">Associations</span><span class="ruby-operator">::</span><span class="ruby-constant">DatasetMethods</span>.
+  <span class="ruby-identifier">send</span>(<span class="ruby-value">:remove_method</span>, <span class="ruby-value">:complex_expression_sql</span>)
+</pre>
+</li><li>
+<p>The private Sequel::Model#_load_associated_objects method now takes an additional, optional options hash.  Plugins that override that method need to be modified.</p>
+</li></ul>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

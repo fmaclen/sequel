@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::List::InstanceMethods - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+  var index_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/navigation.js" defer></script>
+<script src="../../../js/search.js" defer></script>
+<script src="../../../js/search_index.js" defer></script>
+<script src="../../../js/searcher.js" defer></script>
+<script src="../../../js/darkfish.js" defer></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-i-after_destroy">#after_destroy</a>
+    
+    <li ><a href="#method-i-at_position">#at_position</a>
+    
+    <li class="calls-super" ><a href="#method-i-before_validation">#before_validation</a>
+    
+    <li ><a href="#method-i-last_position">#last_position</a>
+    
+    <li ><a href="#method-i-list_dataset">#list_dataset</a>
+    
+    <li ><a href="#method-i-move_down">#move_down</a>
+    
+    <li ><a href="#method-i-move_to">#move_to</a>
+    
+    <li ><a href="#method-i-move_to_bottom">#move_to_bottom</a>
+    
+    <li ><a href="#method-i-move_to_top">#move_to_top</a>
+    
+    <li ><a href="#method-i-move_up">#move_up</a>
+    
+    <li ><a href="#method-i-next">#next</a>
+    
+    <li ><a href="#method-i-position_value">#position_value</a>
+    
+    <li ><a href="#method-i-prev">#prev</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::List::InstanceMethods">
+  <h1 id="module-Sequel::Plugins::List::InstanceMethods" class="module">
+    module Sequel::Plugins::List::InstanceMethods
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-after_destroy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">after_destroy</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>When destroying an instance, move all entries after the instance down one position, so that there aren&#39;t any gaps</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="after_destroy-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">104</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">after_destroy</span>
+<span class="line-num">105</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">106</span> 
+<span class="line-num">107</span>   <span class="ruby-identifier">f</span> = <span class="ruby-constant">Sequel</span>[<span class="ruby-identifier">position_field</span>]
+<span class="line-num">108</span>   <span class="ruby-identifier">list_dataset</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">f</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">position_value</span>).<span class="ruby-identifier">update</span>(<span class="ruby-identifier">f</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
+<span class="line-num">109</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-at_position" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">at_position</span><span
+            class="method-args">(p)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The model object at the given position in the list containing this instance.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="at_position-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num"> 98</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">at_position</span>(<span class="ruby-identifier">p</span>)
+<span class="line-num"> 99</span>   <span class="ruby-identifier">list_dataset</span>.<span class="ruby-identifier">first</span>(<span class="ruby-identifier">position_field</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">p</span>)
+<span class="line-num">100</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-before_validation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">before_validation</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the value of the position_field to the maximum value plus 1 unless the position field already has a value.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="before_validation-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">187</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">before_validation</span>
+<span class="line-num">188</span>   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">get_column_value</span>(<span class="ruby-identifier">position_field</span>)
+<span class="line-num">189</span>     <span class="ruby-identifier">set_column_value</span>(<span class="ruby-node">&quot;#{position_field}=&quot;</span>, <span class="ruby-identifier">list_dataset</span>.<span class="ruby-identifier">max</span>(<span class="ruby-identifier">position_field</span>).<span class="ruby-identifier">to_i</span><span class="ruby-value">+1</span>)
+<span class="line-num">190</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">191</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">192</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-last_position" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">last_position</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Find the last position in the list containing this instance.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="last_position-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">112</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">last_position</span>
+<span class="line-num">113</span>   <span class="ruby-identifier">list_dataset</span>.<span class="ruby-identifier">max</span>(<span class="ruby-identifier">position_field</span>).<span class="ruby-identifier">to_i</span>
+<span class="line-num">114</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-list_dataset" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">list_dataset</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A dataset that represents the list containing this instance.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="list_dataset-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">117</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list_dataset</span>
+<span class="line-num">118</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">scope_proc</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">scope_proc</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword">self</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">dataset</span>
+<span class="line-num">119</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-move_down" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">move_down</span><span
+            class="method-args">(n = 1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Move this instance down the given number of places in the list, or 1 place if no argument is specified.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="move_down-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">123</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_down</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">1</span>)
+<span class="line-num">124</span>   <span class="ruby-identifier">move_to</span>(<span class="ruby-identifier">position_value</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">n</span>)
+<span class="line-num">125</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-move_to" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">move_to</span><span
+            class="method-args">(target, lp = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Move this instance to the given place in the list.  If lp is not given or greater than the last list position, uses the last list position.  If lp is less than the top list position, uses the top list position.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="move_to-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">131</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_to</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">lp</span> = <span class="ruby-keyword">nil</span>)
+<span class="line-num">132</span>   <span class="ruby-identifier">current</span> = <span class="ruby-identifier">position_value</span>
+<span class="line-num">133</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">target</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">current</span>
+<span class="line-num">134</span>     <span class="ruby-identifier">checked_transaction</span> <span class="ruby-keyword">do</span>
+<span class="line-num">135</span>       <span class="ruby-identifier">ds</span> = <span class="ruby-identifier">list_dataset</span>
+<span class="line-num">136</span>       <span class="ruby-identifier">op</span>, <span class="ruby-identifier">ds</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">target</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">current</span>
+<span class="line-num">137</span>         <span class="ruby-identifier">target</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">top_of_list</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">target</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">top_of_list</span>
+<span class="line-num">138</span>         [<span class="ruby-value">:+</span>, <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">position_field</span><span class="ruby-operator">=&gt;</span><span class="ruby-identifier">target</span><span class="ruby-operator">...</span><span class="ruby-identifier">current</span>)]
+<span class="line-num">139</span>       <span class="ruby-keyword">else</span>
+<span class="line-num">140</span>         <span class="ruby-identifier">lp</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">last_position</span>
+<span class="line-num">141</span>         <span class="ruby-identifier">target</span> = <span class="ruby-identifier">lp</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">target</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">lp</span>
+<span class="line-num">142</span>         [<span class="ruby-value">:-</span>, <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">position_field</span><span class="ruby-operator">=&gt;</span>(<span class="ruby-identifier">current</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)<span class="ruby-operator">..</span><span class="ruby-identifier">target</span>)]
+<span class="line-num">143</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">144</span>       <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">position_field</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">NumericExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">op</span>, <span class="ruby-identifier">position_field</span>, <span class="ruby-value">1</span>))
+<span class="line-num">145</span>       <span class="ruby-identifier">update</span>(<span class="ruby-identifier">position_field</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">target</span>)
+<span class="line-num">146</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">147</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">148</span>   <span class="ruby-keyword">self</span>
+<span class="line-num">149</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-move_to_bottom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">move_to_bottom</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Move this instance to the bottom (last position) of the list.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="move_to_bottom-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">152</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_to_bottom</span>
+<span class="line-num">153</span>   <span class="ruby-identifier">lp</span> = <span class="ruby-identifier">last_position</span> 
+<span class="line-num">154</span>   <span class="ruby-identifier">move_to</span>(<span class="ruby-identifier">lp</span>, <span class="ruby-identifier">lp</span>)
+<span class="line-num">155</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-move_to_top" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">move_to_top</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Move this instance to the top (first position, usually position 1) of the list.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="move_to_top-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">158</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_to_top</span>
+<span class="line-num">159</span>   <span class="ruby-identifier">move_to</span>(<span class="ruby-identifier">model</span>.<span class="ruby-identifier">top_of_list</span>)
+<span class="line-num">160</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-move_up" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">move_up</span><span
+            class="method-args">(n = 1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Move this instance the given number of places up in the list, or 1 place if no argument is specified.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="move_up-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">164</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_up</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">1</span>)
+<span class="line-num">165</span>   <span class="ruby-identifier">move_to</span>(<span class="ruby-identifier">position_value</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">n</span>) 
+<span class="line-num">166</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-next" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">next</span><span
+            class="method-args">(n = 1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The model instance the given number of places below this model instance in the list, or 1 place below if no argument is given.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="next-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">170</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">next</span>(<span class="ruby-identifier ruby-title">n</span> = <span class="ruby-value">1</span>)
+<span class="line-num">171</span>   <span class="ruby-identifier">n</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">at_position</span>(<span class="ruby-identifier">position_value</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">n</span>)
+<span class="line-num">172</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-position_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">position_value</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The value of the model&#39;s position field for this instance.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="position_value-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">175</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">position_value</span>
+<span class="line-num">176</span>   <span class="ruby-identifier">get_column_value</span>(<span class="ruby-identifier">position_field</span>)
+<span class="line-num">177</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-prev" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">prev</span><span
+            class="method-args">(n = 1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The model instance the given number of places below this model instance in the list, or 1 place below if no argument is given.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="prev-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/list.rb</span>
+<span class="line-num">181</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prev</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">1</span>)
+<span class="line-num">182</span>   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next</span>(<span class="ruby-identifier">n</span> <span class="ruby-operator">*</span> <span class="ruby-value">-1</span>)
+<span class="line-num">183</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

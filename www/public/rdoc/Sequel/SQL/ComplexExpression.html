@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::SQL::ComplexExpression - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Expression.html">Sequel::SQL::Expression</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="AliasMethods.html">Sequel::SQL::AliasMethods</a>
+  
+  
+  
+    <li><a class="include" href="CastMethods.html">Sequel::SQL::CastMethods</a>
+  
+  
+  
+    <li><a class="include" href="OrderMethods.html">Sequel::SQL::OrderMethods</a>
+  
+  
+  
+    <li><a class="include" href="PatternMatchMethods.html">Sequel::SQL::PatternMatchMethods</a>
+  
+  
+  
+    <li><a class="include" href="SubscriptMethods.html">Sequel::SQL::SubscriptMethods</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-sql_boolean">#sql_boolean</a>
+    
+    <li ><a href="#method-i-sql_number">#sql_number</a>
+    
+    <li ><a href="#method-i-sql_string">#sql_string</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::SQL::ComplexExpression">
+  <h1 id="class-Sequel::SQL::ComplexExpression" class="class">
+    class Sequel::SQL::ComplexExpression
+  </h1>
+
+  <section class="description">
+    
+<p>Represents a <a href="../SQL.html"><code>SQL</code></a> expression, with a given operator and one or more attributes (which may also be ComplexExpressions, forming a tree).  This class is the backbone of Sequel&#39;s ruby expression DSL.</p>
+
+<p>This is an abstract class that is not that useful by itself.  The subclasses <code>BooleanExpression</code>, <code>NumericExpression</code>, and <code>StringExpression</code> define the behavior of the DSL via operators.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="ASSOCIATIVE_OPERATORS">ASSOCIATIVE_OPERATORS
+        
+        <dd><p>Operator symbols that are associative</p>
+        
+      
+        <dt id="BITWISE_OPERATORS">BITWISE_OPERATORS
+        
+        <dd><p>Bitwise mathematical operators used in <code>BitwiseMethods</code></p>
+        
+      
+        <dt id="BOOLEAN_OPERATOR_METHODS">BOOLEAN_OPERATOR_METHODS
+        
+        <dd><p>Hash of ruby operator symbols to <a href="../SQL.html"><code>SQL</code></a> operators, used in <code>BooleanMethods</code></p>
+        
+      
+        <dt id="CONSTANT_INVERSIONS">CONSTANT_INVERSIONS
+        
+        <dd><p>A hash of the opposite for each constant, used for inverting constants.</p>
+        
+      
+        <dt id="CUSTOM_EXPRESSIONS">CUSTOM_EXPRESSIONS
+        
+        <dd><p>Custom expressions that may have different syntax on different databases</p>
+        
+      
+        <dt id="EQUALITY_OPERATORS">EQUALITY_OPERATORS
+        
+        <dd><p>Operators that check for equality</p>
+        
+      
+        <dt id="INEQUALITY_OPERATORS">INEQUALITY_OPERATORS
+        
+        <dd><p>Inequality operators used in <code>InequalityMethods</code></p>
+        
+      
+        <dt id="IN_OPERATORS">IN_OPERATORS
+        
+        <dd><p>Operators that use IN/NOT IN for inclusion/exclusion</p>
+        
+      
+        <dt id="IS_OPERATORS">IS_OPERATORS
+        
+        <dd><p>Operators that use IS, used for special casing to override literal true/false values</p>
+        
+      
+        <dt id="LIKE_OPERATORS">LIKE_OPERATORS
+        
+        <dd><p>Operators that do pattern matching via LIKE</p>
+        
+      
+        <dt id="MATHEMATICAL_OPERATORS">MATHEMATICAL_OPERATORS
+        
+        <dd><p>Standard mathematical operators used in <code>NumericMethods</code></p>
+        
+      
+        <dt id="N_ARITY_OPERATORS">N_ARITY_OPERATORS
+        
+        <dd><p>Operator symbols that take one or more arguments</p>
+        
+      
+        <dt id="ONE_ARITY_OPERATORS">ONE_ARITY_OPERATORS
+        
+        <dd><p>Operator symbols that take only a single argument</p>
+        
+      
+        <dt id="OPERTATOR_INVERSIONS">OPERTATOR_INVERSIONS
+        
+        <dd><p>A hash of the opposite for each operator symbol, used for inverting objects.</p>
+        
+      
+        <dt id="REGEXP_OPERATORS">REGEXP_OPERATORS
+        
+        <dd><p>Operators that do pattern matching via regular expressions</p>
+        
+      
+        <dt id="TWO_ARITY_OPERATORS">TWO_ARITY_OPERATORS
+        
+        <dd><p>Operator symbols that take exactly two arguments</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-args" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">args</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>An array of args for this object</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-op" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">op</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The operator symbol for this object</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(op, *args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the operator symbol and arguments for this object to the ones given. Convert all args that are hashes or arrays of two element arrays to <code>BooleanExpressions</code>, other than the second arg for an IN/NOT IN operator. Raise an <code>Error</code> if the operator doesn&#39;t allow boolean input and a boolean argument is given. Raise an <code>Error</code> if the wrong number of arguments for a given operator is used.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">216</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">op</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">217</span>   <span class="ruby-identifier">orig_args</span> = <span class="ruby-identifier">args</span>
+<span class="line-num">218</span>   <span class="ruby-identifier">args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">condition_specifier?</span>(<span class="ruby-identifier">a</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">from_value_pairs</span>(<span class="ruby-identifier">a</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>}
+<span class="line-num">219</span>   <span class="ruby-keyword">case</span> <span class="ruby-identifier">op</span>
+<span class="line-num">220</span>   <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">N_ARITY_OPERATORS</span>
+<span class="line-num">221</span>     <span class="ruby-identifier">raise</span>(<span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;The #{op} operator requires at least 1 argument&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">1</span>
+<span class="line-num">222</span>     <span class="ruby-identifier">args</span>.<span class="ruby-identifier">map!</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">op</span> <span class="ruby-operator">==</span> <span class="ruby-value">:NOOP</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>}
+<span class="line-num">223</span>     <span class="ruby-keyword">if</span> <span class="ruby-constant">ASSOCIATIVE_OPERATORS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">op</span>)
+<span class="line-num">224</span>       <span class="ruby-identifier">old_args</span> = <span class="ruby-identifier">args</span>
+<span class="line-num">225</span>       <span class="ruby-identifier">args</span> = []
+<span class="line-num">226</span>       <span class="ruby-identifier">old_args</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">op</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">op</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">a</span>.<span class="ruby-identifier">args</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">a</span>)}
+<span class="line-num">227</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">228</span>   <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">TWO_ARITY_OPERATORS</span>
+<span class="line-num">229</span>     <span class="ruby-identifier">raise</span>(<span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;The #{op} operator requires precisely 2 arguments&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
+<span class="line-num">230</span>     <span class="ruby-comment"># With IN/NOT IN, even if the second argument is an array of two element arrays,</span>
+<span class="line-num">231</span>     <span class="ruby-comment"># don&#39;t convert it into a boolean expression, since it&#39;s definitely being used</span>
+<span class="line-num">232</span>     <span class="ruby-comment"># as a value list.</span>
+<span class="line-num">233</span>     <span class="ruby-identifier">args</span>[<span class="ruby-value">1</span>] = <span class="ruby-identifier">orig_args</span>[<span class="ruby-value">1</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">IN_OPERATORS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">op</span>)
+<span class="line-num">234</span>   <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">ONE_ARITY_OPERATORS</span>
+<span class="line-num">235</span>     <span class="ruby-identifier">raise</span>(<span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;The #{op} operator requires a single argument&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+<span class="line-num">236</span>   <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">CUSTOM_EXPRESSIONS</span>
+<span class="line-num">237</span>     <span class="ruby-comment"># nothing</span>
+<span class="line-num">238</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">239</span>     <span class="ruby-identifier">raise</span>(<span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;Invalid operator #{op}&quot;</span>)
+<span class="line-num">240</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">241</span>   <span class="ruby-ivar">@op</span> = <span class="ruby-identifier">op</span>
+<span class="line-num">242</span>   <span class="ruby-ivar">@args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">freeze</span>
+<span class="line-num">243</span>   <span class="ruby-identifier">freeze</span>
+<span class="line-num">244</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-sql_boolean" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_boolean</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <a href="BooleanExpression.html"><code>BooleanExpression</code></a> with the same op and args.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_boolean-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1272</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_boolean</span>
+<span class="line-num">1273</span>   <span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">op</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">1274</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_number" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_number</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <a href="NumericExpression.html"><code>NumericExpression</code></a> with the same op and args.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_number-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1277</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_number</span>
+<span class="line-num">1278</span>   <span class="ruby-constant">NumericExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">op</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">1279</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sql_string" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sql_string</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a <a href="StringExpression.html"><code>StringExpression</code></a> with the same op and args.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sql_string-source">
+            <pre>     <span class="ruby-comment"># File lib/sequel/sql.rb</span>
+<span class="line-num">1282</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sql_string</span>
+<span class="line-num">1283</span>   <span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">op</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">1284</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

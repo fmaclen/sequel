@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::CsvSerializer - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-configure">::configure</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::CsvSerializer">
+  <h1 id="module-Sequel::Plugins::CsvSerializer" class="module">
+    module Sequel::Plugins::CsvSerializer
+  </h1>
+
+  <section class="description">
+    
+<p>csv_serializer handles serializing entire <a href="../Model.html"><code>Sequel::Model</code></a> objects to CSV, as well as support for deserializing CSV directly into <a href="../Model.html"><code>Sequel::Model</code></a> objects.  It requires the csv standard library.</p>
+
+<p>Basic Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">album</span> = <span class="ruby-constant">Album</span>[<span class="ruby-value">1</span>]
+<span class="ruby-identifier">album</span>.<span class="ruby-identifier">to_csv</span>(<span class="ruby-value">write_headers:</span> <span class="ruby-keyword">true</span>)
+<span class="ruby-comment"># =&gt; &quot;id,name,artist_id\n1,RF,2\n&quot;</span>
+</pre>
+
+<p>You can provide options to control the CSV output:</p>
+
+<pre class="ruby"><span class="ruby-identifier">album</span>.<span class="ruby-identifier">to_csv</span>(<span class="ruby-value">only:</span> <span class="ruby-value">:name</span>)
+<span class="ruby-identifier">album</span>.<span class="ruby-identifier">to_csv</span>(<span class="ruby-value">except:</span> [<span class="ruby-value">:id</span>, <span class="ruby-value">:artist_id</span>])
+<span class="ruby-comment"># =&gt; &quot;RF\n&quot;</span>
+</pre>
+
+<p><code>to_csv</code> also exists as a class and dataset method, both of which return all objects in the dataset:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">to_csv</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">artist_id:</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">to_csv</span>
+</pre>
+
+<p>If you have an existing array of model instances you want to convert to CSV, you can call the class to_csv method with the :array option:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">to_csv</span>(<span class="ruby-value">array:</span> [<span class="ruby-constant">Album</span>[<span class="ruby-value">1</span>], <span class="ruby-constant">Album</span>[<span class="ruby-value">2</span>]])
+</pre>
+
+<p>In addition to creating CSV, this plugin also enables <a href="../Model.html"><code>Sequel::Model</code></a> classes to create instances directly from CSV using the from_csv class method:</p>
+
+<pre class="ruby"><span class="ruby-identifier">csv</span> = <span class="ruby-identifier">album</span>.<span class="ruby-identifier">to_csv</span>
+<span class="ruby-identifier">album</span> = <span class="ruby-constant">Album</span>.<span class="ruby-identifier">from_csv</span>(<span class="ruby-identifier">csv</span>)
+</pre>
+
+<p>The array_from_csv class method exists to parse arrays of model instances from CSV:</p>
+
+<pre class="ruby"><span class="ruby-identifier">csv</span> = <span class="ruby-constant">Album</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">artist_id:</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">to_csv</span>
+<span class="ruby-identifier">albums</span> = <span class="ruby-constant">Album</span>.<span class="ruby-identifier">array_from_csv</span>(<span class="ruby-identifier">csv</span>)
+</pre>
+
+<p>These do not necessarily round trip, since doing so would let users create model objects with arbitrary values.  By default, from_csv will call set with the values in the hash.  If you want to specify the allowed fields, you can use the :headers option.</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">from_csv</span>(<span class="ruby-identifier">album</span>.<span class="ruby-identifier">to_csv</span>, <span class="ruby-value">headers:</span> <span class="ruby-node">%w&#39;id name&#39;</span>)
+</pre>
+
+<p>If you want to update an existing instance, you can use the from_csv instance method:</p>
+
+<pre class="ruby"><span class="ruby-identifier">album</span>.<span class="ruby-identifier">from_csv</span>(<span class="ruby-identifier">csv</span>)
+</pre>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Add CSV output capability to all model subclass instances (called</span>
+<span class="ruby-comment"># before loading subclasses)</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:csv_serializer</span>
+
+<span class="ruby-comment"># Add CSV output capability to Album class instances</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:csv_serializer</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-configure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">configure</span><span
+            class="method-args">(model, opts = OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set up the column readers to do deserialization and the column writers to save the value in deserialized_values</p>
+          
+          
+
+          
+          <div class="method-source-code" id="configure-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/csv_serializer.rb</span>
+<span class="line-num">70</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">configure</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">opts</span> = <span class="ruby-constant">OPTS</span>)
+<span class="line-num">71</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">72</span>     <span class="ruby-ivar">@csv_serializer_opts</span> = (<span class="ruby-ivar">@csv_serializer_opts</span> <span class="ruby-operator">||</span> <span class="ruby-constant">OPTS</span>).<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">opts</span>)
+<span class="line-num">73</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">74</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

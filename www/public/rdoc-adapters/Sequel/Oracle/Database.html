@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::Oracle::Database - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Sequel::Database
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="DatabaseMethods.html">Sequel::Oracle::DatabaseMethods</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-connect">#connect</a>
+    
+    <li ><a href="#method-i-disconnect_connection">#disconnect_connection</a>
+    
+    <li ><a href="#method-i-execute">#execute</a>
+    
+    <li ><a href="#method-i-execute_insert">#execute_insert</a>
+    
+    <li class="calls-super" ><a href="#method-i-freeze">#freeze</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::Oracle::Database">
+  <h1 id="class-Sequel::Oracle::Database" class="class">
+    class Sequel::Oracle::Database
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="CONNECTION_ERROR_CODES">CONNECTION_ERROR_CODES
+        
+        <dd><p>ORA-00028: your session has been killed ORA-01012: not logged on ORA-02396: exceeded maximum idle time, please connect again ORA-03113: end-of-file on communication channel ORA-03114: not connected to ORACLE ORA-03135: connection lost contact</p>
+        
+      
+        <dt id="ORACLE_TYPES">ORACLE_TYPES
+        
+        <dd>
+        
+      
+        <dt id="PS_TYPES">PS_TYPES
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-conversion_procs" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">conversion_procs</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Hash of conversion procs for this database.</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-connect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">connect</span><span
+            class="method-args">(server)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="connect-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/adapters/oracle.rb</span>
+<span class="line-num">28</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">connect</span>(<span class="ruby-identifier">server</span>)
+<span class="line-num">29</span>   <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">server_opts</span>(<span class="ruby-identifier">server</span>)
+<span class="line-num">30</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:database</span>]
+<span class="line-num">31</span>     <span class="ruby-identifier">dbname</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:host</span>] <span class="ruby-operator">?</span> \
+<span class="line-num">32</span>       <span class="ruby-node">&quot;//#{opts[:host]}#{&quot;:#{opts[:port]}&quot; if opts[:port]}/#{opts[:database]}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:database</span>]
+<span class="line-num">33</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">34</span>     <span class="ruby-identifier">dbname</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:host</span>]
+<span class="line-num">35</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">36</span>   <span class="ruby-identifier">conn</span> = <span class="ruby-constant">OCI8</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:user</span>], <span class="ruby-identifier">opts</span>[<span class="ruby-value">:password</span>], <span class="ruby-identifier">dbname</span>, <span class="ruby-identifier">opts</span>[<span class="ruby-value">:privilege</span>])
+<span class="line-num">37</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">prefetch_rows</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:prefetch_rows</span>, <span class="ruby-value">100</span>)
+<span class="line-num">38</span>     <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">prefetch_rows</span> = <span class="ruby-identifier">typecast_value_integer</span>(<span class="ruby-identifier">prefetch_rows</span>)
+<span class="line-num">39</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">40</span>   <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">autocommit</span> = <span class="ruby-keyword">true</span>
+<span class="line-num">41</span>   <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">non_blocking</span> = <span class="ruby-keyword">true</span>
+<span class="line-num">42</span>   
+<span class="line-num">43</span>   <span class="ruby-comment"># The ruby-oci8 gem which retrieves oracle columns with a type of</span>
+<span class="line-num">44</span>   <span class="ruby-comment"># DATE, TIMESTAMP, TIMESTAMP WITH TIME ZONE is complex based on the</span>
+<span class="line-num">45</span>   <span class="ruby-comment"># ruby version and Oracle version (9 or later)</span>
+<span class="line-num">46</span>   <span class="ruby-comment"># In the now standard case of Oracle 9 or later, the timezone</span>
+<span class="line-num">47</span>   <span class="ruby-comment"># is determined by the Oracle session timezone. Thus if the user</span>
+<span class="line-num">48</span>   <span class="ruby-comment"># requests Sequel provide UTC timezone to the application,</span>
+<span class="line-num">49</span>   <span class="ruby-comment"># we need to alter the session timezone to be UTC</span>
+<span class="line-num">50</span>   <span class="ruby-keyword">if</span> <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">application_timezone</span> <span class="ruby-operator">==</span> <span class="ruby-value">:utc</span>
+<span class="line-num">51</span>     <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-string">&quot;ALTER SESSION SET TIME_ZONE=&#39;-00:00&#39;&quot;</span>)
+<span class="line-num">52</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">53</span>   
+<span class="line-num">54</span>   <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">conn</span>
+<span class="line-num">55</span>     <span class="ruby-identifier">attr_reader</span> <span class="ruby-value">:prepared_statements</span>
+<span class="line-num">56</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">57</span>   <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:@prepared_statements</span>, {})
+<span class="line-num">58</span>   
+<span class="line-num">59</span>   <span class="ruby-identifier">conn</span>
+<span class="line-num">60</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-disconnect_connection" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">disconnect_connection</span><span
+            class="method-args">(c)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="disconnect_connection-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/adapters/oracle.rb</span>
+<span class="line-num">62</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">disconnect_connection</span>(<span class="ruby-identifier">c</span>)
+<span class="line-num">63</span>   <span class="ruby-identifier">c</span>.<span class="ruby-identifier">logoff</span>
+<span class="line-num">64</span> <span class="ruby-keyword">rescue</span> <span class="ruby-constant">OCIException</span>
+<span class="line-num">65</span>   <span class="ruby-keyword">nil</span>
+<span class="line-num">66</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-execute" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute</span><span
+            class="method-args">(sql, opts=OPTS, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="execute-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/adapters/oracle.rb</span>
+<span class="line-num">68</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">execute</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">69</span>   <span class="ruby-identifier">_execute</span>(<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">70</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-execute_insert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">execute_insert</span><span
+            class="method-args">(sql, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="execute_insert-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/adapters/oracle.rb</span>
+<span class="line-num">72</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">execute_insert</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">73</span>   <span class="ruby-identifier">_execute</span>(<span class="ruby-value">:insert</span>, <span class="ruby-identifier">sql</span>, <span class="ruby-identifier">opts</span>)
+<span class="line-num">74</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-freeze" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">freeze</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="DatabaseMethods.html#method-i-freeze"><code>Sequel::Oracle::DatabaseMethods#freeze</code></a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="freeze-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/adapters/oracle.rb</span>
+<span class="line-num">76</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">freeze</span>
+<span class="line-num">77</span>   <span class="ruby-ivar">@conversion_procs</span>.<span class="ruby-identifier">freeze</span>
+<span class="line-num">78</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">79</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

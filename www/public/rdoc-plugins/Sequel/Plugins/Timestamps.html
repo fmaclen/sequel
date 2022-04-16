@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::Timestamps - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-configure">::configure</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::Timestamps">
+  <h1 id="module-Sequel::Plugins::Timestamps" class="module">
+    module Sequel::Plugins::Timestamps
+  </h1>
+
+  <section class="description">
+    
+<p>The timestamps plugin creates hooks that automatically set create and update timestamp fields.  Both field names used are configurable, and you  can also set whether to overwrite existing create timestamps (false by default), or whether to set the update timestamp when creating (also false by default).</p>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Timestamp all model instances using +created_at+ and +updated_at+</span>
+<span class="ruby-comment"># (called before loading subclasses)</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:timestamps</span>
+
+<span class="ruby-comment"># Timestamp Album instances, with custom column names</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:timestamps</span>, <span class="ruby-value">create:</span> <span class="ruby-value">:created_on</span>, <span class="ruby-value">update:</span> <span class="ruby-value">:updated_on</span>
+
+<span class="ruby-comment"># Timestamp Artist instances, forcing an overwrite of the create</span>
+<span class="ruby-comment"># timestamp, and setting the update timestamp when creating</span>
+<span class="ruby-constant">Artist</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:timestamps</span>, <span class="ruby-value">force:</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">update_on_create:</span> <span class="ruby-keyword">true</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-configure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">configure</span><span
+            class="method-args">(model, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Configure the plugin by setting the available options.  Note that if this method is run more than once, previous settings are ignored, and it will just use the settings given or the default settings.  Options:</p>
+<dl class="rdoc-list note-list"><dt>:allow_manual_update 
+<dd>
+<p>Whether to skip setting the update timestamp if it has been modified manually (default: false)</p>
+</dd><dt>:create 
+<dd>
+<p>The field to hold the create timestamp (default: :created_at)</p>
+</dd><dt>:force 
+<dd>
+<p>Whether to overwrite an existing create timestamp (default: false)</p>
+</dd><dt>:update 
+<dd>
+<p>The field to hold the update timestamp (default: :updated_at)</p>
+</dd><dt>:update_on_create 
+<dd>
+<p>Whether to set the update timestamp to the create timestamp when creating (default: false)</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="configure-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/timestamps.rb</span>
+<span class="line-num">32</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">configure</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">33</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">34</span>     <span class="ruby-ivar">@allow_manual_timestamp_update</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:allow_manual_update</span>]<span class="ruby-operator">||</span><span class="ruby-keyword">false</span>
+<span class="line-num">35</span>     <span class="ruby-ivar">@create_timestamp_field</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:create</span>]<span class="ruby-operator">||</span><span class="ruby-value">:created_at</span>
+<span class="line-num">36</span>     <span class="ruby-ivar">@update_timestamp_field</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:update</span>]<span class="ruby-operator">||</span><span class="ruby-value">:updated_at</span>
+<span class="line-num">37</span>     <span class="ruby-ivar">@create_timestamp_overwrite</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:force</span>]<span class="ruby-operator">||</span><span class="ruby-keyword">false</span>
+<span class="line-num">38</span>     <span class="ruby-ivar">@set_update_timestamp_on_create</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:update_on_create</span>]<span class="ruby-operator">||</span><span class="ruby-keyword">false</span>
+<span class="line-num">39</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">40</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

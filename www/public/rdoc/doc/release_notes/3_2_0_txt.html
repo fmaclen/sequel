@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>3.2.0 - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../CHANGELOG.html">CHANGELOG</a>
+  
+    <li><a href="../../MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="../../README_rdoc.html">README</a>
+  
+    <li><a href="../../doc/CHANGELOG_old.html">CHANGELOG.old</a>
+  
+    <li><a href="../../doc/advanced_associations_rdoc.html">advanced_associations</a>
+  
+    <li><a href="../../doc/association_basics_rdoc.html">association_basics</a>
+  
+    <li><a href="../../doc/bin_sequel_rdoc.html">bin_sequel</a>
+  
+    <li><a href="../../doc/cheat_sheet_rdoc.html">cheat_sheet</a>
+  
+    <li><a href="../../doc/code_order_rdoc.html">code_order</a>
+  
+    <li><a href="../../doc/core_extensions_rdoc.html">core_extensions</a>
+  
+    <li><a href="../../doc/dataset_basics_rdoc.html">dataset_basics</a>
+  
+    <li><a href="../../doc/dataset_filtering_rdoc.html">dataset_filtering</a>
+  
+    <li><a href="../../doc/extensions_rdoc.html">extensions</a>
+  
+    <li><a href="../../doc/fork_safety_rdoc.html">fork_safety</a>
+  
+    <li><a href="../../doc/mass_assignment_rdoc.html">mass_assignment</a>
+  
+    <li><a href="../../doc/migration_rdoc.html">migration</a>
+  
+    <li><a href="../../doc/model_dataset_method_design_rdoc.html">model_dataset_method_design</a>
+  
+    <li><a href="../../doc/model_hooks_rdoc.html">model_hooks</a>
+  
+    <li><a href="../../doc/model_plugins_rdoc.html">model_plugins</a>
+  
+    <li><a href="../../doc/mssql_stored_procedures_rdoc.html">mssql_stored_procedures</a>
+  
+    <li><a href="../../doc/object_model_rdoc.html">object_model</a>
+  
+    <li><a href="../../doc/opening_databases_rdoc.html">opening_databases</a>
+  
+    <li><a href="../../doc/postgresql_rdoc.html">postgresql</a>
+  
+    <li><a href="../../doc/prepared_statements_rdoc.html">prepared_statements</a>
+  
+    <li><a href="../../doc/querying_rdoc.html">querying</a>
+  
+    <li><a href="../../doc/reflection_rdoc.html">reflection</a>
+  
+    <li><a href="../../doc/release_notes/1_0_txt.html">1.0</a>
+  
+    <li><a href="../../doc/release_notes/1_1_txt.html">1.1</a>
+  
+    <li><a href="../../doc/release_notes/1_3_txt.html">1.3</a>
+  
+    <li><a href="../../doc/release_notes/1_4_0_txt.html">1.4.0</a>
+  
+    <li><a href="../../doc/release_notes/1_5_0_txt.html">1.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_0_0_txt.html">2.0.0</a>
+  
+    <li><a href="../../doc/release_notes/2_1_0_txt.html">2.1.0</a>
+  
+    <li><a href="../../doc/release_notes/2_10_0_txt.html">2.10.0</a>
+  
+    <li><a href="../../doc/release_notes/2_11_0_txt.html">2.11.0</a>
+  
+    <li><a href="../../doc/release_notes/2_12_0_txt.html">2.12.0</a>
+  
+    <li><a href="../../doc/release_notes/2_2_0_txt.html">2.2.0</a>
+  
+    <li><a href="../../doc/release_notes/2_3_0_txt.html">2.3.0</a>
+  
+    <li><a href="../../doc/release_notes/2_4_0_txt.html">2.4.0</a>
+  
+    <li><a href="../../doc/release_notes/2_5_0_txt.html">2.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_6_0_txt.html">2.6.0</a>
+  
+    <li><a href="../../doc/release_notes/2_7_0_txt.html">2.7.0</a>
+  
+    <li><a href="../../doc/release_notes/2_8_0_txt.html">2.8.0</a>
+  
+    <li><a href="../../doc/release_notes/2_9_0_txt.html">2.9.0</a>
+  
+    <li><a href="../../doc/release_notes/3_0_0_txt.html">3.0.0</a>
+  
+    <li><a href="../../doc/release_notes/3_1_0_txt.html">3.1.0</a>
+  
+    <li><a href="../../doc/release_notes/3_10_0_txt.html">3.10.0</a>
+  
+    <li><a href="../../doc/release_notes/3_11_0_txt.html">3.11.0</a>
+  
+    <li><a href="../../doc/release_notes/3_12_0_txt.html">3.12.0</a>
+  
+    <li><a href="../../doc/release_notes/3_13_0_txt.html">3.13.0</a>
+  
+    <li><a href="../../doc/release_notes/3_14_0_txt.html">3.14.0</a>
+  
+    <li><a href="../../doc/release_notes/3_15_0_txt.html">3.15.0</a>
+  
+    <li><a href="../../doc/release_notes/3_16_0_txt.html">3.16.0</a>
+  
+    <li><a href="../../doc/release_notes/3_17_0_txt.html">3.17.0</a>
+  
+    <li><a href="../../doc/release_notes/3_18_0_txt.html">3.18.0</a>
+  
+    <li><a href="../../doc/release_notes/3_19_0_txt.html">3.19.0</a>
+  
+    <li><a href="../../doc/release_notes/3_2_0_txt.html">3.2.0</a>
+  
+    <li><a href="../../doc/release_notes/3_20_0_txt.html">3.20.0</a>
+  
+    <li><a href="../../doc/release_notes/3_21_0_txt.html">3.21.0</a>
+  
+    <li><a href="../../doc/release_notes/3_22_0_txt.html">3.22.0</a>
+  
+    <li><a href="../../doc/release_notes/3_23_0_txt.html">3.23.0</a>
+  
+    <li><a href="../../doc/release_notes/3_24_0_txt.html">3.24.0</a>
+  
+    <li><a href="../../doc/release_notes/3_25_0_txt.html">3.25.0</a>
+  
+    <li><a href="../../doc/release_notes/3_26_0_txt.html">3.26.0</a>
+  
+    <li><a href="../../doc/release_notes/3_27_0_txt.html">3.27.0</a>
+  
+    <li><a href="../../doc/release_notes/3_28_0_txt.html">3.28.0</a>
+  
+    <li><a href="../../doc/release_notes/3_29_0_txt.html">3.29.0</a>
+  
+    <li><a href="../../doc/release_notes/3_3_0_txt.html">3.3.0</a>
+  
+    <li><a href="../../doc/release_notes/3_30_0_txt.html">3.30.0</a>
+  
+    <li><a href="../../doc/release_notes/3_31_0_txt.html">3.31.0</a>
+  
+    <li><a href="../../doc/release_notes/3_32_0_txt.html">3.32.0</a>
+  
+    <li><a href="../../doc/release_notes/3_33_0_txt.html">3.33.0</a>
+  
+    <li><a href="../../doc/release_notes/3_34_0_txt.html">3.34.0</a>
+  
+    <li><a href="../../doc/release_notes/3_35_0_txt.html">3.35.0</a>
+  
+    <li><a href="../../doc/release_notes/3_36_0_txt.html">3.36.0</a>
+  
+    <li><a href="../../doc/release_notes/3_37_0_txt.html">3.37.0</a>
+  
+    <li><a href="../../doc/release_notes/3_38_0_txt.html">3.38.0</a>
+  
+    <li><a href="../../doc/release_notes/3_39_0_txt.html">3.39.0</a>
+  
+    <li><a href="../../doc/release_notes/3_4_0_txt.html">3.4.0</a>
+  
+    <li><a href="../../doc/release_notes/3_40_0_txt.html">3.40.0</a>
+  
+    <li><a href="../../doc/release_notes/3_41_0_txt.html">3.41.0</a>
+  
+    <li><a href="../../doc/release_notes/3_42_0_txt.html">3.42.0</a>
+  
+    <li><a href="../../doc/release_notes/3_43_0_txt.html">3.43.0</a>
+  
+    <li><a href="../../doc/release_notes/3_44_0_txt.html">3.44.0</a>
+  
+    <li><a href="../../doc/release_notes/3_45_0_txt.html">3.45.0</a>
+  
+    <li><a href="../../doc/release_notes/3_46_0_txt.html">3.46.0</a>
+  
+    <li><a href="../../doc/release_notes/3_47_0_txt.html">3.47.0</a>
+  
+    <li><a href="../../doc/release_notes/3_48_0_txt.html">3.48.0</a>
+  
+    <li><a href="../../doc/release_notes/3_5_0_txt.html">3.5.0</a>
+  
+    <li><a href="../../doc/release_notes/3_6_0_txt.html">3.6.0</a>
+  
+    <li><a href="../../doc/release_notes/3_7_0_txt.html">3.7.0</a>
+  
+    <li><a href="../../doc/release_notes/3_8_0_txt.html">3.8.0</a>
+  
+    <li><a href="../../doc/release_notes/3_9_0_txt.html">3.9.0</a>
+  
+    <li><a href="../../doc/release_notes/4_0_0_txt.html">4.0.0</a>
+  
+    <li><a href="../../doc/release_notes/4_1_0_txt.html">4.1.0</a>
+  
+    <li><a href="../../doc/release_notes/4_10_0_txt.html">4.10.0</a>
+  
+    <li><a href="../../doc/release_notes/4_11_0_txt.html">4.11.0</a>
+  
+    <li><a href="../../doc/release_notes/4_12_0_txt.html">4.12.0</a>
+  
+    <li><a href="../../doc/release_notes/4_13_0_txt.html">4.13.0</a>
+  
+    <li><a href="../../doc/release_notes/4_14_0_txt.html">4.14.0</a>
+  
+    <li><a href="../../doc/release_notes/4_15_0_txt.html">4.15.0</a>
+  
+    <li><a href="../../doc/release_notes/4_16_0_txt.html">4.16.0</a>
+  
+    <li><a href="../../doc/release_notes/4_17_0_txt.html">4.17.0</a>
+  
+    <li><a href="../../doc/release_notes/4_18_0_txt.html">4.18.0</a>
+  
+    <li><a href="../../doc/release_notes/4_19_0_txt.html">4.19.0</a>
+  
+    <li><a href="../../doc/release_notes/4_2_0_txt.html">4.2.0</a>
+  
+    <li><a href="../../doc/release_notes/4_20_0_txt.html">4.20.0</a>
+  
+    <li><a href="../../doc/release_notes/4_21_0_txt.html">4.21.0</a>
+  
+    <li><a href="../../doc/release_notes/4_22_0_txt.html">4.22.0</a>
+  
+    <li><a href="../../doc/release_notes/4_23_0_txt.html">4.23.0</a>
+  
+    <li><a href="../../doc/release_notes/4_24_0_txt.html">4.24.0</a>
+  
+    <li><a href="../../doc/release_notes/4_25_0_txt.html">4.25.0</a>
+  
+    <li><a href="../../doc/release_notes/4_26_0_txt.html">4.26.0</a>
+  
+    <li><a href="../../doc/release_notes/4_27_0_txt.html">4.27.0</a>
+  
+    <li><a href="../../doc/release_notes/4_28_0_txt.html">4.28.0</a>
+  
+    <li><a href="../../doc/release_notes/4_29_0_txt.html">4.29.0</a>
+  
+    <li><a href="../../doc/release_notes/4_3_0_txt.html">4.3.0</a>
+  
+    <li><a href="../../doc/release_notes/4_30_0_txt.html">4.30.0</a>
+  
+    <li><a href="../../doc/release_notes/4_31_0_txt.html">4.31.0</a>
+  
+    <li><a href="../../doc/release_notes/4_32_0_txt.html">4.32.0</a>
+  
+    <li><a href="../../doc/release_notes/4_33_0_txt.html">4.33.0</a>
+  
+    <li><a href="../../doc/release_notes/4_34_0_txt.html">4.34.0</a>
+  
+    <li><a href="../../doc/release_notes/4_35_0_txt.html">4.35.0</a>
+  
+    <li><a href="../../doc/release_notes/4_36_0_txt.html">4.36.0</a>
+  
+    <li><a href="../../doc/release_notes/4_37_0_txt.html">4.37.0</a>
+  
+    <li><a href="../../doc/release_notes/4_38_0_txt.html">4.38.0</a>
+  
+    <li><a href="../../doc/release_notes/4_39_0_txt.html">4.39.0</a>
+  
+    <li><a href="../../doc/release_notes/4_4_0_txt.html">4.4.0</a>
+  
+    <li><a href="../../doc/release_notes/4_40_0_txt.html">4.40.0</a>
+  
+    <li><a href="../../doc/release_notes/4_41_0_txt.html">4.41.0</a>
+  
+    <li><a href="../../doc/release_notes/4_42_0_txt.html">4.42.0</a>
+  
+    <li><a href="../../doc/release_notes/4_43_0_txt.html">4.43.0</a>
+  
+    <li><a href="../../doc/release_notes/4_44_0_txt.html">4.44.0</a>
+  
+    <li><a href="../../doc/release_notes/4_45_0_txt.html">4.45.0</a>
+  
+    <li><a href="../../doc/release_notes/4_46_0_txt.html">4.46.0</a>
+  
+    <li><a href="../../doc/release_notes/4_47_0_txt.html">4.47.0</a>
+  
+    <li><a href="../../doc/release_notes/4_48_0_txt.html">4.48.0</a>
+  
+    <li><a href="../../doc/release_notes/4_49_0_txt.html">4.49.0</a>
+  
+    <li><a href="../../doc/release_notes/4_5_0_txt.html">4.5.0</a>
+  
+    <li><a href="../../doc/release_notes/4_6_0_txt.html">4.6.0</a>
+  
+    <li><a href="../../doc/release_notes/4_7_0_txt.html">4.7.0</a>
+  
+    <li><a href="../../doc/release_notes/4_8_0_txt.html">4.8.0</a>
+  
+    <li><a href="../../doc/release_notes/4_9_0_txt.html">4.9.0</a>
+  
+    <li><a href="../../doc/release_notes/5_0_0_txt.html">5.0.0</a>
+  
+    <li><a href="../../doc/release_notes/5_1_0_txt.html">5.1.0</a>
+  
+    <li><a href="../../doc/release_notes/5_10_0_txt.html">5.10.0</a>
+  
+    <li><a href="../../doc/release_notes/5_11_0_txt.html">5.11.0</a>
+  
+    <li><a href="../../doc/release_notes/5_12_0_txt.html">5.12.0</a>
+  
+    <li><a href="../../doc/release_notes/5_13_0_txt.html">5.13.0</a>
+  
+    <li><a href="../../doc/release_notes/5_14_0_txt.html">5.14.0</a>
+  
+    <li><a href="../../doc/release_notes/5_15_0_txt.html">5.15.0</a>
+  
+    <li><a href="../../doc/release_notes/5_16_0_txt.html">5.16.0</a>
+  
+    <li><a href="../../doc/release_notes/5_17_0_txt.html">5.17.0</a>
+  
+    <li><a href="../../doc/release_notes/5_18_0_txt.html">5.18.0</a>
+  
+    <li><a href="../../doc/release_notes/5_19_0_txt.html">5.19.0</a>
+  
+    <li><a href="../../doc/release_notes/5_2_0_txt.html">5.2.0</a>
+  
+    <li><a href="../../doc/release_notes/5_20_0_txt.html">5.20.0</a>
+  
+    <li><a href="../../doc/release_notes/5_21_0_txt.html">5.21.0</a>
+  
+    <li><a href="../../doc/release_notes/5_22_0_txt.html">5.22.0</a>
+  
+    <li><a href="../../doc/release_notes/5_23_0_txt.html">5.23.0</a>
+  
+    <li><a href="../../doc/release_notes/5_24_0_txt.html">5.24.0</a>
+  
+    <li><a href="../../doc/release_notes/5_25_0_txt.html">5.25.0</a>
+  
+    <li><a href="../../doc/release_notes/5_26_0_txt.html">5.26.0</a>
+  
+    <li><a href="../../doc/release_notes/5_27_0_txt.html">5.27.0</a>
+  
+    <li><a href="../../doc/release_notes/5_28_0_txt.html">5.28.0</a>
+  
+    <li><a href="../../doc/release_notes/5_29_0_txt.html">5.29.0</a>
+  
+    <li><a href="../../doc/release_notes/5_3_0_txt.html">5.3.0</a>
+  
+    <li><a href="../../doc/release_notes/5_30_0_txt.html">5.30.0</a>
+  
+    <li><a href="../../doc/release_notes/5_31_0_txt.html">5.31.0</a>
+  
+    <li><a href="../../doc/release_notes/5_32_0_txt.html">5.32.0</a>
+  
+    <li><a href="../../doc/release_notes/5_33_0_txt.html">5.33.0</a>
+  
+    <li><a href="../../doc/release_notes/5_34_0_txt.html">5.34.0</a>
+  
+    <li><a href="../../doc/release_notes/5_35_0_txt.html">5.35.0</a>
+  
+    <li><a href="../../doc/release_notes/5_36_0_txt.html">5.36.0</a>
+  
+    <li><a href="../../doc/release_notes/5_37_0_txt.html">5.37.0</a>
+  
+    <li><a href="../../doc/release_notes/5_38_0_txt.html">5.38.0</a>
+  
+    <li><a href="../../doc/release_notes/5_39_0_txt.html">5.39.0</a>
+  
+    <li><a href="../../doc/release_notes/5_4_0_txt.html">5.4.0</a>
+  
+    <li><a href="../../doc/release_notes/5_40_0_txt.html">5.40.0</a>
+  
+    <li><a href="../../doc/release_notes/5_41_0_txt.html">5.41.0</a>
+  
+    <li><a href="../../doc/release_notes/5_42_0_txt.html">5.42.0</a>
+  
+    <li><a href="../../doc/release_notes/5_43_0_txt.html">5.43.0</a>
+  
+    <li><a href="../../doc/release_notes/5_44_0_txt.html">5.44.0</a>
+  
+    <li><a href="../../doc/release_notes/5_45_0_txt.html">5.45.0</a>
+  
+    <li><a href="../../doc/release_notes/5_46_0_txt.html">5.46.0</a>
+  
+    <li><a href="../../doc/release_notes/5_47_0_txt.html">5.47.0</a>
+  
+    <li><a href="../../doc/release_notes/5_48_0_txt.html">5.48.0</a>
+  
+    <li><a href="../../doc/release_notes/5_49_0_txt.html">5.49.0</a>
+  
+    <li><a href="../../doc/release_notes/5_5_0_txt.html">5.5.0</a>
+  
+    <li><a href="../../doc/release_notes/5_50_0_txt.html">5.50.0</a>
+  
+    <li><a href="../../doc/release_notes/5_51_0_txt.html">5.51.0</a>
+  
+    <li><a href="../../doc/release_notes/5_52_0_txt.html">5.52.0</a>
+  
+    <li><a href="../../doc/release_notes/5_53_0_txt.html">5.53.0</a>
+  
+    <li><a href="../../doc/release_notes/5_54_0_txt.html">5.54.0</a>
+  
+    <li><a href="../../doc/release_notes/5_55_0_txt.html">5.55.0</a>
+  
+    <li><a href="../../doc/release_notes/5_6_0_txt.html">5.6.0</a>
+  
+    <li><a href="../../doc/release_notes/5_7_0_txt.html">5.7.0</a>
+  
+    <li><a href="../../doc/release_notes/5_8_0_txt.html">5.8.0</a>
+  
+    <li><a href="../../doc/release_notes/5_9_0_txt.html">5.9.0</a>
+  
+    <li><a href="../../doc/schema_modification_rdoc.html">schema_modification</a>
+  
+    <li><a href="../../doc/security_rdoc.html">security</a>
+  
+    <li><a href="../../doc/sharding_rdoc.html">sharding</a>
+  
+    <li><a href="../../doc/sql_rdoc.html">sql</a>
+  
+    <li><a href="../../doc/testing_rdoc.html">testing</a>
+  
+    <li><a href="../../doc/thread_safety_rdoc.html">thread_safety</a>
+  
+    <li><a href="../../doc/transactions_rdoc.html">transactions</a>
+  
+    <li><a href="../../doc/validations_rdoc.html">validations</a>
+  
+    <li><a href="../../doc/virtual_rows_rdoc.html">virtual_rows</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/release_notes/3.2.0.txt">
+
+<p>New Features</p>
+<hr>
+<ul><li>
+<p>Common table expressions (CTEs) are now supported.  CTEs use the SQL WITH clause, and specify inline views that queries can use. They also support a recursive mode, where the CTE can recursively query its own output, allowing you do do things like load all branches for a given node in a plain tree structure.</p>
+
+<p>The standard with takes an alias and a dataset:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:vw</span>].<span class="ruby-identifier">with</span>(<span class="ruby-value">:vw</span>, <span class="ruby-constant">DB</span>[<span class="ruby-value">:table</span>].<span class="ruby-identifier">filter</span>{<span class="ruby-identifier">col</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>})
+<span class="ruby-comment"># WITH vw AS (SELECT * FROM table WHERE col &lt; 1)</span>
+<span class="ruby-comment"># SELECT * FROM vw</span>
+</pre>
+
+<p>The recursive with takes an alias, a nonrecursive dataset, and a recursive dataset:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:vw</span>].<span class="ruby-identifier">with_recursive</span>(<span class="ruby-value">:vw</span>,
+  <span class="ruby-constant">DB</span>[<span class="ruby-value">:tree</span>].<span class="ruby-identifier">filter</span>(<span class="ruby-value">:id</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">1</span>),
+  <span class="ruby-constant">DB</span>[<span class="ruby-value">:tree</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value">:vw</span>, <span class="ruby-value">:id</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">:parent_id</span>).
+            <span class="ruby-identifier">select</span>(<span class="ruby-value">:vw__id</span>, <span class="ruby-value">:vw__parent_id</span>))
+<span class="ruby-comment"># WITH RECURSIVE vw AS (SELECT * FROM tree</span>
+<span class="ruby-comment">#     WHERE (id = 1)</span>
+<span class="ruby-comment">#     UNION ALL</span>
+<span class="ruby-comment">#     SELECT vw.id, vw.parent_id</span>
+<span class="ruby-comment">#     FROM tree</span>
+<span class="ruby-comment">#     INNER JOIN vw ON (vw.id = tree.parent_id))</span>
+<span class="ruby-comment"># SELECT * FROM vw</span>
+</pre>
+
+<p>CTEs are supported by Microsoft SQL Server 2005+, DB2 7+, Firebird 2.1+, Oracle 9+, and PostgreSQL 8.4+.</p>
+</li><li>
+<p>SQL window functions are now supported, and a DSL has been added to ease their creation.  Window functions act similarly to aggregate functions but operate on sliding ranges of rows.</p>
+
+<p>In virtual row blocks (blocks passed to filter, select, order, etc.) you can now provide a block to method calls to change the default behavior to create functions that weren&#39;t possible previously.  The blocks aren&#39;t called, but their presence serves as a flag.</p>
+
+<p>What function is created depends on the arguments to the method:</p>
+<ul><li>
+<p>If there are no arguments, an SQL::Function is created with the name of method used, and no arguments.  Previously, it was not possible to create functions without arguments using the virtual row block DSL.  Example:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>.<span class="ruby-identifier">dataset</span>.<span class="ruby-identifier">select</span>{<span class="ruby-identifier">version</span>{}} <span class="ruby-comment"># SELECT version()</span>
+</pre>
+</li><li>
+<p>If the first argument is :*, an SQL::Function is created with a single wildcard argument (*).  This is mostly useful for count:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:t</span>].<span class="ruby-identifier">select</span>{<span class="ruby-identifier">count</span>(<span class="ruby-value">:*</span>){}} <span class="ruby-comment"># SELECT count(*) FROM t</span>
+</pre>
+</li><li>
+<p>If the first argument is :distinct, an SQL::Function is created with the keyword DISTINCT prefacing all remaining arguments. This is useful for aggregate functions such as count:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:t</span>].<span class="ruby-identifier">select</span>{<span class="ruby-identifier">count</span>(<span class="ruby-value">:distinct</span>, <span class="ruby-identifier">col1</span>){}}
+<span class="ruby-comment"># SELECT count(DISTINCT col1) FROM t</span>
+</pre>
+</li><li>
+<p>If the first argument is :over, the second argument, if provided, should be a hash of options to pass to SQL::Window.  The options hash can also contain :*=&gt;true to use a wildcard argument as the function argument, or :args=&gt;… to specify an array of arguments to use as the function arguments.</p>
+
+<pre>DB[:t].select{rank(:over){}} # SELECT rank() OVER ()
+DB[:t].select{count(:over, :*=&gt;true){}} # SELECT count(*) OVER ()
+DB[:t].select{sum(:over, :args=&gt;col1,
+              :partition=&gt;col2, :order=&gt;col3){}}
+# SELECT sum(col1) OVER (PARTITION BY col2 ORDER BY col3)</pre>
+</li></ul>
+
+<p>PostgreSQL also supports named windows.  Named windows can be specified by Dataset#window, and window functions can reference them using the :window option.</p>
+</li><li>
+<p>Schema information for columns now includes a :ruby_default entry which contains a ruby object that represents the default given by the database (which is stored in :default).  Not all :default entries can be parsed into a :ruby_default, but if the schema_dumper extension previously supported it, it should work.</p>
+</li><li>
+<p>Methods to create compound datasets (union, intersect, except), now take an options hash instead of a true/false flag.  The previous API is still supported, but switching to specifying the ALL setting using :all=&gt;true is recommended.</p>
+
+<p>Additionally, you can now set :from_self=&gt;false to not wrap the returned dataset in a “SELECT * FROM (…)”.</p>
+</li><li>
+<p>Dataset#ungraphed was added that removes the graphing information from the dataset.  This allows you to use Dataset#graph for the automatic aliasing, or eager_graph for the automatic aliasing and joining, and then remove the graphing information so that the resulting objects will not be split into subhashes or associations.</p>
+</li><li>
+<p>There were some introspection methods added to Dataset to describe which capabilities that dataset does or does not support:</p>
+
+<pre class="ruby"><span class="ruby-identifier">supports_cte?</span>
+<span class="ruby-identifier">supports_distinct_on?</span>
+<span class="ruby-identifier">supports_intersect_except?</span>
+<span class="ruby-identifier">supports_intersect_except_all?</span>
+<span class="ruby-identifier">supports_window_functions?</span>
+</pre>
+
+<p>In addition to being available for the user to use, these are also used internally, so attempting to use a CTE on a dataset that doesn&#39;t support it will raise an Error.</p>
+</li><li>
+<p>Dataset#qualify was added, which is like qualify_to with a default of first_source.</p>
+
+<p>Additionally, qualify now affects PlaceholderLiteralStrings.  It doesn&#39;t scan the string (as <a href="../../Sequel.html"><code>Sequel</code></a> never attempts to parse SQL), but if you provide the column as a symbol placeholder argument, it will qualify it.</p>
+</li><li>
+<p>You can now specify the table and column <a href="../../Sequel/Migrator.html"><code>Sequel::Migrator</code></a> will use to record the current schema version.  The new Migrator.run method must be used to use these new options.</p>
+</li><li>
+<p>The JDBC adapter now accepts :user and :password options, instead of requiring them to be specified in the connection string and  handled by the JDBC driver.  This should allow connections to Oracle using the Thin JDBC driver.</p>
+</li><li>
+<p>You can now specify the max_connections, pool_timeout, and single_threaded settings directly in the connection string:</p>
+
+<pre>postgres:///database?single_threaded=t
+postgres:///database?max_connections=10&amp;pool_timeout=20</pre>
+</li><li>
+<p>Dataset#on_duplicate_key_update now affects Dataset#insert when using MySQL.</p>
+</li><li>
+<p>You can now specify the :opclass option when creating PostgreSQL indexes.  Currently, this only supports a single operator class for all columns.  If you need different operator classes per column, please post on sequel-talk.</p>
+</li><li>
+<p>Model#autoincrementing_primary_key was added and can be used if the autoincrementing key isn&#39;t the same as the primary key.  The only likely use for this is on MySQL MyISAM tables with composite primary keys where only one of the composite parts is autoincrementing.</p>
+</li><li>
+<p>You can now use database column values as search patterns and specify the text to search as a String or Regexp:</p>
+
+<pre class="ruby"><span class="ruby-constant">String</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:include</span>, <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">StringMethods</span>)
+<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:include</span>, <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">StringMethods</span>)
+
+<span class="ruby-string">&#39;a&#39;</span>.<span class="ruby-identifier">like</span>(<span class="ruby-value">:x</span>)  <span class="ruby-comment"># (&#39;a&#39; LIKE x)</span>
+<span class="ruby-regexp">/a/</span>.<span class="ruby-identifier">like</span>(<span class="ruby-value">:x</span>)  <span class="ruby-comment"># (&#39;a&#39; ~ x)</span>
+<span class="ruby-regexp">/a/i</span>.<span class="ruby-identifier">like</span>(<span class="ruby-value">:x</span>) <span class="ruby-comment"># (&#39;a&#39; ~* x)</span>
+<span class="ruby-regexp">/a/</span>.<span class="ruby-identifier">like</span>(<span class="ruby-value">:x</span>, <span class="ruby-string">&#39;b&#39;</span>) <span class="ruby-comment"># ((&#39;a&#39; ~ x) OR (&#39;a&#39; ~ &#39;b&#39;))</span>
+</pre>
+</li><li>
+<p>The Dataset#dataset_alias private method was added.  It can be overridden if you have tables named t0, t1, etc., and want to make sure the default dataset aliases that <a href="../../Sequel.html"><code>Sequel</code></a> uses do not clash with existing table names.</p>
+</li><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> now raises an Error if you call Sequel.connect with something that is not a Hash or String.</p>
+</li><li>
+<p>bin/sequel now accepts a -N option to not test the database connection.</p>
+</li><li>
+<p>An opening_databases.rdoc file was added to the documentation directory, which should be a good introduction for new users about how to set up your Database connection.</p>
+</li></ul>
+
+<p>Other Improvements</p>
+<hr>
+<ul><li>
+<p>MySQL native adapter SELECT is much faster than before, up to 75% faster.</p>
+</li><li>
+<p>JDBC SELECT is about 10% faster than before.  It&#39;s still much slower than the native adapters, due to conversion issues.</p>
+</li><li>
+<p>bin/sequel now works with a YAML file on ruby 1.9.</p>
+</li><li>
+<p>MySQL foreign key table constraints have been fixed.</p>
+</li><li>
+<p>Database#indexes now works on PostgreSQL if the schema used is a Symbol.  It also works on PostgreSQL versions all the way back to 7.4.</p>
+</li><li>
+<p>Graphing of datasets with dataset sources has been fixed.</p>
+</li><li>
+<p>Changing a columns name, type, or NULL status on MySQL now supports a much wider selection of column defaults.</p>
+</li><li>
+<p>The stored procedure code is now thread-safe.  <a href="../../Sequel.html"><code>Sequel</code></a> is thread-safe in general, but due to a bug the previous stored  procedure code was not thread-safe.</p>
+</li><li>
+<p>The ODBC adapter now drops statements automatically instead of requiring the user to do so manually, making it more similar to other adapters.</p>
+</li><li>
+<p>The single_table_inheritance plugin no longer overwrites the STI field if the field already has a value.  This allows you to use create in the generic class to insert a value that will be returned as a subclass:</p>
+
+<pre class="ruby"><span class="ruby-constant">Person</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:kind</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;Manager&quot;</span>)
+</pre>
+</li><li>
+<p>When altering colums on MySQL, :unsigned, :elements, :size and other options given are no longer ignored.</p>
+</li><li>
+<p>The PostgreSQL shared adapter&#39;s explain and analyze methods have been fixed, they had been broken in 3.0.</p>
+</li><li>
+<p>Parsing of the server&#39;s version is more robust on PostgreSQL. It should now work correctly for 8.4 and 8.4rc1 type versions.</p>
+</li></ul>
+
+<p>Backwards Compatibility</p>
+<hr>
+<ul><li>
+<p>Dataset#table_exists? has been removed, since it never worked perfectly.  Use Database#table_exists? instead.</p>
+</li><li>
+<p>Model.grep now calls Dataset#grep instead of Enumerable#grep. If you are using Model.grep, you need to modify your application.</p>
+</li><li>
+<p>The MSSQL shared adapter previously used the :with option for storing the NOLOCK setting of the query.  That option has been renamed to :table_options, since :with is now used for CTEs. This should not have an effect unless you where using the option manually.</p>
+</li><li>
+<p>Previously, providing a block to a method calls in virtual row blocks did not change behavior, where now it causes a different code path to be used.  In both cases, the block is not evaluated, but that may change in a future version.</p>
+</li><li>
+<p>Dataset#to_table_reference protected method was removed, as it was no longer used.</p>
+</li><li>
+<p>The pool_timeout setting is now converted to an Integer, so if you used to pass in a Float, it no longer works the same way.</p>
+</li><li>
+<p>Most files in adapters/utils have been removed, in favor of  integrating the code directly into Database and Dataset.  If you were previously checking for the UnsupportedIntersectExcept or related modules, use the Dataset introspection methods instead (e.g. supports_intersect_except?).</p>
+</li><li>
+<p>If you were using the ODBC adapter and manually dropping returned statements, you should note that now statements are dropped automatically, and the execute method doesn&#39;t return a statement object.</p>
+</li><li>
+<p>The MySQL adapter on_duplicate_key_update_sql is now a private method.</p>
+</li><li>
+<p>If you were modifying the :from dataset option directly, note that <a href="../../Sequel.html"><code>Sequel</code></a> now expects this option to be preprocessed.  See the new implementation of Dataset#from for an idea of the changes required.</p>
+</li><li>
+<p>Dataset#simple_select_all? now returns false instead of true for a dataset that selects from another dataset.</p>
+</li></ul>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

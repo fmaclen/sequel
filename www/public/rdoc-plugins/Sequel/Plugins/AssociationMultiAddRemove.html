@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::AssociationMultiAddRemove - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::AssociationMultiAddRemove">
+  <h1 id="module-Sequel::Plugins::AssociationMultiAddRemove" class="module">
+    module Sequel::Plugins::AssociationMultiAddRemove
+  </h1>
+
+  <section class="description">
+    
+<p>The association_multi_add_remove plugin allows adding, removing and setting multiple associated objects in a single method call. By default <a href="../Model.html"><code>Sequel::Model</code></a> defines singular <code>add_*</code> and <code>remove_*</code> methods that operate on a single associated object, this adds plural forms that operate on multiple associated objects. Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">artist</span>.<span class="ruby-identifier">albums</span> <span class="ruby-comment"># =&gt; [album1]</span>
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">add_albums</span>([<span class="ruby-identifier">album2</span>, <span class="ruby-identifier">album3</span>])
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">albums</span> <span class="ruby-comment"># =&gt; [album1, album2, album3]</span>
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">remove_albums</span>([<span class="ruby-identifier">album3</span>, <span class="ruby-identifier">album1</span>])
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">albums</span> <span class="ruby-comment"># =&gt; [album2]</span>
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">albums</span> = [<span class="ruby-identifier">album2</span>, <span class="ruby-identifier">album3</span>]
+<span class="ruby-identifier">artist</span>.<span class="ruby-identifier">albums</span> <span class="ruby-comment"># =&gt; [album2, album3]</span>
+</pre>
+
+<p>It can handle all situations that the normal singular methods handle, but there is no attempt to optimize behavior, so using these methods will not improve performance.</p>
+
+<p>The add/remove/set methods defined by this plugin use a transaction, so if one add/remove/set fails and raises an exception, all adds/removes/set will be rolled back. If you are using database sharding and want to save to a specific shard, call Model#set_server to set the server for this instance, as the transaction will be opened on that server.</p>
+
+<p>You can customize the method names used for adding/removing multiple associated objects using the :multi_add_method and :multi_remove_method association options.</p>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Allow adding/removing/setting multiple associated objects in a single call</span>
+<span class="ruby-comment"># for all model subclass instances (called before loading subclasses):</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:association_multi_add_remove</span>
+
+<span class="ruby-comment"># Allow adding/removing/setting multiple associated objects in a single call</span>
+<span class="ruby-comment"># for Album instances (called before defining associations in the class):</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:association_multi_add_remove</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

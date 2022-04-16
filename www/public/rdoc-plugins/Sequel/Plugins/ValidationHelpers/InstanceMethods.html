@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::ValidationHelpers::InstanceMethods - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+  var index_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/navigation.js" defer></script>
+<script src="../../../js/search.js" defer></script>
+<script src="../../../js/search_index.js" defer></script>
+<script src="../../../js/searcher.js" defer></script>
+<script src="../../../js/darkfish.js" defer></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-validates_exact_length">#validates_exact_length</a>
+    
+    <li ><a href="#method-i-validates_format">#validates_format</a>
+    
+    <li ><a href="#method-i-validates_includes">#validates_includes</a>
+    
+    <li ><a href="#method-i-validates_integer">#validates_integer</a>
+    
+    <li ><a href="#method-i-validates_length_range">#validates_length_range</a>
+    
+    <li ><a href="#method-i-validates_max_length">#validates_max_length</a>
+    
+    <li ><a href="#method-i-validates_min_length">#validates_min_length</a>
+    
+    <li ><a href="#method-i-validates_no_null_byte">#validates_no_null_byte</a>
+    
+    <li ><a href="#method-i-validates_not_null">#validates_not_null</a>
+    
+    <li ><a href="#method-i-validates_numeric">#validates_numeric</a>
+    
+    <li ><a href="#method-i-validates_operator">#validates_operator</a>
+    
+    <li ><a href="#method-i-validates_presence">#validates_presence</a>
+    
+    <li ><a href="#method-i-validates_schema_types">#validates_schema_types</a>
+    
+    <li ><a href="#method-i-validates_type">#validates_type</a>
+    
+    <li ><a href="#method-i-validates_unique">#validates_unique</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::ValidationHelpers::InstanceMethods">
+  <h1 id="module-Sequel::Plugins::ValidationHelpers::InstanceMethods" class="module">
+    module Sequel::Plugins::ValidationHelpers::InstanceMethods
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-validates_exact_length" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_exact_length</span><span
+            class="method-args">(exact, atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check that the attribute values are the given exact length.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_exact_length-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num"> 99</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_exact_length</span>(<span class="ruby-identifier">exact</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">100</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:exact_length</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>, <span class="ruby-identifier">exact</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">exact</span>}
+<span class="line-num">101</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_format" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_format</span><span
+            class="method-args">(with, atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check the string representation of the attribute value(s) against the regular expression with.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_format-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">104</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_format</span>(<span class="ruby-identifier">with</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">105</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:format</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>, <span class="ruby-identifier">with</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">with</span>}
+<span class="line-num">106</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_includes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_includes</span><span
+            class="method-args">(set, atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check attribute value(s) is included in the given set.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_includes-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">109</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_includes</span>(<span class="ruby-identifier">set</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">110</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:includes</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>, <span class="ruby-identifier">set</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">set</span>.<span class="ruby-identifier">public_send</span>(<span class="ruby-identifier">set</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:cover?</span>) <span class="ruby-operator">?</span> <span class="ruby-value">:cover?</span> <span class="ruby-operator">:</span> <span class="ruby-value">:include?</span>, <span class="ruby-identifier">v</span>)}
+<span class="line-num">111</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_integer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_integer</span><span
+            class="method-args">(atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check attribute value(s) string representation is a valid integer.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_integer-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">114</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_integer</span>(<span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">115</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:integer</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+<span class="line-num">116</span>     <span class="ruby-keyword">begin</span>
+<span class="line-num">117</span>       <span class="ruby-constant">Kernel</span>.<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>)
+<span class="line-num">118</span>       <span class="ruby-keyword">nil</span>
+<span class="line-num">119</span>     <span class="ruby-keyword">rescue</span>
+<span class="line-num">120</span>       <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>)
+<span class="line-num">121</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">122</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">123</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_length_range" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_length_range</span><span
+            class="method-args">(range, atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check that the attribute values length is in the specified range.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_length_range-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">126</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_length_range</span>(<span class="ruby-identifier">range</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">127</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:length_range</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>, <span class="ruby-identifier">range</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">range</span>.<span class="ruby-identifier">cover?</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span>)}
+<span class="line-num">128</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_max_length" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_max_length</span><span
+            class="method-args">(max, atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check that the attribute values are not longer than the given max length.</p>
+
+<p>Accepts a :nil_message option that is the error message to use when the value is nil instead of being too long.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_max_length-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">134</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_max_length</span>(<span class="ruby-identifier">max</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">135</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:max_length</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+<span class="line-num">136</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span>
+<span class="line-num">137</span>       <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:nil_message</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default_validation_helpers_options</span>(<span class="ruby-value">:max_length</span>)[<span class="ruby-value">:nil_message</span>])
+<span class="line-num">138</span>     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max</span>
+<span class="line-num">139</span>       <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>, <span class="ruby-identifier">max</span>)
+<span class="line-num">140</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">141</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">142</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_min_length" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_min_length</span><span
+            class="method-args">(min, atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check that the attribute values are not shorter than the given min length.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_min_length-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">145</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_min_length</span>(<span class="ruby-identifier">min</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">146</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:min_length</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>, <span class="ruby-identifier">min</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min</span>}
+<span class="line-num">147</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_no_null_byte" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_no_null_byte</span><span
+            class="method-args">(atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check attribute value(s) does not contain a null (“0”, ASCII NUL) byte.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_no_null_byte-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">155</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_no_null_byte</span>(<span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">156</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:no_null_byte</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>) <span class="ruby-keyword">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;\0&quot;</span>)}
+<span class="line-num">157</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_not_null" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_not_null</span><span
+            class="method-args">(atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check attribute value(s) are not NULL/nil.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_not_null-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">150</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_not_null</span>(<span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">151</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:not_null</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span>}
+<span class="line-num">152</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_numeric" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_numeric</span><span
+            class="method-args">(atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check attribute value(s) string representation is a valid float.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_numeric-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">160</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_numeric</span>(<span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">161</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:numeric</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+<span class="line-num">162</span>     <span class="ruby-keyword">begin</span>
+<span class="line-num">163</span>       <span class="ruby-constant">Kernel</span>.<span class="ruby-constant">Float</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>)
+<span class="line-num">164</span>       <span class="ruby-keyword">nil</span>
+<span class="line-num">165</span>     <span class="ruby-keyword">rescue</span>
+<span class="line-num">166</span>       <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>)
+<span class="line-num">167</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">168</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">169</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_operator" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_operator</span><span
+            class="method-args">(operator, rhs, atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check attribute value(s) against a specified value and operation, e.g. <a href="InstanceMethods.html#method-i-validates_operator"><code>validates_operator</code></a>(:&gt;, 3, :value) validates that value &gt; 3.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_operator-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">173</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_operator</span>(<span class="ruby-identifier">operator</span>, <span class="ruby-identifier">rhs</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">174</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:operator</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>, <span class="ruby-identifier">operator</span>, <span class="ruby-identifier">rhs</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">v</span>.<span class="ruby-identifier">public_send</span>(<span class="ruby-identifier">operator</span>, <span class="ruby-identifier">rhs</span>)}
+<span class="line-num">175</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_presence" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_presence</span><span
+            class="method-args">(atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check attribute value(s) is not considered blank by the database, but allow false values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_presence-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">200</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_presence</span>(<span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">201</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:presence</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">db</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:blank_object?</span>, <span class="ruby-identifier">v</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span>}
+<span class="line-num">202</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_schema_types" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_schema_types</span><span
+            class="method-args">(atts=keys, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Validates for all of the model columns (or just the given columns) that the column value is an instance of the expected class based on the column&#39;s schema type.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_schema_types-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">180</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_schema_types</span>(<span class="ruby-identifier">atts</span>=<span class="ruby-identifier">keys</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">181</span>   <span class="ruby-constant">Array</span>(<span class="ruby-identifier">atts</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+<span class="line-num">182</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> = <span class="ruby-identifier">schema_type_class</span>(<span class="ruby-identifier">k</span>)
+<span class="line-num">183</span>       <span class="ruby-identifier">validates_type</span>(<span class="ruby-identifier">type</span>, <span class="ruby-identifier">k</span>, {<span class="ruby-value">:allow_nil</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>}.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">opts</span>))
+<span class="line-num">184</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">185</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">186</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_type</span><span
+            class="method-args">(klass, atts, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check if value is an instance of a class.  If <code>klass</code> is an array, the value must be an instance of one of the classes in the array.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_type-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">190</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_type</span>(<span class="ruby-identifier">klass</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">191</span>   <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">constantize</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+<span class="line-num">192</span>   <span class="ruby-identifier">validatable_attributes_for_type</span>(<span class="ruby-value">:type</span>, <span class="ruby-identifier">atts</span>, <span class="ruby-identifier">opts</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span>,<span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+<span class="line-num">193</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">?</span> <span class="ruby-operator">!</span><span class="ruby-identifier">klass</span>.<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">kls</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-identifier">kls</span>)} <span class="ruby-operator">:</span> <span class="ruby-operator">!</span><span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-identifier">klass</span>)
+<span class="line-num">194</span>       <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">m</span>, <span class="ruby-identifier">klass</span>)
+<span class="line-num">195</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">196</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">197</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validates_unique" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validates_unique</span><span
+            class="method-args">(*atts) { |ds| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Checks that there are no duplicate values in the database for the given attributes.  Pass an array of fields instead of multiple fields to specify that the combination of fields must be unique, instead of that each field should have a unique value.</p>
+
+<p>This means that the code:</p>
+
+<pre class="ruby"><span class="ruby-identifier">validates_unique</span>([<span class="ruby-value">:column1</span>, <span class="ruby-value">:column2</span>])
+</pre>
+
+<p>validates the grouping of column1 and column2 while</p>
+
+<pre class="ruby"><span class="ruby-identifier">validates_unique</span>(<span class="ruby-value">:column1</span>, <span class="ruby-value">:column2</span>)
+</pre>
+
+<p>validates them separately.</p>
+
+<p>You can pass a block, which is yielded the dataset in which the columns must be unique. So if you are doing a soft delete of records, in which the name must be unique, but only for active records:</p>
+
+<pre class="ruby"><span class="ruby-identifier">validates_unique</span>(<span class="ruby-value">:name</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">ds</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:active</span>)}
+</pre>
+
+<p>You should also add a unique index in the database, as this suffers from a fairly obvious race condition.</p>
+
+<p>This validation does not respect the :allow_* options that the other validations accept, since it can deal with a grouping of multiple attributes.</p>
+
+<p>Possible Options:</p>
+<dl class="rdoc-list note-list"><dt>:dataset 
+<dd>
+<p>The base dataset to use for the unique query, defaults to the model&#39;s dataset.</p>
+</dd><dt>:message 
+<dd>
+<p>The message to use (default: &#39;is already taken&#39;)</p>
+</dd><dt>:only_if_modified 
+<dd>
+<p>Only check the uniqueness if the object is new or one of the columns has been modified, true by default.</p>
+</dd><dt>:where 
+<dd>
+<p>A callable object where call takes three arguments, a dataset, the current object, and an array of columns, and should return a modified dataset that is filtered to include only rows with the same values as the current object for each column in the array.</p>
+</dd></dl>
+
+<p>If you want to do a case insensitive uniqueness validation on a database that is case sensitive by default, you can use:</p>
+
+<pre class="ruby"><span class="ruby-identifier">validates_unique</span> <span class="ruby-value">:column</span>, <span class="ruby-value">where:</span>(<span class="ruby-identifier">lambda</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ds</span>, <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">cols</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">cols</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">v</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">public_send</span>(<span class="ruby-identifier">c</span>)
+    <span class="ruby-identifier">v</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>
+    [<span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:lower</span>, <span class="ruby-identifier">c</span>), <span class="ruby-identifier">v</span>]
+  <span class="ruby-keyword">end</span>)
+<span class="ruby-keyword">end</span>)
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="validates_unique-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/validation_helpers.rb</span>
+<span class="line-num">248</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validates_unique</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">atts</span>)
+<span class="line-num">249</span>   <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">default_validation_helpers_options</span>(<span class="ruby-value">:unique</span>)
+<span class="line-num">250</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">atts</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+<span class="line-num">251</span>     <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">atts</span>.<span class="ruby-identifier">pop</span>)
+<span class="line-num">252</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">253</span>   <span class="ruby-identifier">message</span> = <span class="ruby-identifier">validation_error_message</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:message</span>])
+<span class="line-num">254</span>   <span class="ruby-identifier">from_values</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:from</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:values</span>
+<span class="line-num">255</span>   <span class="ruby-identifier">where</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:where</span>]
+<span class="line-num">256</span>   <span class="ruby-identifier">atts</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+<span class="line-num">257</span>     <span class="ruby-identifier">arr</span> = <span class="ruby-constant">Array</span>(<span class="ruby-identifier">a</span>)
+<span class="line-num">258</span>     <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-identifier">x</span>)}
+<span class="line-num">259</span>     <span class="ruby-identifier">cc</span> = <span class="ruby-identifier">changed_columns</span>
+<span class="line-num">260</span>     <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:only_if_modified</span>, <span class="ruby-keyword">true</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">new?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">arr</span>.<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cc</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">x</span>)}
+<span class="line-num">261</span>     <span class="ruby-identifier">ds</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:dataset</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">dataset</span>
+<span class="line-num">262</span>     <span class="ruby-identifier">ds</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">where</span>
+<span class="line-num">263</span>       <span class="ruby-identifier">where</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">ds</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">arr</span>)
+<span class="line-num">264</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">265</span>       <span class="ruby-identifier">vals</span> = <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">from_values</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">values</span>[<span class="ruby-identifier">x</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">get_column_value</span>(<span class="ruby-identifier">x</span>)}
+<span class="line-num">266</span>       <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">vals</span>.<span class="ruby-identifier">any?</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:nil?</span>)
+<span class="line-num">267</span>       <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">zip</span>(<span class="ruby-identifier">vals</span>))
+<span class="line-num">268</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">269</span>     <span class="ruby-identifier">ds</span> = <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">ds</span>) <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-keyword">yield</span>)
+<span class="line-num">270</span>     <span class="ruby-keyword">unless</span> <span class="ruby-identifier">new?</span>
+<span class="line-num">271</span>       <span class="ruby-identifier">h</span> = <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">joined_dataset?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">qualified_pk_hash</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">pk_hash</span>
+<span class="line-num">272</span>       <span class="ruby-identifier">ds</span> = <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">exclude</span>(<span class="ruby-identifier">h</span>)
+<span class="line-num">273</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">274</span>     <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">message</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+<span class="line-num">275</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">276</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

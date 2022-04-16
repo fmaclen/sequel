@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>virtual_rows - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Virtual+Row+Blocks">Virtual Row Blocks</a>
+    <li><a href="#label-Why+Virtual+Rows">Why Virtual Rows</a>
+    <li><a href="#label-Regular+Procs+vs+Instance+Evaled+Procs">Regular Procs vs Instance Evaled Procs</a>
+    <li><a href="#label-Local+Variables+vs+Method+Calls">Local Variables vs Method Calls</a>
+    <li><a href="#label-VirtualRow+Methods">VirtualRow Methods</a>
+    <li><a href="#label-SQL-3A-3AIdentifiers+-+Regular+columns">SQL::Identifiers - Regular columns</a>
+    <li><a href="#label-SQL-3A-3AQualifiedIdentifiers+-+Qualified+columns">SQL::QualifiedIdentifiers - Qualified columns</a>
+    <li><a href="#label-SQL-3A-3AFunctions+-+SQL+function+calls">SQL::Functions - SQL function calls</a>
+    <li><a href="#label-SQL-3A-3AFunctions+with+windows+-+SQL+window+function+calls">SQL::Functions with windows - SQL window function calls</a>
+    <li><a href="#label-Operators">Operators</a>
+    <li><a href="#label-Math+Operators">Math Operators</a>
+    <li><a href="#label-Boolean+Operators">Boolean Operators</a>
+    <li><a href="#label-Inequality+Operators">Inequality Operators</a>
+    <li><a href="#label-Returning+multiple+values">Returning multiple values</a>
+    <li><a href="#label-Split+symbols">Split symbols</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../CHANGELOG.html">CHANGELOG</a>
+  
+    <li><a href="../MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="../README_rdoc.html">README</a>
+  
+    <li><a href="../doc/CHANGELOG_old.html">CHANGELOG.old</a>
+  
+    <li><a href="../doc/advanced_associations_rdoc.html">advanced_associations</a>
+  
+    <li><a href="../doc/association_basics_rdoc.html">association_basics</a>
+  
+    <li><a href="../doc/bin_sequel_rdoc.html">bin_sequel</a>
+  
+    <li><a href="../doc/cheat_sheet_rdoc.html">cheat_sheet</a>
+  
+    <li><a href="../doc/code_order_rdoc.html">code_order</a>
+  
+    <li><a href="../doc/core_extensions_rdoc.html">core_extensions</a>
+  
+    <li><a href="../doc/dataset_basics_rdoc.html">dataset_basics</a>
+  
+    <li><a href="../doc/dataset_filtering_rdoc.html">dataset_filtering</a>
+  
+    <li><a href="../doc/extensions_rdoc.html">extensions</a>
+  
+    <li><a href="../doc/fork_safety_rdoc.html">fork_safety</a>
+  
+    <li><a href="../doc/mass_assignment_rdoc.html">mass_assignment</a>
+  
+    <li><a href="../doc/migration_rdoc.html">migration</a>
+  
+    <li><a href="../doc/model_dataset_method_design_rdoc.html">model_dataset_method_design</a>
+  
+    <li><a href="../doc/model_hooks_rdoc.html">model_hooks</a>
+  
+    <li><a href="../doc/model_plugins_rdoc.html">model_plugins</a>
+  
+    <li><a href="../doc/mssql_stored_procedures_rdoc.html">mssql_stored_procedures</a>
+  
+    <li><a href="../doc/object_model_rdoc.html">object_model</a>
+  
+    <li><a href="../doc/opening_databases_rdoc.html">opening_databases</a>
+  
+    <li><a href="../doc/postgresql_rdoc.html">postgresql</a>
+  
+    <li><a href="../doc/prepared_statements_rdoc.html">prepared_statements</a>
+  
+    <li><a href="../doc/querying_rdoc.html">querying</a>
+  
+    <li><a href="../doc/reflection_rdoc.html">reflection</a>
+  
+    <li><a href="../doc/release_notes/1_0_txt.html">1.0</a>
+  
+    <li><a href="../doc/release_notes/1_1_txt.html">1.1</a>
+  
+    <li><a href="../doc/release_notes/1_3_txt.html">1.3</a>
+  
+    <li><a href="../doc/release_notes/1_4_0_txt.html">1.4.0</a>
+  
+    <li><a href="../doc/release_notes/1_5_0_txt.html">1.5.0</a>
+  
+    <li><a href="../doc/release_notes/2_0_0_txt.html">2.0.0</a>
+  
+    <li><a href="../doc/release_notes/2_1_0_txt.html">2.1.0</a>
+  
+    <li><a href="../doc/release_notes/2_10_0_txt.html">2.10.0</a>
+  
+    <li><a href="../doc/release_notes/2_11_0_txt.html">2.11.0</a>
+  
+    <li><a href="../doc/release_notes/2_12_0_txt.html">2.12.0</a>
+  
+    <li><a href="../doc/release_notes/2_2_0_txt.html">2.2.0</a>
+  
+    <li><a href="../doc/release_notes/2_3_0_txt.html">2.3.0</a>
+  
+    <li><a href="../doc/release_notes/2_4_0_txt.html">2.4.0</a>
+  
+    <li><a href="../doc/release_notes/2_5_0_txt.html">2.5.0</a>
+  
+    <li><a href="../doc/release_notes/2_6_0_txt.html">2.6.0</a>
+  
+    <li><a href="../doc/release_notes/2_7_0_txt.html">2.7.0</a>
+  
+    <li><a href="../doc/release_notes/2_8_0_txt.html">2.8.0</a>
+  
+    <li><a href="../doc/release_notes/2_9_0_txt.html">2.9.0</a>
+  
+    <li><a href="../doc/release_notes/3_0_0_txt.html">3.0.0</a>
+  
+    <li><a href="../doc/release_notes/3_1_0_txt.html">3.1.0</a>
+  
+    <li><a href="../doc/release_notes/3_10_0_txt.html">3.10.0</a>
+  
+    <li><a href="../doc/release_notes/3_11_0_txt.html">3.11.0</a>
+  
+    <li><a href="../doc/release_notes/3_12_0_txt.html">3.12.0</a>
+  
+    <li><a href="../doc/release_notes/3_13_0_txt.html">3.13.0</a>
+  
+    <li><a href="../doc/release_notes/3_14_0_txt.html">3.14.0</a>
+  
+    <li><a href="../doc/release_notes/3_15_0_txt.html">3.15.0</a>
+  
+    <li><a href="../doc/release_notes/3_16_0_txt.html">3.16.0</a>
+  
+    <li><a href="../doc/release_notes/3_17_0_txt.html">3.17.0</a>
+  
+    <li><a href="../doc/release_notes/3_18_0_txt.html">3.18.0</a>
+  
+    <li><a href="../doc/release_notes/3_19_0_txt.html">3.19.0</a>
+  
+    <li><a href="../doc/release_notes/3_2_0_txt.html">3.2.0</a>
+  
+    <li><a href="../doc/release_notes/3_20_0_txt.html">3.20.0</a>
+  
+    <li><a href="../doc/release_notes/3_21_0_txt.html">3.21.0</a>
+  
+    <li><a href="../doc/release_notes/3_22_0_txt.html">3.22.0</a>
+  
+    <li><a href="../doc/release_notes/3_23_0_txt.html">3.23.0</a>
+  
+    <li><a href="../doc/release_notes/3_24_0_txt.html">3.24.0</a>
+  
+    <li><a href="../doc/release_notes/3_25_0_txt.html">3.25.0</a>
+  
+    <li><a href="../doc/release_notes/3_26_0_txt.html">3.26.0</a>
+  
+    <li><a href="../doc/release_notes/3_27_0_txt.html">3.27.0</a>
+  
+    <li><a href="../doc/release_notes/3_28_0_txt.html">3.28.0</a>
+  
+    <li><a href="../doc/release_notes/3_29_0_txt.html">3.29.0</a>
+  
+    <li><a href="../doc/release_notes/3_3_0_txt.html">3.3.0</a>
+  
+    <li><a href="../doc/release_notes/3_30_0_txt.html">3.30.0</a>
+  
+    <li><a href="../doc/release_notes/3_31_0_txt.html">3.31.0</a>
+  
+    <li><a href="../doc/release_notes/3_32_0_txt.html">3.32.0</a>
+  
+    <li><a href="../doc/release_notes/3_33_0_txt.html">3.33.0</a>
+  
+    <li><a href="../doc/release_notes/3_34_0_txt.html">3.34.0</a>
+  
+    <li><a href="../doc/release_notes/3_35_0_txt.html">3.35.0</a>
+  
+    <li><a href="../doc/release_notes/3_36_0_txt.html">3.36.0</a>
+  
+    <li><a href="../doc/release_notes/3_37_0_txt.html">3.37.0</a>
+  
+    <li><a href="../doc/release_notes/3_38_0_txt.html">3.38.0</a>
+  
+    <li><a href="../doc/release_notes/3_39_0_txt.html">3.39.0</a>
+  
+    <li><a href="../doc/release_notes/3_4_0_txt.html">3.4.0</a>
+  
+    <li><a href="../doc/release_notes/3_40_0_txt.html">3.40.0</a>
+  
+    <li><a href="../doc/release_notes/3_41_0_txt.html">3.41.0</a>
+  
+    <li><a href="../doc/release_notes/3_42_0_txt.html">3.42.0</a>
+  
+    <li><a href="../doc/release_notes/3_43_0_txt.html">3.43.0</a>
+  
+    <li><a href="../doc/release_notes/3_44_0_txt.html">3.44.0</a>
+  
+    <li><a href="../doc/release_notes/3_45_0_txt.html">3.45.0</a>
+  
+    <li><a href="../doc/release_notes/3_46_0_txt.html">3.46.0</a>
+  
+    <li><a href="../doc/release_notes/3_47_0_txt.html">3.47.0</a>
+  
+    <li><a href="../doc/release_notes/3_48_0_txt.html">3.48.0</a>
+  
+    <li><a href="../doc/release_notes/3_5_0_txt.html">3.5.0</a>
+  
+    <li><a href="../doc/release_notes/3_6_0_txt.html">3.6.0</a>
+  
+    <li><a href="../doc/release_notes/3_7_0_txt.html">3.7.0</a>
+  
+    <li><a href="../doc/release_notes/3_8_0_txt.html">3.8.0</a>
+  
+    <li><a href="../doc/release_notes/3_9_0_txt.html">3.9.0</a>
+  
+    <li><a href="../doc/release_notes/4_0_0_txt.html">4.0.0</a>
+  
+    <li><a href="../doc/release_notes/4_1_0_txt.html">4.1.0</a>
+  
+    <li><a href="../doc/release_notes/4_10_0_txt.html">4.10.0</a>
+  
+    <li><a href="../doc/release_notes/4_11_0_txt.html">4.11.0</a>
+  
+    <li><a href="../doc/release_notes/4_12_0_txt.html">4.12.0</a>
+  
+    <li><a href="../doc/release_notes/4_13_0_txt.html">4.13.0</a>
+  
+    <li><a href="../doc/release_notes/4_14_0_txt.html">4.14.0</a>
+  
+    <li><a href="../doc/release_notes/4_15_0_txt.html">4.15.0</a>
+  
+    <li><a href="../doc/release_notes/4_16_0_txt.html">4.16.0</a>
+  
+    <li><a href="../doc/release_notes/4_17_0_txt.html">4.17.0</a>
+  
+    <li><a href="../doc/release_notes/4_18_0_txt.html">4.18.0</a>
+  
+    <li><a href="../doc/release_notes/4_19_0_txt.html">4.19.0</a>
+  
+    <li><a href="../doc/release_notes/4_2_0_txt.html">4.2.0</a>
+  
+    <li><a href="../doc/release_notes/4_20_0_txt.html">4.20.0</a>
+  
+    <li><a href="../doc/release_notes/4_21_0_txt.html">4.21.0</a>
+  
+    <li><a href="../doc/release_notes/4_22_0_txt.html">4.22.0</a>
+  
+    <li><a href="../doc/release_notes/4_23_0_txt.html">4.23.0</a>
+  
+    <li><a href="../doc/release_notes/4_24_0_txt.html">4.24.0</a>
+  
+    <li><a href="../doc/release_notes/4_25_0_txt.html">4.25.0</a>
+  
+    <li><a href="../doc/release_notes/4_26_0_txt.html">4.26.0</a>
+  
+    <li><a href="../doc/release_notes/4_27_0_txt.html">4.27.0</a>
+  
+    <li><a href="../doc/release_notes/4_28_0_txt.html">4.28.0</a>
+  
+    <li><a href="../doc/release_notes/4_29_0_txt.html">4.29.0</a>
+  
+    <li><a href="../doc/release_notes/4_3_0_txt.html">4.3.0</a>
+  
+    <li><a href="../doc/release_notes/4_30_0_txt.html">4.30.0</a>
+  
+    <li><a href="../doc/release_notes/4_31_0_txt.html">4.31.0</a>
+  
+    <li><a href="../doc/release_notes/4_32_0_txt.html">4.32.0</a>
+  
+    <li><a href="../doc/release_notes/4_33_0_txt.html">4.33.0</a>
+  
+    <li><a href="../doc/release_notes/4_34_0_txt.html">4.34.0</a>
+  
+    <li><a href="../doc/release_notes/4_35_0_txt.html">4.35.0</a>
+  
+    <li><a href="../doc/release_notes/4_36_0_txt.html">4.36.0</a>
+  
+    <li><a href="../doc/release_notes/4_37_0_txt.html">4.37.0</a>
+  
+    <li><a href="../doc/release_notes/4_38_0_txt.html">4.38.0</a>
+  
+    <li><a href="../doc/release_notes/4_39_0_txt.html">4.39.0</a>
+  
+    <li><a href="../doc/release_notes/4_4_0_txt.html">4.4.0</a>
+  
+    <li><a href="../doc/release_notes/4_40_0_txt.html">4.40.0</a>
+  
+    <li><a href="../doc/release_notes/4_41_0_txt.html">4.41.0</a>
+  
+    <li><a href="../doc/release_notes/4_42_0_txt.html">4.42.0</a>
+  
+    <li><a href="../doc/release_notes/4_43_0_txt.html">4.43.0</a>
+  
+    <li><a href="../doc/release_notes/4_44_0_txt.html">4.44.0</a>
+  
+    <li><a href="../doc/release_notes/4_45_0_txt.html">4.45.0</a>
+  
+    <li><a href="../doc/release_notes/4_46_0_txt.html">4.46.0</a>
+  
+    <li><a href="../doc/release_notes/4_47_0_txt.html">4.47.0</a>
+  
+    <li><a href="../doc/release_notes/4_48_0_txt.html">4.48.0</a>
+  
+    <li><a href="../doc/release_notes/4_49_0_txt.html">4.49.0</a>
+  
+    <li><a href="../doc/release_notes/4_5_0_txt.html">4.5.0</a>
+  
+    <li><a href="../doc/release_notes/4_6_0_txt.html">4.6.0</a>
+  
+    <li><a href="../doc/release_notes/4_7_0_txt.html">4.7.0</a>
+  
+    <li><a href="../doc/release_notes/4_8_0_txt.html">4.8.0</a>
+  
+    <li><a href="../doc/release_notes/4_9_0_txt.html">4.9.0</a>
+  
+    <li><a href="../doc/release_notes/5_0_0_txt.html">5.0.0</a>
+  
+    <li><a href="../doc/release_notes/5_1_0_txt.html">5.1.0</a>
+  
+    <li><a href="../doc/release_notes/5_10_0_txt.html">5.10.0</a>
+  
+    <li><a href="../doc/release_notes/5_11_0_txt.html">5.11.0</a>
+  
+    <li><a href="../doc/release_notes/5_12_0_txt.html">5.12.0</a>
+  
+    <li><a href="../doc/release_notes/5_13_0_txt.html">5.13.0</a>
+  
+    <li><a href="../doc/release_notes/5_14_0_txt.html">5.14.0</a>
+  
+    <li><a href="../doc/release_notes/5_15_0_txt.html">5.15.0</a>
+  
+    <li><a href="../doc/release_notes/5_16_0_txt.html">5.16.0</a>
+  
+    <li><a href="../doc/release_notes/5_17_0_txt.html">5.17.0</a>
+  
+    <li><a href="../doc/release_notes/5_18_0_txt.html">5.18.0</a>
+  
+    <li><a href="../doc/release_notes/5_19_0_txt.html">5.19.0</a>
+  
+    <li><a href="../doc/release_notes/5_2_0_txt.html">5.2.0</a>
+  
+    <li><a href="../doc/release_notes/5_20_0_txt.html">5.20.0</a>
+  
+    <li><a href="../doc/release_notes/5_21_0_txt.html">5.21.0</a>
+  
+    <li><a href="../doc/release_notes/5_22_0_txt.html">5.22.0</a>
+  
+    <li><a href="../doc/release_notes/5_23_0_txt.html">5.23.0</a>
+  
+    <li><a href="../doc/release_notes/5_24_0_txt.html">5.24.0</a>
+  
+    <li><a href="../doc/release_notes/5_25_0_txt.html">5.25.0</a>
+  
+    <li><a href="../doc/release_notes/5_26_0_txt.html">5.26.0</a>
+  
+    <li><a href="../doc/release_notes/5_27_0_txt.html">5.27.0</a>
+  
+    <li><a href="../doc/release_notes/5_28_0_txt.html">5.28.0</a>
+  
+    <li><a href="../doc/release_notes/5_29_0_txt.html">5.29.0</a>
+  
+    <li><a href="../doc/release_notes/5_3_0_txt.html">5.3.0</a>
+  
+    <li><a href="../doc/release_notes/5_30_0_txt.html">5.30.0</a>
+  
+    <li><a href="../doc/release_notes/5_31_0_txt.html">5.31.0</a>
+  
+    <li><a href="../doc/release_notes/5_32_0_txt.html">5.32.0</a>
+  
+    <li><a href="../doc/release_notes/5_33_0_txt.html">5.33.0</a>
+  
+    <li><a href="../doc/release_notes/5_34_0_txt.html">5.34.0</a>
+  
+    <li><a href="../doc/release_notes/5_35_0_txt.html">5.35.0</a>
+  
+    <li><a href="../doc/release_notes/5_36_0_txt.html">5.36.0</a>
+  
+    <li><a href="../doc/release_notes/5_37_0_txt.html">5.37.0</a>
+  
+    <li><a href="../doc/release_notes/5_38_0_txt.html">5.38.0</a>
+  
+    <li><a href="../doc/release_notes/5_39_0_txt.html">5.39.0</a>
+  
+    <li><a href="../doc/release_notes/5_4_0_txt.html">5.4.0</a>
+  
+    <li><a href="../doc/release_notes/5_40_0_txt.html">5.40.0</a>
+  
+    <li><a href="../doc/release_notes/5_41_0_txt.html">5.41.0</a>
+  
+    <li><a href="../doc/release_notes/5_42_0_txt.html">5.42.0</a>
+  
+    <li><a href="../doc/release_notes/5_43_0_txt.html">5.43.0</a>
+  
+    <li><a href="../doc/release_notes/5_44_0_txt.html">5.44.0</a>
+  
+    <li><a href="../doc/release_notes/5_45_0_txt.html">5.45.0</a>
+  
+    <li><a href="../doc/release_notes/5_46_0_txt.html">5.46.0</a>
+  
+    <li><a href="../doc/release_notes/5_47_0_txt.html">5.47.0</a>
+  
+    <li><a href="../doc/release_notes/5_48_0_txt.html">5.48.0</a>
+  
+    <li><a href="../doc/release_notes/5_49_0_txt.html">5.49.0</a>
+  
+    <li><a href="../doc/release_notes/5_5_0_txt.html">5.5.0</a>
+  
+    <li><a href="../doc/release_notes/5_50_0_txt.html">5.50.0</a>
+  
+    <li><a href="../doc/release_notes/5_51_0_txt.html">5.51.0</a>
+  
+    <li><a href="../doc/release_notes/5_52_0_txt.html">5.52.0</a>
+  
+    <li><a href="../doc/release_notes/5_53_0_txt.html">5.53.0</a>
+  
+    <li><a href="../doc/release_notes/5_54_0_txt.html">5.54.0</a>
+  
+    <li><a href="../doc/release_notes/5_55_0_txt.html">5.55.0</a>
+  
+    <li><a href="../doc/release_notes/5_6_0_txt.html">5.6.0</a>
+  
+    <li><a href="../doc/release_notes/5_7_0_txt.html">5.7.0</a>
+  
+    <li><a href="../doc/release_notes/5_8_0_txt.html">5.8.0</a>
+  
+    <li><a href="../doc/release_notes/5_9_0_txt.html">5.9.0</a>
+  
+    <li><a href="../doc/schema_modification_rdoc.html">schema_modification</a>
+  
+    <li><a href="../doc/security_rdoc.html">security</a>
+  
+    <li><a href="../doc/sharding_rdoc.html">sharding</a>
+  
+    <li><a href="../doc/sql_rdoc.html">sql</a>
+  
+    <li><a href="../doc/testing_rdoc.html">testing</a>
+  
+    <li><a href="../doc/thread_safety_rdoc.html">thread_safety</a>
+  
+    <li><a href="../doc/transactions_rdoc.html">transactions</a>
+  
+    <li><a href="../doc/validations_rdoc.html">validations</a>
+  
+    <li><a href="../doc/virtual_rows_rdoc.html">virtual_rows</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/virtual_rows.rdoc">
+
+<h1 id="label-Virtual+Row+Blocks">Virtual Row Blocks<span><a href="#label-Virtual+Row+Blocks">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>Dataset methods where, order, and select all take blocks that are referred to as virtual row blocks.  Many other dataset methods pass the blocks they are given into one of those three methods, so there are actually many <a href="../Sequel/Dataset.html"><code>Sequel::Dataset</code></a> methods that take virtual row blocks.</p>
+
+<h2 id="label-Why+Virtual+Rows">Why Virtual Rows<span><a href="#label-Why+Virtual+Rows">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Virtual rows offer a less verbose way to express many queries.  For example, by default if you want to express an inequality filter in <a href="../Sequel.html"><code>Sequel</code></a>, you can do:</p>
+
+<pre class="ruby"><span class="ruby-identifier">dataset</span>.<span class="ruby-identifier">where</span>(<span class="ruby-constant">Sequel</span>[<span class="ruby-value">:a</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">:b</span>, <span class="ruby-value">:c</span>))
+<span class="ruby-comment"># WHERE (a &gt; b(c))</span>
+</pre>
+
+<p>With virtual rows, you can use the less verbose:</p>
+
+<pre class="ruby"><span class="ruby-identifier">dataset</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">a</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">b</span>(<span class="ruby-identifier">c</span>)}
+<span class="ruby-comment"># WHERE (a &gt; b(c))</span>
+</pre>
+
+<h2 id="label-Regular+Procs+vs+Instance+Evaled+Procs">Regular Procs vs Instance Evaled Procs<span><a href="#label-Regular+Procs+vs+Instance+Evaled+Procs">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Virtual row blocks behave differently depending on whether the block accepts an argument.  If the block accepts an argument, it is called with an instance of <a href="../Sequel/SQL/VirtualRow.html"><code>Sequel::SQL::VirtualRow</code></a>.  If it does not accept an argument, it is evaluated in the context of an instance of <a href="../Sequel/SQL/VirtualRow.html"><code>Sequel::SQL::VirtualRow</code></a>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span> = <span class="ruby-constant">DB</span>[<span class="ruby-value">:items</span>]
+<span class="ruby-comment"># Regular block</span>
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">column</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-comment"># WHERE (column &gt; 1)</span>
+
+<span class="ruby-comment"># Instance-evaled block</span>
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">column</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-comment"># WHERE (column &gt; 1)</span>
+</pre>
+
+<p>If you aren&#39;t familiar with the difference between regular blocks and instance evaled blocks, inside regular blocks methods called without an explicit receiver call the method on the receiver in the surrounding scope, while instance evaled blocks call the method on the receiver of the instance_eval call (the <a href="../Sequel/SQL/VirtualRow.html"><code>Sequel::SQL::VirtualRow</code></a> instance in this case).</p>
+
+<p>in both cases, local variables available in the surrounding scope will be available inside the block.  However, instance variables in the surrounding scope will not be available inside the block if using an instance evaled block, and methods called without an explicit receiver inside an instance evaled block will not call methods in the surrounding scope. For example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">a</span>
+  <span class="ruby-value">42</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-value">32</span>
+<span class="ruby-ivar">@d</span> = <span class="ruby-value">100</span>
+
+<span class="ruby-comment"># Regular block</span>
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">c</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">b</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@d</span>}
+<span class="ruby-comment"># WHERE (c &gt; 110)</span>
+
+<span class="ruby-comment"># Instance-evaled block</span>
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">c</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">b</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@d</span>}
+<span class="ruby-comment"># WHERE (c &gt; ((a - 32) + NULL))</span>
+</pre>
+
+<p>There are three related differences here:</p>
+<ul><li>
+<p>Regular blocks use <code>o.c</code> instead of just <code>c</code></p>
+</li><li>
+<p><code>a</code> results in 42 in the regular block, but creates an expression object in the instance evaled block</p>
+</li><li>
+<p>@d results in 100 in the regular block, but nil in the instance evaled block</p>
+</li></ul>
+
+<p>In the regular block, you need to call <code>c</code> with an explicit receiver (the virtual row block argument), while in the instance evaled block <code>c</code> can be called directly, as the default receiver has changed inside the block.</p>
+
+<p>For <code>a</code>, note how ruby calls the method on the receiver of the surrounding scope in the regular block, which returns an integer, and does the subtraction before <a href="../Sequel.html"><code>Sequel</code></a> gets access to it.  In the instance evaled block, calling <code>a</code> without a receiver calls the a method on the VirtualRow instance. For @d, note that in a regular block, the value hasn&#39;t changed, but in the instance evaled block, instance variable access returns nil. For <code>b</code>, note that it operates the same in both cases, as it is a local variable.</p>
+
+<p>The choice for whether to use a regular block or an instance evaled block is up to you.  The same things can be accomplished with both. Instance evaled block tend to produce shorter code, but by modifying the scope can be more difficult to understand.</p>
+
+<p>If you are not sure which to use, use instance evaled blocks unless you need to call methods or access instance variables of the surrounding scope inside the block.</p>
+
+<h2 id="label-Local+Variables+vs+Method+Calls">Local Variables vs Method Calls<span><a href="#label-Local+Variables+vs+Method+Calls">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>If you have a method that accepts 0 arguments and has the same name as a local variable, you can call it with () to differentiate the method call from the local variable access.  This is mostly useful in instance evaled blocks:</p>
+
+<pre class="ruby"><span class="ruby-identifier">b</span> = <span class="ruby-value">32</span>
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">b</span>() <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">b</span>}
+<span class="ruby-comment"># WHERE b &gt; 32</span>
+</pre>
+
+<p>It&#39;s also possible to use an explicit self receiver in instance evaled blocks:</p>
+
+<pre class="ruby"><span class="ruby-identifier">b</span> = <span class="ruby-value">32</span>
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-keyword">self</span>.<span class="ruby-identifier">b</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">b</span>}
+<span class="ruby-comment"># WHERE b &gt; 32</span>
+</pre>
+
+<h2 id="label-VirtualRow+Methods">VirtualRow Methods<span><a href="#label-VirtualRow+Methods">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>VirtualRow is a class that returns SQL::Identifiers or SQL::Functions depending on how it is called.</p>
+
+<h2 id="label-SQL-3A-3AIdentifiers+-+Regular+columns">SQL::Identifiers - Regular columns<span><a href="#label-SQL-3A-3AIdentifiers+-+Regular+columns">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>SQL::Identifiers can be thought of as regular column references in SQL, not qualified by any table. You get an SQL::Identifier if the method is called without arguments:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">column</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">column</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-comment"># WHERE (column &gt; 1)</span>
+</pre>
+
+<h2 id="label-SQL-3A-3AQualifiedIdentifiers+-+Qualified+columns">SQL::QualifiedIdentifiers - Qualified columns<span><a href="#label-SQL-3A-3AQualifiedIdentifiers+-+Qualified+columns">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>You can qualified identifiers by calling [] on an identifier:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">table</span>[<span class="ruby-value">:column</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">table</span>[<span class="ruby-value">:column</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-comment"># WHERE table.column &gt; 1</span>
+</pre>
+
+<h2 id="label-SQL-3A-3AFunctions+-+SQL+function+calls">SQL::Functions - SQL function calls<span><a href="#label-SQL-3A-3AFunctions+-+SQL+function+calls">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>SQL::Functions can be thought of as function calls in SQL.  You get a simple function call if you call a method with arguments:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">1</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">function</span>(<span class="ruby-value">1</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-comment"># WHERE function(1) &gt; 1</span>
+</pre>
+
+<p>To call a SQL function with multiple arguments, just use those arguments in your function call:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">function</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">a</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">function</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">a</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-comment"># WHERE function(1, a) &gt; 1</span>
+</pre>
+
+<p>If the SQL function does not accept any arguments, create an identifier, then call the function method on it to produce a function:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">version</span>.<span class="ruby-identifier">function</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-identifier">version</span>.<span class="ruby-identifier">function</span>}
+<span class="ruby-comment"># SELECT version()</span>
+</pre>
+
+<p>To use the SQL wildcard (*) as the sole argument in a function call, create a function without arguments, then call the * method on the function:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">count</span>.<span class="ruby-identifier">function</span>.<span class="ruby-identifier">*</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-identifier">count</span>.<span class="ruby-identifier">function</span>.<span class="ruby-identifier">*</span>}
+<span class="ruby-comment"># SELECT count(*)</span>
+</pre>
+
+<p>To append the DISTINCT keyword before the method arguments, just call the distinct method on the returned Function:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">count</span>(<span class="ruby-identifier">o</span>.<span class="ruby-identifier">col1</span>).<span class="ruby-identifier">distinct</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-identifier">count</span>(<span class="ruby-identifier">col1</span>).<span class="ruby-identifier">distinct</span>}
+<span class="ruby-comment"># SELECT count(DISTINCT col1)</span>
+
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">count</span>(<span class="ruby-identifier">o</span>.<span class="ruby-identifier">col1</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">col2</span>).<span class="ruby-identifier">distinct</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-identifier">count</span>(<span class="ruby-identifier">col1</span>, <span class="ruby-identifier">col2</span>).<span class="ruby-identifier">distinct</span>}
+<span class="ruby-comment"># SELECT count(DISTINCT col1, col2)</span>
+</pre>
+
+<h2 id="label-SQL-3A-3AFunctions+with+windows+-+SQL+window+function+calls">SQL::Functions with windows - SQL window function calls<span><a href="#label-SQL-3A-3AFunctions+with+windows+-+SQL+window+function+calls">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>To create a window function call, just call the over method on the Function object returned, with the options for the window:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">rank</span>.<span class="ruby-identifier">function</span>.<span class="ruby-identifier">over</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-identifier">rank</span>.<span class="ruby-identifier">function</span>.<span class="ruby-identifier">over</span>}
+<span class="ruby-comment"># SELECT rank() OVER ()</span>
+
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">count</span>.<span class="ruby-identifier">function</span>.<span class="ruby-identifier">*</span>.<span class="ruby-identifier">over</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-identifier">count</span>.<span class="ruby-identifier">function</span>.<span class="ruby-identifier">*</span>.<span class="ruby-identifier">over</span>}
+<span class="ruby-comment"># SELECT count(*) OVER ()</span>
+
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-identifier">o</span>.<span class="ruby-identifier">col1</span>).<span class="ruby-identifier">over</span>(<span class="ruby-value">partition:</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">col2</span>, <span class="ruby-value">order:</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">col3</span>)}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-identifier">sum</span>(<span class="ruby-identifier">col1</span>).<span class="ruby-identifier">over</span>(<span class="ruby-value">partition:</span> <span class="ruby-identifier">col2</span>, <span class="ruby-value">order:</span> <span class="ruby-identifier">col3</span>)}
+<span class="ruby-comment"># SELECT sum(col1) OVER (PARTITION BY col2 ORDER BY col3)</span>
+</pre>
+
+<h2 id="label-Operators">Operators<span><a href="#label-Operators">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>VirtualRows use method_missing to handle almost all method calls.  Since the objects given by method_missing are SQL::Identifiers or SQL::Functions, you can use all operators that they provide (see <a href="http://sequel.jeremyevans.net/rdoc/files/doc/dataset_filtering_rdoc.html#label-Filtering+using+expressions">DatasetFiltering</a>):</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">price</span> <span class="ruby-operator">-</span> <span class="ruby-value">100</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-identifier">price</span> <span class="ruby-operator">-</span> <span class="ruby-value">100</span>}
+<span class="ruby-comment"># SELECT (price - 100)</span>
+
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">o</span>.<span class="ruby-identifier">price</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">200</span>) <span class="ruby-operator">&amp;</span> (<span class="ruby-identifier">o</span>.<span class="ruby-identifier">tax</span> <span class="ruby-operator">*</span> <span class="ruby-value">100</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">23</span>)}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{(<span class="ruby-identifier">price</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">200</span>) <span class="ruby-operator">&amp;</span> (<span class="ruby-identifier">tax</span> <span class="ruby-operator">*</span> <span class="ruby-value">100</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0.23</span>)}
+<span class="ruby-comment"># WHERE ((price &lt; 200) AND ((tax * 100) &gt;= 0.23))</span>
+</pre>
+
+<p>However, VirtualRows have special handling of some operator methods to make certain things easier.  The operators all use a prefix form.</p>
+
+<h3 id="label-Math+Operators">Math Operators<span><a href="#label-Math+Operators">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>The standard +, -, *, and / mathematical operators are defined:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">-</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">a</span>).<span class="ruby-identifier">as</span>(<span class="ruby-identifier">b</span>)}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-keyword">self</span>.<span class="ruby-identifier">-</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">a</span>).<span class="ruby-identifier">as</span>(<span class="ruby-identifier">b</span>)}
+<span class="ruby-comment"># SELECT (1 - a) AS b</span>
+</pre>
+
+<h3 id="label-Boolean+Operators">Boolean Operators<span><a href="#label-Boolean+Operators">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>The &amp; and | methods are defined to use AND and OR:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">&amp;</span>({<span class="ruby-value">a:</span> <span class="ruby-value">:b</span>}, <span class="ruby-value">:c</span>)}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-keyword">self</span>.<span class="ruby-identifier">&amp;</span>({<span class="ruby-value">a:</span> <span class="ruby-value">:b</span>}, <span class="ruby-value">:c</span>)}
+<span class="ruby-comment"># WHERE ((a = b) AND c)</span>
+</pre>
+
+<p>The ~ method is defined to do inversion:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">~</span>({<span class="ruby-value">a:</span> <span class="ruby-value">1</span>, <span class="ruby-value">b:</span> <span class="ruby-value">2</span>})}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-keyword">self</span>.<span class="ruby-identifier">~</span>({<span class="ruby-value">a:</span> <span class="ruby-value">1</span>, <span class="ruby-value">b:</span> <span class="ruby-value">2</span>})}
+<span class="ruby-comment"># WHERE ((a != 1) OR (b != 2))</span>
+</pre>
+
+<h3 id="label-Inequality+Operators">Inequality Operators<span><a href="#label-Inequality+Operators">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>The standard &gt;, &lt;, &gt;=, and &lt;= inequality operators are defined:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">&gt;</span>(<span class="ruby-value">1</span>, <span class="ruby-value">:c</span>)}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-keyword">self</span>.<span class="ruby-identifier">&gt;</span>(<span class="ruby-value">1</span>, <span class="ruby-value">:c</span>)}
+<span class="ruby-comment"># WHERE (1 &gt; c)</span>
+</pre>
+
+<h2 id="label-Returning+multiple+values">Returning multiple values<span><a href="#label-Returning+multiple+values">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>It&#39;s common when using select and order virtual row blocks to want to return multiple values.  If you want to do that, you just need to return an  array:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">o</span>.<span class="ruby-identifier">column1</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-identifier">o</span>.<span class="ruby-identifier">column2</span>).<span class="ruby-identifier">as</span>(<span class="ruby-identifier">o</span>.<span class="ruby-identifier">sum</span>)]}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">select</span>{[<span class="ruby-identifier">column1</span>, <span class="ruby-identifier">sum</span>(<span class="ruby-identifier">column2</span>).<span class="ruby-identifier">as</span>(<span class="ruby-identifier">sum</span>)]}
+<span class="ruby-comment"># SELECT column1, sum(column2) AS sum</span>
+</pre>
+
+<p>Note that if you forget the array brackets, you&#39;ll end up with a syntax error:</p>
+
+<pre># Invalid ruby syntax
+ds.select{|o| o.column1, o.sum(o.column2).as(o.sum)}
+ds.select{column1, sum(column2).as(sum)}</pre>
+
+<h2 id="label-Split+symbols">Split symbols<span><a href="#label-Split+symbols">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Note that if you turn on symbol splitting for backwards compatibility, <a href="../Sequel.html"><code>Sequel</code></a> will split virtual row methods with double underscores and return them as qualified identifiers:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">split_symbols</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">table__column</span>}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">table__column</span>}
+<span class="ruby-constant">WHERE</span> <span class="ruby-identifier">table</span>.<span class="ruby-identifier">column</span>
+</pre>
+
+<p>It&#39;s not recommended that you rely on this, it&#39;s better to convert the calls to the recommended form:</p>
+
+<pre class="ruby"><span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">table</span>[<span class="ruby-value">:column</span>]}
+<span class="ruby-identifier">ds</span>.<span class="ruby-identifier">where</span>{<span class="ruby-identifier">table</span>[<span class="ruby-value">:column</span>]}
+</pre>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

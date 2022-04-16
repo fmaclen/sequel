@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>2.12.0 - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../CHANGELOG.html">CHANGELOG</a>
+  
+    <li><a href="../../MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="../../README_rdoc.html">README</a>
+  
+    <li><a href="../../doc/CHANGELOG_old.html">CHANGELOG.old</a>
+  
+    <li><a href="../../doc/advanced_associations_rdoc.html">advanced_associations</a>
+  
+    <li><a href="../../doc/association_basics_rdoc.html">association_basics</a>
+  
+    <li><a href="../../doc/bin_sequel_rdoc.html">bin_sequel</a>
+  
+    <li><a href="../../doc/cheat_sheet_rdoc.html">cheat_sheet</a>
+  
+    <li><a href="../../doc/code_order_rdoc.html">code_order</a>
+  
+    <li><a href="../../doc/core_extensions_rdoc.html">core_extensions</a>
+  
+    <li><a href="../../doc/dataset_basics_rdoc.html">dataset_basics</a>
+  
+    <li><a href="../../doc/dataset_filtering_rdoc.html">dataset_filtering</a>
+  
+    <li><a href="../../doc/extensions_rdoc.html">extensions</a>
+  
+    <li><a href="../../doc/fork_safety_rdoc.html">fork_safety</a>
+  
+    <li><a href="../../doc/mass_assignment_rdoc.html">mass_assignment</a>
+  
+    <li><a href="../../doc/migration_rdoc.html">migration</a>
+  
+    <li><a href="../../doc/model_dataset_method_design_rdoc.html">model_dataset_method_design</a>
+  
+    <li><a href="../../doc/model_hooks_rdoc.html">model_hooks</a>
+  
+    <li><a href="../../doc/model_plugins_rdoc.html">model_plugins</a>
+  
+    <li><a href="../../doc/mssql_stored_procedures_rdoc.html">mssql_stored_procedures</a>
+  
+    <li><a href="../../doc/object_model_rdoc.html">object_model</a>
+  
+    <li><a href="../../doc/opening_databases_rdoc.html">opening_databases</a>
+  
+    <li><a href="../../doc/postgresql_rdoc.html">postgresql</a>
+  
+    <li><a href="../../doc/prepared_statements_rdoc.html">prepared_statements</a>
+  
+    <li><a href="../../doc/querying_rdoc.html">querying</a>
+  
+    <li><a href="../../doc/reflection_rdoc.html">reflection</a>
+  
+    <li><a href="../../doc/release_notes/1_0_txt.html">1.0</a>
+  
+    <li><a href="../../doc/release_notes/1_1_txt.html">1.1</a>
+  
+    <li><a href="../../doc/release_notes/1_3_txt.html">1.3</a>
+  
+    <li><a href="../../doc/release_notes/1_4_0_txt.html">1.4.0</a>
+  
+    <li><a href="../../doc/release_notes/1_5_0_txt.html">1.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_0_0_txt.html">2.0.0</a>
+  
+    <li><a href="../../doc/release_notes/2_1_0_txt.html">2.1.0</a>
+  
+    <li><a href="../../doc/release_notes/2_10_0_txt.html">2.10.0</a>
+  
+    <li><a href="../../doc/release_notes/2_11_0_txt.html">2.11.0</a>
+  
+    <li><a href="../../doc/release_notes/2_12_0_txt.html">2.12.0</a>
+  
+    <li><a href="../../doc/release_notes/2_2_0_txt.html">2.2.0</a>
+  
+    <li><a href="../../doc/release_notes/2_3_0_txt.html">2.3.0</a>
+  
+    <li><a href="../../doc/release_notes/2_4_0_txt.html">2.4.0</a>
+  
+    <li><a href="../../doc/release_notes/2_5_0_txt.html">2.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_6_0_txt.html">2.6.0</a>
+  
+    <li><a href="../../doc/release_notes/2_7_0_txt.html">2.7.0</a>
+  
+    <li><a href="../../doc/release_notes/2_8_0_txt.html">2.8.0</a>
+  
+    <li><a href="../../doc/release_notes/2_9_0_txt.html">2.9.0</a>
+  
+    <li><a href="../../doc/release_notes/3_0_0_txt.html">3.0.0</a>
+  
+    <li><a href="../../doc/release_notes/3_1_0_txt.html">3.1.0</a>
+  
+    <li><a href="../../doc/release_notes/3_10_0_txt.html">3.10.0</a>
+  
+    <li><a href="../../doc/release_notes/3_11_0_txt.html">3.11.0</a>
+  
+    <li><a href="../../doc/release_notes/3_12_0_txt.html">3.12.0</a>
+  
+    <li><a href="../../doc/release_notes/3_13_0_txt.html">3.13.0</a>
+  
+    <li><a href="../../doc/release_notes/3_14_0_txt.html">3.14.0</a>
+  
+    <li><a href="../../doc/release_notes/3_15_0_txt.html">3.15.0</a>
+  
+    <li><a href="../../doc/release_notes/3_16_0_txt.html">3.16.0</a>
+  
+    <li><a href="../../doc/release_notes/3_17_0_txt.html">3.17.0</a>
+  
+    <li><a href="../../doc/release_notes/3_18_0_txt.html">3.18.0</a>
+  
+    <li><a href="../../doc/release_notes/3_19_0_txt.html">3.19.0</a>
+  
+    <li><a href="../../doc/release_notes/3_2_0_txt.html">3.2.0</a>
+  
+    <li><a href="../../doc/release_notes/3_20_0_txt.html">3.20.0</a>
+  
+    <li><a href="../../doc/release_notes/3_21_0_txt.html">3.21.0</a>
+  
+    <li><a href="../../doc/release_notes/3_22_0_txt.html">3.22.0</a>
+  
+    <li><a href="../../doc/release_notes/3_23_0_txt.html">3.23.0</a>
+  
+    <li><a href="../../doc/release_notes/3_24_0_txt.html">3.24.0</a>
+  
+    <li><a href="../../doc/release_notes/3_25_0_txt.html">3.25.0</a>
+  
+    <li><a href="../../doc/release_notes/3_26_0_txt.html">3.26.0</a>
+  
+    <li><a href="../../doc/release_notes/3_27_0_txt.html">3.27.0</a>
+  
+    <li><a href="../../doc/release_notes/3_28_0_txt.html">3.28.0</a>
+  
+    <li><a href="../../doc/release_notes/3_29_0_txt.html">3.29.0</a>
+  
+    <li><a href="../../doc/release_notes/3_3_0_txt.html">3.3.0</a>
+  
+    <li><a href="../../doc/release_notes/3_30_0_txt.html">3.30.0</a>
+  
+    <li><a href="../../doc/release_notes/3_31_0_txt.html">3.31.0</a>
+  
+    <li><a href="../../doc/release_notes/3_32_0_txt.html">3.32.0</a>
+  
+    <li><a href="../../doc/release_notes/3_33_0_txt.html">3.33.0</a>
+  
+    <li><a href="../../doc/release_notes/3_34_0_txt.html">3.34.0</a>
+  
+    <li><a href="../../doc/release_notes/3_35_0_txt.html">3.35.0</a>
+  
+    <li><a href="../../doc/release_notes/3_36_0_txt.html">3.36.0</a>
+  
+    <li><a href="../../doc/release_notes/3_37_0_txt.html">3.37.0</a>
+  
+    <li><a href="../../doc/release_notes/3_38_0_txt.html">3.38.0</a>
+  
+    <li><a href="../../doc/release_notes/3_39_0_txt.html">3.39.0</a>
+  
+    <li><a href="../../doc/release_notes/3_4_0_txt.html">3.4.0</a>
+  
+    <li><a href="../../doc/release_notes/3_40_0_txt.html">3.40.0</a>
+  
+    <li><a href="../../doc/release_notes/3_41_0_txt.html">3.41.0</a>
+  
+    <li><a href="../../doc/release_notes/3_42_0_txt.html">3.42.0</a>
+  
+    <li><a href="../../doc/release_notes/3_43_0_txt.html">3.43.0</a>
+  
+    <li><a href="../../doc/release_notes/3_44_0_txt.html">3.44.0</a>
+  
+    <li><a href="../../doc/release_notes/3_45_0_txt.html">3.45.0</a>
+  
+    <li><a href="../../doc/release_notes/3_46_0_txt.html">3.46.0</a>
+  
+    <li><a href="../../doc/release_notes/3_47_0_txt.html">3.47.0</a>
+  
+    <li><a href="../../doc/release_notes/3_48_0_txt.html">3.48.0</a>
+  
+    <li><a href="../../doc/release_notes/3_5_0_txt.html">3.5.0</a>
+  
+    <li><a href="../../doc/release_notes/3_6_0_txt.html">3.6.0</a>
+  
+    <li><a href="../../doc/release_notes/3_7_0_txt.html">3.7.0</a>
+  
+    <li><a href="../../doc/release_notes/3_8_0_txt.html">3.8.0</a>
+  
+    <li><a href="../../doc/release_notes/3_9_0_txt.html">3.9.0</a>
+  
+    <li><a href="../../doc/release_notes/4_0_0_txt.html">4.0.0</a>
+  
+    <li><a href="../../doc/release_notes/4_1_0_txt.html">4.1.0</a>
+  
+    <li><a href="../../doc/release_notes/4_10_0_txt.html">4.10.0</a>
+  
+    <li><a href="../../doc/release_notes/4_11_0_txt.html">4.11.0</a>
+  
+    <li><a href="../../doc/release_notes/4_12_0_txt.html">4.12.0</a>
+  
+    <li><a href="../../doc/release_notes/4_13_0_txt.html">4.13.0</a>
+  
+    <li><a href="../../doc/release_notes/4_14_0_txt.html">4.14.0</a>
+  
+    <li><a href="../../doc/release_notes/4_15_0_txt.html">4.15.0</a>
+  
+    <li><a href="../../doc/release_notes/4_16_0_txt.html">4.16.0</a>
+  
+    <li><a href="../../doc/release_notes/4_17_0_txt.html">4.17.0</a>
+  
+    <li><a href="../../doc/release_notes/4_18_0_txt.html">4.18.0</a>
+  
+    <li><a href="../../doc/release_notes/4_19_0_txt.html">4.19.0</a>
+  
+    <li><a href="../../doc/release_notes/4_2_0_txt.html">4.2.0</a>
+  
+    <li><a href="../../doc/release_notes/4_20_0_txt.html">4.20.0</a>
+  
+    <li><a href="../../doc/release_notes/4_21_0_txt.html">4.21.0</a>
+  
+    <li><a href="../../doc/release_notes/4_22_0_txt.html">4.22.0</a>
+  
+    <li><a href="../../doc/release_notes/4_23_0_txt.html">4.23.0</a>
+  
+    <li><a href="../../doc/release_notes/4_24_0_txt.html">4.24.0</a>
+  
+    <li><a href="../../doc/release_notes/4_25_0_txt.html">4.25.0</a>
+  
+    <li><a href="../../doc/release_notes/4_26_0_txt.html">4.26.0</a>
+  
+    <li><a href="../../doc/release_notes/4_27_0_txt.html">4.27.0</a>
+  
+    <li><a href="../../doc/release_notes/4_28_0_txt.html">4.28.0</a>
+  
+    <li><a href="../../doc/release_notes/4_29_0_txt.html">4.29.0</a>
+  
+    <li><a href="../../doc/release_notes/4_3_0_txt.html">4.3.0</a>
+  
+    <li><a href="../../doc/release_notes/4_30_0_txt.html">4.30.0</a>
+  
+    <li><a href="../../doc/release_notes/4_31_0_txt.html">4.31.0</a>
+  
+    <li><a href="../../doc/release_notes/4_32_0_txt.html">4.32.0</a>
+  
+    <li><a href="../../doc/release_notes/4_33_0_txt.html">4.33.0</a>
+  
+    <li><a href="../../doc/release_notes/4_34_0_txt.html">4.34.0</a>
+  
+    <li><a href="../../doc/release_notes/4_35_0_txt.html">4.35.0</a>
+  
+    <li><a href="../../doc/release_notes/4_36_0_txt.html">4.36.0</a>
+  
+    <li><a href="../../doc/release_notes/4_37_0_txt.html">4.37.0</a>
+  
+    <li><a href="../../doc/release_notes/4_38_0_txt.html">4.38.0</a>
+  
+    <li><a href="../../doc/release_notes/4_39_0_txt.html">4.39.0</a>
+  
+    <li><a href="../../doc/release_notes/4_4_0_txt.html">4.4.0</a>
+  
+    <li><a href="../../doc/release_notes/4_40_0_txt.html">4.40.0</a>
+  
+    <li><a href="../../doc/release_notes/4_41_0_txt.html">4.41.0</a>
+  
+    <li><a href="../../doc/release_notes/4_42_0_txt.html">4.42.0</a>
+  
+    <li><a href="../../doc/release_notes/4_43_0_txt.html">4.43.0</a>
+  
+    <li><a href="../../doc/release_notes/4_44_0_txt.html">4.44.0</a>
+  
+    <li><a href="../../doc/release_notes/4_45_0_txt.html">4.45.0</a>
+  
+    <li><a href="../../doc/release_notes/4_46_0_txt.html">4.46.0</a>
+  
+    <li><a href="../../doc/release_notes/4_47_0_txt.html">4.47.0</a>
+  
+    <li><a href="../../doc/release_notes/4_48_0_txt.html">4.48.0</a>
+  
+    <li><a href="../../doc/release_notes/4_49_0_txt.html">4.49.0</a>
+  
+    <li><a href="../../doc/release_notes/4_5_0_txt.html">4.5.0</a>
+  
+    <li><a href="../../doc/release_notes/4_6_0_txt.html">4.6.0</a>
+  
+    <li><a href="../../doc/release_notes/4_7_0_txt.html">4.7.0</a>
+  
+    <li><a href="../../doc/release_notes/4_8_0_txt.html">4.8.0</a>
+  
+    <li><a href="../../doc/release_notes/4_9_0_txt.html">4.9.0</a>
+  
+    <li><a href="../../doc/release_notes/5_0_0_txt.html">5.0.0</a>
+  
+    <li><a href="../../doc/release_notes/5_1_0_txt.html">5.1.0</a>
+  
+    <li><a href="../../doc/release_notes/5_10_0_txt.html">5.10.0</a>
+  
+    <li><a href="../../doc/release_notes/5_11_0_txt.html">5.11.0</a>
+  
+    <li><a href="../../doc/release_notes/5_12_0_txt.html">5.12.0</a>
+  
+    <li><a href="../../doc/release_notes/5_13_0_txt.html">5.13.0</a>
+  
+    <li><a href="../../doc/release_notes/5_14_0_txt.html">5.14.0</a>
+  
+    <li><a href="../../doc/release_notes/5_15_0_txt.html">5.15.0</a>
+  
+    <li><a href="../../doc/release_notes/5_16_0_txt.html">5.16.0</a>
+  
+    <li><a href="../../doc/release_notes/5_17_0_txt.html">5.17.0</a>
+  
+    <li><a href="../../doc/release_notes/5_18_0_txt.html">5.18.0</a>
+  
+    <li><a href="../../doc/release_notes/5_19_0_txt.html">5.19.0</a>
+  
+    <li><a href="../../doc/release_notes/5_2_0_txt.html">5.2.0</a>
+  
+    <li><a href="../../doc/release_notes/5_20_0_txt.html">5.20.0</a>
+  
+    <li><a href="../../doc/release_notes/5_21_0_txt.html">5.21.0</a>
+  
+    <li><a href="../../doc/release_notes/5_22_0_txt.html">5.22.0</a>
+  
+    <li><a href="../../doc/release_notes/5_23_0_txt.html">5.23.0</a>
+  
+    <li><a href="../../doc/release_notes/5_24_0_txt.html">5.24.0</a>
+  
+    <li><a href="../../doc/release_notes/5_25_0_txt.html">5.25.0</a>
+  
+    <li><a href="../../doc/release_notes/5_26_0_txt.html">5.26.0</a>
+  
+    <li><a href="../../doc/release_notes/5_27_0_txt.html">5.27.0</a>
+  
+    <li><a href="../../doc/release_notes/5_28_0_txt.html">5.28.0</a>
+  
+    <li><a href="../../doc/release_notes/5_29_0_txt.html">5.29.0</a>
+  
+    <li><a href="../../doc/release_notes/5_3_0_txt.html">5.3.0</a>
+  
+    <li><a href="../../doc/release_notes/5_30_0_txt.html">5.30.0</a>
+  
+    <li><a href="../../doc/release_notes/5_31_0_txt.html">5.31.0</a>
+  
+    <li><a href="../../doc/release_notes/5_32_0_txt.html">5.32.0</a>
+  
+    <li><a href="../../doc/release_notes/5_33_0_txt.html">5.33.0</a>
+  
+    <li><a href="../../doc/release_notes/5_34_0_txt.html">5.34.0</a>
+  
+    <li><a href="../../doc/release_notes/5_35_0_txt.html">5.35.0</a>
+  
+    <li><a href="../../doc/release_notes/5_36_0_txt.html">5.36.0</a>
+  
+    <li><a href="../../doc/release_notes/5_37_0_txt.html">5.37.0</a>
+  
+    <li><a href="../../doc/release_notes/5_38_0_txt.html">5.38.0</a>
+  
+    <li><a href="../../doc/release_notes/5_39_0_txt.html">5.39.0</a>
+  
+    <li><a href="../../doc/release_notes/5_4_0_txt.html">5.4.0</a>
+  
+    <li><a href="../../doc/release_notes/5_40_0_txt.html">5.40.0</a>
+  
+    <li><a href="../../doc/release_notes/5_41_0_txt.html">5.41.0</a>
+  
+    <li><a href="../../doc/release_notes/5_42_0_txt.html">5.42.0</a>
+  
+    <li><a href="../../doc/release_notes/5_43_0_txt.html">5.43.0</a>
+  
+    <li><a href="../../doc/release_notes/5_44_0_txt.html">5.44.0</a>
+  
+    <li><a href="../../doc/release_notes/5_45_0_txt.html">5.45.0</a>
+  
+    <li><a href="../../doc/release_notes/5_46_0_txt.html">5.46.0</a>
+  
+    <li><a href="../../doc/release_notes/5_47_0_txt.html">5.47.0</a>
+  
+    <li><a href="../../doc/release_notes/5_48_0_txt.html">5.48.0</a>
+  
+    <li><a href="../../doc/release_notes/5_49_0_txt.html">5.49.0</a>
+  
+    <li><a href="../../doc/release_notes/5_5_0_txt.html">5.5.0</a>
+  
+    <li><a href="../../doc/release_notes/5_50_0_txt.html">5.50.0</a>
+  
+    <li><a href="../../doc/release_notes/5_51_0_txt.html">5.51.0</a>
+  
+    <li><a href="../../doc/release_notes/5_52_0_txt.html">5.52.0</a>
+  
+    <li><a href="../../doc/release_notes/5_53_0_txt.html">5.53.0</a>
+  
+    <li><a href="../../doc/release_notes/5_54_0_txt.html">5.54.0</a>
+  
+    <li><a href="../../doc/release_notes/5_55_0_txt.html">5.55.0</a>
+  
+    <li><a href="../../doc/release_notes/5_6_0_txt.html">5.6.0</a>
+  
+    <li><a href="../../doc/release_notes/5_7_0_txt.html">5.7.0</a>
+  
+    <li><a href="../../doc/release_notes/5_8_0_txt.html">5.8.0</a>
+  
+    <li><a href="../../doc/release_notes/5_9_0_txt.html">5.9.0</a>
+  
+    <li><a href="../../doc/schema_modification_rdoc.html">schema_modification</a>
+  
+    <li><a href="../../doc/security_rdoc.html">security</a>
+  
+    <li><a href="../../doc/sharding_rdoc.html">sharding</a>
+  
+    <li><a href="../../doc/sql_rdoc.html">sql</a>
+  
+    <li><a href="../../doc/testing_rdoc.html">testing</a>
+  
+    <li><a href="../../doc/thread_safety_rdoc.html">thread_safety</a>
+  
+    <li><a href="../../doc/transactions_rdoc.html">transactions</a>
+  
+    <li><a href="../../doc/validations_rdoc.html">validations</a>
+  
+    <li><a href="../../doc/virtual_rows_rdoc.html">virtual_rows</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/release_notes/2.12.0.txt">
+
+<p>Overview</p>
+<hr>
+
+<p><a href="../../Sequel.html"><code>Sequel</code></a> 2.12 is really just a stepping stone to <a href="../../Sequel.html"><code>Sequel</code></a> 3.0, which will be released next month.  All major changes currently planned for 3.0 have been made in 2.12, but 2.12 contains many features that have been deprecated and will be removed or moved into extensions or plugins in 3.0.</p>
+
+<p>Deprecation Logging</p>
+<hr>
+
+<p>If you use a deprecated method or feature, <a href="../../Sequel.html"><code>Sequel</code></a> will by default print a deprecation message and 10 lines of backtrace to standard error to easily allow you to figure out which code needs to be updated.  You can change where the deprecation messages go and how many lines of backtrace are given using the following:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Log deprecation information to a file</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">output</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;deprecated.txt&#39;</span>, <span class="ruby-string">&#39;wb&#39;</span>)
+
+<span class="ruby-comment"># Use 5 lines of backtrace when logging deprecation messages</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">backtraces</span> = <span class="ruby-value">5</span>
+
+<span class="ruby-comment"># Use all backtrace lines when logging deprecation messages</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">backtraces</span> = <span class="ruby-keyword">true</span>
+
+<span class="ruby-comment"># Don&#39;t include backtraces in the deprecation logging</span>
+<span class="ruby-constant">Sequel</span>.<span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">backtraces</span> = <span class="ruby-keyword">false</span>
+
+<span class="ruby-comment"># Turn off all deprecation logging</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">output</span> = <span class="ruby-keyword">nil</span>
+</pre>
+
+<p>Deprecated Features Moving to Extensions</p>
+<hr>
+<ul><li>
+<p>Migrations are being moved into sequel/extensions/migration.  There isn&#39;t any reason that they should be loaded in normal use since they are used so rarely.  The sequel command line tool uses this extension to run the migrations.</p>
+</li><li>
+<p>Adding the blank? method to all objects has been moved into sequel/extensions/blank.</p>
+</li><li>
+<p>Dataset#print and Sequel::PrettyTable have been moved into sequel/extensions/pretty_table.</p>
+</li><li>
+<p>Dataset#query and related methods have been moved into sequel/extensions/query.</p>
+</li><li>
+<p>Dataset#paginate and related methods have been moved into sequel/extensions/pagination.</p>
+</li><li>
+<p>String inflection methods (e.g. “people”.singularize) have been moved into sequel/extensions/inflector.</p>
+</li><li>
+<p>String date/time conversion methods (e.g. &#39;2000-01-01&#39;.to_date) have been moved into sequel/extensions/string_date_time.</p>
+</li></ul>
+
+<p>Deprecated Model Features Moving to Plugins</p>
+<hr>
+<ul><li>
+<p>Model validation class methods have been moved to a plugin.  <a href="../../Sequel.html"><code>Sequel</code></a> users are encouraged to write their own validate instance method instead. A new validation_helpers plugin has been added to make this easier, it&#39;s explained in the New Features section.  If you want to continue using the validation class methods:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:validation_class_methods</span>
+</pre>
+</li><li>
+<p>Model hook class methods have been moved to a plugin.  <a href="../../Sequel.html"><code>Sequel</code></a> users are encouraged to write their own hook instance methods, and call super to get hooks specified in superclasses or plugins.  If you want to continue using the hook class methods:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:hook_class_methods</span>
+</pre>
+</li><li>
+<p>Model schema methods (e.g. Model.set_schema, Model.create_table,  Model.drop_table) have been moved to a plugin.  The use of these methods has been discouraged for a long time.  If you want to use them:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:schema</span>
+</pre>
+</li><li>
+<p>Model.set_sti_key has been moved to a plugin.  So you should change:</p>
+
+<pre class="ruby"><span class="ruby-constant">MyModel</span>.<span class="ruby-identifier">set_sti_key</span> <span class="ruby-value">:key_column</span>
+</pre>
+
+<p>to:</p>
+
+<pre class="ruby"><span class="ruby-constant">MyModel</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:single_table_inheritance</span>, <span class="ruby-value">:key_column</span>
+</pre>
+</li><li>
+<p>Model.set_cache has been moved to a plugin.  So you should change:</p>
+
+<pre class="ruby"><span class="ruby-constant">MyModel</span>.<span class="ruby-identifier">set_cache</span> <span class="ruby-identifier">cache_store</span>, <span class="ruby-identifier">opts</span>
+</pre>
+
+<p>to:</p>
+
+<pre class="ruby"><span class="ruby-constant">MyModel</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:caching</span>, <span class="ruby-identifier">cache_store</span>, <span class="ruby-identifier">opts</span>
+</pre>
+</li><li>
+<p>Model.serialize has been moved to a plugin.  So you should change:</p>
+
+<pre class="ruby"><span class="ruby-constant">MyModel</span>.<span class="ruby-identifier">serialize</span> <span class="ruby-value">:column</span>, <span class="ruby-value">:format</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">:yaml</span>
+</pre>
+
+<p>to:</p>
+
+<pre class="ruby"><span class="ruby-constant">MyModel</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:serialization</span>, <span class="ruby-value">:yaml</span>, <span class="ruby-value">:column</span>
+</pre>
+
+<p>Because the previous serialization support depended on dataset transforms, the new serialization support is implemented differently, and behavior may not be identical in all cases. However, this should be a drop in replacement for most users.</p>
+</li></ul>
+
+<p>Deprecated Features To Be Removed in <a href="../../Sequel.html"><code>Sequel</code></a> 3.0</p>
+<hr>
+<ul><li>
+<p>Dataset#transform is deprecated without any replacement planned. It was announced on the <a href="../../Sequel.html"><code>Sequel</code></a> mailing list that transforms would be removed unless someone said they needed them, and nobody said that they did.</p>
+</li><li>
+<p>Dataset#multi_insert and Dataset#import are no longer aliases of each other.  Dataset#multi_insert now takes an array of hashes, and Dataset#import now takes an array of columns and an array of arrays of values.  Using multi_insert with import&#39;s API or vice-versa is deprecated.</p>
+</li><li>
+<p>Calling Dataset#[] with no arguments or an integer argument is deprecated.</p>
+</li><li>
+<p>Calling Dataset#map with both an argument and a block is deprecated.</p>
+</li><li>
+<p>Database#multi_threaded? and Database#logger are both deprecated.</p>
+</li><li>
+<p>Calling Database#transaction with a symbol to specify which server to use is deprecated.  You should now call it with an option hash with a :server key.</p>
+</li><li>
+<p>Array#extract_options! and Object#is_one_of? are both deprecated.</p>
+</li><li>
+<p>The metaprogramming methods taken from metaid are deprecated and have been moved into Sequel::Metaprogramming.  If you want them available to specific objects/classes, just include or extend with Sequel::Metaprogramming.  If you want all objects to have access to the metaprogramming methods, install metaid.  Note that the class_def method from metaid doesn&#39;t exist in Sequel::Metaprogramming, since it really isn&#39;t different from define_method (except it is public instead of private).</p>
+</li><li>
+<p>Module#class_attr_overridable, class_attr_reader, and metaalias are deprecated.</p>
+</li><li>
+<p>Using Model#set or update when the columns for the model are not set and you provide a hash with symbol keys is deprecated. Basically, you must have setter methods now for any columns used in set or update.</p>
+</li><li>
+<p>Model#set_with_params and update_with_params are deprecated, use set and update instead.</p>
+</li><li>
+<p>Model#save! is deprecated, use save(:validate=&gt;false).</p>
+</li><li>
+<p>Model.is and Model.is_a are deprecated, use Model.plugin.</p>
+</li><li>
+<p>Model.str_columns, Model#str_columns, set_values, and update_values are deprecated.  You should use set and update instead of set_values and update_values, though they operate differently.</p>
+</li><li>
+<p>Model.delete_all, Model.destroy_all, Model.size, and Model.uniq are deprecated, use .delete, .destroy, .count, and .distinct.</p>
+</li><li>
+<p>Model.belongs_to, Model.has_many, and Model.has_and_belongs_to_many are deprecated, use .many_to_one, .one_to_many, and .many_to_many.</p>
+</li><li>
+<p>Model#dataset is deprecated, use Model.dataset.</p>
+</li><li>
+<p>SQL::CastMethods#cast_as is deprecated, use cast.</p>
+</li><li>
+<p>Calling Database#schema without a table argument is deprecated.</p>
+</li><li>
+<p>Dataset#uniq is deprecated, use Dataset#distinct.</p>
+</li><li>
+<p>Dataset#symbol_to_column_ref is deprecated, use literal.</p>
+</li><li>
+<p>Dataset#quote_column_ref is deprecated, use quote_identifier.</p>
+</li><li>
+<p>Dataset#size is deprecated, use count.</p>
+</li><li>
+<p>Passing options to Dataset#each, all, single_record, single_value, sql, select_sql, update, update_sql, delete, delete_sql, and exists is deprecated.  Modify the options first using clone or a related method, then call one of the above methods.</p>
+</li><li>
+<p>Dataset#create_view and create_or_replace_view are deprecated, use the database methods instead.</p>
+</li><li>
+<p>Dataset.dataset_classes, model_classes, polymorphic_key, and set_model are deprecated.</p>
+</li><li>
+<p>Database#>> is deprecated.</p>
+</li><li>
+<p>String#to_blob and SQL::Blob#to_blob are deprecated, use to_sequel_blob.</p>
+</li><li>
+<p>The use of Symbol#| to create array subscripts is deprecated, use Symbol#sql_subscript.</p>
+</li><li>
+<p>Symbol#to_column_ref is deprecated, use Dataset#literal.</p>
+</li><li>
+<p>String#expr is deprecated, use String#lit.</p>
+</li><li>
+<p>Array#to_sql, String#to_sql, and String#split_sql are deprecated.</p>
+</li><li>
+<p>Passing an array to Database#<< is deprecated.</p>
+</li><li>
+<p>Range#interval is deprecated.</p>
+</li><li>
+<p>Enumerable#send_each is deprecated.</p>
+</li><li>
+<p>When using ruby 1.8, Hash#key is deprecated.</p>
+</li><li>
+<p>Sequel.open is deprecated, use Sequel.connect.</p>
+</li><li>
+<p>Sequel.use_parse_tree and Sequel.use_parse_tree= are deprecated.</p>
+</li><li>
+<p>All upcase_identifier methods and the :upcase_identifiers database option are deprecated, use identifier_input_method = :upcase instead.</p>
+</li><li>
+<p>Using a virtual row block without an argument is deprecated, see Sequel.virtual_row_instance_eval= under New Features.</p>
+</li><li>
+<p>When using the JDBC adapter, Java::JavaSQL::Timestamp#usec is deprecated.  <a href="../../Sequel.html"><code>Sequel</code></a> has returned Java::JavaSQL::Timestamp as DateTime or Time for a few versions, so this shouldn&#39;t affect most people.</p>
+</li><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> will no longer require bigdecimal/util, enumerator, or yaml in 3.0.  If you need them in your code, make sure you require them yourself.  Using features added by requiring these standard libaries will not bring up a deprecation warning, for obvious reasons.</p>
+</li><li>
+<p>Sequel::Error::InvalidTransform, Sequel::Error::NoExistingFilter, and Sequel::Error::InvalidStatement exceptions will be removed in <a href="../../Sequel.html"><code>Sequel</code></a> 3.0.  You will not get a deprecation message if you reference them in 2.12.</p>
+</li><li>
+<p>Sequel::Model::Validation::Errors is deprecated, use <a href="../../Sequel/Model/Errors.html"><code>Sequel::Model::Errors</code></a> instead.  Referencing the old name will not bring up a deprecation message.</p>
+</li></ul>
+
+<p>New Features</p>
+<hr>
+<ul><li>
+<p>Sequel.virtual_row_instance_eval= was added, which lets you give <a href="../../Sequel.html"><code>Sequel</code></a> 2.12 the behavior that will be the standard in 3.0. It changes blocks passed to Dataset#filter, select, or order that don&#39;t accept arguments (or accept any number of arguments) to instance eval the block in the context of a new VirtualRow instance instead of passing a new VirtualRow instance to the block. It allows you to change code that looks like this:</p>
+
+<pre class="ruby"><span class="ruby-identifier">dataset</span>.<span class="ruby-identifier">filter</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">o</span>.<span class="ruby-identifier">number</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span>) <span class="ruby-operator">&amp;</span> (<span class="ruby-identifier">o</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;M&#39;</span>)}
+</pre>
+
+<p>to:</p>
+
+<pre class="ruby"><span class="ruby-identifier">dataset</span>.<span class="ruby-identifier">filter</span>{(<span class="ruby-identifier">number</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span>) <span class="ruby-operator">&amp;</span> (<span class="ruby-identifier">name</span> <span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;M&#39;</span>)}
+</pre>
+
+<p>When instance_eval is used, only local variables are available to the block.  Any calls to instance methods will be interpreted as calling VirtualRow#method_missing, which generates identifiers or functions.  When virtual_row_instance_eval is enabled, the following type of code will break:</p>
+
+<pre class="ruby"><span class="ruby-comment"># amount is a instance method</span>
+<span class="ruby-identifier">dataset</span>.<span class="ruby-identifier">filter</span>{<span class="ruby-value">:number</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>}
+</pre>
+
+<p>Just like this example, the only type of code that should break is when a virtual row block was used when it wasn&#39;t necessary (since it doesn&#39;t use the VirtualRow argument).</p>
+
+<p>When Sequel.virtual_row_instance_eval = false, using a virtual row block that doesn&#39;t accept an argument will cause a deprecation message.</p>
+
+<p>Here&#39;s a regular expression that should catch most places where you are using a virtual row block without an argument.</p>
+
+<pre>egrep -nr &#39;[^A-Za-z0-9_](filter|select|select_more|order|order_more|get|where|having|from|first|and|or|exclude|find|subset|constraint|check)( *(\([^)]*\) *)?){*[^|]&#39; *</pre>
+
+<p>An RDoc page explaining virtual row blocks was added as well.</p>
+</li><li>
+<p>A validation_helpers model plugin was added that allows you to do validations similar to the old class level validations inside the Model#validate instance method.  The API has changed, but it&#39;s capable of most of the same validations.  It doesn&#39;t handle acceptance_of or confirmation_of validations, as those shouldn&#39;t be handled in the model.</p>
+
+<pre class="ruby"><span class="ruby-comment"># Old class level validations</span>
+<span class="ruby-identifier">validates_format_of</span> <span class="ruby-value">:col</span>, <span class="ruby-value">:with</span><span class="ruby-operator">=&gt;</span><span class="ruby-regexp">/.../</span>
+<span class="ruby-identifier">validates_length_of</span> <span class="ruby-value">:col</span>, <span class="ruby-value">:maximum</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">5</span>
+<span class="ruby-identifier">validates_length_of</span> <span class="ruby-value">:col</span>, <span class="ruby-value">:minimum</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">3</span>
+<span class="ruby-identifier">validates_length_of</span> <span class="ruby-value">:col</span>, <span class="ruby-value">:is</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">4</span>
+<span class="ruby-identifier">validates_length_of</span> <span class="ruby-value">:col</span>, <span class="ruby-value">:within</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">5</span>
+<span class="ruby-identifier">validates_not_string</span> <span class="ruby-value">:col</span>
+<span class="ruby-identifier">validates_numericality_of</span> <span class="ruby-value">:col</span>
+<span class="ruby-identifier">validates_numericality_of</span> <span class="ruby-value">:col</span>, <span class="ruby-value">:only_integer</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>
+<span class="ruby-identifier">validates_presence_of</span> <span class="ruby-value">:col</span>
+<span class="ruby-identifier">validates_inclusion_of</span> <span class="ruby-value">:col</span>, <span class="ruby-value">:in</span><span class="ruby-operator">=&gt;</span>[<span class="ruby-value">3</span>, <span class="ruby-value">4</span>, <span class="ruby-value">5</span>]
+<span class="ruby-identifier">validates_uniqueness_of</span> <span class="ruby-value">:col</span>, <span class="ruby-value">:col2</span>
+<span class="ruby-identifier">validates_uniqueness_of</span>([<span class="ruby-value">:col</span>, <span class="ruby-value">:col2</span>])
+
+<span class="ruby-comment"># New instance level validations</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validate</span>
+  <span class="ruby-identifier">validates_format</span> <span class="ruby-regexp">/.../</span>, <span class="ruby-value">:col</span>
+  <span class="ruby-identifier">validates_max_length</span> <span class="ruby-value">5</span>, <span class="ruby-value">:col</span>
+  <span class="ruby-identifier">validates_min_length</span> <span class="ruby-value">3</span>, <span class="ruby-value">:col</span>
+  <span class="ruby-identifier">validates_exact_length</span> <span class="ruby-value">4</span>, <span class="ruby-value">:col</span>
+  <span class="ruby-identifier">validates_length_range</span> <span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">5</span>, <span class="ruby-value">:col</span>
+  <span class="ruby-identifier">validates_not_string</span> <span class="ruby-value">:col</span>
+  <span class="ruby-identifier">validates_numeric</span> <span class="ruby-value">:col</span>
+  <span class="ruby-identifier">validates_integer</span> <span class="ruby-value">:col</span>
+  <span class="ruby-identifier">validates_presence</span> <span class="ruby-value">:col</span>
+  <span class="ruby-identifier">validates_includes</span>([<span class="ruby-value">3</span>,<span class="ruby-value">4</span>,<span class="ruby-value">5</span>], <span class="ruby-value">:col</span>)
+  <span class="ruby-identifier">validates_unique</span> <span class="ruby-value">:col</span>, <span class="ruby-value">:col2</span>
+  <span class="ruby-identifier">validates_unique</span>([<span class="ruby-value">:col</span>, <span class="ruby-value">:col2</span>])
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Another change made is to specify the same type of validation on multiple attributes, you must use an array:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Old</span>
+<span class="ruby-identifier">validates_length_of</span> <span class="ruby-value">:name</span>, <span class="ruby-value">:password</span>, <span class="ruby-value">:within</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">5</span>
+
+<span class="ruby-comment"># New</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validate</span>
+  <span class="ruby-identifier">validates_length_range</span> <span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">5</span>, [<span class="ruby-value">:name</span>, <span class="ruby-value">:password</span>]
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>The :message, :allow_blank, :allow_missing, and :allow_nil options are still respected.  The :tag option is not needed as instance level validations work with code reloading without workarounds. The :if option is also not needed for instance level validations:</p>
+
+<pre># Old
+validates_presence_of :name, :if=&gt;:new?
+validates_presence_of :pass, :if=&gt;{flag &gt; 3}
+
+# New
+def validate
+  validates_presence(:name) if new?
+  validates_presence(:pass) if flag &gt; 3
+end</pre>
+
+<p>The validates_each also doesn&#39;t have an equivalent instance method, since it is much easier to just write your own validation:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Old</span>
+<span class="ruby-identifier">validates_each</span>(<span class="ruby-value">:date</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span>,<span class="ruby-identifier">a</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">o</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">a</span>, <span class="ruby-string">&#39;...&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># New</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validate</span>
+  <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:date</span>, <span class="ruby-string">&#39;...&#39;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">date</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+<span class="ruby-keyword">end</span>
+</pre>
+</li><li>
+<p>MySQL adapter datasets now have on_duplicate_key_update and insert_ignore methods which modify the SQL used to support ON DUPLICATE KEY UPDATE and INSERT INGORE syntax in multi_insert and import.</p>
+</li><li>
+<p>If you use the MySQL native adapter, you can set:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">MySQL</span>.<span class="ruby-identifier">convert_invalid_date_time</span> = <span class="ruby-keyword">nil</span>
+</pre>
+
+<p>to return dates like “0000-00-00” and times like “25:00:00” as nil values instead of raising an error.  You can also set it to :string to return the values as strings.</p>
+</li><li>
+<p>You can now use <a href="../../Sequel.html"><code>Sequel</code></a> without modifying any core classes, by defining a SEQUEL_NO_CORE_EXTENSIONS constant or environment variable.  In 2.12, this may still add some deprecated methods to the core classes, but in 3.0 no methods will be added to the core classes if you use this.</p>
+</li><li>
+<p>You can now use <a href="../../Sequel/Model.html"><code>Sequel::Model</code></a> without the associations implementation by defining a SEQUEL_NO_ASSOCIATIONS constant or environment variable.</p>
+</li></ul>
+
+<p>Other Improvements</p>
+<hr>
+<ul><li>
+<p>Model column accessors have been made faster and the overhead of creating them has been reduced significantly.</p>
+</li><li>
+<p>~{:bool_col=&gt;true} now generates an bool_col IS NOT TRUE filter instead of bool_col != TRUE.  This makes it return records with NULL values.  If you only want to have false records, you should use {:bool_col=&gt;false}.  This works better with SQL&#39;s 3 valued boolean logic.</p>
+
+<p>It is slightly inconsistent with ~{:col=&gt;1}, since that won&#39;t return values where col is NULL, but it gives the user the ability to create an IS [NOT] (TRUE|FALSE) filter, which <a href="../../Sequel.html"><code>Sequel</code></a> previously did not support.</p>
+
+<p>If you really want the old behavior, you can change it to  ~{true=&gt;:bool_col}.</p>
+</li><li>
+<p>Model.use_transactions was added for setting whether model objects should use transactions when destroying or saving records.  Like most <a href="../../Sequel.html"><code>Sequel</code></a> options, it&#39;s settable on a global, per model, and per object basis:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">use_transactions</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-constant">MyModel</span>.<span class="ruby-identifier">use_transactions</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-identifier">my_model</span>.<span class="ruby-identifier">use_transactions</span> = <span class="ruby-keyword">false</span>
+</pre>
+
+<p>You can also turn it on or off for specific save calls:</p>
+
+<pre class="ruby"><span class="ruby-identifier">my_model</span>.<span class="ruby-identifier">save</span>(<span class="ruby-value">:transaction</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>)
+</pre>
+</li><li>
+<p>The Oracle adapter now supports schema parsing.</p>
+</li><li>
+<p>When using Model.db=, all current dataset options are copied to a new dataset created with the new db.</p>
+</li><li>
+<p>Model::Errors#count was refactored to improve performance.</p>
+</li><li>
+<p>Most exception classes that were located under <a href="../../Sequel/Error.html"><code>Sequel::Error</code></a> are now located directly under <a href="../../Sequel.html"><code>Sequel</code></a>.  The old names are not deprecated (unless mentioned above), but their use is now discouraged.  The exceptions have the same name except that Sequel::Error::PoolTimeoutError changed to Sequel::PoolTimeout.</p>
+</li><li>
+<p>Dataset#where now always affects the WHERE clause.  Before, it was just an alias of filter, so it modified the HAVING clause if the dataset already had a HAVING clause.</p>
+</li><li>
+<p>The optimization of Model.[] introduced in 2.11.0 broke on databases that didn&#39;t support LIMIT.  The optimization now works on those databases.</p>
+</li><li>
+<p>All of the the RDoc documentation was reviewed and many updates were made, resulting in significantly improved documentation quality.</p>
+</li><li>
+<p>Model.def_dataset_method now works when the model doesn&#39;t have an associated dataset, as it will add the method to a dataset given to set_dataset in the future.</p>
+</li><li>
+<p>Database#get and select now take a block that is passed to the dataset they create.</p>
+</li><li>
+<p>You can disable the use of INSERT RETURNING in the shared PostgreSQL adapter using disable_insert_returning.  This is mostly useful if you are inserting a large number of records.</p>
+</li><li>
+<p>A bug relating to aliasing columns in the JDBC adapter has been fixed.</p>
+</li><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> can now create and drop schema-qualified views.</p>
+</li><li>
+<p>Performance of Dataset#destroy for model datasets was improved.</p>
+</li><li>
+<p>The specs now run on Rspec 1.2.</p>
+</li><li>
+<p>Internal dependence on the methods that <a href="../../Sequel.html"><code>Sequel</code></a> adds to core classes has been eliminated, any internal use of methods that <a href="../../Sequel.html"><code>Sequel</code></a> adds to the core classes is now considered a bug.</p>
+</li><li>
+<p>A possible bug where Database#rename_table would not remove a cached schema entry has been fixed.</p>
+</li><li>
+<p>The Oracle and MySQL adapters now raise an error as soon as you call distinct on a dataset, instead of waiting until the SQL is generated.</p>
+</li></ul>
+
+<p>Backwards Compatibilty</p>
+<hr>
+<ul><li>
+<p>Saving a newly inserted record in an after_create or after_save hook is no longer broken.  It broke in 2.10 as a side effect of allowing the hook to check whether or not the record was a new record.  The code has been changed so that a @was_new instance variable will be defined to true if the record was just created.</p>
+
+<p>Similarly, instead of not modifying changed_columns until after the after hooks run, a @columns_updated instance variable will be available in the after hooks that is a hash of exactly what attribute keys and values were used in the update.</p>
+
+<p>These changes break compatibility with 2.11.0 and 2.10.0, but restore compatibility with 2.9.0 and previous versions.</p>
+</li><li>
+<p>PostgreSQL no longer uses savepoints for nested transactions by default.  If you want to use a savepoint, you have to pass the :savepoint option to the transaction method.  Using savepoints by default broke expectations when a method raised Rollback to rollback the transaction, and it only rolled back to the last savepoint.</p>
+</li><li>
+<p>The anonymous model classes created by Sequel::Model() are now stored in Model::ANONYMOUS_MODEL_CLASSES instead of the @models class instance variable of the main module.</p>
+</li><li>
+<p>The mappings of adapter schemes to classes are now stored in Sequel::ADAPTER_MAP instead of the Database @@adapters class variable.</p>
+</li><li>
+<p>Model instances no longer contain a reference to their class&#39;s @db_schema.</p>
+</li><li>
+<p>Database schema sql methods (e.g. alter_table_sql) are now private.</p>
+</li><li>
+<p>Database#[] no longer accepts a block.  It&#39;s not possible to call it with a block in general usage, anyway.</p>
+</li><li>
+<p>The Sequel::Schema::SQL module no longer exists, the methods it included were placed directly in the <a href="../../Sequel/Database.html"><code>Sequel::Database</code></a> class.</p>
+</li><li>
+<p>The Sequel::SQL::SpecificExpression class has been removed, subclasses now inherit from <a href="../../Sequel/SQL/Expression.html"><code>Sequel::SQL::Expression</code></a>.</p>
+</li><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> now requires its own files with an absolute path.</p>
+</li><li>
+<p>The file hierarchy of the sequel library changed significantly.</p>
+</li></ul>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

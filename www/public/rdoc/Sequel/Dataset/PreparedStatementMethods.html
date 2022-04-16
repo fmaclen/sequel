@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Dataset::PreparedStatementMethods - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-call">#call</a>
+    
+    <li ><a href="#method-i-columns">#columns</a>
+    
+    <li class="calls-super" ><a href="#method-i-delayed_evaluation_sql_append">#delayed_evaluation_sql_append</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
+    
+    <li class="calls-super" ><a href="#method-i-literal_symbol_append">#literal_symbol_append</a>
+    
+    <li ><a href="#method-i-log_sql">#log_sql</a>
+    
+    <li ><a href="#method-i-orig_dataset">#orig_dataset</a>
+    
+    <li class="calls-super" ><a href="#method-i-prepare">#prepare</a>
+    
+    <li ><a href="#method-i-prepared_args">#prepared_args</a>
+    
+    <li ><a href="#method-i-prepared_modify_values">#prepared_modify_values</a>
+    
+    <li ><a href="#method-i-prepared_sql">#prepared_sql</a>
+    
+    <li ><a href="#method-i-prepared_type">#prepared_type</a>
+    
+    <li ><a href="#method-i-run">#run</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Dataset::PreparedStatementMethods">
+  <h1 id="module-Sequel::Dataset::PreparedStatementMethods" class="module">
+    module Sequel::Dataset::PreparedStatementMethods
+  </h1>
+
+  <section class="description">
+    
+<p>Backbone of the prepared statement support.  Grafts bind variable support into datasets by hijacking literal and using placeholders. By default, emulates prepared statements and bind variables by taking the hash of bind variables and directly substituting them into the query, which works on all databases, as it is no different from using the dataset without bind variables.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-call" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">call</span><span
+            class="method-args">(bind_vars=OPTS, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the <a href="PreparedStatementMethods.html#method-i-prepared_args"><code>prepared_args</code></a> to the given hash and runs the prepared statement.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="call-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">117</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">call</span>(<span class="ruby-identifier">bind_vars</span>=<span class="ruby-constant">OPTS</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">118</span>   <span class="ruby-identifier">bind</span>(<span class="ruby-identifier">bind_vars</span>).<span class="ruby-identifier">run</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">119</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-columns" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">columns</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Send the columns to the original dataset, as calling it on the prepared statement can cause problems.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="columns-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">130</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">columns</span>
+<span class="line-num">131</span>   <span class="ruby-identifier">orig_dataset</span>.<span class="ruby-identifier">columns</span>
+<span class="line-num">132</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delayed_evaluation_sql_append" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delayed_evaluation_sql_append</span><span
+            class="method-args">(sql, delay)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Disallow use of delayed evaluations in prepared statements.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="delayed_evaluation_sql_append-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">135</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delayed_evaluation_sql_append</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">delay</span>)
+<span class="line-num">136</span>   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">&quot;delayed evaluations cannot be used in prepared statements&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:no_delayed_evaluations</span>]
+<span class="line-num">137</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">138</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Programmer friendly string showing this is a prepared statement, with the prepared <a href="../SQL.html"><code>SQL</code></a> it represents (which in general won&#39;t have substituted variables).</p>
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">176</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspect</span>
+<span class="line-num">177</span>   <span class="ruby-node">&quot;&lt;#{visible_class_name}/PreparedStatement #{prepared_sql.inspect}&gt;&quot;</span>
+<span class="line-num">178</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-literal_symbol_append" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">literal_symbol_append</span><span
+            class="method-args">(sql, v)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Changes the values of symbols if they start with $ and <a href="PreparedStatementMethods.html#method-i-prepared_args"><code>prepared_args</code></a> is present.  If so, they are considered placeholders, and they are substituted using prepared_arg.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="literal_symbol_append-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">165</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">literal_symbol_append</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">v</span>)
+<span class="line-num">166</span>   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:bind_vars</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-regexp">/\A\$(.*)\z/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">v</span>
+<span class="line-num">167</span>     <span class="ruby-identifier">literal_append</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">prepared_arg</span>(<span class="ruby-node">$1</span>.<span class="ruby-identifier">to_sym</span>))
+<span class="line-num">168</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">169</span>     <span class="ruby-keyword">super</span>
+<span class="line-num">170</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">171</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-log_sql" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">log_sql</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Whether to log the full <a href="../SQL.html"><code>SQL</code></a> query.  By default, just the prepared statement name is generally logged on adapters that support native prepared statements.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="log_sql-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">89</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">log_sql</span>
+<span class="line-num">90</span>   <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:log_sql</span>]
+<span class="line-num">91</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-orig_dataset" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">orig_dataset</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The dataset that created this prepared statement.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="orig_dataset-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">105</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">orig_dataset</span>
+<span class="line-num">106</span>   <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:orig_dataset</span>]
+<span class="line-num">107</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-prepare" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">prepare</span><span
+            class="method-args">(*)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Raise an error if attempting to call prepare on an already prepared statement.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="prepare-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">123</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prepare</span>(<span class="ruby-operator">*</span>)
+<span class="line-num">124</span>   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-string">&quot;cannot prepare an already prepared statement&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">allow_preparing_prepared_statements?</span>
+<span class="line-num">125</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">126</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-prepared_args" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">prepared_args</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The array/hash of bound variable placeholder names.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="prepared_args-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">100</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prepared_args</span>
+<span class="line-num">101</span>   <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:prepared_args</span>]
+<span class="line-num">102</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-prepared_modify_values" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">prepared_modify_values</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The argument to supply to insert and update, which may use placeholders specified by <a href="PreparedStatementMethods.html#method-i-prepared_args"><code>prepared_args</code></a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="prepared_modify_values-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">111</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prepared_modify_values</span>
+<span class="line-num">112</span>   <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:prepared_modify_values</span>]
+<span class="line-num">113</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-prepared_sql" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">prepared_sql</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the <a href="../SQL.html"><code>SQL</code></a> for the prepared statement, depending on the type of the statement and the prepared_modify_values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="prepared_sql-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">142</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prepared_sql</span>
+<span class="line-num">143</span>   <span class="ruby-keyword">case</span> <span class="ruby-identifier">prepared_type</span>
+<span class="line-num">144</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:select</span>, <span class="ruby-value">:all</span>, <span class="ruby-value">:each</span>
+<span class="line-num">145</span>     <span class="ruby-comment"># Most common scenario, so listed first.</span>
+<span class="line-num">146</span>     <span class="ruby-identifier">select_sql</span>
+<span class="line-num">147</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:first</span>, <span class="ruby-value">:single_value</span>
+<span class="line-num">148</span>     <span class="ruby-identifier">clone</span>(<span class="ruby-value">:limit</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">1</span>).<span class="ruby-identifier">select_sql</span>
+<span class="line-num">149</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:insert_select</span>
+<span class="line-num">150</span>     <span class="ruby-identifier">insert_select_sql</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">prepared_modify_values</span>)
+<span class="line-num">151</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:insert</span>, <span class="ruby-value">:insert_pk</span>
+<span class="line-num">152</span>     <span class="ruby-identifier">insert_sql</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">prepared_modify_values</span>)
+<span class="line-num">153</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:update</span>
+<span class="line-num">154</span>     <span class="ruby-identifier">update_sql</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">prepared_modify_values</span>)
+<span class="line-num">155</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:delete</span>
+<span class="line-num">156</span>     <span class="ruby-identifier">delete_sql</span>
+<span class="line-num">157</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">158</span>     <span class="ruby-identifier">select_sql</span>
+<span class="line-num">159</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">160</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-prepared_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">prepared_type</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The type of prepared statement, should be one of :select, :first, :insert, :update, :delete, or :single_value</p>
+          
+          
+
+          
+          <div class="method-source-code" id="prepared_type-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">95</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prepared_type</span>
+<span class="line-num">96</span>   <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:prepared_type</span>]
+<span class="line-num">97</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Protected Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-run" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run</span><span
+            class="method-args">(&amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Run the method based on the type of prepared statement.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="run-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/dataset/prepared_statements.rb</span>
+<span class="line-num">183</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">run</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">184</span>   <span class="ruby-keyword">case</span> <span class="ruby-identifier">prepared_type</span>
+<span class="line-num">185</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:select</span>, <span class="ruby-value">:all</span>
+<span class="line-num">186</span>     <span class="ruby-identifier">all</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">187</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:each</span>
+<span class="line-num">188</span>     <span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">189</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:insert_select</span>
+<span class="line-num">190</span>     <span class="ruby-identifier">with_sql</span>(<span class="ruby-identifier">prepared_sql</span>).<span class="ruby-identifier">first</span>
+<span class="line-num">191</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:first</span>
+<span class="line-num">192</span>     <span class="ruby-identifier">first</span>
+<span class="line-num">193</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:insert</span>, <span class="ruby-value">:update</span>, <span class="ruby-value">:delete</span>
+<span class="line-num">194</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:returning</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">supports_returning?</span>(<span class="ruby-identifier">prepared_type</span>)
+<span class="line-num">195</span>       <span class="ruby-identifier">returning_fetch_rows</span>(<span class="ruby-identifier">prepared_sql</span>)
+<span class="line-num">196</span>     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">prepared_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:delete</span>
+<span class="line-num">197</span>       <span class="ruby-identifier">delete</span>
+<span class="line-num">198</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">199</span>       <span class="ruby-identifier">public_send</span>(<span class="ruby-identifier">prepared_type</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">prepared_modify_values</span>)
+<span class="line-num">200</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">201</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:insert_pk</span>
+<span class="line-num">202</span>     <span class="ruby-identifier">fetch_rows</span>(<span class="ruby-identifier">prepared_sql</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span>}
+<span class="line-num">203</span>   <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
+<span class="line-num">204</span>     <span class="ruby-comment"># :nocov:</span>
+<span class="line-num">205</span>     <span class="ruby-keyword">case</span> <span class="ruby-identifier">prepared_type</span>[<span class="ruby-value">0</span>]
+<span class="line-num">206</span>     <span class="ruby-comment"># :nocov:</span>
+<span class="line-num">207</span>     <span class="ruby-keyword">when</span> <span class="ruby-value">:map</span>, <span class="ruby-value">:as_hash</span>, <span class="ruby-value">:to_hash</span>, <span class="ruby-value">:to_hash_groups</span>
+<span class="line-num">208</span>       <span class="ruby-identifier">public_send</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">prepared_type</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) 
+<span class="line-num">209</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">210</span>   <span class="ruby-keyword">when</span> <span class="ruby-value">:single_value</span>
+<span class="line-num">211</span>     <span class="ruby-identifier">single_value</span>
+<span class="line-num">212</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">213</span>     <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;unsupported prepared statement type used: #{prepared_type.inspect}&quot;</span>
+<span class="line-num">214</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">215</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

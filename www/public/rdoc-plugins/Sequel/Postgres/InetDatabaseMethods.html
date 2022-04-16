@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Postgres::InetDatabaseMethods - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-extended">::extended</a>
+    
+    <li class="calls-super" ><a href="#method-i-bound_variable_arg">#bound_variable_arg</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Postgres::InetDatabaseMethods">
+  <h1 id="module-Sequel::Postgres::InetDatabaseMethods" class="module">
+    module Sequel::Postgres::InetDatabaseMethods
+  </h1>
+
+  <section class="description">
+    
+<p>Methods enabling <a href="../../Database.html"><code>Database</code></a> object integration with the inet/cidr types.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-extended" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">extended</span><span
+            class="method-args">(db)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reset the conversion procs when extending the <a href="../../Database.html"><code>Database</code></a> object, so it will pick up the inet/cidr converter.  Also, extend the datasets with support for literalizing the IPAddr types.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="extended-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/pg_inet.rb</span>
+<span class="line-num">40</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">extended</span>(<span class="ruby-identifier">db</span>)
+<span class="line-num">41</span>   <span class="ruby-identifier">db</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">42</span>     <span class="ruby-identifier">extend_datasets</span>(<span class="ruby-constant">InetDatasetMethods</span>)
+<span class="line-num">43</span> 
+<span class="line-num">44</span>     <span class="ruby-comment"># :nocov:</span>
+<span class="line-num">45</span>     <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword">defined?</span>(<span class="ruby-constant">SEQUEL_PG_VERSION_INTEGER</span>) <span class="ruby-operator">||</span> <span class="ruby-constant">SEQUEL_PG_VERSION_INTEGER</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">11300</span>
+<span class="line-num">46</span>     <span class="ruby-comment"># :nocov:</span>
+<span class="line-num">47</span>       <span class="ruby-comment"># sequel_pg 1.13.0+ will use inet/cidr conversion procs, but doing so is</span>
+<span class="line-num">48</span>       <span class="ruby-comment"># slower, so don&#39;t add the conversion procs if using sequel_pg 1.13.0+.</span>
+<span class="line-num">49</span>       <span class="ruby-identifier">meth</span> = <span class="ruby-constant">IPAddr</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>)
+<span class="line-num">50</span>       <span class="ruby-identifier">add_conversion_proc</span>(<span class="ruby-value">869</span>, <span class="ruby-identifier">meth</span>)
+<span class="line-num">51</span>       <span class="ruby-identifier">add_conversion_proc</span>(<span class="ruby-value">650</span>, <span class="ruby-identifier">meth</span>)
+<span class="line-num">52</span>       <span class="ruby-keyword">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:register_array_type</span>)
+<span class="line-num">53</span>         <span class="ruby-identifier">register_array_type</span>(<span class="ruby-string">&#39;inet&#39;</span>, <span class="ruby-value">:oid</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">1041</span>, <span class="ruby-value">:scalar_oid</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">869</span>)
+<span class="line-num">54</span>         <span class="ruby-identifier">register_array_type</span>(<span class="ruby-string">&#39;cidr&#39;</span>, <span class="ruby-value">:oid</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">651</span>, <span class="ruby-value">:scalar_oid</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">650</span>)
+<span class="line-num">55</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">56</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">57</span> 
+<span class="line-num">58</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:register_array_type</span>)
+<span class="line-num">59</span>       <span class="ruby-identifier">register_array_type</span>(<span class="ruby-string">&#39;macaddr&#39;</span>, <span class="ruby-value">:oid</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">1040</span>, <span class="ruby-value">:scalar_oid</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">829</span>)
+<span class="line-num">60</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">61</span>     <span class="ruby-ivar">@schema_type_classes</span>[<span class="ruby-value">:ipaddr</span>] = <span class="ruby-constant">IPAddr</span>
+<span class="line-num">62</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">63</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-bound_variable_arg" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bound_variable_arg</span><span
+            class="method-args">(arg, conn)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Convert an IPAddr arg to a string.  Probably not necessary, but done for safety.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="bound_variable_arg-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/pg_inet.rb</span>
+<span class="line-num">67</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">bound_variable_arg</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-identifier">conn</span>)
+<span class="line-num">68</span>   <span class="ruby-keyword">case</span> <span class="ruby-identifier">arg</span>
+<span class="line-num">69</span>   <span class="ruby-keyword">when</span> <span class="ruby-constant">IPAddr</span>
+<span class="line-num">70</span>     <span class="ruby-node">&quot;#{arg.to_s}/#{arg.instance_variable_get(:@mask_addr).to_s(2).count(&#39;1&#39;)}&quot;</span>
+<span class="line-num">71</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">72</span>     <span class="ruby-keyword">super</span>
+<span class="line-num">73</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">74</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

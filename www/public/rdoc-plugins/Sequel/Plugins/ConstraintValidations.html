@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::ConstraintValidations - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-apply">::apply</a>
+    
+    <li ><a href="#method-c-configure">::configure</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::ConstraintValidations">
+  <h1 id="module-Sequel::Plugins::ConstraintValidations" class="module">
+    module Sequel::Plugins::ConstraintValidations
+  </h1>
+
+  <section class="description">
+    
+<p>The constraint_validations plugin is designed to be used with databases that used the constraint_validations extension when creating their tables.  The extension adds validation metadata for constraints created, and this plugin reads that metadata and automatically creates validations for all of the constraints.  For example, if you used the extension and created your albums table like this:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>.<span class="ruby-identifier">create_table</span>(<span class="ruby-value">:albums</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">primary_key</span> <span class="ruby-value">:id</span>
+  <span class="ruby-constant">String</span> <span class="ruby-value">:name</span>
+  <span class="ruby-identifier">validate</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">min_length</span> <span class="ruby-value">5</span>, <span class="ruby-value">:name</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Then when you went to save an album that uses this plugin:</p>
+
+<pre class="ruby"><span class="ruby-constant">Album</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">name:</span> <span class="ruby-string">&#39;abc&#39;</span>)
+<span class="ruby-comment"># raises Sequel::ValidationFailed: name is shorter than 5 characters</span>
+</pre>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Make all model subclasses use constraint validations (called before loading subclasses)</span>
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:constraint_validations</span>
+
+<span class="ruby-comment"># Make the Album class use constraint validations</span>
+<span class="ruby-constant">Album</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:constraint_validations</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DEFAULT_CONSTRAINT_VALIDATIONS_TABLE">DEFAULT_CONSTRAINT_VALIDATIONS_TABLE
+        
+        <dd><p>The default constraint validation metadata table name.</p>
+        
+      
+        <dt id="OPERATOR_MAP">OPERATOR_MAP
+        
+        <dd><p>Mapping of operator names in table to ruby operators</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-apply" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">apply</span><span
+            class="method-args">(model, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Automatically load the validation_helpers plugin to run the actual validations.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="apply-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/constraint_validations.rb</span>
+<span class="line-num">41</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">apply</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">42</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">43</span>     <span class="ruby-identifier">plugin</span> <span class="ruby-value">:validation_helpers</span>
+<span class="line-num">44</span>     <span class="ruby-ivar">@constraint_validations_table</span> = <span class="ruby-constant">DEFAULT_CONSTRAINT_VALIDATIONS_TABLE</span>
+<span class="line-num">45</span>     <span class="ruby-ivar">@constraint_validation_options</span> = {}
+<span class="line-num">46</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">47</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-configure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">configure</span><span
+            class="method-args">(model, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Parse the constraint validations metadata from the database. Options:</p>
+<dl class="rdoc-list note-list"><dt>:constraint_validations_table 
+<dd>
+<p>Override the name of the constraint validations metadata table.  Should only be used if the table name was overridden when creating the constraint validations.</p>
+</dd><dt>:validation_options 
+<dd>
+<p>Override/augment the options stored in the database with the given options.  Keys should be validation type symbols (e.g. :presence) and values should be hashes of options specific to that validation type.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="configure-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/constraint_validations.rb</span>
+<span class="line-num">58</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">configure</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">59</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">60</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">table</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:constraint_validations_table</span>]
+<span class="line-num">61</span>       <span class="ruby-ivar">@constraint_validations_table</span> = <span class="ruby-identifier">table</span>
+<span class="line-num">62</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">63</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">vos</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:validation_options</span>]
+<span class="line-num">64</span>       <span class="ruby-identifier">vos</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+<span class="line-num">65</span>         <span class="ruby-keyword">if</span> <span class="ruby-identifier">existing_options</span> = <span class="ruby-ivar">@constraint_validation_options</span>[<span class="ruby-identifier">k</span>]       
+<span class="line-num">66</span>           <span class="ruby-identifier">v</span> = <span class="ruby-identifier">existing_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">v</span>)
+<span class="line-num">67</span>         <span class="ruby-keyword">end</span>
+<span class="line-num">68</span>         <span class="ruby-ivar">@constraint_validation_options</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>
+<span class="line-num">69</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">70</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">71</span>     <span class="ruby-identifier">parse_constraint_validations</span>
+<span class="line-num">72</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">73</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>4.48.0 - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Deprecated+Features">Deprecated Features</a>
+    <li><a href="#label-New+Features">New Features</a>
+    <li><a href="#label-Other+Improvements">Other Improvements</a>
+    <li><a href="#label-Backwards+Compatibility">Backwards Compatibility</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../CHANGELOG.html">CHANGELOG</a>
+  
+    <li><a href="../../MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="../../README_rdoc.html">README</a>
+  
+    <li><a href="../../doc/CHANGELOG_old.html">CHANGELOG.old</a>
+  
+    <li><a href="../../doc/advanced_associations_rdoc.html">advanced_associations</a>
+  
+    <li><a href="../../doc/association_basics_rdoc.html">association_basics</a>
+  
+    <li><a href="../../doc/bin_sequel_rdoc.html">bin_sequel</a>
+  
+    <li><a href="../../doc/cheat_sheet_rdoc.html">cheat_sheet</a>
+  
+    <li><a href="../../doc/code_order_rdoc.html">code_order</a>
+  
+    <li><a href="../../doc/core_extensions_rdoc.html">core_extensions</a>
+  
+    <li><a href="../../doc/dataset_basics_rdoc.html">dataset_basics</a>
+  
+    <li><a href="../../doc/dataset_filtering_rdoc.html">dataset_filtering</a>
+  
+    <li><a href="../../doc/extensions_rdoc.html">extensions</a>
+  
+    <li><a href="../../doc/fork_safety_rdoc.html">fork_safety</a>
+  
+    <li><a href="../../doc/mass_assignment_rdoc.html">mass_assignment</a>
+  
+    <li><a href="../../doc/migration_rdoc.html">migration</a>
+  
+    <li><a href="../../doc/model_dataset_method_design_rdoc.html">model_dataset_method_design</a>
+  
+    <li><a href="../../doc/model_hooks_rdoc.html">model_hooks</a>
+  
+    <li><a href="../../doc/model_plugins_rdoc.html">model_plugins</a>
+  
+    <li><a href="../../doc/mssql_stored_procedures_rdoc.html">mssql_stored_procedures</a>
+  
+    <li><a href="../../doc/object_model_rdoc.html">object_model</a>
+  
+    <li><a href="../../doc/opening_databases_rdoc.html">opening_databases</a>
+  
+    <li><a href="../../doc/postgresql_rdoc.html">postgresql</a>
+  
+    <li><a href="../../doc/prepared_statements_rdoc.html">prepared_statements</a>
+  
+    <li><a href="../../doc/querying_rdoc.html">querying</a>
+  
+    <li><a href="../../doc/reflection_rdoc.html">reflection</a>
+  
+    <li><a href="../../doc/release_notes/1_0_txt.html">1.0</a>
+  
+    <li><a href="../../doc/release_notes/1_1_txt.html">1.1</a>
+  
+    <li><a href="../../doc/release_notes/1_3_txt.html">1.3</a>
+  
+    <li><a href="../../doc/release_notes/1_4_0_txt.html">1.4.0</a>
+  
+    <li><a href="../../doc/release_notes/1_5_0_txt.html">1.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_0_0_txt.html">2.0.0</a>
+  
+    <li><a href="../../doc/release_notes/2_1_0_txt.html">2.1.0</a>
+  
+    <li><a href="../../doc/release_notes/2_10_0_txt.html">2.10.0</a>
+  
+    <li><a href="../../doc/release_notes/2_11_0_txt.html">2.11.0</a>
+  
+    <li><a href="../../doc/release_notes/2_12_0_txt.html">2.12.0</a>
+  
+    <li><a href="../../doc/release_notes/2_2_0_txt.html">2.2.0</a>
+  
+    <li><a href="../../doc/release_notes/2_3_0_txt.html">2.3.0</a>
+  
+    <li><a href="../../doc/release_notes/2_4_0_txt.html">2.4.0</a>
+  
+    <li><a href="../../doc/release_notes/2_5_0_txt.html">2.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_6_0_txt.html">2.6.0</a>
+  
+    <li><a href="../../doc/release_notes/2_7_0_txt.html">2.7.0</a>
+  
+    <li><a href="../../doc/release_notes/2_8_0_txt.html">2.8.0</a>
+  
+    <li><a href="../../doc/release_notes/2_9_0_txt.html">2.9.0</a>
+  
+    <li><a href="../../doc/release_notes/3_0_0_txt.html">3.0.0</a>
+  
+    <li><a href="../../doc/release_notes/3_1_0_txt.html">3.1.0</a>
+  
+    <li><a href="../../doc/release_notes/3_10_0_txt.html">3.10.0</a>
+  
+    <li><a href="../../doc/release_notes/3_11_0_txt.html">3.11.0</a>
+  
+    <li><a href="../../doc/release_notes/3_12_0_txt.html">3.12.0</a>
+  
+    <li><a href="../../doc/release_notes/3_13_0_txt.html">3.13.0</a>
+  
+    <li><a href="../../doc/release_notes/3_14_0_txt.html">3.14.0</a>
+  
+    <li><a href="../../doc/release_notes/3_15_0_txt.html">3.15.0</a>
+  
+    <li><a href="../../doc/release_notes/3_16_0_txt.html">3.16.0</a>
+  
+    <li><a href="../../doc/release_notes/3_17_0_txt.html">3.17.0</a>
+  
+    <li><a href="../../doc/release_notes/3_18_0_txt.html">3.18.0</a>
+  
+    <li><a href="../../doc/release_notes/3_19_0_txt.html">3.19.0</a>
+  
+    <li><a href="../../doc/release_notes/3_2_0_txt.html">3.2.0</a>
+  
+    <li><a href="../../doc/release_notes/3_20_0_txt.html">3.20.0</a>
+  
+    <li><a href="../../doc/release_notes/3_21_0_txt.html">3.21.0</a>
+  
+    <li><a href="../../doc/release_notes/3_22_0_txt.html">3.22.0</a>
+  
+    <li><a href="../../doc/release_notes/3_23_0_txt.html">3.23.0</a>
+  
+    <li><a href="../../doc/release_notes/3_24_0_txt.html">3.24.0</a>
+  
+    <li><a href="../../doc/release_notes/3_25_0_txt.html">3.25.0</a>
+  
+    <li><a href="../../doc/release_notes/3_26_0_txt.html">3.26.0</a>
+  
+    <li><a href="../../doc/release_notes/3_27_0_txt.html">3.27.0</a>
+  
+    <li><a href="../../doc/release_notes/3_28_0_txt.html">3.28.0</a>
+  
+    <li><a href="../../doc/release_notes/3_29_0_txt.html">3.29.0</a>
+  
+    <li><a href="../../doc/release_notes/3_3_0_txt.html">3.3.0</a>
+  
+    <li><a href="../../doc/release_notes/3_30_0_txt.html">3.30.0</a>
+  
+    <li><a href="../../doc/release_notes/3_31_0_txt.html">3.31.0</a>
+  
+    <li><a href="../../doc/release_notes/3_32_0_txt.html">3.32.0</a>
+  
+    <li><a href="../../doc/release_notes/3_33_0_txt.html">3.33.0</a>
+  
+    <li><a href="../../doc/release_notes/3_34_0_txt.html">3.34.0</a>
+  
+    <li><a href="../../doc/release_notes/3_35_0_txt.html">3.35.0</a>
+  
+    <li><a href="../../doc/release_notes/3_36_0_txt.html">3.36.0</a>
+  
+    <li><a href="../../doc/release_notes/3_37_0_txt.html">3.37.0</a>
+  
+    <li><a href="../../doc/release_notes/3_38_0_txt.html">3.38.0</a>
+  
+    <li><a href="../../doc/release_notes/3_39_0_txt.html">3.39.0</a>
+  
+    <li><a href="../../doc/release_notes/3_4_0_txt.html">3.4.0</a>
+  
+    <li><a href="../../doc/release_notes/3_40_0_txt.html">3.40.0</a>
+  
+    <li><a href="../../doc/release_notes/3_41_0_txt.html">3.41.0</a>
+  
+    <li><a href="../../doc/release_notes/3_42_0_txt.html">3.42.0</a>
+  
+    <li><a href="../../doc/release_notes/3_43_0_txt.html">3.43.0</a>
+  
+    <li><a href="../../doc/release_notes/3_44_0_txt.html">3.44.0</a>
+  
+    <li><a href="../../doc/release_notes/3_45_0_txt.html">3.45.0</a>
+  
+    <li><a href="../../doc/release_notes/3_46_0_txt.html">3.46.0</a>
+  
+    <li><a href="../../doc/release_notes/3_47_0_txt.html">3.47.0</a>
+  
+    <li><a href="../../doc/release_notes/3_48_0_txt.html">3.48.0</a>
+  
+    <li><a href="../../doc/release_notes/3_5_0_txt.html">3.5.0</a>
+  
+    <li><a href="../../doc/release_notes/3_6_0_txt.html">3.6.0</a>
+  
+    <li><a href="../../doc/release_notes/3_7_0_txt.html">3.7.0</a>
+  
+    <li><a href="../../doc/release_notes/3_8_0_txt.html">3.8.0</a>
+  
+    <li><a href="../../doc/release_notes/3_9_0_txt.html">3.9.0</a>
+  
+    <li><a href="../../doc/release_notes/4_0_0_txt.html">4.0.0</a>
+  
+    <li><a href="../../doc/release_notes/4_1_0_txt.html">4.1.0</a>
+  
+    <li><a href="../../doc/release_notes/4_10_0_txt.html">4.10.0</a>
+  
+    <li><a href="../../doc/release_notes/4_11_0_txt.html">4.11.0</a>
+  
+    <li><a href="../../doc/release_notes/4_12_0_txt.html">4.12.0</a>
+  
+    <li><a href="../../doc/release_notes/4_13_0_txt.html">4.13.0</a>
+  
+    <li><a href="../../doc/release_notes/4_14_0_txt.html">4.14.0</a>
+  
+    <li><a href="../../doc/release_notes/4_15_0_txt.html">4.15.0</a>
+  
+    <li><a href="../../doc/release_notes/4_16_0_txt.html">4.16.0</a>
+  
+    <li><a href="../../doc/release_notes/4_17_0_txt.html">4.17.0</a>
+  
+    <li><a href="../../doc/release_notes/4_18_0_txt.html">4.18.0</a>
+  
+    <li><a href="../../doc/release_notes/4_19_0_txt.html">4.19.0</a>
+  
+    <li><a href="../../doc/release_notes/4_2_0_txt.html">4.2.0</a>
+  
+    <li><a href="../../doc/release_notes/4_20_0_txt.html">4.20.0</a>
+  
+    <li><a href="../../doc/release_notes/4_21_0_txt.html">4.21.0</a>
+  
+    <li><a href="../../doc/release_notes/4_22_0_txt.html">4.22.0</a>
+  
+    <li><a href="../../doc/release_notes/4_23_0_txt.html">4.23.0</a>
+  
+    <li><a href="../../doc/release_notes/4_24_0_txt.html">4.24.0</a>
+  
+    <li><a href="../../doc/release_notes/4_25_0_txt.html">4.25.0</a>
+  
+    <li><a href="../../doc/release_notes/4_26_0_txt.html">4.26.0</a>
+  
+    <li><a href="../../doc/release_notes/4_27_0_txt.html">4.27.0</a>
+  
+    <li><a href="../../doc/release_notes/4_28_0_txt.html">4.28.0</a>
+  
+    <li><a href="../../doc/release_notes/4_29_0_txt.html">4.29.0</a>
+  
+    <li><a href="../../doc/release_notes/4_3_0_txt.html">4.3.0</a>
+  
+    <li><a href="../../doc/release_notes/4_30_0_txt.html">4.30.0</a>
+  
+    <li><a href="../../doc/release_notes/4_31_0_txt.html">4.31.0</a>
+  
+    <li><a href="../../doc/release_notes/4_32_0_txt.html">4.32.0</a>
+  
+    <li><a href="../../doc/release_notes/4_33_0_txt.html">4.33.0</a>
+  
+    <li><a href="../../doc/release_notes/4_34_0_txt.html">4.34.0</a>
+  
+    <li><a href="../../doc/release_notes/4_35_0_txt.html">4.35.0</a>
+  
+    <li><a href="../../doc/release_notes/4_36_0_txt.html">4.36.0</a>
+  
+    <li><a href="../../doc/release_notes/4_37_0_txt.html">4.37.0</a>
+  
+    <li><a href="../../doc/release_notes/4_38_0_txt.html">4.38.0</a>
+  
+    <li><a href="../../doc/release_notes/4_39_0_txt.html">4.39.0</a>
+  
+    <li><a href="../../doc/release_notes/4_4_0_txt.html">4.4.0</a>
+  
+    <li><a href="../../doc/release_notes/4_40_0_txt.html">4.40.0</a>
+  
+    <li><a href="../../doc/release_notes/4_41_0_txt.html">4.41.0</a>
+  
+    <li><a href="../../doc/release_notes/4_42_0_txt.html">4.42.0</a>
+  
+    <li><a href="../../doc/release_notes/4_43_0_txt.html">4.43.0</a>
+  
+    <li><a href="../../doc/release_notes/4_44_0_txt.html">4.44.0</a>
+  
+    <li><a href="../../doc/release_notes/4_45_0_txt.html">4.45.0</a>
+  
+    <li><a href="../../doc/release_notes/4_46_0_txt.html">4.46.0</a>
+  
+    <li><a href="../../doc/release_notes/4_47_0_txt.html">4.47.0</a>
+  
+    <li><a href="../../doc/release_notes/4_48_0_txt.html">4.48.0</a>
+  
+    <li><a href="../../doc/release_notes/4_49_0_txt.html">4.49.0</a>
+  
+    <li><a href="../../doc/release_notes/4_5_0_txt.html">4.5.0</a>
+  
+    <li><a href="../../doc/release_notes/4_6_0_txt.html">4.6.0</a>
+  
+    <li><a href="../../doc/release_notes/4_7_0_txt.html">4.7.0</a>
+  
+    <li><a href="../../doc/release_notes/4_8_0_txt.html">4.8.0</a>
+  
+    <li><a href="../../doc/release_notes/4_9_0_txt.html">4.9.0</a>
+  
+    <li><a href="../../doc/release_notes/5_0_0_txt.html">5.0.0</a>
+  
+    <li><a href="../../doc/release_notes/5_1_0_txt.html">5.1.0</a>
+  
+    <li><a href="../../doc/release_notes/5_10_0_txt.html">5.10.0</a>
+  
+    <li><a href="../../doc/release_notes/5_11_0_txt.html">5.11.0</a>
+  
+    <li><a href="../../doc/release_notes/5_12_0_txt.html">5.12.0</a>
+  
+    <li><a href="../../doc/release_notes/5_13_0_txt.html">5.13.0</a>
+  
+    <li><a href="../../doc/release_notes/5_14_0_txt.html">5.14.0</a>
+  
+    <li><a href="../../doc/release_notes/5_15_0_txt.html">5.15.0</a>
+  
+    <li><a href="../../doc/release_notes/5_16_0_txt.html">5.16.0</a>
+  
+    <li><a href="../../doc/release_notes/5_17_0_txt.html">5.17.0</a>
+  
+    <li><a href="../../doc/release_notes/5_18_0_txt.html">5.18.0</a>
+  
+    <li><a href="../../doc/release_notes/5_19_0_txt.html">5.19.0</a>
+  
+    <li><a href="../../doc/release_notes/5_2_0_txt.html">5.2.0</a>
+  
+    <li><a href="../../doc/release_notes/5_20_0_txt.html">5.20.0</a>
+  
+    <li><a href="../../doc/release_notes/5_21_0_txt.html">5.21.0</a>
+  
+    <li><a href="../../doc/release_notes/5_22_0_txt.html">5.22.0</a>
+  
+    <li><a href="../../doc/release_notes/5_23_0_txt.html">5.23.0</a>
+  
+    <li><a href="../../doc/release_notes/5_24_0_txt.html">5.24.0</a>
+  
+    <li><a href="../../doc/release_notes/5_25_0_txt.html">5.25.0</a>
+  
+    <li><a href="../../doc/release_notes/5_26_0_txt.html">5.26.0</a>
+  
+    <li><a href="../../doc/release_notes/5_27_0_txt.html">5.27.0</a>
+  
+    <li><a href="../../doc/release_notes/5_28_0_txt.html">5.28.0</a>
+  
+    <li><a href="../../doc/release_notes/5_29_0_txt.html">5.29.0</a>
+  
+    <li><a href="../../doc/release_notes/5_3_0_txt.html">5.3.0</a>
+  
+    <li><a href="../../doc/release_notes/5_30_0_txt.html">5.30.0</a>
+  
+    <li><a href="../../doc/release_notes/5_31_0_txt.html">5.31.0</a>
+  
+    <li><a href="../../doc/release_notes/5_32_0_txt.html">5.32.0</a>
+  
+    <li><a href="../../doc/release_notes/5_33_0_txt.html">5.33.0</a>
+  
+    <li><a href="../../doc/release_notes/5_34_0_txt.html">5.34.0</a>
+  
+    <li><a href="../../doc/release_notes/5_35_0_txt.html">5.35.0</a>
+  
+    <li><a href="../../doc/release_notes/5_36_0_txt.html">5.36.0</a>
+  
+    <li><a href="../../doc/release_notes/5_37_0_txt.html">5.37.0</a>
+  
+    <li><a href="../../doc/release_notes/5_38_0_txt.html">5.38.0</a>
+  
+    <li><a href="../../doc/release_notes/5_39_0_txt.html">5.39.0</a>
+  
+    <li><a href="../../doc/release_notes/5_4_0_txt.html">5.4.0</a>
+  
+    <li><a href="../../doc/release_notes/5_40_0_txt.html">5.40.0</a>
+  
+    <li><a href="../../doc/release_notes/5_41_0_txt.html">5.41.0</a>
+  
+    <li><a href="../../doc/release_notes/5_42_0_txt.html">5.42.0</a>
+  
+    <li><a href="../../doc/release_notes/5_43_0_txt.html">5.43.0</a>
+  
+    <li><a href="../../doc/release_notes/5_44_0_txt.html">5.44.0</a>
+  
+    <li><a href="../../doc/release_notes/5_45_0_txt.html">5.45.0</a>
+  
+    <li><a href="../../doc/release_notes/5_46_0_txt.html">5.46.0</a>
+  
+    <li><a href="../../doc/release_notes/5_47_0_txt.html">5.47.0</a>
+  
+    <li><a href="../../doc/release_notes/5_48_0_txt.html">5.48.0</a>
+  
+    <li><a href="../../doc/release_notes/5_49_0_txt.html">5.49.0</a>
+  
+    <li><a href="../../doc/release_notes/5_5_0_txt.html">5.5.0</a>
+  
+    <li><a href="../../doc/release_notes/5_50_0_txt.html">5.50.0</a>
+  
+    <li><a href="../../doc/release_notes/5_51_0_txt.html">5.51.0</a>
+  
+    <li><a href="../../doc/release_notes/5_52_0_txt.html">5.52.0</a>
+  
+    <li><a href="../../doc/release_notes/5_53_0_txt.html">5.53.0</a>
+  
+    <li><a href="../../doc/release_notes/5_54_0_txt.html">5.54.0</a>
+  
+    <li><a href="../../doc/release_notes/5_55_0_txt.html">5.55.0</a>
+  
+    <li><a href="../../doc/release_notes/5_6_0_txt.html">5.6.0</a>
+  
+    <li><a href="../../doc/release_notes/5_7_0_txt.html">5.7.0</a>
+  
+    <li><a href="../../doc/release_notes/5_8_0_txt.html">5.8.0</a>
+  
+    <li><a href="../../doc/release_notes/5_9_0_txt.html">5.9.0</a>
+  
+    <li><a href="../../doc/schema_modification_rdoc.html">schema_modification</a>
+  
+    <li><a href="../../doc/security_rdoc.html">security</a>
+  
+    <li><a href="../../doc/sharding_rdoc.html">sharding</a>
+  
+    <li><a href="../../doc/sql_rdoc.html">sql</a>
+  
+    <li><a href="../../doc/testing_rdoc.html">testing</a>
+  
+    <li><a href="../../doc/thread_safety_rdoc.html">thread_safety</a>
+  
+    <li><a href="../../doc/transactions_rdoc.html">transactions</a>
+  
+    <li><a href="../../doc/validations_rdoc.html">validations</a>
+  
+    <li><a href="../../doc/virtual_rows_rdoc.html">virtual_rows</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/release_notes/4.48.0.txt">
+
+<h1 id="label-Deprecated+Features">Deprecated Features<span><a href="#label-Deprecated+Features">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>The identifier_columns plugin is now deprecated.  There is no reason to use it when Sequel.split_symbols = false, which will be the default in <a href="../../Sequel.html"><code>Sequel</code></a> 5.</p>
+</li><li>
+<p>The filter_having, hash_aliases, and sequel_3_dataset_methods extensions are now deprecated.  They only existed for backwards compatibility with <a href="../../Sequel.html"><code>Sequel</code></a> 3.</p>
+</li><li>
+<p>The query_literals extension is now deprecated.  It changes behavior in a way that makes SQL injections more likely.</p>
+</li><li>
+<p>The meta_def extension is now deprecated.  It is no longer necessary, since on ruby 1.9+ you can use define_singleton_method.</p>
+</li><li>
+<p>The empty_array_ignore_nulls extension has been deprecated.  It has been a no-op since <a href="../../Sequel.html"><code>Sequel</code></a> 4.25.0.</p>
+</li><li>
+<p>The cti_base_model, cti_key, and cti_model_map class methods in the class_table_inheritance plugin are now deprecated. Use cti_models.first instead of cti_base_model, sti_key instead of cti_key, and sti_model_map instead of cti_model_map.</p>
+</li><li>
+<p>The :strict option in the nested_attributes plugin is now deprecated. Switch to using the :unmatched_pk option.</p>
+</li><li>
+<p>Database#reset_conversion_procs on PostgreSQL is now deprecated. There will be no need to call it in <a href="../../Sequel.html"><code>Sequel</code></a> 5.</p>
+</li><li>
+<p>Using global conversion procs added by the pg_* extensions, without loading the pg_* extension into the Database instance, are now deprecated.  Additionally, using PGArray.register or PGRange.register to register global types is now also deprecated.  Use Database#register_array_type or Database#register_range_type instead to register the types on a per-Database basis.</p>
+</li><li>
+<p>Treating :natural_inner join type as NATURAL LEFT JOIN on MySQL is now deprecated.  MySQL doesn&#39;t support NATURAL INNER JOIN, but if you were going to convert it, NATURAL JOIN would make more sense.</p>
+</li><li>
+<p>Unexpected values passed to Dataset#insert_conflict on SQLite are now deprecated.  Only values that result in one of the following strings will be allowed in <a href="../../Sequel.html"><code>Sequel</code></a> 5: ROLLBACK, ABORT, FAIL, IGNORE, and REPLACE.</p>
+</li><li>
+<p>The Dataset#and, exclude_where, interval, and range methods are now deprecated.  Undeprecated copies are now available in the new sequel_4_dataset_methods extension.</p>
+</li><li>
+<p>Model.<< is now deprecated.  Intuitivately, you would except this to call Model.create and return the Model class, but it calls &lt;&lt; on the model&#39;s dataset and returns the dataset.</p>
+</li><li>
+<p>The Sequel::Postgres::PG_TYPES constant is now deprecated.  All conversion procs should now be added on a per-Database basis using add_conversion_proc or add_named_conversion_proc.  The following private Database methods related to conversion procs are now deprecated, though some are still called internally and therefore do not have deprecation warnings:</p>
+<ul><li>
+<p>add_named_conversion_procs</p>
+</li><li>
+<p>conversion_procs_updated</p>
+</li><li>
+<p>convert_named_procs_to_procs</p>
+</li><li>
+<p>copy_conversion_procs</p>
+</li><li>
+<p>get_conversion_procs</p>
+</li></ul>
+
+<p>Related to this, loading the sequel/adapters/utils/pg_types.rb file is now deprecated.</p>
+</li><li>
+<p>The following adapter or database specific global accessors for setting defaults are now deprecated:</p>
+<ul><li>
+<p>Sequel::DB2.use_clob_as_blob</p>
+</li><li>
+<p>Sequel::IBMDB.convert_smallint_to_bool</p>
+</li><li>
+<p>Sequel::MySQL.convert_invalid_date_time</p>
+</li><li>
+<p>Sequel::MySQL.convert_tinyint_to_bool</p>
+</li><li>
+<p>Sequel::MySQL.default_charset</p>
+</li><li>
+<p>Sequel::MySQL.default_collate</p>
+</li><li>
+<p>Sequel::MySQL.default_engine</p>
+</li><li>
+<p>Sequel::Postgres.use_iso_date_format</p>
+</li><li>
+<p>Sequel::Postgres.client_min_messages</p>
+</li><li>
+<p>Sequel::Postgres.force_standard_strings </p>
+</li><li>
+<p>Sequel::SqlAnywhere.convert_smallint_to_bool</p>
+</li></ul>
+
+<p>Use the Database instance accessors or Database options instead to change behavior.</p>
+</li><li>
+<p>The following adapter or database specific dataset mutation methods are now deprecated:</p>
+<ul><li>
+<p>convert_smallint_to_bool= (ibmdb adapter, SQLAnywhere)</p>
+</li><li>
+<p>convert_types= (jdbc adapter)</p>
+</li><li>
+<p>mssql_unicode_strings= (Microsoft SQL Server)</p>
+</li></ul>
+
+<p>Use the with_* methods which return a modified copy of the dataset instead of these mutation methods.</p>
+</li><li>
+<p>The Dataset#non_sql_options private method is now deprecated. External adapters that overrode this method should switch to overriding Dataset#non_sql_option?.</p>
+</li><li>
+<p>The Database#timestamp_convertor private method in the jdbc adapter is now deprecated.  Users should switch to method(:timestamp_convert).</p>
+</li><li>
+<p>Modification of the Sequel::JDBC::TypeConvertor class is now deprecated.  External jdbc subadapters that were using this to add custom conversion procs should be modified.</p>
+</li><li>
+<p>Having the pg_row extension respect conversion procs for subtypes added after the registeration of the composite type is now deprecated. Now, all subtypes should have the appropriate conversion proc added before the composite type is registered.</p>
+</li><li>
+<p>Array#sql_array in the <a href="../core_extensions_rdoc.html">core_extensions</a> extension is now deprecated. Switch to using Array#sql_value_list.</p>
+</li><li>
+<p>The SEQUEL_POSTGRES_USES_PG constant added by the postgres adapter is now deprecated. Sequel::Postgres::USES_PG should be used instead.</p>
+</li><li>
+<p>Many more internal <a href="../../Sequel.html"><code>Sequel</code></a> constants have been deprecated.</p>
+</li></ul>
+
+<h1 id="label-New+Features">New Features<span><a href="#label-New+Features">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>The Model#to_json and Dataset#to_json methods in the json_serializer plugin now support a block.  This block is called with the hash/array that would have be serialized to JSON, and the block should return the object to serialize.  This makes it easy to customize the JSON output by adding new entries, or wrapping the object in other object.</p>
+
+<p>The Dataset#to_json method supports an :instance_block option, which should be a proc that will be passed to Model#to_json.</p>
+
+<p>In order to implement this, Sequel.object_to_json now passes any block given to the to_json call on the object.  If you are overriding Sequel.object_to_json, you are responsible for making sure the block is passed appropriately.</p>
+</li><li>
+<p>The association_pks plugin now supports a :association_pks_use_associated_table association option for many_to_many associations.  If this option is used, instead of just looking at the join table, the association_pks getter will get the primary keys from the associated table.  This can be useful if the association&#39;s right_primary_key does not match the associated model&#39;s primary key, and you are interested in the primary keys of the associated objects.  If this option is used, no association_pks setter method is created.</p>
+</li><li>
+<p>Dataset#as_hash has been added as a replacement to to_hash. If you want, you can now undef_method :to_hash and use as_hash and things will work.  Doing so can work around problems when using keyword argument splats in ruby 2.0+. For example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">foo</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">b</span>)
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">foo</span>(<span class="ruby-constant">City</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:id</span>))
+</pre>
+
+<p>results in foo being called with a being [] and b being City.order(:id).to_hash, which is unexpected and undesired behavior.  If you want to use keyword argument splats or other places where ruby will call to_hash implicitly if it is defined, using undef_method :to_hash is recommended.</p>
+</li><li>
+<p>A Database#add_conversion_proc method has been added on PostgreSQL.  This method takes a type OID and either a block or a callable argument to use as the conversion proc for the type OID.</p>
+</li><li>
+<p>The following adapter or database specific Database accessors have been added for changing settings on a per-Database basis:</p>
+<ul><li>
+<p>convert_smallint_to_bool (ibmdb adapter)</p>
+</li><li>
+<p>default_charset (MySQL)</p>
+</li><li>
+<p>default_collate (MySQL)</p>
+</li><li>
+<p>default_engine (MySQL)</p>
+</li><li>
+<p>use_clob_as_blob (DB2)</p>
+</li></ul>
+</li><li>
+<p>A Dataset#with_convert_types method has been added to the jdbc adapter, for returning a modified dataset with the convert_types setting changed.</p>
+</li></ul>
+
+<h1 id="label-Other+Improvements">Other Improvements<span><a href="#label-Other+Improvements">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>Using the postgres adapter with pg 0.21.0 no longer results in deprecation warnings.</p>
+</li><li>
+<p>When using the class_table_inheritance plugin and using a direct subclass of the parent class that does not use a separate table, as well as using the :alias option, the insert SQL used is now correct.  Previously, it attempted to insert into a subquery, which is not valid SQL.</p>
+
+<p>Additionally, the dataset for such a model no longer uses a subquery, since there is no reason to do so as there is no join.</p>
+</li><li>
+<p>Model.skip_auto_validations(:not_null) in the auto_validations plugin now skips not null checks for columns with default values, in addition to skipping not null checks for columns without default values.</p>
+</li><li>
+<p>The static_cache plugin now supports the options hash argument to to_hash and to_hash_groups.  Currently, it only supports the :hash option, since the :all option doesn&#39;t make sense.</p>
+</li><li>
+<p>When touching associations in the touch plugin, clear the cached association, because otherwise the cached values will be stale.</p>
+</li><li>
+<p>The validation_class_methods plugin no longer requires the blank extension.</p>
+</li><li>
+<p>The validation_helpers plugin methods that support the :allow_blank option now work correctly if the blank extension is not loaded.</p>
+</li><li>
+<p>Loading the column_conflicts plugin into a model a second time no longer removes existing column conflict settings.</p>
+</li><li>
+<p>On SQLite 3.8.8+, indexes automatically created from unique constraints are now included in Database#indexes output.</p>
+</li><li>
+<p>On SQLite 3.8.8+, partial indexes are now excluded from Database#indexes output.</p>
+</li><li>
+<p>Database#indexes on PostgreSQL 9.5+ now uses a simpler query with the array_position function.</p>
+</li><li>
+<p>Database#foreign_key_list on PostgreSQL now uses a single query instead of two queries, and also uses the array_position function on PostgreSQL 9.5+ to simplify the queries.</p>
+</li><li>
+<p>On PostgreSQL and Derby, when calling Database#create_table with the :ignore_index_errors option inside a transaction, a savepoint is used around each index creation so that an index error does not cause the entire transaction to fail. A savepoint is also used on Microsoft SQL Server, but it appears that Microsoft SQL Server rolls back the entire transaction if CREATE INDEX returns an error, instead of just rolling back to the savepoint.</p>
+</li><li>
+<p>Encoding is now preserved when parsing PostgreSQL arrays in the pg_array extension.</p>
+</li><li>
+<p>Database#copy_table in the postgres adapter now does not hide the underlying exception if an exception is raised during processing.</p>
+</li><li>
+<p>Database#copy_into in the jdbc/postgresql adapter now does not hide the underlying exception if an exception is raised during processing.</p>
+</li><li>
+<p>Database#copy_into in the jdbc/postgresql adapter now respects the :server option for using a specific shard.</p>
+</li><li>
+<p>Calling reset_conversion_procs on Database instance that uses the pg_hstore extension now results in the hstore type still being parsed.  Previously, the hstore conversion proc would be dropped.</p>
+</li><li>
+<p>The postgres adapter no longer monkey-patches postgres-pr if it uses that as the driver.</p>
+</li><li>
+<p>Multiple thread-safety issues in the mock adapter have been fixed.</p>
+</li><li>
+<p>Thread safety issues when simultaneously loading multiple adapters that access PostgreSQL have been fixed.</p>
+</li><li>
+<p>Hash allocations have been reduced in the csv_serializer, json_serializer, and xml_serializer plugins.</p>
+</li><li>
+<p>The deprecated Sequel::Model::ANONYMOUS_MODEL_CLASSES constant is now correctly populated with classes created by Sequel::Model().  This was broken in starting in <a href="../../Sequel.html"><code>Sequel</code></a> 4.45.0.</p>
+</li></ul>
+
+<h1 id="label-Backwards+Compatibility">Backwards Compatibility<span><a href="#label-Backwards+Compatibility">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>The pg_array_associations plugin now loads the pg_array extension into the Database instance if it is not already loaded.  This can break cases where the pg_array_associations plugin is used on a non-PostgreSQL database.</p>
+</li><li>
+<p>Support for using the old postgres driver has been removed from the postgres adapter.  The postgres adapter now only supports pg and postgres-pr.</p>
+</li><li>
+<p>When the postgres-pr driver is being used by the postgres adapter, connecting to a database is only allowed if standard strings are being forced (the default).</p>
+</li></ul>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

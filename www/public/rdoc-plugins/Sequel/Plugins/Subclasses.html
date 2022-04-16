@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::Subclasses - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-apply">::apply</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::Subclasses">
+  <h1 id="module-Sequel::Plugins::Subclasses" class="module">
+    module Sequel::Plugins::Subclasses
+  </h1>
+
+  <section class="description">
+    
+<p>The subclasses plugin keeps track of all subclasses of the current model class.  Direct subclasses are available via the subclasses method, and all descendent classes are available via the descendants method:</p>
+
+<pre class="ruby"><span class="ruby-identifier">c</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>)
+<span class="ruby-identifier">c</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:subclasses</span>
+<span class="ruby-identifier">sc1</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">c</span>)
+<span class="ruby-identifier">sc2</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">c</span>)
+<span class="ruby-identifier">ssc1</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">sc1</span>)
+<span class="ruby-identifier">c</span>.<span class="ruby-identifier">subclasses</span>    <span class="ruby-comment"># [sc1, sc2]</span>
+<span class="ruby-identifier">sc1</span>.<span class="ruby-identifier">subclasses</span>  <span class="ruby-comment"># [ssc1]</span>
+<span class="ruby-identifier">sc2</span>.<span class="ruby-identifier">subclasses</span>  <span class="ruby-comment"># []</span>
+<span class="ruby-identifier">ssc1</span>.<span class="ruby-identifier">subclasses</span> <span class="ruby-comment"># []</span>
+<span class="ruby-identifier">c</span>.<span class="ruby-identifier">descendants</span>   <span class="ruby-comment"># [sc1, ssc1, sc2]</span>
+</pre>
+
+<p>You can also finalize the associations and then freeze the classes in all descendent classes.  Doing so is a recommended practice after all models have been defined in production and testing, and this makes it easier than keeping track of the classes to finalize and freeze manually:</p>
+
+<pre class="ruby"><span class="ruby-identifier">c</span>.<span class="ruby-identifier">freeze_descendants</span>
+</pre>
+
+<p>You can provide a block when loading the plugin, and it will be called with each subclass created:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = []
+<span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span>(<span class="ruby-value">:subclasses</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">sc</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">sc</span>}
+<span class="ruby-keyword">class</span> <span class="ruby-constant">A</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>; <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">B</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>; <span class="ruby-keyword">end</span>
+<span class="ruby-identifier">a</span> <span class="ruby-comment"># =&gt; [A, B]</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-apply" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">apply</span><span
+            class="method-args">(model, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialize the subclasses instance variable for the model.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="apply-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/subclasses.rb</span>
+<span class="line-num">42</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">apply</span>(<span class="ruby-identifier">model</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">43</span>   <span class="ruby-comment"># :nocov:</span>
+<span class="line-num">44</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:@subclasses</span>, [])  <span class="ruby-keyword">if</span> <span class="ruby-constant">NEED_SUBCLASSES</span>
+<span class="line-num">45</span>   <span class="ruby-comment"># :nocov:</span>
+<span class="line-num">46</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:@on_subclass</span>, <span class="ruby-identifier">block</span>)
+<span class="line-num">47</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

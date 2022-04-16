@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="Sequel/SQL/Constants.html">Sequel::SQL::Constants</a>
+  
+  
+  </ul>
+</div>
+
+    <div id="extends-section" class="nav-section">
+  <h3>Extended With Modules</h3>
+
+  <ul class="link-list">
+    
+  
+    <li><a class="extend" href="Sequel/SequelMethods.html">Sequel::SequelMethods</a>
+  
+  
+  
+    <li><a class="extend" href="Sequel/SQL/Builders.html">Sequel::SQL::Builders</a>
+  
+  
+  
+    <li><a class="extend" href="Sequel/SQL/OperatorBuilders.html">Sequel::SQL::OperatorBuilders</a>
+  
+  
+  </ul>
+</div>
+
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-inflections">::inflections</a>
+    
+    <li ><a href="#method-c-migration">::migration</a>
+    
+    <li ><a href="#method-c-version">::version</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel">
+  <h1 id="module-Sequel" class="module">
+    module Sequel
+  </h1>
+
+  <section class="description">
+    
+<p>Top level module for <a href="Sequel.html"><code>Sequel</code></a></p>
+
+<p>There are some module methods that are added via metaprogramming, one for each supported adapter.  For example:</p>
+
+<pre>DB = Sequel.sqlite # Memory database
+DB = Sequel.sqlite(&#39;blog.db&#39;)
+DB = Sequel.postgres(&#39;database_name&#39;,
+       user:&#39;user&#39;, 
+       password: &#39;password&#39;,
+       host: &#39;host&#39;
+       port: 5432, 
+       max_connections: 10)</pre>
+
+<p>If a block is given to these methods, it is passed the opened <a href="Sequel/Database.html"><code>Database</code></a> object, which is closed (disconnected) when the block exits, just like a block passed to Sequel.connect.  For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">sqlite</span>(<span class="ruby-string">&#39;blog.db&#39;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">db</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-identifier">db</span>[<span class="ruby-value">:users</span>].<span class="ruby-identifier">count</span>}
+</pre>
+
+<p>For a more expanded introduction, see the <a href="README_rdoc.html">README</a>. For a quicker introduction, see the <a href="doc/cheat_sheet_rdoc.html">cheat sheet</a>.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="ADAPTER_MAP">ADAPTER_MAP
+        
+        <dd><p>Hash of adapters that have been used. The key is the adapter scheme symbol, and the value is the <a href="Sequel/Database.html"><code>Database</code></a> subclass.</p>
+        
+      
+        <dt id="AdapterNotFound">AdapterNotFound
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when the adapter requested doesn&#39;t exist or can&#39;t be loaded.</p>
+        
+      
+        <dt id="CheckConstraintViolation">CheckConstraintViolation
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when <a href="Sequel.html"><code>Sequel</code></a> determines a database check constraint has been violated.</p>
+        
+      
+        <dt id="ConstraintViolation">ConstraintViolation
+        
+        <dd><p>Generic error raised when <a href="Sequel.html"><code>Sequel</code></a> determines a database constraint has been violated.</p>
+        
+      
+        <dt id="DATABASES">DATABASES
+        
+        <dd><p>Array of all databases to which <a href="Sequel.html"><code>Sequel</code></a> has connected.  If you are developing an application that can connect to an arbitrary number of  databases, delete the database objects from this (or use the :keep_reference <a href="Sequel/Database.html"><code>Database</code></a> option or a block when connecting) or they will not get garbage collected.</p>
+        
+      
+        <dt id="DEFAULT_INFLECTIONS_PROC">DEFAULT_INFLECTIONS_PROC
+        
+        <dd><p>Proc that is instance_execed to create the default inflections for both the model inflector and the inflector extension.</p>
+        
+      
+        <dt id="DatabaseConnectionError">DatabaseConnectionError
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when the <a href="Sequel.html"><code>Sequel</code></a> is unable to connect to the database with the connection parameters it was given.</p>
+        
+      
+        <dt id="DatabaseDisconnectError">DatabaseDisconnectError
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised by adapters when they determine that the connection to the database has been lost.  Instructs the connection pool code to  remove that connection from the pool so that other connections can be acquired automatically.</p>
+        
+      
+        <dt id="DatabaseError">DatabaseError
+        
+        <dd><p>Generic error raised by the database adapters, indicating a problem originating from the database server.  Usually raised because incorrect <a href="Sequel/SQL.html"><code>SQL</code></a> syntax is used.</p>
+        
+      
+        <dt id="DatabaseLockTimeout">DatabaseLockTimeout
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when <a href="Sequel.html"><code>Sequel</code></a> determines the database could not acquire a necessary lock before timing out. Use of <a href="Sequel/Dataset.html#method-i-nowait"><code>Dataset#nowait</code></a> can often cause this exception when retrieving rows.</p>
+        
+      
+        <dt id="ForeignKeyConstraintViolation">ForeignKeyConstraintViolation
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when <a href="Sequel.html"><code>Sequel</code></a> determines a database foreign key constraint has been violated.</p>
+        
+      
+        <dt id="InvalidOperation">InvalidOperation
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised on an invalid operation, such as trying to update or delete a joined or grouped dataset when the database does not support that.</p>
+        
+      
+        <dt id="InvalidValue">InvalidValue
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when attempting an invalid type conversion.</p>
+        
+      
+        <dt id="MAJOR">MAJOR
+        
+        <dd><p>The major version of <a href="Sequel.html"><code>Sequel</code></a>.  Only bumped for major changes.</p>
+        
+      
+        <dt id="MINOR">MINOR
+        
+        <dd><p>The minor version of <a href="Sequel.html"><code>Sequel</code></a>.  Bumped for every non-patch level release, generally around once a month.</p>
+        
+      
+        <dt id="MassAssignmentRestriction">MassAssignmentRestriction
+        
+        <dd><p>Raised when a mass assignment method is called in strict mode with either a restricted column or a column without a setter method.</p>
+        
+      
+        <dt id="NoExistingObject">NoExistingObject
+        
+        <dd><p>Exception class raised when <code>require_modification</code> is set and an UPDATE or DELETE statement to modify the dataset doesn&#39;t modify a single row.</p>
+        
+      
+        <dt id="NotNullConstraintViolation">NotNullConstraintViolation
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when <a href="Sequel.html"><code>Sequel</code></a> determines a database NOT NULL constraint has been violated.</p>
+        
+      
+        <dt id="OPTS">OPTS
+        
+        <dd><p>Frozen hash used as the default options hash for most options.</p>
+        
+      
+        <dt id="PoolTimeout">PoolTimeout
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when the connection pool cannot acquire a database connection before the timeout.</p>
+        
+      
+        <dt id="Rollback">Rollback
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> that you should raise to signal a rollback of the current transaction. The transaction block will catch this exception, rollback the current transaction, and won&#39;t reraise it (unless a reraise is requested).</p>
+        
+      
+        <dt id="SHARED_ADAPTER_MAP">SHARED_ADAPTER_MAP
+        
+        <dd><p>Hash of shared adapters that have been registered.  The key is the adapter scheme symbol, and the value is the <a href="Sequel.html"><code>Sequel</code></a> module containing the shared adapter.</p>
+        
+      
+        <dt id="SPLIT_SYMBOL_CACHE">SPLIT_SYMBOL_CACHE
+        
+        <dd>
+        
+      
+        <dt id="SerializationFailure">SerializationFailure
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when <a href="Sequel.html"><code>Sequel</code></a> determines a serialization failure/deadlock in the database.</p>
+        
+      
+        <dt id="TINY">TINY
+        
+        <dd><p>The tiny version of <a href="Sequel.html"><code>Sequel</code></a>.  Usually 0, only bumped for bugfix releases that fix regressions from previous versions.</p>
+        
+      
+        <dt id="Timezones">Timezones
+        
+        <dd><p>Backwards compatible alias</p>
+        
+      
+        <dt id="UndefinedAssociation">UndefinedAssociation
+        
+        <dd><p>Raised when an undefined association is used when eager loading.</p>
+        
+      
+        <dt id="UniqueConstraintViolation">UniqueConstraintViolation
+        
+        <dd><p><a href="Sequel/Error.html"><code>Error</code></a> raised when <a href="Sequel.html"><code>Sequel</code></a> determines a database unique constraint has been violated.</p>
+        
+      
+        <dt id="VERSION">VERSION
+        
+        <dd><p>The version of <a href="Sequel.html"><code>Sequel</code></a> you are using, as a string (e.g. “2.11.0”)</p>
+        
+      
+        <dt id="VERSION_NUMBER">VERSION_NUMBER
+        
+        <dd><p>The version of <a href="Sequel.html"><code>Sequel</code></a> you are using, as a number (2.11.0 -&gt; 20110)</p>
+        
+      
+        <dt id="VIRTUAL_ROW">VIRTUAL_ROW
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-inflections" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inflections</span><span
+            class="method-args">() { |Inflections| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Yield the <a href="Sequel/Inflections.html"><code>Inflections</code></a> module if a block is given, and return the <a href="Sequel/Inflections.html"><code>Inflections</code></a> module.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="inflections-source">
+            <pre>  <span class="ruby-comment"># File lib/sequel/model/inflections.rb</span>
+<span class="line-num">6</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">inflections</span>
+<span class="line-num">7</span>   <span class="ruby-keyword">yield</span> <span class="ruby-constant">Inflections</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-keyword">yield</span>)
+<span class="line-num">8</span>   <span class="ruby-constant">Inflections</span>
+<span class="line-num">9</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-migration" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">migration</span><span
+            class="method-args">(&amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The preferred method for writing <a href="Sequel.html"><code>Sequel</code></a> migrations, using a DSL:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">migration</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">up</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">create_table</span>(<span class="ruby-value">:artists</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">primary_key</span> <span class="ruby-value">:id</span>
+      <span class="ruby-constant">String</span> <span class="ruby-value">:name</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">down</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">drop_table</span>(<span class="ruby-value">:artists</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Designed to be used with the <code>Migrator</code> class, part of the <code>migration</code> extension.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="migration-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/migration.rb</span>
+<span class="line-num">291</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">migration</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">292</span>   <span class="ruby-constant">MigrationDSL</span>.<span class="ruby-identifier">create</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="line-num">293</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-version" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">version</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The version of <a href="Sequel.html"><code>Sequel</code></a> you are using, as a string (e.g. “2.11.0”)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="version-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/version.rb</span>
+<span class="line-num">22</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">version</span>
+<span class="line-num">23</span>   <span class="ruby-constant">VERSION</span>
+<span class="line-num">24</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

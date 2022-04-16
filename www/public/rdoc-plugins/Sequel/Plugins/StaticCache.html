@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::StaticCache - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-configure">::configure</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::StaticCache">
+  <h1 id="module-Sequel::Plugins::StaticCache" class="module">
+    module Sequel::Plugins::StaticCache
+  </h1>
+
+  <section class="description">
+    
+<p>The static_cache plugin is designed for models that are not modified at all in production use cases, or at least where modifications to them would usually coincide with an application restart.  When loaded into a model class, it  retrieves all rows in the database and statically caches a ruby array and hash keyed on primary key containing all of the model instances.  All of these instances are frozen so they won&#39;t be modified unexpectedly, and before hooks disallow saving or destroying instances.</p>
+
+<p>You can use the frozen: false option to have this plugin return unfrozen instances.  This is slower as it requires creating new objects, but it allows you to make changes to the object and save them.  If you set the option to false, you are responsible for updating the cache manually (the pg_static_cache_updater extension can handle this automatically).  Note that it is not safe to use the frozen: false option if you are mutating column values directly.  If you are mutating column values, you should also override Model.call to dup each mutable column value to ensure it is not shared by other instances.</p>
+
+<p>The caches this plugin creates are used for the following things:</p>
+<ul><li>
+<p>Primary key lookups (e.g. <a href="1">Model</a>)</p>
+</li><li>
+<p>Model.all</p>
+</li><li>
+<p>Model.each</p>
+</li><li>
+<p>Model.first (without block, only supporting no arguments or single integer argument)</p>
+</li><li>
+<p>Model.count (without an argument or block)</p>
+</li><li>
+<p>Model.map</p>
+</li><li>
+<p>Model.as_hash</p>
+</li><li>
+<p>Model.to_hash</p>
+</li><li>
+<p>Model.to_hash_groups</p>
+</li></ul>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Cache the AlbumType class statically, disallowing any changes.</span>
+<span class="ruby-constant">AlbumType</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:static_cache</span>
+
+<span class="ruby-comment"># Cache the AlbumType class statically, but return unfrozen instances</span>
+<span class="ruby-comment"># that can be modified.</span>
+<span class="ruby-constant">AlbumType</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:static_cache</span>, <span class="ruby-value">frozen:</span> <span class="ruby-keyword">false</span>
+</pre>
+
+<p>If you would like the speed benefits of keeping frozen: true but still need to occasionally update objects, you can side-step the before_ hooks by overriding the class method <code>static_cache_allow_modifications?</code> to return true:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Model</span>
+  <span class="ruby-identifier">plugin</span> <span class="ruby-value">:static_cache</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">static_cache_allow_modifications?</span>
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Now if you <code>#dup</code> a <a href="../Model.html"><code>Model</code></a> object (the resulting object is not frozen), you will be able to update and save the duplicate. Note the caveats around your responsibility to update the cache still applies. You can update the cache via `.load_cache` method.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-configure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">configure</span><span
+            class="method-args">(model, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Populate the static caches when loading the plugin. Options:</p>
+<dl class="rdoc-list note-list"><dt>:frozen 
+<dd>
+<p>Whether retrieved model objects are frozen.  The default is true, for better performance as the shared frozen objects can be used directly.  If set to false, new instances are created.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="configure-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/static_cache.rb</span>
+<span class="line-num">64</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">configure</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">65</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">instance_exec</span> <span class="ruby-keyword">do</span>
+<span class="line-num">66</span>     <span class="ruby-ivar">@static_cache_frozen</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:frozen</span>, <span class="ruby-keyword">true</span>)
+<span class="line-num">67</span>     <span class="ruby-identifier">load_cache</span>
+<span class="line-num">68</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">69</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

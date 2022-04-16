@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::ClassTableInheritance::InstanceMethods - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+  var index_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/navigation.js" defer></script>
+<script src="../../../js/search.js" defer></script>
+<script src="../../../js/search_index.js" defer></script>
+<script src="../../../js/searcher.js" defer></script>
+<script src="../../../js/darkfish.js" defer></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-i-before_validation">#before_validation</a>
+    
+    <li ><a href="#method-i-delete">#delete</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::ClassTableInheritance::InstanceMethods">
+  <h1 id="module-Sequel::Plugins::ClassTableInheritance::InstanceMethods" class="module">
+    module Sequel::Plugins::ClassTableInheritance::InstanceMethods
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-before_validation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">before_validation</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the sti_key column based on the sti_key_map.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="before_validation-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/class_table_inheritance.rb</span>
+<span class="line-num">387</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">before_validation</span>
+<span class="line-num">388</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">new?</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">set</span> = <span class="ruby-keyword">self</span>[<span class="ruby-identifier">model</span>.<span class="ruby-identifier">sti_key</span>])
+<span class="line-num">389</span>     <span class="ruby-identifier">exp</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">sti_key_chooser</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">390</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">set</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">exp</span>
+<span class="line-num">391</span>       <span class="ruby-identifier">set_table</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">sti_class_from_key</span>(<span class="ruby-identifier">set</span>).<span class="ruby-identifier">cti_table_name</span>
+<span class="line-num">392</span>       <span class="ruby-identifier">exp_table</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">sti_class_from_key</span>(<span class="ruby-identifier">exp</span>).<span class="ruby-identifier">cti_table_name</span>
+<span class="line-num">393</span>       <span class="ruby-identifier">set_column_value</span>(<span class="ruby-node">&quot;#{model.sti_key}=&quot;</span>, <span class="ruby-identifier">exp</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">set_table</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">exp_table</span>
+<span class="line-num">394</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">395</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">396</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">397</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Delete the row from all backing tables, starting from the most recent table and going through all superclasses.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="delete-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/class_table_inheritance.rb</span>
+<span class="line-num">378</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>
+<span class="line-num">379</span>   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-string">&quot;can&#39;t delete frozen object&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">frozen?</span>
+<span class="line-num">380</span>   <span class="ruby-identifier">model</span>.<span class="ruby-identifier">cti_models</span>.<span class="ruby-identifier">reverse_each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+<span class="line-num">381</span>     <span class="ruby-identifier">cti_this</span>(<span class="ruby-identifier">m</span>).<span class="ruby-identifier">delete</span>
+<span class="line-num">382</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">383</span>   <span class="ruby-keyword">self</span>
+<span class="line-num">384</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

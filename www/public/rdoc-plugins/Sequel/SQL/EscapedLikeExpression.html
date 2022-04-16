@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::SQL::EscapedLikeExpression - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Expression
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">AliasMethods</span>
+  
+  
+  
+    <li><span class="include">BooleanMethods</span>
+  
+  
+  
+    <li><span class="include">CastMethods</span>
+  
+  
+  
+    <li><span class="include">OrderMethods</span>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-to_s_append">#to_s_append</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::SQL::EscapedLikeExpression">
+  <h1 id="class-Sequel::SQL::EscapedLikeExpression" class="class">
+    class Sequel::SQL::EscapedLikeExpression
+  </h1>
+
+  <section class="description">
+    
+<p>Represents an pattern match <a href="../SQL.html"><code>SQL</code></a> expression, where the pattern can depend upon interpolated values in a database-dependent manner.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(expr, case_sensitive, placeholder_pattern, placeholder_values)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialize the expression. Arguments:</p>
+<dl class="rdoc-list note-list"><dt>expr 
+<dd>
+<p>Right hand site of LIKE/ILIKE operator, what you are matching against the pattern</p>
+</dd><dt>case_insensitive 
+<dd>
+<p>Whether the match is case sensitive</p>
+</dd><dt>placeholder_pattern 
+<dd>
+<p>The pattern to match against, with +?+ for the placeholders</p>
+</dd><dt>placeholder_values 
+<dd>
+<p>The string values for each +?+ in the placeholder pattern.  Should be an array of strings, though it can be a single string if there is only a single placeholder.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/escaped_like.rb</span>
+<span class="line-num">37</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">expr</span>, <span class="ruby-identifier">case_sensitive</span>, <span class="ruby-identifier">placeholder_pattern</span>, <span class="ruby-identifier">placeholder_values</span>)
+<span class="line-num">38</span>   <span class="ruby-ivar">@expr</span> = <span class="ruby-identifier">expr</span>
+<span class="line-num">39</span>   <span class="ruby-ivar">@method</span> = <span class="ruby-identifier">case_sensitive</span> <span class="ruby-operator">?</span> <span class="ruby-value">:like</span> <span class="ruby-operator">:</span> <span class="ruby-value">:ilike</span>
+<span class="line-num">40</span>   <span class="ruby-ivar">@pattern</span> = <span class="ruby-identifier">placeholder_pattern</span>
+<span class="line-num">41</span>   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">placeholder_values</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+<span class="line-num">42</span>     <span class="ruby-identifier">placeholder_values</span> = [<span class="ruby-identifier">placeholder_values</span>].<span class="ruby-identifier">freeze</span>
+<span class="line-num">43</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">44</span>   <span class="ruby-ivar">@values</span> = <span class="ruby-identifier">placeholder_values</span>
+<span class="line-num">45</span>   <span class="ruby-identifier">freeze</span>
+<span class="line-num">46</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-to_s_append" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s_append</span><span
+            class="method-args">(ds, sql)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Interpolate the pattern values into the placeholder pattern to get the final pattern, now that we have access to the dataset.  Use the expression and final pattern and add an appropriate LIKE/ILIKE expression to the <a href="../SQL.html"><code>SQL</code></a> being built.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_s_append-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/escaped_like.rb</span>
+<span class="line-num">51</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s_append</span>(<span class="ruby-identifier">ds</span>, <span class="ruby-identifier">sql</span>)
+<span class="line-num">52</span>   <span class="ruby-identifier">i</span> = <span class="ruby-value">-1</span>
+<span class="line-num">53</span>   <span class="ruby-identifier">match_len</span> = <span class="ruby-ivar">@values</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+<span class="line-num">54</span>   <span class="ruby-identifier">like_pattern</span> = <span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>
+<span class="line-num">55</span>   <span class="ruby-identifier">pattern</span> = <span class="ruby-ivar">@pattern</span>
+<span class="line-num">56</span>   <span class="ruby-keyword">while</span> <span class="ruby-keyword">true</span>
+<span class="line-num">57</span>     <span class="ruby-identifier">previous</span>, <span class="ruby-identifier">q</span>, <span class="ruby-identifier">pattern</span> = <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">partition</span>(<span class="ruby-string">&#39;?&#39;</span>)
+<span class="line-num">58</span>     <span class="ruby-identifier">like_pattern</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">previous</span>
+<span class="line-num">59</span> 
+<span class="line-num">60</span>     <span class="ruby-keyword">unless</span> <span class="ruby-identifier">q</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">61</span>       <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">match_len</span>
+<span class="line-num">62</span>         <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;Mismatched number of placeholders (#{i+1}) and placeholder arguments (#{@values.length}) for escaped like expression: #{@pattern.inspect}&quot;</span>
+<span class="line-num">63</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">64</span>       <span class="ruby-identifier">like_pattern</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">escape_like</span>(<span class="ruby-ivar">@values</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>))
+<span class="line-num">65</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">66</span> 
+<span class="line-num">67</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">68</span>       <span class="ruby-keyword">unless</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">match_len</span>
+<span class="line-num">69</span>         <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;Mismatched number of placeholders (#{i+1}) and placeholder arguments (#{@values.length}) for escaped like expression: #{@pattern.inspect}&quot;</span>
+<span class="line-num">70</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">71</span>       <span class="ruby-keyword">break</span>
+<span class="line-num">72</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">73</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">74</span>   <span class="ruby-identifier">ds</span>.<span class="ruby-identifier">literal_append</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">send</span>(<span class="ruby-ivar">@method</span>, <span class="ruby-ivar">@expr</span>, <span class="ruby-identifier">like_pattern</span>))
+<span class="line-num">75</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>CHANGELOG - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-master">master</a>
+    <li><a href="#label-5.55.0+-282022-04-01-29">5.55.0 (2022-04-01)</a>
+    <li><a href="#label-5.54.0+-282022-03-01-29">5.54.0 (2022-03-01)</a>
+    <li><a href="#label-5.53.0+-282022-02-01-29">5.53.0 (2022-02-01)</a>
+    <li><a href="#label-5.52.0+-282022-01-01-29">5.52.0 (2022-01-01)</a>
+    <li><a href="#label-5.51.0+-282021-12-01-29">5.51.0 (2021-12-01)</a>
+    <li><a href="#label-5.50.0+-282021-11-01-29">5.50.0 (2021-11-01)</a>
+    <li><a href="#label-5.49.0+-282021-10-01-29">5.49.0 (2021-10-01)</a>
+    <li><a href="#label-5.48.0+-282021-09-01-29">5.48.0 (2021-09-01)</a>
+    <li><a href="#label-5.47.0+-282021-08-01-29">5.47.0 (2021-08-01)</a>
+    <li><a href="#label-5.46.0+-282021-07-01-29">5.46.0 (2021-07-01)</a>
+    <li><a href="#label-5.45.0+-282021-06-01-29">5.45.0 (2021-06-01)</a>
+    <li><a href="#label-5.44.0+-282021-05-01-29">5.44.0 (2021-05-01)</a>
+    <li><a href="#label-5.43.0+-282021-04-01-29">5.43.0 (2021-04-01)</a>
+    <li><a href="#label-5.42.0+-282021-03-01-29">5.42.0 (2021-03-01)</a>
+    <li><a href="#label-5.41.0+-282021-02-01-29">5.41.0 (2021-02-01)</a>
+    <li><a href="#label-5.40.0+-282021-01-01-29">5.40.0 (2021-01-01)</a>
+    <li><a href="#label-5.39.0+-282020-12-01-29">5.39.0 (2020-12-01)</a>
+    <li><a href="#label-5.38.0+-282020-11-01-29">5.38.0 (2020-11-01)</a>
+    <li><a href="#label-5.37.0+-282020-10-01-29">5.37.0 (2020-10-01)</a>
+    <li><a href="#label-5.36.0+-282020-09-01-29">5.36.0 (2020-09-01)</a>
+    <li><a href="#label-5.35.0+-282020-08-01-29">5.35.0 (2020-08-01)</a>
+    <li><a href="#label-5.34.0+-282020-07-01-29">5.34.0 (2020-07-01)</a>
+    <li><a href="#label-5.33.0+-282020-06-01-29">5.33.0 (2020-06-01)</a>
+    <li><a href="#label-5.32.0+-282020-05-01-29">5.32.0 (2020-05-01)</a>
+    <li><a href="#label-5.31.0+-282020-04-01-29">5.31.0 (2020-04-01)</a>
+    <li><a href="#label-5.30.0+-282020-03-01-29">5.30.0 (2020-03-01)</a>
+    <li><a href="#label-5.29.0+-282020-02-01-29">5.29.0 (2020-02-01)</a>
+    <li><a href="#label-5.28.0+-282020-01-01-29">5.28.0 (2020-01-01)</a>
+    <li><a href="#label-5.27.0+-282019-12-01-29">5.27.0 (2019-12-01)</a>
+    <li><a href="#label-5.26.0+-282019-11-01-29">5.26.0 (2019-11-01)</a>
+    <li><a href="#label-5.25.0+-282019-10-01-29">5.25.0 (2019-10-01)</a>
+    <li><a href="#label-5.24.0+-282019-09-01-29">5.24.0 (2019-09-01)</a>
+    <li><a href="#label-5.23.0+-282019-08-01-29">5.23.0 (2019-08-01)</a>
+    <li><a href="#label-5.22.0+-282019-07-01-29">5.22.0 (2019-07-01)</a>
+    <li><a href="#label-5.21.0+-282019-06-01-29">5.21.0 (2019-06-01)</a>
+    <li><a href="#label-5.20.0+-282019-05-01-29">5.20.0 (2019-05-01)</a>
+    <li><a href="#label-5.19.0+-282019-04-02-29">5.19.0 (2019-04-02)</a>
+    <li><a href="#label-5.18.0+-282019-03-01-29">5.18.0 (2019-03-01)</a>
+    <li><a href="#label-5.17.0+-282019-02-01-29">5.17.0 (2019-02-01)</a>
+    <li><a href="#label-5.16.0+-282019-01-02-29">5.16.0 (2019-01-02)</a>
+    <li><a href="#label-5.15.0+-282018-12-01-29">5.15.0 (2018-12-01)</a>
+    <li><a href="#label-5.14.0+-282018-11-01-29">5.14.0 (2018-11-01)</a>
+    <li><a href="#label-5.13.0+-282018-10-01-29">5.13.0 (2018-10-01)</a>
+    <li><a href="#label-5.12.0+-282018-08-31-29">5.12.0 (2018-08-31)</a>
+    <li><a href="#label-5.11.0+-282018-08-01-29">5.11.0 (2018-08-01)</a>
+    <li><a href="#label-5.10.0+-282018-07-01-29">5.10.0 (2018-07-01)</a>
+    <li><a href="#label-5.9.0+-282018-06-01-29">5.9.0 (2018-06-01)</a>
+    <li><a href="#label-5.8.0+-282018-05-01-29">5.8.0 (2018-05-01)</a>
+    <li><a href="#label-5.7.0+-282018-04-01-29">5.7.0 (2018-04-01)</a>
+    <li><a href="#label-5.6.0+-282018-03-01-29">5.6.0 (2018-03-01)</a>
+    <li><a href="#label-5.5.0+-282018-01-31-29">5.5.0 (2018-01-31)</a>
+    <li><a href="#label-5.4.0+-282018-01-04-29">5.4.0 (2018-01-04)</a>
+    <li><a href="#label-5.3.0+-282017-12-01-29">5.3.0 (2017-12-01)</a>
+    <li><a href="#label-5.2.0+-282017-10-27-29">5.2.0 (2017-10-27)</a>
+    <li><a href="#label-5.1.0+-282017-10-01-29">5.1.0 (2017-10-01)</a>
+    <li><a href="#label-5.0.0+-282017-09-01-29">5.0.0 (2017-09-01)</a>
+    <li><a href="#label-Older">Older</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./CHANGELOG.html">CHANGELOG</a>
+  
+    <li><a href="./MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="./README_rdoc.html">README</a>
+  
+    <li><a href="./doc/CHANGELOG_old.html">CHANGELOG.old</a>
+  
+    <li><a href="./doc/advanced_associations_rdoc.html">advanced_associations</a>
+  
+    <li><a href="./doc/association_basics_rdoc.html">association_basics</a>
+  
+    <li><a href="./doc/bin_sequel_rdoc.html">bin_sequel</a>
+  
+    <li><a href="./doc/cheat_sheet_rdoc.html">cheat_sheet</a>
+  
+    <li><a href="./doc/code_order_rdoc.html">code_order</a>
+  
+    <li><a href="./doc/core_extensions_rdoc.html">core_extensions</a>
+  
+    <li><a href="./doc/dataset_basics_rdoc.html">dataset_basics</a>
+  
+    <li><a href="./doc/dataset_filtering_rdoc.html">dataset_filtering</a>
+  
+    <li><a href="./doc/extensions_rdoc.html">extensions</a>
+  
+    <li><a href="./doc/fork_safety_rdoc.html">fork_safety</a>
+  
+    <li><a href="./doc/mass_assignment_rdoc.html">mass_assignment</a>
+  
+    <li><a href="./doc/migration_rdoc.html">migration</a>
+  
+    <li><a href="./doc/model_dataset_method_design_rdoc.html">model_dataset_method_design</a>
+  
+    <li><a href="./doc/model_hooks_rdoc.html">model_hooks</a>
+  
+    <li><a href="./doc/model_plugins_rdoc.html">model_plugins</a>
+  
+    <li><a href="./doc/mssql_stored_procedures_rdoc.html">mssql_stored_procedures</a>
+  
+    <li><a href="./doc/object_model_rdoc.html">object_model</a>
+  
+    <li><a href="./doc/opening_databases_rdoc.html">opening_databases</a>
+  
+    <li><a href="./doc/postgresql_rdoc.html">postgresql</a>
+  
+    <li><a href="./doc/prepared_statements_rdoc.html">prepared_statements</a>
+  
+    <li><a href="./doc/querying_rdoc.html">querying</a>
+  
+    <li><a href="./doc/reflection_rdoc.html">reflection</a>
+  
+    <li><a href="./doc/release_notes/1_0_txt.html">1.0</a>
+  
+    <li><a href="./doc/release_notes/1_1_txt.html">1.1</a>
+  
+    <li><a href="./doc/release_notes/1_3_txt.html">1.3</a>
+  
+    <li><a href="./doc/release_notes/1_4_0_txt.html">1.4.0</a>
+  
+    <li><a href="./doc/release_notes/1_5_0_txt.html">1.5.0</a>
+  
+    <li><a href="./doc/release_notes/2_0_0_txt.html">2.0.0</a>
+  
+    <li><a href="./doc/release_notes/2_1_0_txt.html">2.1.0</a>
+  
+    <li><a href="./doc/release_notes/2_10_0_txt.html">2.10.0</a>
+  
+    <li><a href="./doc/release_notes/2_11_0_txt.html">2.11.0</a>
+  
+    <li><a href="./doc/release_notes/2_12_0_txt.html">2.12.0</a>
+  
+    <li><a href="./doc/release_notes/2_2_0_txt.html">2.2.0</a>
+  
+    <li><a href="./doc/release_notes/2_3_0_txt.html">2.3.0</a>
+  
+    <li><a href="./doc/release_notes/2_4_0_txt.html">2.4.0</a>
+  
+    <li><a href="./doc/release_notes/2_5_0_txt.html">2.5.0</a>
+  
+    <li><a href="./doc/release_notes/2_6_0_txt.html">2.6.0</a>
+  
+    <li><a href="./doc/release_notes/2_7_0_txt.html">2.7.0</a>
+  
+    <li><a href="./doc/release_notes/2_8_0_txt.html">2.8.0</a>
+  
+    <li><a href="./doc/release_notes/2_9_0_txt.html">2.9.0</a>
+  
+    <li><a href="./doc/release_notes/3_0_0_txt.html">3.0.0</a>
+  
+    <li><a href="./doc/release_notes/3_1_0_txt.html">3.1.0</a>
+  
+    <li><a href="./doc/release_notes/3_10_0_txt.html">3.10.0</a>
+  
+    <li><a href="./doc/release_notes/3_11_0_txt.html">3.11.0</a>
+  
+    <li><a href="./doc/release_notes/3_12_0_txt.html">3.12.0</a>
+  
+    <li><a href="./doc/release_notes/3_13_0_txt.html">3.13.0</a>
+  
+    <li><a href="./doc/release_notes/3_14_0_txt.html">3.14.0</a>
+  
+    <li><a href="./doc/release_notes/3_15_0_txt.html">3.15.0</a>
+  
+    <li><a href="./doc/release_notes/3_16_0_txt.html">3.16.0</a>
+  
+    <li><a href="./doc/release_notes/3_17_0_txt.html">3.17.0</a>
+  
+    <li><a href="./doc/release_notes/3_18_0_txt.html">3.18.0</a>
+  
+    <li><a href="./doc/release_notes/3_19_0_txt.html">3.19.0</a>
+  
+    <li><a href="./doc/release_notes/3_2_0_txt.html">3.2.0</a>
+  
+    <li><a href="./doc/release_notes/3_20_0_txt.html">3.20.0</a>
+  
+    <li><a href="./doc/release_notes/3_21_0_txt.html">3.21.0</a>
+  
+    <li><a href="./doc/release_notes/3_22_0_txt.html">3.22.0</a>
+  
+    <li><a href="./doc/release_notes/3_23_0_txt.html">3.23.0</a>
+  
+    <li><a href="./doc/release_notes/3_24_0_txt.html">3.24.0</a>
+  
+    <li><a href="./doc/release_notes/3_25_0_txt.html">3.25.0</a>
+  
+    <li><a href="./doc/release_notes/3_26_0_txt.html">3.26.0</a>
+  
+    <li><a href="./doc/release_notes/3_27_0_txt.html">3.27.0</a>
+  
+    <li><a href="./doc/release_notes/3_28_0_txt.html">3.28.0</a>
+  
+    <li><a href="./doc/release_notes/3_29_0_txt.html">3.29.0</a>
+  
+    <li><a href="./doc/release_notes/3_3_0_txt.html">3.3.0</a>
+  
+    <li><a href="./doc/release_notes/3_30_0_txt.html">3.30.0</a>
+  
+    <li><a href="./doc/release_notes/3_31_0_txt.html">3.31.0</a>
+  
+    <li><a href="./doc/release_notes/3_32_0_txt.html">3.32.0</a>
+  
+    <li><a href="./doc/release_notes/3_33_0_txt.html">3.33.0</a>
+  
+    <li><a href="./doc/release_notes/3_34_0_txt.html">3.34.0</a>
+  
+    <li><a href="./doc/release_notes/3_35_0_txt.html">3.35.0</a>
+  
+    <li><a href="./doc/release_notes/3_36_0_txt.html">3.36.0</a>
+  
+    <li><a href="./doc/release_notes/3_37_0_txt.html">3.37.0</a>
+  
+    <li><a href="./doc/release_notes/3_38_0_txt.html">3.38.0</a>
+  
+    <li><a href="./doc/release_notes/3_39_0_txt.html">3.39.0</a>
+  
+    <li><a href="./doc/release_notes/3_4_0_txt.html">3.4.0</a>
+  
+    <li><a href="./doc/release_notes/3_40_0_txt.html">3.40.0</a>
+  
+    <li><a href="./doc/release_notes/3_41_0_txt.html">3.41.0</a>
+  
+    <li><a href="./doc/release_notes/3_42_0_txt.html">3.42.0</a>
+  
+    <li><a href="./doc/release_notes/3_43_0_txt.html">3.43.0</a>
+  
+    <li><a href="./doc/release_notes/3_44_0_txt.html">3.44.0</a>
+  
+    <li><a href="./doc/release_notes/3_45_0_txt.html">3.45.0</a>
+  
+    <li><a href="./doc/release_notes/3_46_0_txt.html">3.46.0</a>
+  
+    <li><a href="./doc/release_notes/3_47_0_txt.html">3.47.0</a>
+  
+    <li><a href="./doc/release_notes/3_48_0_txt.html">3.48.0</a>
+  
+    <li><a href="./doc/release_notes/3_5_0_txt.html">3.5.0</a>
+  
+    <li><a href="./doc/release_notes/3_6_0_txt.html">3.6.0</a>
+  
+    <li><a href="./doc/release_notes/3_7_0_txt.html">3.7.0</a>
+  
+    <li><a href="./doc/release_notes/3_8_0_txt.html">3.8.0</a>
+  
+    <li><a href="./doc/release_notes/3_9_0_txt.html">3.9.0</a>
+  
+    <li><a href="./doc/release_notes/4_0_0_txt.html">4.0.0</a>
+  
+    <li><a href="./doc/release_notes/4_1_0_txt.html">4.1.0</a>
+  
+    <li><a href="./doc/release_notes/4_10_0_txt.html">4.10.0</a>
+  
+    <li><a href="./doc/release_notes/4_11_0_txt.html">4.11.0</a>
+  
+    <li><a href="./doc/release_notes/4_12_0_txt.html">4.12.0</a>
+  
+    <li><a href="./doc/release_notes/4_13_0_txt.html">4.13.0</a>
+  
+    <li><a href="./doc/release_notes/4_14_0_txt.html">4.14.0</a>
+  
+    <li><a href="./doc/release_notes/4_15_0_txt.html">4.15.0</a>
+  
+    <li><a href="./doc/release_notes/4_16_0_txt.html">4.16.0</a>
+  
+    <li><a href="./doc/release_notes/4_17_0_txt.html">4.17.0</a>
+  
+    <li><a href="./doc/release_notes/4_18_0_txt.html">4.18.0</a>
+  
+    <li><a href="./doc/release_notes/4_19_0_txt.html">4.19.0</a>
+  
+    <li><a href="./doc/release_notes/4_2_0_txt.html">4.2.0</a>
+  
+    <li><a href="./doc/release_notes/4_20_0_txt.html">4.20.0</a>
+  
+    <li><a href="./doc/release_notes/4_21_0_txt.html">4.21.0</a>
+  
+    <li><a href="./doc/release_notes/4_22_0_txt.html">4.22.0</a>
+  
+    <li><a href="./doc/release_notes/4_23_0_txt.html">4.23.0</a>
+  
+    <li><a href="./doc/release_notes/4_24_0_txt.html">4.24.0</a>
+  
+    <li><a href="./doc/release_notes/4_25_0_txt.html">4.25.0</a>
+  
+    <li><a href="./doc/release_notes/4_26_0_txt.html">4.26.0</a>
+  
+    <li><a href="./doc/release_notes/4_27_0_txt.html">4.27.0</a>
+  
+    <li><a href="./doc/release_notes/4_28_0_txt.html">4.28.0</a>
+  
+    <li><a href="./doc/release_notes/4_29_0_txt.html">4.29.0</a>
+  
+    <li><a href="./doc/release_notes/4_3_0_txt.html">4.3.0</a>
+  
+    <li><a href="./doc/release_notes/4_30_0_txt.html">4.30.0</a>
+  
+    <li><a href="./doc/release_notes/4_31_0_txt.html">4.31.0</a>
+  
+    <li><a href="./doc/release_notes/4_32_0_txt.html">4.32.0</a>
+  
+    <li><a href="./doc/release_notes/4_33_0_txt.html">4.33.0</a>
+  
+    <li><a href="./doc/release_notes/4_34_0_txt.html">4.34.0</a>
+  
+    <li><a href="./doc/release_notes/4_35_0_txt.html">4.35.0</a>
+  
+    <li><a href="./doc/release_notes/4_36_0_txt.html">4.36.0</a>
+  
+    <li><a href="./doc/release_notes/4_37_0_txt.html">4.37.0</a>
+  
+    <li><a href="./doc/release_notes/4_38_0_txt.html">4.38.0</a>
+  
+    <li><a href="./doc/release_notes/4_39_0_txt.html">4.39.0</a>
+  
+    <li><a href="./doc/release_notes/4_4_0_txt.html">4.4.0</a>
+  
+    <li><a href="./doc/release_notes/4_40_0_txt.html">4.40.0</a>
+  
+    <li><a href="./doc/release_notes/4_41_0_txt.html">4.41.0</a>
+  
+    <li><a href="./doc/release_notes/4_42_0_txt.html">4.42.0</a>
+  
+    <li><a href="./doc/release_notes/4_43_0_txt.html">4.43.0</a>
+  
+    <li><a href="./doc/release_notes/4_44_0_txt.html">4.44.0</a>
+  
+    <li><a href="./doc/release_notes/4_45_0_txt.html">4.45.0</a>
+  
+    <li><a href="./doc/release_notes/4_46_0_txt.html">4.46.0</a>
+  
+    <li><a href="./doc/release_notes/4_47_0_txt.html">4.47.0</a>
+  
+    <li><a href="./doc/release_notes/4_48_0_txt.html">4.48.0</a>
+  
+    <li><a href="./doc/release_notes/4_49_0_txt.html">4.49.0</a>
+  
+    <li><a href="./doc/release_notes/4_5_0_txt.html">4.5.0</a>
+  
+    <li><a href="./doc/release_notes/4_6_0_txt.html">4.6.0</a>
+  
+    <li><a href="./doc/release_notes/4_7_0_txt.html">4.7.0</a>
+  
+    <li><a href="./doc/release_notes/4_8_0_txt.html">4.8.0</a>
+  
+    <li><a href="./doc/release_notes/4_9_0_txt.html">4.9.0</a>
+  
+    <li><a href="./doc/release_notes/5_0_0_txt.html">5.0.0</a>
+  
+    <li><a href="./doc/release_notes/5_1_0_txt.html">5.1.0</a>
+  
+    <li><a href="./doc/release_notes/5_10_0_txt.html">5.10.0</a>
+  
+    <li><a href="./doc/release_notes/5_11_0_txt.html">5.11.0</a>
+  
+    <li><a href="./doc/release_notes/5_12_0_txt.html">5.12.0</a>
+  
+    <li><a href="./doc/release_notes/5_13_0_txt.html">5.13.0</a>
+  
+    <li><a href="./doc/release_notes/5_14_0_txt.html">5.14.0</a>
+  
+    <li><a href="./doc/release_notes/5_15_0_txt.html">5.15.0</a>
+  
+    <li><a href="./doc/release_notes/5_16_0_txt.html">5.16.0</a>
+  
+    <li><a href="./doc/release_notes/5_17_0_txt.html">5.17.0</a>
+  
+    <li><a href="./doc/release_notes/5_18_0_txt.html">5.18.0</a>
+  
+    <li><a href="./doc/release_notes/5_19_0_txt.html">5.19.0</a>
+  
+    <li><a href="./doc/release_notes/5_2_0_txt.html">5.2.0</a>
+  
+    <li><a href="./doc/release_notes/5_20_0_txt.html">5.20.0</a>
+  
+    <li><a href="./doc/release_notes/5_21_0_txt.html">5.21.0</a>
+  
+    <li><a href="./doc/release_notes/5_22_0_txt.html">5.22.0</a>
+  
+    <li><a href="./doc/release_notes/5_23_0_txt.html">5.23.0</a>
+  
+    <li><a href="./doc/release_notes/5_24_0_txt.html">5.24.0</a>
+  
+    <li><a href="./doc/release_notes/5_25_0_txt.html">5.25.0</a>
+  
+    <li><a href="./doc/release_notes/5_26_0_txt.html">5.26.0</a>
+  
+    <li><a href="./doc/release_notes/5_27_0_txt.html">5.27.0</a>
+  
+    <li><a href="./doc/release_notes/5_28_0_txt.html">5.28.0</a>
+  
+    <li><a href="./doc/release_notes/5_29_0_txt.html">5.29.0</a>
+  
+    <li><a href="./doc/release_notes/5_3_0_txt.html">5.3.0</a>
+  
+    <li><a href="./doc/release_notes/5_30_0_txt.html">5.30.0</a>
+  
+    <li><a href="./doc/release_notes/5_31_0_txt.html">5.31.0</a>
+  
+    <li><a href="./doc/release_notes/5_32_0_txt.html">5.32.0</a>
+  
+    <li><a href="./doc/release_notes/5_33_0_txt.html">5.33.0</a>
+  
+    <li><a href="./doc/release_notes/5_34_0_txt.html">5.34.0</a>
+  
+    <li><a href="./doc/release_notes/5_35_0_txt.html">5.35.0</a>
+  
+    <li><a href="./doc/release_notes/5_36_0_txt.html">5.36.0</a>
+  
+    <li><a href="./doc/release_notes/5_37_0_txt.html">5.37.0</a>
+  
+    <li><a href="./doc/release_notes/5_38_0_txt.html">5.38.0</a>
+  
+    <li><a href="./doc/release_notes/5_39_0_txt.html">5.39.0</a>
+  
+    <li><a href="./doc/release_notes/5_4_0_txt.html">5.4.0</a>
+  
+    <li><a href="./doc/release_notes/5_40_0_txt.html">5.40.0</a>
+  
+    <li><a href="./doc/release_notes/5_41_0_txt.html">5.41.0</a>
+  
+    <li><a href="./doc/release_notes/5_42_0_txt.html">5.42.0</a>
+  
+    <li><a href="./doc/release_notes/5_43_0_txt.html">5.43.0</a>
+  
+    <li><a href="./doc/release_notes/5_44_0_txt.html">5.44.0</a>
+  
+    <li><a href="./doc/release_notes/5_45_0_txt.html">5.45.0</a>
+  
+    <li><a href="./doc/release_notes/5_46_0_txt.html">5.46.0</a>
+  
+    <li><a href="./doc/release_notes/5_47_0_txt.html">5.47.0</a>
+  
+    <li><a href="./doc/release_notes/5_48_0_txt.html">5.48.0</a>
+  
+    <li><a href="./doc/release_notes/5_49_0_txt.html">5.49.0</a>
+  
+    <li><a href="./doc/release_notes/5_5_0_txt.html">5.5.0</a>
+  
+    <li><a href="./doc/release_notes/5_50_0_txt.html">5.50.0</a>
+  
+    <li><a href="./doc/release_notes/5_51_0_txt.html">5.51.0</a>
+  
+    <li><a href="./doc/release_notes/5_52_0_txt.html">5.52.0</a>
+  
+    <li><a href="./doc/release_notes/5_53_0_txt.html">5.53.0</a>
+  
+    <li><a href="./doc/release_notes/5_54_0_txt.html">5.54.0</a>
+  
+    <li><a href="./doc/release_notes/5_55_0_txt.html">5.55.0</a>
+  
+    <li><a href="./doc/release_notes/5_6_0_txt.html">5.6.0</a>
+  
+    <li><a href="./doc/release_notes/5_7_0_txt.html">5.7.0</a>
+  
+    <li><a href="./doc/release_notes/5_8_0_txt.html">5.8.0</a>
+  
+    <li><a href="./doc/release_notes/5_9_0_txt.html">5.9.0</a>
+  
+    <li><a href="./doc/schema_modification_rdoc.html">schema_modification</a>
+  
+    <li><a href="./doc/security_rdoc.html">security</a>
+  
+    <li><a href="./doc/sharding_rdoc.html">sharding</a>
+  
+    <li><a href="./doc/sql_rdoc.html">sql</a>
+  
+    <li><a href="./doc/testing_rdoc.html">testing</a>
+  
+    <li><a href="./doc/thread_safety_rdoc.html">thread_safety</a>
+  
+    <li><a href="./doc/transactions_rdoc.html">transactions</a>
+  
+    <li><a href="./doc/validations_rdoc.html">validations</a>
+  
+    <li><a href="./doc/virtual_rows_rdoc.html">virtual_rows</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page CHANGELOG">
+
+<h3 id="label-master">master<span><a href="#label-master">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Support creation of STRICT tables on SQLite 3.37.0+ via create_table :strict option (jeremyevans)</p>
+</li><li>
+<p>Add sqlite_json_ops extension for DSL support for JSON functions and operators added in SQLite 3.38.0 (jeremyevans)</p>
+</li><li>
+<p>Recognize “INTEGER” type same as “integer” type in the schema dumper, helpful on SQLite 3.37.0+ (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.55.0+-282022-04-01-29">5.55.0 (2022-04-01)<span><a href="#label-5.55.0+-282022-04-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Support :setup_regexp_function Database option in the sqlite adapter to allow the use of regexps when querying (jeremyevans)</p>
+</li><li>
+<p>Add auto_restrict_eager_graph plugin for automatically disallow eager_graph with associations needing but lacking graph options (jeremyevans)</p>
+</li><li>
+<p>Fix placeholder literalizer optimization for dataset aggregate methods on a model dataset (belousovAV) (#1847, #1848)</p>
+</li></ul>
+
+<h3 id="label-5.54.0+-282022-03-01-29">5.54.0 (2022-03-01)<span><a href="#label-5.54.0+-282022-03-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Add enum plugin for treating columns as enums in a model (jeremyevans) (#1839)</p>
+</li></ul>
+
+<h3 id="label-5.53.0+-282022-02-01-29">5.53.0 (2022-02-01)<span><a href="#label-5.53.0+-282022-02-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make Dataset#_sql_comment private when using the Database sql_comments extension (jeremyevans)</p>
+</li><li>
+<p>Fix prepared statements in the mysql2 adapter to reuse native prepared statements (jeremyevans) (#1832)</p>
+</li><li>
+<p>Support H2 version 2+ in the jdbc/h2 adapter (jeremyevans) (#1817)</p>
+</li><li>
+<p>Work around active_support breaking subclasses plugin on Ruby &lt;3.1 (jeremyevans) (#1816)</p>
+</li><li>
+<p>Fix error handling if trying to setup column_encryption plugin without keys (jeremyevans) (#1815)</p>
+</li></ul>
+
+<h3 id="label-5.52.0+-282022-01-01-29">5.52.0 (2022-01-01)<span><a href="#label-5.52.0+-282022-01-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Use Class#subclasses if available in the subclasses plugin, instead of a custom Model.subclasses accessor (jeremyevans)</p>
+</li><li>
+<p>Add Model.descendants and .freeze_descendants to subclasses plugin (jeremyevans)</p>
+</li><li>
+<p>Avoid use of deprecated Refinement#include on Ruby 3.1+ (jeremyevans)</p>
+</li><li>
+<p>Add date_parse_input_handler extension for custom handling of input to date parsing methods (jeremyevans)</p>
+</li><li>
+<p>Make postgres adapter respect Database#default_string_column_size (jeremyevans)</p>
+</li><li>
+<p>Make pg_interval extension work with ActiveSupport 7.0 (jeremyevans)</p>
+</li><li>
+<p>Make :ruby_default schema entry for type: :datetime respect Sequel.datetime_class (jeremyevans)</p>
+</li><li>
+<p>Make alter_table drop_constraint have an effect on MySQL 8.0.19+ (jeremyevans)</p>
+</li><li>
+<p>Make mysql adapter support ruby-mysql 3 API (jeremyevans) (#1795)</p>
+</li><li>
+<p>Make mysql adapter no longer use connection&#39;s server_version, since it isn&#39;t accurate when using the ruby-mysql driver (jeremyevans)</p>
+</li><li>
+<p>Add sql_comments plugin for automatically including comments on queries generated by model class, instance, and dataset methods (jeremyevans)</p>
+</li><li>
+<p>Make sql_comments Database extension support Database#with_comments, for automatically including comments for queries executed inside the block (jeremyevans)</p>
+</li><li>
+<p>Fix sql_comments extension to not modify cached SQL for a dataset (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.51.0+-282021-12-01-29">5.51.0 (2021-12-01)<span><a href="#label-5.51.0+-282021-12-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make eager loading via tactical_eager_loading no longer modify objects who already have a cached value for the association (jeremyevans)</p>
+</li><li>
+<p>Make association cloning handle cases where clone association sets different :class option than cloned association (jeremyevans)</p>
+</li><li>
+<p>Make column schema entries on MySQL include an :extra entry for the Extra column in DESCRIBE output (bschmeck) (#1791)</p>
+</li><li>
+<p>Update mock PostgreSQL adapter to default to PostgreSQL 14 instead of PostgreSQL 9.5 (jeremyevans)</p>
+</li><li>
+<p>Support Dataset#with_recursive :search and :cycle options on PostgreSQL 14+ for result ordering and cycle detection (jeremyevans)</p>
+</li><li>
+<p>Avoid method redefined verbose mode warnings in lazy_attributes plugin (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.50.0+-282021-11-01-29">5.50.0 (2021-11-01)<span><a href="#label-5.50.0+-282021-11-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make Migrator :allow_missing_migration_files also allow down migrations where the current database version is greater than the last migration file version (francisconeves97) (#1789)</p>
+</li><li>
+<p>Fix Model#freeze in composition, serialization, and serialization_modification_detection plugins to return self (jeremyevans) (#1788)</p>
+</li><li>
+<p>Fix typecasting of lazy columns when using lazy_attributes plugin in model where dataset selects from subquery (jeremyevans)</p>
+</li><li>
+<p>Add :before_preconnect Database option, for configuring extensions loaded via :preconnect_extensions (MarcPer, jeremyevans) (#1786)</p>
+</li><li>
+<p>Change Dataset#columns! to use a LIMIT 0 query instead of a LIMIT 1 query (jeremyevans)</p>
+</li><li>
+<p>Add sql_log_normalizer extension for normalizing logged SQL, helpful for analytics and sensitive data (jeremyevans)</p>
+</li><li>
+<p>Add support for range_merge, multirange, and unnest, and PGMultiRange#op to pg_range_ops extension (jeremyevans)</p>
+</li><li>
+<p>Add pg_multirange extension with support for PostgreSQL 14+ multirange types (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.49.0+-282021-10-01-29">5.49.0 (2021-10-01)<span><a href="#label-5.49.0+-282021-10-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Switch block_given? usage to defined?(yield) (jeremyevans)</p>
+</li><li>
+<p>Support table aliases for JOIN USING columns on PostgreSQL 14+ (jeremyevans)</p>
+</li><li>
+<p>Support calling PostgreSQL procedures without arguments (jeremyevans)</p>
+</li><li>
+<p>Support hstore subscripts in pg_hstore_ops on PostgreSQL 14+, for updating only part of an hstore value (jeremyevans)</p>
+</li><li>
+<p>Support JSONB subscripts in pg_json_ops on PostgreSQL 14+, for updating only part of a JSONB value (jeremyevans)</p>
+</li><li>
+<p>Support SQL::Expression#sequel_ast_transform for custom AST transforms on arbitrary expressions (jeremyevans)</p>
+</li><li>
+<p>Add Database#create_trigger :replace option on PostgreSQL 14+ for CREATE OR REPLACE TRIGGER (jeremyevans)</p>
+</li><li>
+<p>Make auto_validations plugin automatically setup no_null_byte validations (jeremyevans)</p>
+</li><li>
+<p>Add Model#validates_no_null_byte to validation_helpers plugin (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.48.0+-282021-09-01-29">5.48.0 (2021-09-01)<span><a href="#label-5.48.0+-282021-09-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make the unused_associations plugin association reflection tracking work correctly when combining coverage runs (jeremyevans)</p>
+</li><li>
+<p>Add Database#like_without_collate on MSSQL, to avoid using COLLATE on LIKE arguments, which can significantly improve performance (jeremyevans)</p>
+</li><li>
+<p>Add Model::Errors#full_message private method for easiest i18n support for errors with multiple attributes (jeremyevans) (#1779)</p>
+</li></ul>
+
+<h3 id="label-5.47.0+-282021-08-01-29">5.47.0 (2021-08-01)<span><a href="#label-5.47.0+-282021-08-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make the unused_associations plugin track access to association reflections to determine whether associations are used (jeremyevans)</p>
+</li><li>
+<p>Support :db option for join tables in {many,one}_through_many to use a separate query for each join table (jeremyevans)</p>
+</li><li>
+<p>Support :join_table_db option for many_to_many/one_through_one associations, to use a separate query for the join table (jeremyevans)</p>
+</li><li>
+<p>Support :allow_eager_graph and :allow_filtering_by association options (jeremyevans)</p>
+</li><li>
+<p>Add Database#rename_tables on MySQL, for renaming multiple tables in a single call (nick96) (#1774)</p>
+</li><li>
+<p>Support Dataset#returning on SQLite 3.35+ (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.46.0+-282021-07-01-29">5.46.0 (2021-07-01)<span><a href="#label-5.46.0+-282021-07-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Add unused_associations plugin, for determining which associations and association methods are not used (jeremyevans)</p>
+</li><li>
+<p>Make nil :setter/:adder/:remover/:clearer association options not create related methods (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.45.0+-282021-06-01-29">5.45.0 (2021-06-01)<span><a href="#label-5.45.0+-282021-06-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fix handling of NULL values in boolean columns in the ODBC adapter (jeremyevans) (#1765)</p>
+</li><li>
+<p>Add auto_validations_constraint_validations_presence_message plugin for auto_validations/constraint_validations presence message integration (jeremyevans)</p>
+</li><li>
+<p>Support Dataset#with :materialized option on SQLite 3.35+ for [NOT] MATERIALIZED (jeremyevans)</p>
+</li><li>
+<p>Use ALTER TABLE DROP COLUMN for dropping columns on SQLite 3.35+ (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.44.0+-282021-05-01-29">5.44.0 (2021-05-01)<span><a href="#label-5.44.0+-282021-05-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Add concurrent_eager_loading plugin, for eager loading multiple associations concurrently using separate threads (jeremyevans)</p>
+</li><li>
+<p>Support :weeks as a interval unit in the date_arithmetic extension (jeremyevans) (#1759)</p>
+</li><li>
+<p>Raise an exception if an interval hash with an unsupported key is passed in the date_arithmetic extension (jeremyevans) (#1759)</p>
+</li><li>
+<p>Support dropping non-composite unique constraints on SQLite (jeremyevans) (#1755)</p>
+</li></ul>
+
+<h3 id="label-5.43.0+-282021-04-01-29">5.43.0 (2021-04-01)<span><a href="#label-5.43.0+-282021-04-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Add column_encryption plugin, for encrypting column values (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.42.0+-282021-03-01-29">5.42.0 (2021-03-01)<span><a href="#label-5.42.0+-282021-03-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make the ado timestamp conversion proc a normal conversion proc that can be overridden similar to other conversion procs (jeremyevans)</p>
+</li><li>
+<p>Add :reject_nil option to the nested_attributes method, to ignore calls where nil is passed as the associated object data (jeremyevans)</p>
+</li><li>
+<p>Add async_thread_pool plugin for easier async usage with model classes and support for async destroy, with_pk, and with_pk! methods (jeremyevans)</p>
+</li><li>
+<p>Add async_thread_pool Database extension for executing queries asynchronously using a thread pool (jeremyevans)</p>
+</li><li>
+<p>Fix possible thread safety issue in Database#extension that could allow Module#extended to be called twice with the same Database instance (jeremyevans)</p>
+</li><li>
+<p>Support cases where validations make modifications beyond setting errors in Model#freeze (jeremyevans)</p>
+</li><li>
+<p>Add Model#to_json_data to the json_serializer plugin, returning a JSON data structure (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.41.0+-282021-02-01-29">5.41.0 (2021-02-01)<span><a href="#label-5.41.0+-282021-02-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Have explicit :text option for a String column take priority over :size option on PostgreSQL (jeremyevans) (#1750)</p>
+</li><li>
+<p>Support a :skip_invalid option in auto_validations plugin for not adding errors to a column that already has an error (jeremyevans)</p>
+</li><li>
+<p>Support a :skip_invalid option in validation_helpers for not adding an error to a column that already has an error (jeremyevans)</p>
+</li><li>
+<p>Support :adder, :remover, and :clearer association options that use keyword arguments in Ruby 2.7+ (jeremyevans)</p>
+</li><li>
+<p>Make pg_interval use the same number of seconds per year and per month as ActiveSupport::Duration when using ActiveSupport 5.1+ (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.40.0+-282021-01-01-29">5.40.0 (2021-01-01)<span><a href="#label-5.40.0+-282021-01-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Support UPDATE FROM syntax in SQLite 3.33.0+ (jeremyevans)</p>
+</li><li>
+<p>Have pg_interval extension work with ActiveSupport 6.1 (jeremyevans)</p>
+</li><li>
+<p>Have date_arithmetic extension work with ActiveSupport 6.1 (jeremyevans)</p>
+</li><li>
+<p>Avoid method redefinition warnings in verbose warning mode (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.39.0+-282020-12-01-29">5.39.0 (2020-12-01)<span><a href="#label-5.39.0+-282020-12-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Support :clustered option for primary key and unique constraints on Microsoft SQL Server (jeremyevans)</p>
+</li><li>
+<p>Do not modify the size of binary columns when using set_column_allow_null on Microsoft SQL Server (jeremyevans) (#1736)</p>
+</li><li>
+<p>Add a fork safety guide with more detail on how to use <a href="Sequel.html"><code>Sequel</code></a> with libraries that fork (janko) (#1733)</p>
+</li><li>
+<p>Make the roots_dataset method in the tree plugin work with queries using joins (jeremyevans) (#1731)</p>
+</li><li>
+<p>Make Database#tables return partitioned tables on PostgreSQL 10+ (epoberezhny) (#1729, #1730)</p>
+</li></ul>
+
+<h3 id="label-5.38.0+-282020-11-01-29">5.38.0 (2020-11-01)<span><a href="#label-5.38.0+-282020-11-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Do not add new Database instances to Sequel::DATABASES if the test connection fails (jeremyevans) (#1727)</p>
+</li><li>
+<p>Support the newer com.mysql.cj.jdbc.Driver in the jdbc/mysql adapter (jeremyevans)</p>
+</li><li>
+<p>Do not swallow disconnect errors in Database#create_or_replace_view or Database#create_table* on Oracle (jeremyevans)</p>
+</li><li>
+<p>Only rescue non-disconnect Sequel::DatabaseErrors in Postgres::Database#server_version (jeremyevans) (#1724)</p>
+</li><li>
+<p>Make the single_table_inheritance and <a href="doc/prepared_statements_rdoc.html">prepared_statements</a> plugins work if loaded into the same class (jeremyevans) (#1721)</p>
+</li></ul>
+
+<h3 id="label-5.37.0+-282020-10-01-29">5.37.0 (2020-10-01)<span><a href="#label-5.37.0+-282020-10-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Recognize more unsigned decimal/float types in the schema dumper (akimd, jeremyevans) (#1720)</p>
+</li><li>
+<p>Add Postgres::PGRow::{Array,Hash}Row#op to the pg_row_ops extension if the pg_row extension is loaded (jeremyevans)</p>
+</li><li>
+<p>Add Model#column_previously_was and column_previously_changed? to the dirty plugin (jeremyevans)</p>
+</li><li>
+<p>Raise Migrator::Error if attempting to migrate down to a version where there are necessary migration files missing (jeremyevans) (#1716)</p>
+</li></ul>
+
+<h3 id="label-5.36.0+-282020-09-01-29">5.36.0 (2020-09-01)<span><a href="#label-5.36.0+-282020-09-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Handle passing keyword arguments through class methods defined via Plugins.def_dataset_method on Ruby 2.7+ (jeremyevans)</p>
+</li><li>
+<p>Handle passing keyword arguments through when loading plugins on Ruby 2.7+ (jeremyevans)</p>
+</li><li>
+<p>Handle passing keyword arguments through migrations when defining custom Database methods that accept keywords on Ruby 2.7+ (jeremyevans)</p>
+</li><li>
+<p>Handle passing keyword arguments through Dataset#query when using the query extension on Ruby 2.7+ (jeremyevans)</p>
+</li><li>
+<p>Handle passing keyword arguments through the association proxy when using the association_proxies plugin on Ruby 2.7+ (jeremyevans)</p>
+</li><li>
+<p>Handle passing keyword arguments through the class method to a method defined in dataset_module on Ruby 2.7+ (adam12) (#1713)</p>
+</li><li>
+<p>Stream result sets in the odbc adapter for better performance and lower memory usage (sparrovv) (#1711)</p>
+</li><li>
+<p>Add Postgres::JSONBOp#set_lax and path_*_tz methods to the pg_json_ops extension for new jsonb functions added in PostgreSQL 13 (jeremyevans)</p>
+</li><li>
+<p>Add Dataset#with_ties on PostgreSQL 13+ and Microsoft SQL Server to include rows with same order as final row (jeremyevans)</p>
+</li><li>
+<p>Add a :current_schema option to Database#view_exists? (only defined on Oracle) to look in the current schema instead of non-system schemas (jeremyevans) (#1710)</p>
+</li><li>
+<p>Recognize another disconnect error in the mysql and mysql2 adapters (jeremyevans) (#1706)</p>
+</li></ul>
+
+<h3 id="label-5.35.0+-282020-08-01-29">5.35.0 (2020-08-01)<span><a href="#label-5.35.0+-282020-08-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Recognize another disconnect error in the oracle adapter (sterlzbd) (#1705)</p>
+</li><li>
+<p>Consider all associations with :dataset options as instance-specific associations (jeremyevans)</p>
+</li><li>
+<p>Make Model.finalize_associations not break with instance-specific associations (jeremyevans)</p>
+</li><li>
+<p>Make association placeholder loader consider block if instance_specific: false association option is used (jeremyevans)</p>
+</li><li>
+<p>Copy composite unique constraints when emulating alter table operations on SQLite (jeremyevans) (#1704)</p>
+</li><li>
+<p>Add instance_specific_default plugin for setting default association :instance_specific value, or warning/raising for cases where it is not specified (jeremyevans)</p>
+</li><li>
+<p>Make Model.plugin issue deprecation warning if loading plugin with arguments and block if plugin does not accept arguments/block (jeremyevans)</p>
+</li><li>
+<p>Make validation_class_methods consider all :if, :allow_missing, :allow_nil, and :allow_blank settings, instead of just the first (jeremyevans)</p>
+</li><li>
+<p>Include hash entries with nil keys in Dataset#to_dot output in to_dot extension (jeremyevans)</p>
+</li><li>
+<p>Remove unneeded conditionals from plugins and extensions (jeremyevans)</p>
+</li><li>
+<p>Fix exception class in run_transaction_hooks extension if calling run_after_{commit,rollback}_hooks outside of a transaction (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.34.0+-282020-07-01-29">5.34.0 (2020-07-01)<span><a href="#label-5.34.0+-282020-07-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make eager_graph work correctly if called with no associations (jeremyevans)</p>
+</li><li>
+<p>Make :ruby eager limit strategy handle cases where there is no limit or offset (jeremyevans)</p>
+</li><li>
+<p>Do not keep a reference to a <a href="Sequel/Database.html"><code>Sequel::Database</code></a> instance that raises an exception during initialization (jeremyevans)</p>
+</li><li>
+<p>Make Database#pool.all_connections not yield for a single connection pool in disconnected state (jeremyevans)</p>
+</li><li>
+<p>Raise an exception if trying to disconnect a server that doesn&#39;t exist in the sharded connection pools (jeremyevans)</p>
+</li><li>
+<p>Support :refresh option when calling *_pks getter method in the association_pks plugin (jeremyevans)</p>
+</li><li>
+<p>Support caching of repeated calls to *_pks getter method in the association_pks plugin using :cache_pks association option (jeremyevans)</p>
+</li><li>
+<p>Add *_pks_dataset methods for one_to_many and many_to_many associations when using the association_pks plugin (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.33.0+-282020-06-01-29">5.33.0 (2020-06-01)<span><a href="#label-5.33.0+-282020-06-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Support custom join types on a per-association basis when using eager_graph/association_join (jeremyevans)</p>
+</li><li>
+<p>Support primary_key with type: :smallserial on PostgreSQL (j-a-m-l) (#1698)</p>
+</li><li>
+<p>Add Database#current_timestamp_utc accessor on SQLite to keep CURRENT_* in UTC instead of converting to localtime (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.32.0+-282020-05-01-29">5.32.0 (2020-05-01)<span><a href="#label-5.32.0+-282020-05-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Allow Database#create_table? work with :partition_of option on PostgreSQL (jeremyevans) (#1690)</p>
+</li><li>
+<p>Add fiber_concurrency extension, for using Fiber.current instead of Thread.current for checking out connections (jeremyevans)</p>
+</li><li>
+<p>Move most <a href="Sequel.html"><code>Sequel</code></a> singleton methods into a module that extends <a href="Sequel.html"><code>Sequel</code></a> for easier overriding (jeremyevans)</p>
+</li><li>
+<p>Fix method visibility issues in model, plugin, extension, and adapter code (jeremyevans)</p>
+</li><li>
+<p>Avoid defining conversion procs for PostgreSQL inet/cidr types in pg_inet extension when using sequel_pg 1.13.0+ (jeremyevans)</p>
+</li><li>
+<p>Add run_transaction_hooks Database extension, allowing for running the transaction hooks before commit/rollback, for use with transactional testing (jeremyevans)</p>
+</li><li>
+<p>Recognize timestamp(N) with time zone type (isc) (#1684)</p>
+</li></ul>
+
+<h3 id="label-5.31.0+-282020-04-01-29">5.31.0 (2020-04-01)<span><a href="#label-5.31.0+-282020-04-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fix alter_table drop_constraint :primary_key option on SQLite for non-integer primary keys (jeremyevans)</p>
+</li><li>
+<p>Add skip_saving_columns plugin, which supports columns to skip when saving, and skips generated columns by default (joeosburn, jeremyevans) (#1681, #1682)</p>
+</li><li>
+<p>Add support for creating partitioned tables in PostgreSQL 10+ using :partition_by and :partition_of options (jeremyevans)</p>
+</li><li>
+<p>Dump generated columns as generated columns when using the schema_dumper with :same_db option on PostgreSQL 12+ (jeremyevans) (#1680)</p>
+</li><li>
+<p>Ignore defaults for generated columns by default when using the schema dumper (jeremyevans) (#1680)</p>
+</li><li>
+<p>Include generated columns in schema on SQLite 3.31+ (jeremyevans)</p>
+</li><li>
+<p>Add :generated schema entry on PostgreSQL 12+ and SQLite 3.31+ for whether the columns is generated (jeremyevans)</p>
+</li><li>
+<p>Add association_lazy_eager_option plugin for supporting :eager option for association method (jeremyevans)</p>
+</li><li>
+<p>Add forbid_lazy_load plugin for forbidding lazy loading of associations, to help find N+1 issues (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.30.0+-282020-03-01-29">5.30.0 (2020-03-01)<span><a href="#label-5.30.0+-282020-03-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Remove specs and old release notes from the gem to reduce gem size by over 40% (jeremyevans)</p>
+</li><li>
+<p>When using Database#transaction :retry_on, call :before_retry option if retrying even if :num_retries is nil (jcmfernandes) (#1678)</p>
+</li><li>
+<p>Support generated columns on SQLite 3.31+ using :generated_always_as and :generated_type options (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.29.0+-282020-02-01-29">5.29.0 (2020-02-01)<span><a href="#label-5.29.0+-282020-02-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Recognize another disconnect error in the tinytds adapter (jeremyevans)</p>
+</li><li>
+<p>Fix verbose warning in postgres adapter when using prepared statements and recent versions of ruby-pg (jeremyevans)</p>
+</li><li>
+<p>Work correctly on Ruby 2.8+ by supporting second argument for initialize_clone (jeremyevans)</p>
+</li><li>
+<p>Add empty_failure_backtraces plugin for empty backtraces for ValidationFailed and HookFailed exceptions, much faster on JRuby (jeremyevans)</p>
+</li><li>
+<p>Add Dataset#json_serializer_opts to json_serializer plugin, allowing to set json_serializer options on a per-dataset basis (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.28.0+-282020-01-01-29">5.28.0 (2020-01-01)<span><a href="#label-5.28.0+-282020-01-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Warn when calling Sequel::JDBC::Postgres::Dataset#with_fetch_size (jeremyevans) (#1665)</p>
+</li><li>
+<p>Add exclude_or_null extension, for filtering datasets where the condition is false or NULL (jeremyevans)</p>
+</li><li>
+<p>Add any_not_empty extension, for making Dataset#any? without a block mean !empty? (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.27.0+-282019-12-01-29">5.27.0 (2019-12-01)<span><a href="#label-5.27.0+-282019-12-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Add Sequel::DEFAULT for a DEFAULT expression, useful for assigning to default values (jeremyevans)</p>
+</li><li>
+<p>Make Postgres::ArrayOp#join in pg_array_ops extension work correctly on PostgreSQL &lt;9.1 (jeremyevans)</p>
+</li><li>
+<p>Make pg_enum extension work correctly on PostgreSQL 8.3-9.0 (jeremyevans)</p>
+</li><li>
+<p>Emulate FILTER clause for aggregate functions using CASE on databases not supporting it directly (jeremyevans)</p>
+</li><li>
+<p>Support ordering by NULLS FIRST/NULLS LAST without emulation on SQLite 3.30+ (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.26.0+-282019-11-01-29">5.26.0 (2019-11-01)<span><a href="#label-5.26.0+-282019-11-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Recognize two additional foreign key constraint violation codes on MySQL 8.0.13+ (rianmcguire) (#1657)</p>
+</li><li>
+<p>Support table aliases for single-table INSERT statements on PostgreSQL 9.5+ (jeremyevans) (#1656)</p>
+</li><li>
+<p>Implement Sequel::Postgres::PGRange#hash so instances work correctly in hashes (jeremyevans) (#1648)</p>
+</li><li>
+<p>Make dirty plugin work correctly with typecast_on_load plugin (jeremyevans) (#1647)</p>
+</li><li>
+<p>Add support for :require_modification option when setting up nested_attributes (jeremyevans)</p>
+</li><li>
+<p>Add support for SQL/JSON path expressions to the pg_json_ops extension, supported by PostgreSQL 12+ (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.25.0+-282019-10-01-29">5.25.0 (2019-10-01)<span><a href="#label-5.25.0+-282019-10-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fix <a href="Sequel/SQL/NumericMethods.html#method-i-coerce"><code>Sequel::SQL::NumericMethods#coerce</code></a> to not raise NoMethodError if super method is not defined (jeremyevans) (#1645)</p>
+</li><li>
+<p>Allow setting a default for a column that already has a default on Microsoft SQL Server (jeremyevans)</p>
+</li><li>
+<p>Fix keyword argument separation warnings on Ruby master branch in csv_serializer plugin (jeremyevans)</p>
+</li><li>
+<p>Add association_multi_add_remove plugin for adding/removing multiple associated objects in a single method call (AlexWayfer, jeremyevans) (#1641, #1643)</p>
+</li><li>
+<p>Make sharding plugin integrate with server_block extension (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.24.0+-282019-09-01-29">5.24.0 (2019-09-01)<span><a href="#label-5.24.0+-282019-09-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Add Database#skip_logging? private method designed for extensions to force query timing even if no logger is present (adam12) (#1640)</p>
+</li><li>
+<p>Allow a hostname specified in a defaults_file in the mysql2 adapter, by not explicitly setting :host (sapio-bdeamer) (#1638)</p>
+</li><li>
+<p>Convert all database array types to Ruby arrays in the jdbc adapter (jeremyevans)</p>
+</li><li>
+<p>Add static_cache_cache plugin for caching rows for static_cache models to a file to avoid database queries during model initialization (jeremyevans)</p>
+</li><li>
+<p>Add :cache_file plugin option to pg_auto_constraint_validations plugin, for caching metadata to a file for faster initialization (jeremyevans)</p>
+</li><li>
+<p>Support :unique_deferrable and :primary_key_deferrable column options (jeremyevans)</p>
+</li><li>
+<p>Support :generated_always_as column option on PostgreSQL 12+ (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.23.0+-282019-08-01-29">5.23.0 (2019-08-01)<span><a href="#label-5.23.0+-282019-08-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Work around a bug on jdbc-sqlite3 3.27.2.1 when parsing schema for tables with columns with default values (jeremyevans)</p>
+</li><li>
+<p>Work around a bug in jdbc-sqlite3 3.27.2.1 when in Database#foreign_key_list in the jdbc/sqlite3 adapter (jeremyevans)</p>
+</li><li>
+<p>Make Dataset#execute* private methods respect explicit servers option, fixing Dataset#paged_each in the postgres adapter when sharding (jeremyevans) (#1632)</p>
+</li><li>
+<p>Handle instances of subclasses of core classes when wrapping objects in the pg_json extension (jeremyevans) (#1631)</p>
+</li><li>
+<p>Support :ansi Database option in the tinytds adapter (kenaniah) (#1629)</p>
+</li><li>
+<p>Support cross-database and linked servers when parsing schema on Microsoft SQL Server (kenaniah) (#1629)</p>
+</li><li>
+<p>Add insert_conflict plugin for automatically handling unique constraint conflicts when saving new model instances on PostgreSQL 9.5+ and SQLite 3.24.0+ (jeremyevans)</p>
+</li><li>
+<p>Avoid errors when parsing schema in the mock sqlite adapter (jeremyevans)</p>
+</li><li>
+<p>Avoid possible thread-safety issue in the timezones support (jeremyevans)</p>
+</li><li>
+<p>Handle offsets when typecasting an array or hash to datetime when Sequel.datetime_class = Time (jeremyevans)</p>
+</li><li>
+<p>Support Sequel.datetime_class = Time when using the named_timezones extension (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.22.0+-282019-07-01-29">5.22.0 (2019-07-01)<span><a href="#label-5.22.0+-282019-07-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fix Dataset#multi_insert and import with return: :primary_key on MSSQL when the dataset has a row_proc (jeremyevans) (#1627)</p>
+</li><li>
+<p>Support Dataset#with :materialized option on PostgreSQL 12 for [NOT] MATERIALIZED (jeremyevans)</p>
+</li><li>
+<p>Make Database#primary_key_sequence work on tables without serial sequences on PostgreSQL 12 (jeremyevans)</p>
+</li><li>
+<p>Support ruby 2.7+ startless ranges in the pg_range extension (jeremyevans)</p>
+</li><li>
+<p>Support ruby 2.7+ startless, endless ranges in filters, using an always true condition for them (jeremyevans)</p>
+</li><li>
+<p>Support ruby 2.7+ startless ranges in filters, using just a &lt;= or &lt; operator for them (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.21.0+-282019-06-01-29">5.21.0 (2019-06-01)<span><a href="#label-5.21.0+-282019-06-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Recognize additional DatabaseLockTimeout errors in mysql and mysql2 adapters (jeremyevans)</p>
+</li><li>
+<p>Disallow eager_graph of ancestors and descendants associations when using the rcte_tree plugin (jeremyevans)</p>
+</li><li>
+<p>Make jdbc/mysql adapter work when using JRuby with Java 11 (jeremyevans)</p>
+</li><li>
+<p>Support window function options :window, :exclude, and :frame :type=&gt;:groups, :start, and :end on SQLite 3.28.0+ (jeremyevans)</p>
+</li><li>
+<p>Make the server_block extension respect the :servers_hash Database option (jeremyevans)</p>
+</li><li>
+<p>Typecast string input for json/jsonb types as JSON strings instead of parsing as JSON in the pg_json extension when Database#typecast_json_strings is set to true (jeremyevans)</p>
+</li><li>
+<p>Wrap JSON primitives (string, number, true, false, nil) in the pg_json extension when Database#wrap_json_primitives is set to true (jeremyevans)</p>
+</li><li>
+<p>Convert the Database :timeout option to an integer in the sqlite adapter (jeremyevans) (#1620)</p>
+</li><li>
+<p>Improve performance in ado adapter using more efficient inner loop (jeremyevans)</p>
+</li><li>
+<p>Improve performance in ado adapter using faster callables for type conversion (jeremyevans)</p>
+</li><li>
+<p>Fix handling of decimal values in the ado adapter when using locales where the decimal separator is , and not . (jeremyevans) (#1619)</p>
+</li></ul>
+
+<h3 id="label-5.20.0+-282019-05-01-29">5.20.0 (2019-05-01)<span><a href="#label-5.20.0+-282019-05-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fix reversing of alter_table add_foreign_key when :type option is used (jeremyevans) (#1615)</p>
+</li><li>
+<p>Switch from using instance_exec to define_method for model associations and in some plugins (jeremyevans)</p>
+</li><li>
+<p>Fix Database#server_version when using mysql2 adapter with mysql driver on MariaDB 10+ database (v-kolesnikov) (#1614)</p>
+</li><li>
+<p>Make one_to_one setter method handle models that use joined datasets (jeremyevans) (#1612)</p>
+</li><li>
+<p>Make auto_validations plugin work with the class_table_inheritance plugin (jeremyevans) (#1611)</p>
+</li><li>
+<p>Avoid use of instance_exec for PlaceholderLiteralString#with_dataset (jeremyevans)</p>
+</li><li>
+<p>Recognize float unsigned database types as float (keeguon, jeremyevans) (#1609)</p>
+</li><li>
+<p>Support :savepoint options to Database#{after_commit,after_rollback} for making the hooks handle savepoints (jeremyevans)</p>
+</li><li>
+<p>Avoid use of instance_exec in association_dependencies plugin (jeremyevans)</p>
+</li><li>
+<p>Add pg_auto_constraint_validation_override to the pg_auto_constraint_validations plugin, for customizing columns and error message per constraint (jeremyevans)</p>
+</li><li>
+<p>Make Database#check_constraints on PostgreSQL also include constraints where the related columns are not known (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.19.0+-282019-04-02-29">5.19.0 (2019-04-02)<span><a href="#label-5.19.0+-282019-04-02-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Use more optimized approach to merging hashes in ruby 2.5+ (jeremyevans)</p>
+</li><li>
+<p>Use SQLite extended result codes when using ruby-sqlite3 1.4.0+ (jeremyevans)</p>
+</li><li>
+<p>Recognize additional SQLite extended result codes in the shared sqlite adapter (jeremyevans)</p>
+</li><li>
+<p>Add Database#rename_enum_value to the pg_enum extension (AlexWayfer) (#1603)</p>
+</li><li>
+<p>Make Database#drop_table delete constraint validations metadata for that table if using the constraint_validations extension (jeremyevans)</p>
+</li><li>
+<p>Speed up row fetching in the sqlite adapter (jeremyevans)</p>
+</li><li>
+<p>Speed up row fetching and type conversion in the sqlanywhere adapter (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.18.0+-282019-03-01-29">5.18.0 (2019-03-01)<span><a href="#label-5.18.0+-282019-03-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Use singleton .call methods on plain objects instead of procs/methods for faster type conversion (jeremyevans)</p>
+</li><li>
+<p>Add Sequel::SQL::Blob.call to avoid indirection when converting values from the database (jeremyevans)</p>
+</li><li>
+<p>Use while instead of each for inner loops in sqlite and jdbc adapters for better performance (jeremyevans)</p>
+</li><li>
+<p>Make after_initialize plugin not make the argument to Model.call optional (jeremyevans)</p>
+</li><li>
+<p>Allow Dataset#paged_each to be called without a block in the postgres and mysql2 adapters (jeremyevans)</p>
+</li><li>
+<p>Remove flow-control exceptions in connection_expiration and connection_validator extensions (jeremyevans)</p>
+</li><li>
+<p>Add throw_failures plugin for throwing ValidationFailed and HookFailed exceptions instead of raising them, up to 10x performance increase on JRuby (jeremyevans)</p>
+</li><li>
+<p>Support tzinfo 2 in addition to tzinfo 1 in the named_timezones extension (jeremyevans) (#1596)</p>
+</li></ul>
+
+<h3 id="label-5.17.0+-282019-02-01-29">5.17.0 (2019-02-01)<span><a href="#label-5.17.0+-282019-02-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Support skip_auto_validations instance method in auto_validations plugin (oldgreen, jeremyevans) (#1592)</p>
+</li><li>
+<p>Support :preconnect_extensions Database option for loading extensions before :preconnect option (jeremyevans)</p>
+</li><li>
+<p>Avoid usage of Proc.new with implicit block as ruby 2.7+ deprecates this behavior (jeremyevans)</p>
+</li><li>
+<p>Allow Sequel[].as to be used for constructing aliases with eager_graph (e.g. <a href=":a">Model.eager_graph(Sequel</a>.as(:b))) (jeremyevans) (#1588)</p>
+</li></ul>
+
+<h3 id="label-5.16.0+-282019-01-02-29">5.16.0 (2019-01-02)<span><a href="#label-5.16.0+-282019-01-02-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Convert integer columns to bigint columns when copying SQLite databases to other databases using bin/sequel -C (jeremyevans) (#1584)</p>
+</li><li>
+<p>Use nicer error messages for missing or empty migration directories (Lavode) (#1585)</p>
+</li><li>
+<p>Make alter table emulation work correctly in SQLite 3.26.0+ (jeremyevans) (#1582)</p>
+</li><li>
+<p>Do not unset new one_to_one associated objects&#39; reciprocal associations before saving associated objects in the nested_attributes plugin (jeremyevans)</p>
+</li><li>
+<p>Do not validate new one_to_one associated objects twice when saving in the nested_attributes plugin (jeremyevans)</p>
+</li><li>
+<p>Fix :qualify_tables option to class_table_inheritance plugin to work correctly with subclasses of subclasses (benalavi) (#1581)</p>
+</li><li>
+<p>Make class_table_inheritance plugin use the schema cache instead of sending a query to get columns for tables (kenaniah) (#1580)</p>
+</li><li>
+<p>Remove loading of mysqlplus in the mysql adapter (jeremyevans)</p>
+</li><li>
+<p>Make mysql adapter work correctly on ruby 2.6+ (jeremyevans)</p>
+</li><li>
+<p>Add Database#rollback_on_exit to rollback transactions instead of committing them when exiting the transaction block (jeremyevans)</p>
+</li><li>
+<p>Enable window functions in SQLite 3.26.0+ (jeremyevans)</p>
+</li><li>
+<p>Do not override existing methods when creating <a href="Sequel/Model.html"><code>Sequel::Model</code></a> attribute getter/setter methods (jeremyevans) (#1578)</p>
+</li><li>
+<p>Use parentheses for expressions being subscripted (e.g. (<a href="1">array_agg(column))</a>) (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.15.0+-282018-12-01-29">5.15.0 (2018-12-01)<span><a href="#label-5.15.0+-282018-12-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Add :conn_str option in the postgres adapter for PostgreSQL connection strings, if the pg driver is used (graywolf) (#1572)</p>
+</li><li>
+<p>Add :qualify_tables option to class_table_inheritance plugin to automatically qualify subclass tables with superclass qualifier (benalavi) (#1571)</p>
+</li><li>
+<p>Access already allocated connections in a thread safe manner when checking out connections in the sharded threaded connection pool (jeremyevans)</p>
+</li><li>
+<p>Automatically support datasets using qualified tables in the class_table_inheritance plugin without having to use the :alias option (benalavi) (#1565)</p>
+</li><li>
+<p>Support rename_column without emulation on SQLite 3.25+ (jeremyevans)</p>
+</li><li>
+<p>Do not remove currently cached many_to_one associated objects when changing the related foreign key value from nil to non-nil (jeremyevans)</p>
+</li><li>
+<p>Do not validate new *_to_many associated objects twice when saving in the nested_attributes plugin (jeremyevans)</p>
+</li><li>
+<p>Add Model#skip_validation_on_next_save! for skipping validation on next save call (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.14.0+-282018-11-01-29">5.14.0 (2018-11-01)<span><a href="#label-5.14.0+-282018-11-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Drop defaulting the :port option to 5432 in the postgres adapter, so that setting the :service option in :driver_options works (jeremyevans) (#1558)</p>
+</li><li>
+<p>Do not cache values for columns without parseable defaults when using :cache option in defaults_setter plugin (jeremyevans)</p>
+</li><li>
+<p>Emulate NULLS FIRST/LAST ordering on databases that do not natively support it (jeremyevans)</p>
+</li><li>
+<p>Do not modify boolean expressions created from string or array if string or array is modified (jeremyevans)</p>
+</li><li>
+<p>Make roots and roots_dataset dataset methods instead of class methods in the tree plugin (JelF) (#1554)</p>
+</li><li>
+<p>Do not cache dataset SQL if dataset uses subquery that cannot cache SQL (jeremyevans)</p>
+</li><li>
+<p>Make Model#=== work correctly for models with composite primary keys (jeremyevans)</p>
+</li><li>
+<p>Add Model#pk_equal? as a more descriptive name for Model#=== (AlexWayfer) (#1550)</p>
+</li><li>
+<p>Do not push down expression inversion in cases where it may result in incorrect behavior (e.g. ANY/SOME/ALL operators) (jeremyevans) (#1549)</p>
+</li></ul>
+
+<h3 id="label-5.13.0+-282018-10-01-29">5.13.0 (2018-10-01)<span><a href="#label-5.13.0+-282018-10-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Support :single_value type in prepared statements (rintaun) (#1547)</p>
+</li><li>
+<p>Make Model.all in static_cache plugin accept a block (AlexWayfer, jeremyevans) (#1543)</p>
+</li><li>
+<p>Add constant_sql_override extension for overriding SQL used for constants such as CURRENT_TIMESTAMP (celsworth) (#1538)</p>
+</li><li>
+<p>Do not cache from_self datasets if options are given (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.12.0+-282018-08-31-29">5.12.0 (2018-08-31)<span><a href="#label-5.12.0+-282018-08-31-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make constraint_validations extension respect Database#constraint_validations_table setting (jeremyevans)</p>
+</li><li>
+<p>Make Sequel.extension load files from gems (jeremyevans)</p>
+</li><li>
+<p>Map clob prepared statement argument type to OCI8::CLOB in the oracle adapter (pipistrellka) (#1534)</p>
+</li><li>
+<p>Make Model.load_cache public in the static_cache plugin (AlexWayfer) (#1533)</p>
+</li><li>
+<p>Enable support for NOWAIT on MariaDB 10.3+ (jeremyevans)</p>
+</li><li>
+<p>Enable support for INTERSECT and EXCEPT on MariaDB 10.3+ (jeremyevans)</p>
+</li><li>
+<p>Make tactical_eager_loading plugin handle automatic eager loading for associated objects created by eager_graph (jeremyevans)</p>
+</li><li>
+<p>Cache eager_graph loader to speed up subsequent loads from the same dataset (jeremyevans)</p>
+</li><li>
+<p>Add caller_logging database extension to log callers before queries, useful during development (jeremyevans)</p>
+</li><li>
+<p>Add Database#call_procedure in the postgres adapter for calling PostgreSQL 11+ procedures (jeremyevans)</p>
+</li><li>
+<p>Add eager_graph_eager plugin for chaining eager association loads after eager_graph association loads (jeremyevans)</p>
+</li><li>
+<p>Support using Dataset#eager_graph in eager load callback for associations using join tables (jeremyevans)</p>
+</li><li>
+<p>Make Dataset#graph handle existing selections without determinable aliases by forcing a subselect (jeremyevans)</p>
+</li><li>
+<p>Freeze prepared statement arguments before returning the prepared statement (jeremyevans)</p>
+</li><li>
+<p>Refactor emulated prepared statement internals to use a placeholder literalizer (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.11.0+-282018-08-01-29">5.11.0 (2018-08-01)<span><a href="#label-5.11.0+-282018-08-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fix using the jdbc/sqlserver adapter on JRuby 9.2+ (jeremyevans)</p>
+</li><li>
+<p>Fix dumping schema for numeric/decimal columns with default values, broken starting in 5.9.0 (jeremyevans)</p>
+</li><li>
+<p>Recognize additional check constraint violations on certain versions of SQLite (jeremyevans)</p>
+</li><li>
+<p>Use cached model instances for Model.first calls without an argument or with a single integer argument in the static_cache plugin (AlexWayfer) (#1529)</p>
+</li><li>
+<p>Support ON CONFLICT clause for INSERT on SQLite 3.24+ (jeremyevans)</p>
+</li><li>
+<p>Support Dataset#window for WINDOW clause on MySQL 8 and SQLAnywhere (jeremyevans)</p>
+</li><li>
+<p>Enable window function support on SQLAnywhere (jeremyevans)</p>
+</li><li>
+<p>Support using a hash as a window function :frame option value, with support for ROWS/RANGE/GROUPS, numeric offsets, and EXCLUDE (jeremyevans)</p>
+</li><li>
+<p>Allow using set_column_default with a nil value to remove the default value for a column on MySQL when the column is NOT NULL (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.10.0+-282018-07-01-29">5.10.0 (2018-07-01)<span><a href="#label-5.10.0+-282018-07-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Use input type casts when using the postgres adapter with pg 0.18+ to reduce string allocations for some primitive types used as prepared statement arguments (jeremyevans)</p>
+</li><li>
+<p>Assume local time if database timezone not specified when handling BC timestamps on JRuby 9.2.0.0 in the pg_extended_date_support extension (jeremyevans)</p>
+</li><li>
+<p>Fix parsing of timetz types in the jdbc/postgresql adapter (jeremyevans)</p>
+</li><li>
+<p>Make SQLTime.parse respect SQLTime.date and Sequel.application_timezone (jeremyevans)</p>
+</li><li>
+<p>Add :top as an option in the list plugin (celsworth) (#1526)</p>
+</li><li>
+<p>Fix Model#{ancestors,descendants,self_and_siblings} in the tree plugin when custom parent/children association names are used (jeremyevans) (#1525)</p>
+</li><li>
+<p>Treat read-only mode error as disconnect error on mysql and mysql2 adapters, for better behavior on AWS Aurora cluster (jeremyevans)</p>
+</li><li>
+<p>Don&#39;t use cached placeholder literalizers for in Dataset#{first,where_all,where_each,where_single_value} if argument is empty array or hash (jeremyevans)</p>
+</li><li>
+<p>Support :tablespace option when adding tables, indexes, and materialized views on PostgreSQL (jeremyevans)</p>
+</li><li>
+<p>Support :include option for indexes on PostgreSQL 11+ (jeremyevans)</p>
+</li><li>
+<p>Allow the use of IN/NOT IN operators with set returning functions for <a href="Sequel/Model.html"><code>Sequel::Model</code></a> datasets (jeremyevans)</p>
+</li><li>
+<p>Make many_to_pg_array associations in the pg_array_associations plugin work on PostgreSQL 11 (jeremyevans)</p>
+</li><li>
+<p>Only load strscan library in pg_array extension if it is needed (jeremyevans)</p>
+</li><li>
+<p>Don&#39;t remove related many_to_one associations from cache when setting column value to existing value for model instances that have not been persisted (jeremyevans) (#1521)</p>
+</li><li>
+<p>Support ruby 2.6+ endless ranges in the pg_range extension (jeremyevans)</p>
+</li><li>
+<p>Support ruby 2.6+ endless ranges in filters, using just a &gt;= operator for them (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.9.0+-282018-06-01-29">5.9.0 (2018-06-01)<span><a href="#label-5.9.0+-282018-06-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Support generated columns on MySQL 5.7+ and MariaDB 5.2+ (wjordan, jeremyevans) (#1517)</p>
+</li><li>
+<p>Add escaped_like extension for creation of LIKE expressions with placeholders in the pattern without access to a dataset (jeremyevans)</p>
+</li><li>
+<p>Modify jdbc adapter exception handling to work around ::NativeException deprecation in JRuby 9.2 (jeremyevans)</p>
+</li><li>
+<p>Work around broken BC date handling in JRuby 9.2.0.0 (jeremyevans)</p>
+</li><li>
+<p>Switch use of BigDecimal.new() to BigDecimal(), since the former is deprecated (jeremyevans)</p>
+</li><li>
+<p>Add Sequel::VERSION_NUMBER for easier version comparisons (jeremyevans)</p>
+</li><li>
+<p>Add Model.has_dataset? to determine if the model class has a dataset (AlexWayfer) (#1508)</p>
+</li><li>
+<p>Support use of LIKE with ANY function on PostgreSQL by avoiding unnecessary use of ESCAPE syntax (jeremyevans)</p>
+</li><li>
+<p>Disconnect connections left allocated by dead threads instead of returning the connections to the pool (jeremyevans)</p>
+</li><li>
+<p>Make both threaded connection pools avoid disconnecting connections while holding the connection pool mutex (jeremyevans)</p>
+</li><li>
+<p>Don&#39;t deadlock when disconnecting connections in the sharded_threaded connection pool when using connection_validator or connection_expiration extensions (jeremyevans)</p>
+</li><li>
+<p>Don&#39;t modify hash argument passed in Model.nested_attributes in the nested_attributes plugin (jeremyevans)</p>
+</li><li>
+<p>Avoid unnecessary hash creation in many places (jeremyevans)</p>
+</li><li>
+<p>Fix duplicate objects in nested associations when eager_graphing cascaded many_to_one=&gt;one_to_many associations (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.8.0+-282018-05-01-29">5.8.0 (2018-05-01)<span><a href="#label-5.8.0+-282018-05-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Don&#39;t mark SQLAnywhere as supporting WITH in INSERT statement (jeremyevans)</p>
+</li><li>
+<p>Support :search_path as a shard option on PostgreSQL (jeremyevans)</p>
+</li><li>
+<p>Add Dataset#nowait for raising a Sequel::DatabaseLockTimeout when a locked row is encountered, supported on PostgreSQL, MySQL 8+, MSSQL, and Oracle (jeremyevans)</p>
+</li><li>
+<p>Support Dataset#skip_locked on MySQL 8+ (jeremyevans)</p>
+</li><li>
+<p>Make schema modification methods in the pg_enum extension work on a frozen Database object (jeremyevans)</p>
+</li><li>
+<p>Support common table expressions and window functions on MySQL 8+ (jeremyevans)</p>
+</li><li>
+<p>Ignore Dataset#explain :extended option on MySQL 5.7+, since extended output is then the MySQL default (jeremyevans)</p>
+</li><li>
+<p>Work around REGEXP BINARY not working correctly on MySQL 8+ by using REGEXP_LIKE with the &#39;c&#39; match_type (jeremyevans)</p>
+</li><li>
+<p>Force correct column order in Database#foreign_key_list on MySQL (jeremyevans)</p>
+</li><li>
+<p>Add ConnectionPool#connection_expiration_random_delay to connection_expiration extension, to avoid thundering herd if preallocating connections (hex2a, jeremyevans) (#1503)</p>
+</li><li>
+<p>Emit deprecation warning in association_proxies plugin if using filter on an association proxy, since behavior will change on ruby 2.6+ (utilum) (#1497)</p>
+</li><li>
+<p>Handle multiple add_constraint calls and a set_column_null call in the same alter_table block on SQLite (jeremyevans) (#1498)</p>
+</li><li>
+<p>Add Database#rename_enum to the pg_enum extension (AlexWayfer) (#1495)</p>
+</li><li>
+<p>Make tactical_eager_loading plugin respect the :allow_eager association option (jeremyevans) (#1494)</p>
+</li><li>
+<p>Add pg_auto_constraint_validations plugin, for automatically converting constraint violations to validation failures on PostgreSQL (jeremyevans)</p>
+</li><li>
+<p>Don&#39;t make Model#_valid? public in the error_splitter plugin (jeremyevans)</p>
+</li><li>
+<p>Support Database#indexes :include_partial option on PostgreSQL for including partial indexes (jeremyevans)</p>
+</li><li>
+<p>Include more diagnostic information in Database#error_info on PostgreSQL (jeremyevans)</p>
+</li><li>
+<p>Support Database#foreign_key_list :reverse option on PostgreSQL for parsing foreign key constraints that reference a given table (jeremyevans)</p>
+</li><li>
+<p>Add Database#check_constraints on PostgreSQL for parsing CHECK constraints (jeremyevans)</p>
+</li><li>
+<p>Don&#39;t use identity columns if :serial=&gt;true or :type=&gt;:serial|:bigserial column options are used (#1490) (jeremyevans)</p>
+</li><li>
+<p>Cache Dataset#select_all datasets if no arguments are given (jeremyevans)</p>
+</li><li>
+<p>Cache Dataset#returning datasets if no arguments are given (jeremyevans)</p>
+</li><li>
+<p>Cache Dataset#qualify datasets if no argument is given (jeremyevans)</p>
+</li><li>
+<p>Cache Dataset#lateral datasets (jeremyevans)</p>
+</li><li>
+<p>Cache Dataset#from_self datasets if no options are given (jeremyevans)</p>
+</li><li>
+<p>Cache Dataset#distinct datasets if no arguments or block is given (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.7.0+-282018-04-01-29">5.7.0 (2018-04-01)<span><a href="#label-5.7.0+-282018-04-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Add Sequel.start_timer and .elapsed_seconds_since for more accurate elapsed time calculations on ruby 2.1+ (jeremyevans)</p>
+</li><li>
+<p>Run Dataset#with_sql_{all,each,first,single_value} using a cached dataset to avoid clobbering the dataset&#39;s columns (jeremyevans)</p>
+</li><li>
+<p>Add Database#convert_serial_to_identity on PostgreSQL 10.2+, which requires superuser access (jeremyevans)</p>
+</li><li>
+<p>Fix Database#server_version when connecting to PostgreSQL 10.1+ in certain cases (jeremyevans)</p>
+</li><li>
+<p>Free temporary clobs in the jdbc/oracle adapter to prevent a memory leak (jeremyevans) (#1482)</p>
+</li><li>
+<p>Treat prepared statement errors due to changing types as disconnect errors in the postgres adapter (jeremyevans) (#1481)</p>
+</li><li>
+<p>Add integer64 extension for treating Integer as a 64-bit integer when used as a generic type (jeremyevans)</p>
+</li><li>
+<p>Allow many_to_pg_array remove_all_* method cast appropriately to work correctly for non-integer types (jeremyevans)</p>
+</li><li>
+<p>Fix array_type for pg_array_to_many and many_to_pg_array associations in pg_array_associations plugin (jeremyevans)</p>
+</li><li>
+<p>Use identity columns instead of serial columns for primary keys on PostgreSQL 10.2+ (jeremyevans)</p>
+</li><li>
+<p>Support :identity option when creating columns on PostgreSQL 10+ to create identity columns (jeremyevans)</p>
+</li><li>
+<p>Add Dataset#overriding_{system,user}_value on PostgreSQL for use with PostgreSQL 10+ identity columns (jeremyevans)</p>
+</li><li>
+<p>Set :auto_increment schema entry correctly for PostgreSQL 10+ identity columns (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.6.0+-282018-03-01-29">5.6.0 (2018-03-01)<span><a href="#label-5.6.0+-282018-03-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Dedup :db_type strings in schema hashes on Ruby 2.5+ (jeremyevans)</p>
+</li><li>
+<p>Make schema_caching extension work with :callable_default schema values (jeremyevans)</p>
+</li><li>
+<p>Freeze string valuse in hashes returned by Database#schema when using the schema_caching extension (jeremyevans)</p>
+</li><li>
+<p>Protect migration file loading with a mutex to not break when multiple threads load migration files simultaneously (jeremyevans)</p>
+</li><li>
+<p>Respect identifier mangling rules when renaming columns on Microsoft SQL Server (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.5.0+-282018-01-31-29">5.5.0 (2018-01-31)<span><a href="#label-5.5.0+-282018-01-31-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make Database#copy_table in the postgres adapter handle errors that occur while processing rows (jeremyevans) (#1470)</p>
+</li><li>
+<p>Cache results of changed_columns method in local variables in many places for better performance (jeremyevans)</p>
+</li><li>
+<p>Make modification_detection plugin not break column change detection for new objects (jeremyevans) (#1468)</p>
+</li><li>
+<p>Make pg_range extension set :ruby_default schema value for recognized range defaults (jeremyevans)</p>
+</li><li>
+<p>Make pg_interval extension set :ruby_default schema value for recognized interval defaults (jeremyevans)</p>
+</li><li>
+<p>Make pg_json extension set :callable_default schema value for empty json/jsonb array/hash defaults (jeremyevans)</p>
+</li><li>
+<p>Make pg_inet extension set :ruby_default schema value for recognized inet/cidr defaults (jeremyevans)</p>
+</li><li>
+<p>Make pg_hstore extension set :callable_default schema value for empty hstore defaults (jeremyevans)</p>
+</li><li>
+<p>Make pg_array extension set :callable_default schema value for recognized empty array defaults (jeremyevans) (#1466)</p>
+</li><li>
+<p>Make defaults_setter plugin prefer :callable_default db_schema values over :ruby_default db_schema values (jeremyevans)</p>
+</li><li>
+<p>Add defaults_setter plugin :cache option for caching default values returned (jeremyevans)</p>
+</li><li>
+<p>Freeze string values in hashes returned by Database#schema (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.4.0+-282018-01-04-29">5.4.0 (2018-01-04)<span><a href="#label-5.4.0+-282018-01-04-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Enable fractional seconds in timestamps on DB2 (jeremyevans) (#1463)</p>
+</li><li>
+<p>Don&#39;t attempt to insert a second time if insert_select runs a query that doesn&#39;t return results, which can happen when triggers are used (jeremyevans)</p>
+</li><li>
+<p>Make Dataset#insert_select on PostgreSQL and MSSQL return false instead of nil if the INSERT query is sent to the database but returns no rows (jeremyevans)</p>
+</li><li>
+<p>Add index_caching extension for caching calls to Database#indexes (kenaniah, jeremyevans) (#1461)</p>
+</li><li>
+<p>Allow Database#indexes on SQLite, MSSQL, SQLAnywhere, and DB2 to handle SQL::Identifier values (jeremyevans)</p>
+</li><li>
+<p>Add pg_timestamptz extension for using timestamptz (timestamp with time zone) as the default timestamp type (jeremyevans)</p>
+</li><li>
+<p>Support Sequel.date_{add,sub} :cast option for setting cast type in date_arithmetic extension (jeremyevans)</p>
+</li><li>
+<p>Optimize Database#synchronize implementation on ruby 2.5+ (jeremyevans)</p>
+</li><li>
+<p>Add class_table_inheritance plugin :ignore_subclass_columns option (brianphillips) (#1459)</p>
+</li><li>
+<p>Make Dataset#to_xml in xml_serializer work with eager_graphed datasets (jeremyevans)</p>
+</li><li>
+<p>Make Dataset#to_json in json_serializer work with eager_graphed datasets (jeremyevans)</p>
+</li><li>
+<p>Cache Dataset#nullify dataset in the null_dataset extension (chanks) (#1456)</p>
+</li><li>
+<p>Add datetime_parse_to_time extension, for parsing timestamp strings without offsets using DateTime.parse.to_time (jeremyevans) (#1455)</p>
+</li><li>
+<p>Add WHERE NULL filter for Dataset#where calls with no existing filter, no argument, and where the virtual row block returns nil (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.3.0+-282017-12-01-29">5.3.0 (2017-12-01)<span><a href="#label-5.3.0+-282017-12-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Add logger to Database instance before making first connection in bin/sequel (jeremyevans)</p>
+</li><li>
+<p>Drop support for PostgreSQL &lt;8.1 in Database#indexes (jeremyevans)</p>
+</li><li>
+<p>Add synchronize_sql extension, for checking out a connection around SQL generation (KJTsanaktsidis, jeremyevans) (#1451)</p>
+</li><li>
+<p>Deprecate Dataset#where calls with no existing filter, no argument, and where the virtual row block returns nil (jeremyevans) (#1454)</p>
+</li><li>
+<p>Add DatasetModule#reverse for simpler use of descending orders (jeremyevans)</p>
+</li><li>
+<p>Support WITH clauses in subqueries on SQLite, but not in UNION/INTERSECT/EXCEPT (jeremyevans)</p>
+</li><li>
+<p>Hoist WITH clauses to INSERT statement level if INSERT subquery uses a CTE on MSSQL (jeremyevans)</p>
+</li><li>
+<p>Respect indislive and ignore indcheckxmin index attributes when using Database#indexes on PostgreSQL (jeremyevans)</p>
+</li><li>
+<p>Explicitly disallow use of server-side prepared statements when using Dataset#call in the jdbc/postgresql adapter (jeremyevans) (#1448)</p>
+</li><li>
+<p>Support common table expressions, window functions, dropping CHECK constraints, and recognizing CURRENT_DATE defaults on MariaDB 10.2+ (jeremyevans)</p>
+</li><li>
+<p>Make Database#reset_primary_key_sequence work on PostgreSQL 10+ (jeremyevans)</p>
+</li><li>
+<p>Support :connect_sqls Database option for easily issuing sql commands on all new connections (jeremyevans)</p>
+</li><li>
+<p>Support :extensions Database option for loading extensions when initializing, useful in connection strings (jeremyevans)</p>
+</li><li>
+<p>Avoid warning if trying to rollback after a commit or rollback raises an exception in the postgres adapter (jeremyevans)</p>
+</li><li>
+<p>Support Date::Infinity values in the pg_extended_date_support extension (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.2.0+-282017-10-27-29">5.2.0 (2017-10-27)<span><a href="#label-5.2.0+-282017-10-27-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Fix type conversion for smallint unsigned and integer unsigned types on jdbc/mysql (jeremyevans) (#1443)</p>
+</li><li>
+<p>Add pg_extended_date_support extension, for handling infinite and BC dates/timestamps (jeremyevans)</p>
+</li><li>
+<p>Do not ignore existing @dataset instance variable when subclassing <a href="Sequel/Model.html"><code>Sequel::Model</code></a> (bjmllr) (#1435)</p>
+</li></ul>
+
+<h3 id="label-5.1.0+-282017-10-01-29">5.1.0 (2017-10-01)<span><a href="#label-5.1.0+-282017-10-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make jdbc/h2 and jdbc/hsqldb adapters respect :foreign_key_constraint_name option when adding new foreign key column (jeremyevans)</p>
+</li><li>
+<p>Do not issue unnecessary query for macaddr type oid when loading the pg_inet extension (jeltz) (#1423)</p>
+</li><li>
+<p>Make alter_table add_foreign_key with a column symbol reversible when using the :foreign_key_constraint_name option (jeremyevans) (#1422)</p>
+</li><li>
+<p>Do not raise an error if calling Model.freeze on a frozen model (jeremyevans) (#1421)</p>
+</li><li>
+<p>Make Database#copy_into in the jdbc/postgresql adapter handle multi-byte strings (ckoenig) (#1416)</p>
+</li><li>
+<p>Remove deprecated Model use_after_commit_rollback class and instance methods (jeremyevans)</p>
+</li><li>
+<p>Remove deprecated Model.allowed_columns method in the base model support (jeremyevans)</p>
+</li><li>
+<p>Remove deprecated Model.plugin_module_defined? private method (jeremyevans)</p>
+</li><li>
+<p>Remove deprecated support for Model#_before_validation private method (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-5.0.0+-282017-09-01-29">5.0.0 (2017-09-01)<span><a href="#label-5.0.0+-282017-09-01-29">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>Make bin/sequel -M option always use base 10 (jeremyevans)</p>
+</li><li>
+<p>Don&#39;t use savepoints when creating indexes inside a transaction on databases that don&#39;t support transactional schema modifications (jeremyevans) (#1407)</p>
+</li><li>
+<p>Support :if_not_exists option when creating indexes on PostgreSQL 9.5+ (DyegoCosta) (#1405)</p>
+</li><li>
+<p>Make threaded connection pools not block while connections are being made (jeremyevans)</p>
+</li><li>
+<p>SQL::Expression#clone and dup now return self, since all expressions should be frozen value objects (jeremyevans)</p>
+</li><li>
+<p>Don&#39;t create empty arrays for unused association callbacks (jeremyevans)</p>
+</li><li>
+<p>Cache association method name symbols instead of recomputing them everytime (jeremyevans)</p>
+</li><li>
+<p>Raise an exception if attempting to create a prepared statement using a dataset with a delayed evaluation (jeremyevans)</p>
+</li><li>
+<p>Make ConnectionPool#size thread safe by using the pool mutex (jeremyevans)</p>
+</li><li>
+<p>Use instance_exec instead of instance_eval when passing a block, to work with lambdas that accept no arguments (jeremyevans)</p>
+</li><li>
+<p>Freeze SQL::StringAgg instances in string_agg extension (jeremyevans)</p>
+</li><li>
+<p>Freeze SQL::DateAdd instances in date_arithmetic extension (jeremyevans)</p>
+</li><li>
+<p>Freeze SQL::Expression.comparison_attrs (jeremyevans)</p>
+</li><li>
+<p>Rename SQL::Subscript#f to expression, keeping f as an alias (jeremyevans)</p>
+</li><li>
+<p>Require the :pool_class Database option be a class to use a custom connection pool (jeremyevans)</p>
+</li><li>
+<p>Make the class_table_inheritance plugin raise an Error during update if any UPDATE query does not affect a single row (jeremyevans)</p>
+</li><li>
+<p>Change most send calls to public_send unless calling private methods is expected (jeremyevans)</p>
+</li><li>
+<p>Database schema and schema generator methods now return nil (jeremyevans)</p>
+</li><li>
+<p>Model#validates_unique in the validation helpers plugin now defaults to only checking on new or modified values (jeremyevans)</p>
+</li><li>
+<p>Deprecate Model#_before_validation (private_method), use Model#before_validation now (jeremyevans)</p>
+</li><li>
+<p>Always run before/after/around validation hooks when saving, even when not validating the object (jeremyevans)</p>
+</li><li>
+<p>Deprecate Model use_after_commit_rollback class and instance accessors (jeremyevans)</p>
+</li><li>
+<p>Deprecate Model.allowed_columns reader (jeremyevans)</p>
+</li><li>
+<p>Freeze internal constants that shouldn&#39;t be modified at runtime (jeremyevans)</p>
+</li><li>
+<p>Attempt to connect to the database immediately when creating the Database instance (jeremyevans)</p>
+</li><li>
+<p>Make association_pks plugin delay the setting of associated objects until the current object is saved by default (jeremyevans)</p>
+</li><li>
+<p>Joined datasets used as model datasets are now automatically wrapped in a subquery (jeremyevans)</p>
+</li><li>
+<p>Setting an invalid dataset for a model class now raises an exception by default (jeremyevans)</p>
+</li><li>
+<p>Getting all values for newly created models now happens before calling after_create, instead of after (jeremyevans)</p>
+</li><li>
+<p>Remove use of @was_new/@columns_updated instance variables when saving model objects (jeremyevans)</p>
+</li><li>
+<p>Disable symbol splitting by default (jeremyevans)</p>
+</li><li>
+<p>Make datasets frozen by default (jeremyevans)</p>
+</li><li>
+<p>Drop support for ruby 1.8.7, minimum now is 1.9.2 (jeremyevans) </p>
+</li><li>
+<p>Remove deprecated adapters, extensions, plugins, constants, and features (jeremyevans)</p>
+</li></ul>
+
+<h3 id="label-Older">Older<span><a href="#label-Older">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>See <a href="doc/CHANGELOG_old.html">doc/CHANGELOG.old</a></p>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

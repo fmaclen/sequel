@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class String - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">Sequel::SQL::AliasMethods</span>
+  
+  
+  
+    <li><span class="include">Sequel::SQL::CastMethods</span>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-inflections">::inflections</a>
+    
+    <li ><a href="#method-i-blank-3F">#blank?</a>
+    
+    <li ><a href="#method-i-camelcase">#camelcase</a>
+    
+    <li ><a href="#method-i-camelize">#camelize</a>
+    
+    <li ><a href="#method-i-classify">#classify</a>
+    
+    <li ><a href="#method-i-constantize">#constantize</a>
+    
+    <li ><a href="#method-i-dasherize">#dasherize</a>
+    
+    <li ><a href="#method-i-demodulize">#demodulize</a>
+    
+    <li ><a href="#method-i-foreign_key">#foreign_key</a>
+    
+    <li ><a href="#method-i-humanize">#humanize</a>
+    
+    <li ><a href="#method-i-lit">#lit</a>
+    
+    <li ><a href="#method-i-pluralize">#pluralize</a>
+    
+    <li ><a href="#method-i-singularize">#singularize</a>
+    
+    <li ><a href="#method-i-tableize">#tableize</a>
+    
+    <li ><a href="#method-i-titlecase">#titlecase</a>
+    
+    <li ><a href="#method-i-titleize">#titleize</a>
+    
+    <li ><a href="#method-i-to_date">#to_date</a>
+    
+    <li ><a href="#method-i-to_datetime">#to_datetime</a>
+    
+    <li ><a href="#method-i-to_sequel_blob">#to_sequel_blob</a>
+    
+    <li ><a href="#method-i-to_sequel_time">#to_sequel_time</a>
+    
+    <li ><a href="#method-i-to_time">#to_time</a>
+    
+    <li ><a href="#method-i-underscore">#underscore</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-String">
+  <h1 id="class-String" class="class">
+    class String
+  </h1>
+
+  <section class="description">
+    
+<p><a href="Sequel.html"><code>Sequel</code></a> extends <code>String</code> to add methods to implement the SQL DSL.</p>
+
+<p>The inflector extension adds inflection instance methods to <a href="String.html"><code>String</code></a>, which allows the easy transformation of words from singular to plural, class names to table names, modularized class names to ones without, and class names to foreign keys.  It exists for  backwards compatibility to legacy <a href="Sequel.html"><code>Sequel</code></a> code.</p>
+
+<p>To load the extension:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">extension</span> <span class="ruby-value">:inflector</span>
+</pre>
+
+<p>Related module: <a href="String/Inflections.html"><code>String::Inflections</code></a></p>
+
+<p>The string_date_time extension provides <a href="String.html"><code>String</code></a> instance methods for converting the strings to a date (e.g. <a href="String.html#method-i-to_date"><code>String#to_date</code></a>), allowing for backwards compatibility with legacy <a href="Sequel.html"><code>Sequel</code></a> code.</p>
+
+<p>These methods calls <code>parse</code> on the related class, and as such, can result in denial of service in older versions of Ruby for large untrusted input, and raise exceptions in newer versions of Ruby. </p>
+
+<p>To load the extension:</p>
+
+<pre class="ruby"><span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">extension</span> <span class="ruby-value">:string_date_time</span>
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-inflections" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inflections</span><span
+            class="method-args">() { |Inflections| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Yield the <a href="String/Inflections.html"><code>Inflections</code></a> module if a block is given, and return the <a href="String/Inflections.html"><code>Inflections</code></a> module.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="inflections-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">104</span> <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">inflections</span>
+<span class="line-num">105</span>   <span class="ruby-keyword">yield</span> <span class="ruby-constant">Inflections</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-keyword">yield</span>)
+<span class="line-num">106</span>   <span class="ruby-constant">Inflections</span>
+<span class="line-num">107</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-blank-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">blank?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Strings are blank if they are empty or include only whitespace</p>
+          
+          
+
+          
+          <div class="method-source-code" id="blank-3F-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/blank.rb</span>
+<span class="line-num">47</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">blank?</span>
+<span class="line-num">48</span>   <span class="ruby-identifier">strip</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">49</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-camelcase" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">camelcase</span><span
+            class="method-args">(first_letter_in_uppercase = :upper)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="String.html#method-i-camelize">camelize</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-camelize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">camelize</span><span
+            class="method-args">(first_letter_in_uppercase = :upper)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>By default, camelize converts the string to UpperCamelCase. If the argument to camelize is set to :lower then camelize produces lowerCamelCase.</p>
+
+<p>camelize will also convert &#39;/&#39; to &#39;::&#39; which is useful for converting paths to namespaces</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;active_record&quot;</span>.<span class="ruby-identifier">camelize</span> <span class="ruby-comment">#=&gt; &quot;ActiveRecord&quot;</span>
+<span class="ruby-string">&quot;active_record&quot;</span>.<span class="ruby-identifier">camelize</span>(<span class="ruby-value">:lower</span>) <span class="ruby-comment">#=&gt; &quot;activeRecord&quot;</span>
+<span class="ruby-string">&quot;active_record/errors&quot;</span>.<span class="ruby-identifier">camelize</span> <span class="ruby-comment">#=&gt; &quot;ActiveRecord::Errors&quot;</span>
+<span class="ruby-string">&quot;active_record/errors&quot;</span>.<span class="ruby-identifier">camelize</span>(<span class="ruby-value">:lower</span>) <span class="ruby-comment">#=&gt; &quot;activeRecord::Errors&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="camelize-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">127</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">camelize</span>(<span class="ruby-identifier">first_letter_in_uppercase</span> = <span class="ruby-value">:upper</span>)
+<span class="line-num">128</span>   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\/(.?)/</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;::#{x[-1..-1].upcase unless x == &#39;/&#39;}&quot;</span>}.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/(^|_)(.)/</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>[<span class="ruby-value">-1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">upcase</span>}
+<span class="line-num">129</span>   <span class="ruby-identifier">s</span>[<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-value">1</span>] = <span class="ruby-identifier">s</span>[<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-value">1</span>].<span class="ruby-identifier">downcase</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">first_letter_in_uppercase</span> <span class="ruby-operator">==</span> <span class="ruby-value">:upper</span>
+<span class="line-num">130</span>   <span class="ruby-identifier">s</span>
+<span class="line-num">131</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="String.html#method-i-camelcase">camelcase</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-classify" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">classify</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Singularizes and camelizes the string.  Also strips out all characters preceding and including a period (“.”).</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;egg_and_hams&quot;</span>.<span class="ruby-identifier">classify</span> <span class="ruby-comment">#=&gt; &quot;EggAndHam&quot;</span>
+<span class="ruby-string">&quot;post&quot;</span>.<span class="ruby-identifier">classify</span> <span class="ruby-comment">#=&gt; &quot;Post&quot;</span>
+<span class="ruby-string">&quot;schema.post&quot;</span>.<span class="ruby-identifier">classify</span> <span class="ruby-comment">#=&gt; &quot;Post&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="classify-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">141</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">classify</span>
+<span class="line-num">142</span>   <span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/.*\./</span>, <span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">singularize</span>.<span class="ruby-identifier">camelize</span>
+<span class="line-num">143</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-constantize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">constantize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Constantize tries to find a declared constant with the name specified in the string. It raises a NameError when the name is not in CamelCase or is not initialized.</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;Module&quot;</span>.<span class="ruby-identifier">constantize</span> <span class="ruby-comment">#=&gt; Module</span>
+<span class="ruby-string">&quot;Class&quot;</span>.<span class="ruby-identifier">constantize</span> <span class="ruby-comment">#=&gt; Class</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="constantize-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">152</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">constantize</span>
+<span class="line-num">153</span>   <span class="ruby-identifier">raise</span>(<span class="ruby-constant">NameError</span>, <span class="ruby-node">&quot;#{inspect} is not a valid constant name!&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">m</span> = <span class="ruby-regexp">/\A(?:::)?([A-Z]\w*(?:::[A-Z]\w*)*)\z/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">154</span>   <span class="ruby-constant">Object</span>.<span class="ruby-identifier">module_eval</span>(<span class="ruby-node">&quot;::#{m[1]}&quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span>)
+<span class="line-num">155</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-dasherize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dasherize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Replaces underscores with dashes in the string.</p>
+
+<p>Example</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;puni_puni&quot;</span>.<span class="ruby-identifier">dasherize</span> <span class="ruby-comment">#=&gt; &quot;puni-puni&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="dasherize-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">161</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">dasherize</span>
+<span class="line-num">162</span>   <span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39;_&#39;</span>, <span class="ruby-string">&#39;-&#39;</span>)
+<span class="line-num">163</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-demodulize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">demodulize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Removes the module part from the expression in the string</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;ActiveRecord::CoreExtensions::String::Inflections&quot;</span>.<span class="ruby-identifier">demodulize</span> <span class="ruby-comment">#=&gt; &quot;Inflections&quot;</span>
+<span class="ruby-string">&quot;Inflections&quot;</span>.<span class="ruby-identifier">demodulize</span> <span class="ruby-comment">#=&gt; &quot;Inflections&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="demodulize-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">170</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">demodulize</span>
+<span class="line-num">171</span>   <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/^.*::/</span>, <span class="ruby-string">&#39;&#39;</span>)
+<span class="line-num">172</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-foreign_key" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">foreign_key</span><span
+            class="method-args">(use_underscore = true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a foreign key name from a class name. <code>use_underscore</code> sets whether the method should put &#39;_&#39; between the name and &#39;id&#39;.</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;Message&quot;</span>.<span class="ruby-identifier">foreign_key</span> <span class="ruby-comment">#=&gt; &quot;message_id&quot;</span>
+<span class="ruby-string">&quot;Message&quot;</span>.<span class="ruby-identifier">foreign_key</span>(<span class="ruby-keyword">false</span>) <span class="ruby-comment">#=&gt; &quot;messageid&quot;</span>
+<span class="ruby-string">&quot;Admin::Post&quot;</span>.<span class="ruby-identifier">foreign_key</span> <span class="ruby-comment">#=&gt; &quot;post_id&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="foreign_key-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">181</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">foreign_key</span>(<span class="ruby-identifier">use_underscore</span> = <span class="ruby-keyword">true</span>)
+<span class="line-num">182</span>   <span class="ruby-node">&quot;#{demodulize.underscore}#{&#39;_&#39; if use_underscore}id&quot;</span>
+<span class="line-num">183</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-humanize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">humanize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Capitalizes the first word and turns underscores into spaces and strips _id. Like titleize, this is meant for creating pretty output.</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;employee_salary&quot;</span> <span class="ruby-comment">#=&gt; &quot;Employee salary&quot;</span>
+<span class="ruby-string">&quot;author_id&quot;</span> <span class="ruby-comment">#=&gt; &quot;Author&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="humanize-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">191</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">humanize</span>
+<span class="line-num">192</span>   <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/_id$/</span>, <span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39;_&#39;</span>, <span class="ruby-string">&quot; &quot;</span>).<span class="ruby-identifier">capitalize</span>
+<span class="line-num">193</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-lit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lit</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Converts a string into a <code>Sequel::LiteralString</code>, in order to override string literalization, e.g.:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:items</span>].<span class="ruby-identifier">where</span>(<span class="ruby-value">abc:</span> <span class="ruby-string">&#39;def&#39;</span>)
+<span class="ruby-comment"># &quot;SELECT * FROM items WHERE (abc = &#39;def&#39;)&quot;</span>
+
+<span class="ruby-constant">DB</span>[<span class="ruby-value">:items</span>].<span class="ruby-identifier">where</span>(<span class="ruby-value">abc:</span> <span class="ruby-string">&#39;def&#39;</span>.<span class="ruby-identifier">lit</span>)
+<span class="ruby-comment"># &quot;SELECT * FROM items WHERE (abc = def)&quot;</span>
+</pre>
+
+<p>You can also provide arguments, to create a <code>Sequel::SQL::PlaceholderLiteralString</code>:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:items</span>].<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">count</span>(<span class="ruby-string">&#39;DISTINCT ?&#39;</span>.<span class="ruby-identifier">lit</span>(<span class="ruby-value">:a</span>))}
+<span class="ruby-comment"># &quot;SELECT count(DISTINCT a) FROM items&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="lit-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">184</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lit</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="line-num">185</span>   <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">LiteralString</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">PlaceholderLiteralString</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">args</span>)
+<span class="line-num">186</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pluralize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pluralize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the plural form of the word in the string.</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;post&quot;</span>.<span class="ruby-identifier">pluralize</span> <span class="ruby-comment">#=&gt; &quot;posts&quot;</span>
+<span class="ruby-string">&quot;octopus&quot;</span>.<span class="ruby-identifier">pluralize</span> <span class="ruby-comment">#=&gt; &quot;octopi&quot;</span>
+<span class="ruby-string">&quot;sheep&quot;</span>.<span class="ruby-identifier">pluralize</span> <span class="ruby-comment">#=&gt; &quot;sheep&quot;</span>
+<span class="ruby-string">&quot;words&quot;</span>.<span class="ruby-identifier">pluralize</span> <span class="ruby-comment">#=&gt; &quot;words&quot;</span>
+<span class="ruby-string">&quot;the blue mailman&quot;</span>.<span class="ruby-identifier">pluralize</span> <span class="ruby-comment">#=&gt; &quot;the blue mailmen&quot;</span>
+<span class="ruby-string">&quot;CamelOctopus&quot;</span>.<span class="ruby-identifier">pluralize</span> <span class="ruby-comment">#=&gt; &quot;CamelOctopi&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="pluralize-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">204</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pluralize</span>
+<span class="line-num">205</span>   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">dup</span>
+<span class="line-num">206</span>   <span class="ruby-constant">Inflections</span>.<span class="ruby-identifier">plurals</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span>(<span class="ruby-identifier">rule</span>, <span class="ruby-identifier">replacement</span>)<span class="ruby-operator">|</span> <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-identifier">rule</span>, <span class="ruby-identifier">replacement</span>)} <span class="ruby-keyword">unless</span> <span class="ruby-constant">Inflections</span>.<span class="ruby-identifier">uncountables</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">downcase</span>)
+<span class="line-num">207</span>   <span class="ruby-identifier">result</span>
+<span class="line-num">208</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-singularize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">singularize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The reverse of pluralize, returns the singular form of a word in a string.</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;posts&quot;</span>.<span class="ruby-identifier">singularize</span> <span class="ruby-comment">#=&gt; &quot;post&quot;</span>
+<span class="ruby-string">&quot;octopi&quot;</span>.<span class="ruby-identifier">singularize</span> <span class="ruby-comment">#=&gt; &quot;octopus&quot;</span>
+<span class="ruby-string">&quot;sheep&quot;</span>.<span class="ruby-identifier">singluarize</span> <span class="ruby-comment">#=&gt; &quot;sheep&quot;</span>
+<span class="ruby-string">&quot;word&quot;</span>.<span class="ruby-identifier">singluarize</span> <span class="ruby-comment">#=&gt; &quot;word&quot;</span>
+<span class="ruby-string">&quot;the blue mailmen&quot;</span>.<span class="ruby-identifier">singularize</span> <span class="ruby-comment">#=&gt; &quot;the blue mailman&quot;</span>
+<span class="ruby-string">&quot;CamelOctopi&quot;</span>.<span class="ruby-identifier">singularize</span> <span class="ruby-comment">#=&gt; &quot;CamelOctopus&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="singularize-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">219</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">singularize</span>
+<span class="line-num">220</span>   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">dup</span>
+<span class="line-num">221</span>   <span class="ruby-constant">Inflections</span>.<span class="ruby-identifier">singulars</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span>(<span class="ruby-identifier">rule</span>, <span class="ruby-identifier">replacement</span>)<span class="ruby-operator">|</span> <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-identifier">rule</span>, <span class="ruby-identifier">replacement</span>)} <span class="ruby-keyword">unless</span> <span class="ruby-constant">Inflections</span>.<span class="ruby-identifier">uncountables</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">downcase</span>)
+<span class="line-num">222</span>   <span class="ruby-identifier">result</span>
+<span class="line-num">223</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-tableize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tableize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Underscores and pluralizes the string.</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;RawScaledScorer&quot;</span>.<span class="ruby-identifier">tableize</span> <span class="ruby-comment">#=&gt; &quot;raw_scaled_scorers&quot;</span>
+<span class="ruby-string">&quot;egg_and_ham&quot;</span>.<span class="ruby-identifier">tableize</span> <span class="ruby-comment">#=&gt; &quot;egg_and_hams&quot;</span>
+<span class="ruby-string">&quot;fancyCategory&quot;</span>.<span class="ruby-identifier">tableize</span> <span class="ruby-comment">#=&gt; &quot;fancy_categories&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="tableize-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">231</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tableize</span>
+<span class="line-num">232</span>   <span class="ruby-identifier">underscore</span>.<span class="ruby-identifier">pluralize</span>
+<span class="line-num">233</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-titlecase" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">titlecase</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="String.html#method-i-titleize">titleize</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-titleize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">titleize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Capitalizes all the words and replaces some characters in the string to create a nicer looking title. Titleize is meant for creating pretty output.</p>
+
+<p>titleize is also aliased as as titlecase</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;man from the boondocks&quot;</span>.<span class="ruby-identifier">titleize</span> <span class="ruby-comment">#=&gt; &quot;Man From The Boondocks&quot;</span>
+<span class="ruby-string">&quot;x-men: the last stand&quot;</span>.<span class="ruby-identifier">titleize</span> <span class="ruby-comment">#=&gt; &quot;X Men: The Last Stand&quot;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="titleize-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">243</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">titleize</span>
+<span class="line-num">244</span>   <span class="ruby-identifier">underscore</span>.<span class="ruby-identifier">humanize</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\b([a-z])/</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>[<span class="ruby-value">-1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">upcase</span>}
+<span class="line-num">245</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="String.html#method-i-titlecase">titlecase</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_date</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Converts a string into a Date object.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_date-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/string_date_time.rb</span>
+<span class="line-num">17</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_date</span>
+<span class="line-num">18</span>   <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-keyword">self</span>, <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">convert_two_digit_years</span>)
+<span class="line-num">19</span> <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">e</span>
+<span class="line-num">20</span>   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">convert_exception_class</span>(<span class="ruby-identifier">e</span>, <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidValue</span>)
+<span class="line-num">21</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_datetime" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_datetime</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Converts a string into a DateTime object.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_datetime-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/string_date_time.rb</span>
+<span class="line-num">24</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_datetime</span>
+<span class="line-num">25</span>   <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-keyword">self</span>, <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">convert_two_digit_years</span>)
+<span class="line-num">26</span> <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">e</span>
+<span class="line-num">27</span>   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">convert_exception_class</span>(<span class="ruby-identifier">e</span>, <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidValue</span>)
+<span class="line-num">28</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_sequel_blob" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_sequel_blob</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a <code>Sequel::SQL::Blob</code> that holds the same data as this string. Blobs provide proper escaping of binary data.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_sequel_blob-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/core_extensions.rb</span>
+<span class="line-num">190</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_sequel_blob</span>
+<span class="line-num">191</span>   <span class="ruby-operator">::</span><span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Blob</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">192</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_sequel_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_sequel_time</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Converts a string into a Time or DateTime object, depending on the value of Sequel.datetime_class</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_sequel_time-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/string_date_time.rb</span>
+<span class="line-num">32</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_sequel_time</span>
+<span class="line-num">33</span>   <span class="ruby-keyword">if</span> <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">datetime_class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">DateTime</span>
+<span class="line-num">34</span>     <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-keyword">self</span>, <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">convert_two_digit_years</span>)
+<span class="line-num">35</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">36</span>     <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">datetime_class</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">37</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">38</span> <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">e</span>
+<span class="line-num">39</span>   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">convert_exception_class</span>(<span class="ruby-identifier">e</span>, <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidValue</span>)
+<span class="line-num">40</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_time</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Converts a string into a Time object.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_time-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/string_date_time.rb</span>
+<span class="line-num">43</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_time</span>
+<span class="line-num">44</span>   <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-keyword">self</span>)
+<span class="line-num">45</span> <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">e</span>
+<span class="line-num">46</span>   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">convert_exception_class</span>(<span class="ruby-identifier">e</span>, <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidValue</span>)
+<span class="line-num">47</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-underscore" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">underscore</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The reverse of camelize. Makes an underscored form from the expression in the string. Also changes &#39;::&#39; to &#39;/&#39; to convert namespaces to paths.</p>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;ActiveRecord&quot;</span>.<span class="ruby-identifier">underscore</span> <span class="ruby-comment">#=&gt; &quot;active_record&quot;</span>
+<span class="ruby-string">&quot;ActiveRecord::Errors&quot;</span>.<span class="ruby-identifier">underscore</span> <span class="ruby-comment">#=&gt; active_record/errors</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="underscore-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/inflector.rb</span>
+<span class="line-num">254</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">underscore</span>
+<span class="line-num">255</span>   <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/::/</span>, <span class="ruby-string">&#39;/&#39;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([A-Z]+)([A-Z][a-z])/</span>,<span class="ruby-string">&#39;\1_\2&#39;</span>).
+<span class="line-num">256</span>     <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([a-z\d])([A-Z])/</span>,<span class="ruby-string">&#39;\1_\2&#39;</span>).<span class="ruby-identifier">tr</span>(<span class="ruby-string">&quot;-&quot;</span>, <span class="ruby-string">&quot;_&quot;</span>).<span class="ruby-identifier">downcase</span>
+<span class="line-num">257</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

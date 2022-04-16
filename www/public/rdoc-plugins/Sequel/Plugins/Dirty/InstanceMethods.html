@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::Plugins::Dirty::InstanceMethods - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+  var index_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/navigation.js" defer></script>
+<script src="../../../js/search.js" defer></script>
+<script src="../../../js/search_index.js" defer></script>
+<script src="../../../js/searcher.js" defer></script>
+<script src="../../../js/darkfish.js" defer></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-i-after_save">#after_save</a>
+    
+    <li class="calls-super" ><a href="#method-i-after_update">#after_update</a>
+    
+    <li ><a href="#method-i-column_change">#column_change</a>
+    
+    <li ><a href="#method-i-column_changed-3F">#column_changed?</a>
+    
+    <li ><a href="#method-i-column_changes">#column_changes</a>
+    
+    <li ><a href="#method-i-column_previously_changed-3F">#column_previously_changed?</a>
+    
+    <li ><a href="#method-i-column_previously_was">#column_previously_was</a>
+    
+    <li class="calls-super" ><a href="#method-i-freeze">#freeze</a>
+    
+    <li ><a href="#method-i-initial_value">#initial_value</a>
+    
+    <li ><a href="#method-i-initial_values">#initial_values</a>
+    
+    <li ><a href="#method-i-reset_column">#reset_column</a>
+    
+    <li ><a href="#method-i-will_change_column">#will_change_column</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::Plugins::Dirty::InstanceMethods">
+  <h1 id="module-Sequel::Plugins::Dirty::InstanceMethods" class="module">
+    module Sequel::Plugins::Dirty::InstanceMethods
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-previous_changes" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">previous_changes</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>A hash of previous changes before the object was saved, in the same format as <a href="InstanceMethods.html#method-i-column_changes"><code>column_changes</code></a>. Note that this is not necessarily the same as the columns that were used in the update statement.</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-after_save" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">after_save</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reset the initial values after saving.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="after_save-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">74</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">after_save</span>
+<span class="line-num">75</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">76</span>   <span class="ruby-identifier">reset_initial_values</span>
+<span class="line-num">77</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-after_update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">after_update</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Save the current changes so they are available after updating.  This happens before <a href="InstanceMethods.html#method-i-after_save"><code>after_save</code></a> resets them.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="after_update-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">81</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">after_update</span>
+<span class="line-num">82</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">83</span>   <span class="ruby-ivar">@previous_changes</span> = <span class="ruby-identifier">column_changes</span>
+<span class="line-num">84</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-column_change" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">column_change</span><span
+            class="method-args">(column)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>An array with the initial value and the current value of the column, if the column has been changed.  If the column has not been changed, returns nil.</p>
+
+<pre class="ruby"><span class="ruby-identifier">column_change</span>(<span class="ruby-value">:name</span>) <span class="ruby-comment"># =&gt; [&#39;Initial&#39;, &#39;Current&#39;]</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="column_change-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">91</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">column_change</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">92</span>   [<span class="ruby-identifier">initial_value</span>(<span class="ruby-identifier">column</span>), <span class="ruby-identifier">get_column_value</span>(<span class="ruby-identifier">column</span>)] <span class="ruby-keyword">if</span> <span class="ruby-identifier">column_changed?</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">93</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-column_changed-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">column_changed?</span><span
+            class="method-args">(column)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Either true or false depending on whether the column has changed.  Note that this is not exactly the same as checking if the column is in changed_columns, if the column was not set initially.</p>
+
+<pre class="ruby"><span class="ruby-identifier">column_changed?</span>(<span class="ruby-value">:name</span>) <span class="ruby-comment"># =&gt; true</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="column_changed-3F-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">113</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">column_changed?</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">114</span>   <span class="ruby-identifier">initial_values</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">115</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-column_changes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">column_changes</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A hash with column symbol keys and pairs of initial and current values for all changed columns.</p>
+
+<pre class="ruby"><span class="ruby-identifier">column_changes</span> <span class="ruby-comment"># =&gt; {:name =&gt; [&#39;Initial&#39;, &#39;Current&#39;]}</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="column_changes-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num"> 99</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">column_changes</span>
+<span class="line-num">100</span>   <span class="ruby-identifier">h</span> = {}
+<span class="line-num">101</span>   <span class="ruby-identifier">initial_values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">column</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+<span class="line-num">102</span>     <span class="ruby-identifier">h</span>[<span class="ruby-identifier">column</span>] = [<span class="ruby-identifier">value</span>, <span class="ruby-identifier">get_column_value</span>(<span class="ruby-identifier">column</span>)]
+<span class="line-num">103</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">104</span>   <span class="ruby-identifier">h</span>
+<span class="line-num">105</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-column_previously_changed-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">column_previously_changed?</span><span
+            class="method-args">(column, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Whether the column was previously changed. Options:</p>
+<dl class="rdoc-list note-list"><dt>:from 
+<dd>
+<p>If given, the previous initial value of the column must match this</p>
+</dd><dt>:to 
+<dd>
+<p>If given, the previous changed value of the column must match this</p>
+</dd></dl>
+
+<pre class="ruby"><span class="ruby-identifier">update</span>(<span class="ruby-value">name:</span> <span class="ruby-string">&#39;Current&#39;</span>)
+<span class="ruby-identifier">previous_changes</span>                  <span class="ruby-comment"># =&gt; {:name=&gt;[&#39;Initial&#39;, &#39;Current&#39;]}</span>
+<span class="ruby-identifier">column_previously_changed?</span>(<span class="ruby-value">:name</span>) <span class="ruby-comment"># =&gt; true</span>
+<span class="ruby-identifier">column_previously_changed?</span>(<span class="ruby-value">:id</span>)   <span class="ruby-comment"># =&gt; false</span>
+<span class="ruby-identifier">column_previously_changed?</span>(<span class="ruby-value">:name</span>, <span class="ruby-value">from:</span> <span class="ruby-string">&#39;Initial&#39;</span>, <span class="ruby-value">to:</span> <span class="ruby-string">&#39;Current&#39;</span>) <span class="ruby-comment"># =&gt; true</span>
+<span class="ruby-identifier">column_previously_changed?</span>(<span class="ruby-value">:name</span>, <span class="ruby-value">from:</span> <span class="ruby-string">&#39;Foo&#39;</span>, <span class="ruby-value">to:</span> <span class="ruby-string">&#39;Current&#39;</span>)     <span class="ruby-comment"># =&gt; false</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="column_previously_changed-3F-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">128</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">column_previously_changed?</span>(<span class="ruby-identifier">column</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">129</span>   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">pc</span> = <span class="ruby-ivar">@previous_changes</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">val</span> = <span class="ruby-identifier">pc</span>[<span class="ruby-identifier">column</span>])
+<span class="line-num">130</span> 
+<span class="line-num">131</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:from</span>)
+<span class="line-num">132</span>     <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">val</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:from</span>]
+<span class="line-num">133</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">134</span> 
+<span class="line-num">135</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:to</span>)
+<span class="line-num">136</span>     <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">val</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:to</span>]
+<span class="line-num">137</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">138</span> 
+<span class="line-num">139</span>   <span class="ruby-keyword">true</span>
+<span class="line-num">140</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-column_previously_was" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">column_previously_was</span><span
+            class="method-args">(column)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The previous value of the column, which is the initial value of the column before the object was previously saved.</p>
+
+<pre class="ruby"><span class="ruby-identifier">initial_value</span>(<span class="ruby-value">:name</span>) <span class="ruby-comment"># =&gt; &#39;Initial&#39;</span>
+<span class="ruby-identifier">update</span>(<span class="ruby-value">name:</span> <span class="ruby-string">&#39;Current&#39;</span>)
+<span class="ruby-identifier">column_previously_was</span>(<span class="ruby-value">:name</span>) <span class="ruby-comment"># =&gt; &#39;Initial&#39;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="column_previously_was-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">148</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">column_previously_was</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">149</span>   (<span class="ruby-identifier">pc</span> = <span class="ruby-ivar">@previous_changes</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">val</span> = <span class="ruby-identifier">pc</span>[<span class="ruby-identifier">column</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">val</span>[<span class="ruby-value">0</span>]
+<span class="line-num">150</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-freeze" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">freeze</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Freeze internal data structures</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="freeze-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">153</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">freeze</span>
+<span class="line-num">154</span>   <span class="ruby-identifier">initial_values</span>.<span class="ruby-identifier">freeze</span>
+<span class="line-num">155</span>   <span class="ruby-identifier">missing_initial_values</span>.<span class="ruby-identifier">freeze</span>
+<span class="line-num">156</span>   <span class="ruby-ivar">@previous_changes</span>.<span class="ruby-identifier">freeze</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@previous_changes</span>
+<span class="line-num">157</span>   <span class="ruby-keyword">super</span>
+<span class="line-num">158</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-initial_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initial_value</span><span
+            class="method-args">(column)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The initial value of the given column.  If the column value has not changed, this will be the same as the current value of the column.</p>
+
+<pre class="ruby"><span class="ruby-identifier">initial_value</span>(<span class="ruby-value">:name</span>) <span class="ruby-comment"># =&gt; &#39;Initial&#39;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="initial_value-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">165</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initial_value</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">166</span>   <span class="ruby-identifier">initial_values</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">column</span>){<span class="ruby-identifier">get_column_value</span>(<span class="ruby-identifier">column</span>)}
+<span class="line-num">167</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-initial_values" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initial_values</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A hash with column symbol keys and initial values.</p>
+
+<pre class="ruby"><span class="ruby-identifier">initial_values</span> <span class="ruby-comment"># {:name =&gt; &#39;Initial&#39;}</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="initial_values-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">172</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initial_values</span>
+<span class="line-num">173</span>   <span class="ruby-ivar">@initial_values</span> <span class="ruby-operator">||=</span> {}
+<span class="line-num">174</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-reset_column" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reset_column</span><span
+            class="method-args">(column)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reset the column to its initial value.  If the column was not set initial, removes it from the values.</p>
+
+<pre class="ruby"><span class="ruby-identifier">reset_column</span>(<span class="ruby-value">:name</span>)
+<span class="ruby-identifier">name</span> <span class="ruby-comment"># =&gt; &#39;Initial&#39;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="reset_column-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">181</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset_column</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">182</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">initial_values</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">183</span>     <span class="ruby-identifier">set_column_value</span>(<span class="ruby-value">:&quot;#{column}=&quot;</span>, <span class="ruby-identifier">initial_values</span>[<span class="ruby-identifier">column</span>])
+<span class="line-num">184</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">185</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">missing_initial_values</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">186</span>     <span class="ruby-identifier">values</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">187</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">188</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-will_change_column" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">will_change_column</span><span
+            class="method-args">(column)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Manually specify that a column will change.  This should only be used if you plan to modify a column value in place, which is not recommended.</p>
+
+<pre class="ruby"><span class="ruby-identifier">will_change_column</span>(<span class="ruby-value">:name</span>)
+<span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/i/i</span>, <span class="ruby-string">&#39;o&#39;</span>)
+<span class="ruby-identifier">column_change</span>(<span class="ruby-value">:name</span>) <span class="ruby-comment"># =&gt; [&#39;Initial&#39;, &#39;onotoal&#39;]</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="will_change_column-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/plugins/dirty.rb</span>
+<span class="line-num">196</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">will_change_column</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">197</span>   <span class="ruby-identifier">_add_changed_column</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">198</span>   <span class="ruby-identifier">check_missing_initial_value</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">199</span> 
+<span class="line-num">200</span>   <span class="ruby-identifier">value</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">initial_values</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">201</span>     <span class="ruby-identifier">initial_values</span>[<span class="ruby-identifier">column</span>]
+<span class="line-num">202</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">203</span>     <span class="ruby-identifier">get_column_value</span>(<span class="ruby-identifier">column</span>)
+<span class="line-num">204</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">205</span> 
+<span class="line-num">206</span>   <span class="ruby-identifier">initial_values</span>[<span class="ruby-identifier">column</span>] = <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:clone</span>)
+<span class="line-num">207</span>     <span class="ruby-keyword">begin</span>
+<span class="line-num">208</span>       <span class="ruby-identifier">value</span>.<span class="ruby-identifier">clone</span>
+<span class="line-num">209</span>     <span class="ruby-keyword">rescue</span> <span class="ruby-constant">TypeError</span>
+<span class="line-num">210</span>       <span class="ruby-identifier">value</span>
+<span class="line-num">211</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">212</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">213</span>     <span class="ruby-identifier">value</span>
+<span class="line-num">214</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">215</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

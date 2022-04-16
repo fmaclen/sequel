@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::Postgres::JSONBOp - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="JSONBaseOp.html">Sequel::Postgres::JSONBaseOp</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-i-2D">#-</a>
+    
+    <li class="calls-super" ><a href="#method-i-5B-5D">#[]</a>
+    
+    <li ><a href="#method-i-concat">#concat</a>
+    
+    <li ><a href="#method-i-contain_all">#contain_all</a>
+    
+    <li ><a href="#method-i-contain_any">#contain_any</a>
+    
+    <li ><a href="#method-i-contained_by">#contained_by</a>
+    
+    <li ><a href="#method-i-contains">#contains</a>
+    
+    <li ><a href="#method-i-delete_path">#delete_path</a>
+    
+    <li ><a href="#method-i-has_key-3F">#has_key?</a>
+    
+    <li ><a href="#method-i-include-3F">#include?</a>
+    
+    <li ><a href="#method-i-insert">#insert</a>
+    
+    <li ><a href="#method-i-path_exists">#path_exists</a>
+    
+    <li ><a href="#method-i-path_exists-21">#path_exists!</a>
+    
+    <li ><a href="#method-i-path_exists_tz-21">#path_exists_tz!</a>
+    
+    <li ><a href="#method-i-path_match">#path_match</a>
+    
+    <li ><a href="#method-i-path_match-21">#path_match!</a>
+    
+    <li ><a href="#method-i-path_match_tz-21">#path_match_tz!</a>
+    
+    <li ><a href="#method-i-path_query">#path_query</a>
+    
+    <li ><a href="#method-i-path_query_array">#path_query_array</a>
+    
+    <li ><a href="#method-i-path_query_array_tz">#path_query_array_tz</a>
+    
+    <li ><a href="#method-i-path_query_first">#path_query_first</a>
+    
+    <li ><a href="#method-i-path_query_first_tz">#path_query_first_tz</a>
+    
+    <li ><a href="#method-i-path_query_tz">#path_query_tz</a>
+    
+    <li ><a href="#method-i-pg_jsonb">#pg_jsonb</a>
+    
+    <li ><a href="#method-i-pretty">#pretty</a>
+    
+    <li ><a href="#method-i-set">#set</a>
+    
+    <li ><a href="#method-i-set_lax">#set_lax</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::Postgres::JSONBOp">
+  <h1 id="class-Sequel::Postgres::JSONBOp" class="class">
+    class Sequel::Postgres::JSONBOp
+  </h1>
+
+  <section class="description">
+    
+<p><a href="JSONBaseOp.html"><code>JSONBaseOp</code></a> subclass for the jsonb type.</p>
+
+<p>In the method documentation examples, assume that:</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span> = <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">pg_jsonb</span>(<span class="ruby-value">:jsonb</span>)
+</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="CONCAT">CONCAT
+        
+        <dd>
+        
+      
+        <dt id="CONTAINED_BY">CONTAINED_BY
+        
+        <dd>
+        
+      
+        <dt id="CONTAINS">CONTAINS
+        
+        <dd>
+        
+      
+        <dt id="CONTAIN_ALL">CONTAIN_ALL
+        
+        <dd>
+        
+      
+        <dt id="CONTAIN_ANY">CONTAIN_ANY
+        
+        <dd>
+        
+      
+        <dt id="DELETE_PATH">DELETE_PATH
+        
+        <dd>
+        
+      
+        <dt id="HAS_KEY">HAS_KEY
+        
+        <dd>
+        
+      
+        <dt id="PATH_EXISTS">PATH_EXISTS
+        
+        <dd>
+        
+      
+        <dt id="PATH_MATCH">PATH_MATCH
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-2D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">-</span><span
+            class="method-args">(other)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>jsonb expression for deletion of the given argument from the current jsonb.</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span> <span class="ruby-operator">-</span> <span class="ruby-string">&quot;a&quot;</span> <span class="ruby-comment"># (jsonb - &#39;a&#39;)</span>
+</pre>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="2D-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">370</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">-</span>(<span class="ruby-identifier">other</span>)
+<span class="line-num">371</span>   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">super</span>)
+<span class="line-num">372</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-5B-5D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">[]</span><span
+            class="method-args">(key)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Support subscript syntax for JSONB.</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="JSONBaseOp.html#method-i-5B-5D"><code>Sequel::Postgres::JSONBaseOp#[]</code></a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="5B-5D-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">349</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>(<span class="ruby-identifier">key</span>)
+<span class="line-num">350</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_array?</span>(<span class="ruby-identifier">key</span>)
+<span class="line-num">351</span>     <span class="ruby-keyword">super</span>
+<span class="line-num">352</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">353</span>     <span class="ruby-keyword">case</span> <span class="ruby-ivar">@value</span>
+<span class="line-num">354</span>     <span class="ruby-keyword">when</span> <span class="ruby-constant">Symbol</span>, <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">Identifier</span>, <span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">QualifiedIdentifier</span>, <span class="ruby-constant">JSONBSubscriptOp</span>
+<span class="line-num">355</span>       <span class="ruby-comment"># Only use subscripts for identifiers.  In other cases, switching from</span>
+<span class="line-num">356</span>       <span class="ruby-comment"># the -&gt; operator to [] for subscripts causes SQL syntax issues.  You</span>
+<span class="line-num">357</span>       <span class="ruby-comment"># only need the [] for subscripting when doing assignment, and</span>
+<span class="line-num">358</span>       <span class="ruby-comment"># assignment is generally done on identifiers.</span>
+<span class="line-num">359</span>       <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">JSONBSubscriptOp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">key</span>))
+<span class="line-num">360</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">361</span>       <span class="ruby-keyword">super</span>
+<span class="line-num">362</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">363</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">364</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-concat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">concat</span><span
+            class="method-args">(other)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>jsonb expression for concatenation of the given jsonb into the current jsonb.</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-value">:h</span>) <span class="ruby-comment"># (jsonb || h)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="concat-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">378</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">concat</span>(<span class="ruby-identifier">other</span>)
+<span class="line-num">379</span>   <span class="ruby-identifier">json_op</span>(<span class="ruby-constant">CONCAT</span>, <span class="ruby-identifier">wrap_input_jsonb</span>(<span class="ruby-identifier">other</span>))
+<span class="line-num">380</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-contain_all" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">contain_all</span><span
+            class="method-args">(other)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check if the receiver contains all of the keys in the given array:</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">contain_all</span>(<span class="ruby-value">:a</span>) <span class="ruby-comment"># (jsonb ?&amp; a)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="contain_all-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">385</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">contain_all</span>(<span class="ruby-identifier">other</span>)
+<span class="line-num">386</span>   <span class="ruby-identifier">bool_op</span>(<span class="ruby-constant">CONTAIN_ALL</span>, <span class="ruby-identifier">wrap_input_array</span>(<span class="ruby-identifier">other</span>))
+<span class="line-num">387</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-contain_any" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">contain_any</span><span
+            class="method-args">(other)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check if the receiver contains any of the keys in the given array:</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">contain_any</span>(<span class="ruby-value">:a</span>) <span class="ruby-comment"># (jsonb ?| a)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="contain_any-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">392</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">contain_any</span>(<span class="ruby-identifier">other</span>)
+<span class="line-num">393</span>   <span class="ruby-identifier">bool_op</span>(<span class="ruby-constant">CONTAIN_ANY</span>, <span class="ruby-identifier">wrap_input_array</span>(<span class="ruby-identifier">other</span>))
+<span class="line-num">394</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-contained_by" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">contained_by</span><span
+            class="method-args">(other)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check if the other jsonb contains all entries in the receiver:</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">contained_by</span>(<span class="ruby-value">:h</span>) <span class="ruby-comment"># (jsonb &lt;@ h)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="contained_by-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">406</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">contained_by</span>(<span class="ruby-identifier">other</span>)
+<span class="line-num">407</span>   <span class="ruby-identifier">bool_op</span>(<span class="ruby-constant">CONTAINED_BY</span>, <span class="ruby-identifier">wrap_input_jsonb</span>(<span class="ruby-identifier">other</span>))
+<span class="line-num">408</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-contains" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">contains</span><span
+            class="method-args">(other)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check if the receiver contains all entries in the other jsonb:</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">contains</span>(<span class="ruby-value">:h</span>) <span class="ruby-comment"># (jsonb @&gt; h)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="contains-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">399</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">contains</span>(<span class="ruby-identifier">other</span>)
+<span class="line-num">400</span>   <span class="ruby-identifier">bool_op</span>(<span class="ruby-constant">CONTAINS</span>, <span class="ruby-identifier">wrap_input_jsonb</span>(<span class="ruby-identifier">other</span>))
+<span class="line-num">401</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delete_path" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_path</span><span
+            class="method-args">(other)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Removes the given path from the receiver.</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">delete_path</span>(<span class="ruby-value">:h</span>) <span class="ruby-comment"># (jsonb #- h)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="delete_path-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">413</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_path</span>(<span class="ruby-identifier">other</span>)
+<span class="line-num">414</span>   <span class="ruby-identifier">json_op</span>(<span class="ruby-constant">DELETE_PATH</span>, <span class="ruby-identifier">wrap_input_array</span>(<span class="ruby-identifier">other</span>))
+<span class="line-num">415</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-has_key-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_key?</span><span
+            class="method-args">(key)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check if the receiver contains the given key:</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;a&#39;</span>) <span class="ruby-comment"># (jsonb ? &#39;a&#39;)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="has_key-3F-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">420</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">has_key?</span>(<span class="ruby-identifier">key</span>)
+<span class="line-num">421</span>   <span class="ruby-identifier">bool_op</span>(<span class="ruby-constant">HAS_KEY</span>, <span class="ruby-identifier">key</span>)
+<span class="line-num">422</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="JSONBOp.html#method-i-include-3F">include?</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-include-3F" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">include?</span><span
+            class="method-args">(key)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="JSONBOp.html#method-i-has_key-3F">has_key?</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-insert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">insert</span><span
+            class="method-args">(path, other, insert_after=false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Inserts the given jsonb value at the given path in the receiver. The default is to insert the value before the given path, but insert_after can be set to true to insert it after the given path.</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">insert</span>([<span class="ruby-string">&#39;a&#39;</span>, <span class="ruby-string">&#39;b&#39;</span>], <span class="ruby-identifier">h</span>) <span class="ruby-comment"># jsonb_insert(jsonb, ARRAY[&#39;a&#39;, &#39;b&#39;], h, false)</span>
+<span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">insert</span>([<span class="ruby-string">&#39;a&#39;</span>, <span class="ruby-string">&#39;b&#39;</span>], <span class="ruby-identifier">h</span>, <span class="ruby-keyword">true</span>) <span class="ruby-comment"># jsonb_insert(jsonb, ARRAY[&#39;a&#39;, &#39;b&#39;], h, true)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="insert-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">431</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">insert</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">other</span>, <span class="ruby-identifier">insert_after</span>=<span class="ruby-keyword">false</span>)
+<span class="line-num">432</span>   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">function</span>(<span class="ruby-value">:insert</span>, <span class="ruby-identifier">wrap_input_array</span>(<span class="ruby-identifier">path</span>), <span class="ruby-identifier">wrap_input_jsonb</span>(<span class="ruby-identifier">other</span>), <span class="ruby-identifier">insert_after</span>))
+<span class="line-num">433</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_exists" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_exists</span><span
+            class="method-args">(path)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns whether the JSON path returns any item for the json object.</p>
+
+<pre class="ruby"><span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_exists</span>(<span class="ruby-string">&quot;$.foo&quot;</span>) <span class="ruby-comment"># (json @? &#39;$.foo&#39;)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="path_exists-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">438</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_exists</span>(<span class="ruby-identifier">path</span>)
+<span class="line-num">439</span>   <span class="ruby-identifier">bool_op</span>(<span class="ruby-constant">PATH_EXISTS</span>, <span class="ruby-identifier">path</span>)
+<span class="line-num">440</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_exists-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_exists!</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns whether the JSON path returns any item for the json object.</p>
+
+<pre class="ruby"><span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_exists!</span>(<span class="ruby-string">&quot;$.foo&quot;</span>)
+<span class="ruby-comment"># jsonb_path_exists(json, &#39;$.foo&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_exists!</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, <span class="ruby-value">x:</span> <span class="ruby-value">2</span>)
+<span class="ruby-comment"># jsonb_path_exists(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_exists!</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, {<span class="ruby-value">x:</span> <span class="ruby-value">2</span>}, <span class="ruby-keyword">true</span>)
+<span class="ruby-comment"># jsonb_path_exists(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;, true)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="path_exists-21-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">452</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_exists!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">453</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:NOOP</span>, <span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_exists</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>))
+<span class="line-num">454</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_exists_tz-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_exists_tz!</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The same as <a href="JSONBOp.html#method-i-path_exists-21"><code>path_exists!</code></a>, except that timezone-aware conversions are used for date/time values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="path_exists_tz-21-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">457</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_exists_tz!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">458</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:NOOP</span>, <span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_exists_tz</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>))
+<span class="line-num">459</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_match" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_match</span><span
+            class="method-args">(path)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the first item of the result of JSON path predicate check for the json object. Returns nil if the first item is not true or false.</p>
+
+<pre class="ruby"><span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_match</span>(<span class="ruby-string">&quot;$.foo&quot;</span>) <span class="ruby-comment"># (json @@ &#39;$.foo&#39;)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="path_match-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">465</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_match</span>(<span class="ruby-identifier">path</span>)
+<span class="line-num">466</span>   <span class="ruby-identifier">bool_op</span>(<span class="ruby-constant">PATH_MATCH</span>, <span class="ruby-identifier">path</span>)
+<span class="line-num">467</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_match-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_match!</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the first item of the result of JSON path predicate check for the json object. Returns nil if the first item is not true or false and silent is true.</p>
+
+<pre class="ruby"><span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_match!</span>(<span class="ruby-string">&quot;$.foo&quot;</span>)
+<span class="ruby-comment"># jsonb_path_match(json, &#39;$.foo&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_match!</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, <span class="ruby-value">x:</span> <span class="ruby-value">2</span>)
+<span class="ruby-comment"># jsonb_path_match(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_match!</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, {<span class="ruby-value">x:</span> <span class="ruby-value">2</span>}, <span class="ruby-keyword">true</span>)
+<span class="ruby-comment"># jsonb_path_match(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;, true)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="path_match-21-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">480</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_match!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">481</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:NOOP</span>, <span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_match</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>))
+<span class="line-num">482</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_match_tz-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_match_tz!</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The same as <a href="JSONBOp.html#method-i-path_match-21"><code>path_match!</code></a>, except that timezone-aware conversions are used for date/time values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="path_match_tz-21-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">485</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_match_tz!</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">486</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">BooleanExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:NOOP</span>, <span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_match_tz</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>))
+<span class="line-num">487</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_query" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_query</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a set of all jsonb values specified by the JSON path for the json object.</p>
+
+<pre class="ruby"><span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_query</span>(<span class="ruby-string">&quot;$.foo&quot;</span>)
+<span class="ruby-comment"># jsonb_path_query(json, &#39;$.foo&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_query</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, <span class="ruby-value">x:</span> <span class="ruby-value">2</span>)
+<span class="ruby-comment"># jsonb_path_query(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_query</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, {<span class="ruby-value">x:</span> <span class="ruby-value">2</span>}, <span class="ruby-keyword">true</span>)
+<span class="ruby-comment"># jsonb_path_query(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;, true)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="path_query-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">500</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_query</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">501</span>   <span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_query</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>)
+<span class="line-num">502</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_query_array" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_query_array</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a jsonb array of all values specified by the JSON path for the json object.</p>
+
+<pre class="ruby"><span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_query_array</span>(<span class="ruby-string">&quot;$.foo&quot;</span>)
+<span class="ruby-comment"># jsonb_path_query_array(json, &#39;$.foo&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_query_array</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, <span class="ruby-value">x:</span> <span class="ruby-value">2</span>)
+<span class="ruby-comment"># jsonb_path_query_array(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_query_array</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, {<span class="ruby-value">x:</span> <span class="ruby-value">2</span>}, <span class="ruby-keyword">true</span>)
+<span class="ruby-comment"># jsonb_path_query_array(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;, true)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="path_query_array-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">520</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_query_array</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">521</span>   <span class="ruby-constant">JSONBOp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_query_array</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>))
+<span class="line-num">522</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_query_array_tz" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_query_array_tz</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The same as <a href="JSONBOp.html#method-i-path_query_array"><code>path_query_array</code></a>, except that timezone-aware conversions are used for date/time values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="path_query_array_tz-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">525</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_query_array_tz</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">526</span>   <span class="ruby-constant">JSONBOp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_query_array_tz</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>))
+<span class="line-num">527</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_query_first" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_query_first</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the first item of the result specified by the JSON path for the json object.</p>
+
+<pre class="ruby"><span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_query_first</span>(<span class="ruby-string">&quot;$.foo&quot;</span>)
+<span class="ruby-comment"># jsonb_path_query_first(json, &#39;$.foo&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_query_first</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, <span class="ruby-value">x:</span> <span class="ruby-value">2</span>)
+<span class="ruby-comment"># jsonb_path_query_first(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;)</span>
+
+<span class="ruby-identifier">json_op</span>.<span class="ruby-identifier">path_query_first</span>(<span class="ruby-string">&quot;$.foo ? ($ &gt; $x)&quot;</span>, {<span class="ruby-value">x:</span> <span class="ruby-value">2</span>}, <span class="ruby-keyword">true</span>)
+<span class="ruby-comment"># jsonb_path_query_first(json, &#39;$.foo ? ($ &gt; $x)&#39;, &#39;{&quot;x&quot;:2}&#39;, true)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="path_query_first-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">540</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_query_first</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">541</span>   <span class="ruby-constant">JSONBOp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_query_first</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>))
+<span class="line-num">542</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_query_first_tz" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_query_first_tz</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The same as <a href="JSONBOp.html#method-i-path_query_first"><code>path_query_first</code></a>, except that timezone-aware conversions are used for date/time values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="path_query_first_tz-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">545</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_query_first_tz</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">546</span>   <span class="ruby-constant">JSONBOp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_query_first_tz</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>))
+<span class="line-num">547</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-path_query_tz" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path_query_tz</span><span
+            class="method-args">(path, vars=nil, silent=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The same as <a href="JSONBOp.html#method-i-path_query"><code>path_query</code></a>, except that timezone-aware conversions are used for date/time values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="path_query_tz-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">505</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">path_query_tz</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">silent</span>=<span class="ruby-keyword">nil</span>)
+<span class="line-num">506</span>   <span class="ruby-identifier">_path_function</span>(<span class="ruby-value">:jsonb_path_query_tz</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-identifier">silent</span>)
+<span class="line-num">507</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pg_jsonb" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pg_jsonb</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return the receiver, since it is already a <a href="JSONBOp.html"><code>JSONBOp</code></a>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pg_jsonb-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">550</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pg_jsonb</span>
+<span class="line-num">551</span>   <span class="ruby-keyword">self</span>
+<span class="line-num">552</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pretty" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pretty</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a pretty printed version of the receiver as a string expression.</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">pretty</span> <span class="ruby-comment"># jsonb_pretty(jsonb)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="pretty-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">557</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pretty</span>
+<span class="line-num">558</span>   <span class="ruby-constant">Sequel</span><span class="ruby-operator">::</span><span class="ruby-constant">SQL</span><span class="ruby-operator">::</span><span class="ruby-constant">StringExpression</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:NOOP</span>, <span class="ruby-identifier">function</span>(<span class="ruby-value">:pretty</span>))
+<span class="line-num">559</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-set" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set</span><span
+            class="method-args">(path, other, create_missing=true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the given jsonb value at the given path in the receiver. By default, this will create the value if it does not exist, but create_missing can be set to false to not create a new value.</p>
+
+<pre class="ruby"><span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">set</span>([<span class="ruby-string">&#39;a&#39;</span>, <span class="ruby-string">&#39;b&#39;</span>], <span class="ruby-identifier">h</span>) <span class="ruby-comment"># jsonb_set(jsonb, ARRAY[&#39;a&#39;, &#39;b&#39;], h, true)</span>
+<span class="ruby-identifier">jsonb_op</span>.<span class="ruby-identifier">set</span>([<span class="ruby-string">&#39;a&#39;</span>, <span class="ruby-string">&#39;b&#39;</span>], <span class="ruby-identifier">h</span>, <span class="ruby-keyword">false</span>) <span class="ruby-comment"># jsonb_set(jsonb, ARRAY[&#39;a&#39;, &#39;b&#39;], h, false)</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="set-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">567</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">other</span>, <span class="ruby-identifier">create_missing</span>=<span class="ruby-keyword">true</span>)
+<span class="line-num">568</span>   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">function</span>(<span class="ruby-value">:set</span>, <span class="ruby-identifier">wrap_input_array</span>(<span class="ruby-identifier">path</span>), <span class="ruby-identifier">wrap_input_jsonb</span>(<span class="ruby-identifier">other</span>), <span class="ruby-identifier">create_missing</span>))
+<span class="line-num">569</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-set_lax" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_lax</span><span
+            class="method-args">(path, other, create_missing=true, null_value_treatment=&#39;use_json_null&#39;)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The same as <a href="JSONBOp.html#method-i-set"><code>set</code></a>, except if <code>other</code> is <code>nil</code>, then behaves according to <code>null_value_treatment</code>, which can be one of &#39;raise_exception&#39;, &#39;use_json_null&#39; (default), &#39;delete_key&#39;, or &#39;return_target&#39;.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="set_lax-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/pg_json_ops.rb</span>
+<span class="line-num">573</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_lax</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">other</span>, <span class="ruby-identifier">create_missing</span>=<span class="ruby-keyword">true</span>, <span class="ruby-identifier">null_value_treatment</span>=<span class="ruby-string">&#39;use_json_null&#39;</span>)
+<span class="line-num">574</span>   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">function</span>(<span class="ruby-value">:set_lax</span>, <span class="ruby-identifier">wrap_input_array</span>(<span class="ruby-identifier">path</span>), <span class="ruby-identifier">wrap_input_jsonb</span>(<span class="ruby-identifier">other</span>), <span class="ruby-identifier">create_missing</span>, <span class="ruby-identifier">null_value_treatment</span>))
+<span class="line-num">575</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module Sequel::SelectRemove - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-select_remove">#select_remove</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-Sequel::SelectRemove">
+  <h1 id="module-Sequel::SelectRemove" class="module">
+    module Sequel::SelectRemove
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-select_remove" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">select_remove</span><span
+            class="method-args">(*cols)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Remove columns from the list of selected columns.  If any of the currently selected columns use expressions/aliases, this will remove selected columns with the given aliases.  It will also remove entries from the selection that match exactly:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Assume columns a, b, and c in items table</span>
+<span class="ruby-constant">DB</span>[<span class="ruby-value">:items</span>] <span class="ruby-comment"># SELECT * FROM items</span>
+<span class="ruby-constant">DB</span>[<span class="ruby-value">:items</span>].<span class="ruby-identifier">select_remove</span>(<span class="ruby-value">:c</span>) <span class="ruby-comment"># SELECT a, b FROM items</span>
+<span class="ruby-constant">DB</span>[<span class="ruby-value">:items</span>].<span class="ruby-identifier">select</span>(<span class="ruby-value">:a</span>, <span class="ruby-constant">Sequel</span>[<span class="ruby-value">:b</span>].<span class="ruby-identifier">as</span>(<span class="ruby-value">:c</span>), <span class="ruby-constant">Sequel</span>[<span class="ruby-value">:c</span>].<span class="ruby-identifier">as</span>(<span class="ruby-value">:b</span>)).<span class="ruby-identifier">select_remove</span>(<span class="ruby-value">:c</span>) <span class="ruby-comment"># SELECT a, c AS b FROM items</span>
+<span class="ruby-constant">DB</span>[<span class="ruby-value">:items</span>].<span class="ruby-identifier">select</span>(<span class="ruby-value">:a</span>, <span class="ruby-constant">Sequel</span>[<span class="ruby-value">:b</span>][<span class="ruby-value">:c</span>], <span class="ruby-constant">Sequel</span>[<span class="ruby-value">:c</span>][<span class="ruby-value">:b</span>]).<span class="ruby-identifier">select_remove</span>(<span class="ruby-constant">Sequel</span>[<span class="ruby-value">:c</span>][<span class="ruby-value">:b</span>]) <span class="ruby-comment"># SELECT a, b AS c FROM items</span>
+</pre>
+
+<p>Note that there are a few cases where this method may not work correctly:</p>
+<ul><li>
+<p>This dataset joins multiple tables and does not have an existing explicit selection. In this case, the code will currently use unqualified column names for all columns the dataset returns, except for the columns given.</p>
+</li><li>
+<p>This dataset has an existing explicit selection containing an item that returns multiple database columns (e.g. <a href=":table">Sequel</a>.*, Sequel.lit(&#39;column1, column2&#39;)).  In this case, the behavior is undefined and this method should not be used.</p>
+</li></ul>
+
+<p>There may be other cases where this method does not work correctly, use it with caution.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="select_remove-source">
+            <pre>   <span class="ruby-comment"># File lib/sequel/extensions/select_remove.rb</span>
+<span class="line-num">42</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">select_remove</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">cols</span>)
+<span class="line-num">43</span>   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">sel</span> = <span class="ruby-ivar">@opts</span>[<span class="ruby-value">:select</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">sel</span>.<span class="ruby-identifier">empty?</span>
+<span class="line-num">44</span>     <span class="ruby-identifier">select</span>(<span class="ruby-operator">*</span>(<span class="ruby-identifier">columns</span>.<span class="ruby-identifier">zip</span>(<span class="ruby-identifier">sel</span>).<span class="ruby-identifier">reject</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span>, <span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cols</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">c</span>)}.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span>, <span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>} <span class="ruby-operator">-</span> <span class="ruby-identifier">cols</span>))
+<span class="line-num">45</span>   <span class="ruby-keyword">else</span>
+<span class="line-num">46</span>     <span class="ruby-identifier">select</span>(<span class="ruby-operator">*</span>(<span class="ruby-identifier">columns</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">cols</span>))
+<span class="line-num">47</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">48</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

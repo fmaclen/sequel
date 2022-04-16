@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>3.10.0 - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../CHANGELOG.html">CHANGELOG</a>
+  
+    <li><a href="../../MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="../../README_rdoc.html">README</a>
+  
+    <li><a href="../../doc/CHANGELOG_old.html">CHANGELOG.old</a>
+  
+    <li><a href="../../doc/advanced_associations_rdoc.html">advanced_associations</a>
+  
+    <li><a href="../../doc/association_basics_rdoc.html">association_basics</a>
+  
+    <li><a href="../../doc/bin_sequel_rdoc.html">bin_sequel</a>
+  
+    <li><a href="../../doc/cheat_sheet_rdoc.html">cheat_sheet</a>
+  
+    <li><a href="../../doc/code_order_rdoc.html">code_order</a>
+  
+    <li><a href="../../doc/core_extensions_rdoc.html">core_extensions</a>
+  
+    <li><a href="../../doc/dataset_basics_rdoc.html">dataset_basics</a>
+  
+    <li><a href="../../doc/dataset_filtering_rdoc.html">dataset_filtering</a>
+  
+    <li><a href="../../doc/extensions_rdoc.html">extensions</a>
+  
+    <li><a href="../../doc/fork_safety_rdoc.html">fork_safety</a>
+  
+    <li><a href="../../doc/mass_assignment_rdoc.html">mass_assignment</a>
+  
+    <li><a href="../../doc/migration_rdoc.html">migration</a>
+  
+    <li><a href="../../doc/model_dataset_method_design_rdoc.html">model_dataset_method_design</a>
+  
+    <li><a href="../../doc/model_hooks_rdoc.html">model_hooks</a>
+  
+    <li><a href="../../doc/model_plugins_rdoc.html">model_plugins</a>
+  
+    <li><a href="../../doc/mssql_stored_procedures_rdoc.html">mssql_stored_procedures</a>
+  
+    <li><a href="../../doc/object_model_rdoc.html">object_model</a>
+  
+    <li><a href="../../doc/opening_databases_rdoc.html">opening_databases</a>
+  
+    <li><a href="../../doc/postgresql_rdoc.html">postgresql</a>
+  
+    <li><a href="../../doc/prepared_statements_rdoc.html">prepared_statements</a>
+  
+    <li><a href="../../doc/querying_rdoc.html">querying</a>
+  
+    <li><a href="../../doc/reflection_rdoc.html">reflection</a>
+  
+    <li><a href="../../doc/release_notes/1_0_txt.html">1.0</a>
+  
+    <li><a href="../../doc/release_notes/1_1_txt.html">1.1</a>
+  
+    <li><a href="../../doc/release_notes/1_3_txt.html">1.3</a>
+  
+    <li><a href="../../doc/release_notes/1_4_0_txt.html">1.4.0</a>
+  
+    <li><a href="../../doc/release_notes/1_5_0_txt.html">1.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_0_0_txt.html">2.0.0</a>
+  
+    <li><a href="../../doc/release_notes/2_1_0_txt.html">2.1.0</a>
+  
+    <li><a href="../../doc/release_notes/2_10_0_txt.html">2.10.0</a>
+  
+    <li><a href="../../doc/release_notes/2_11_0_txt.html">2.11.0</a>
+  
+    <li><a href="../../doc/release_notes/2_12_0_txt.html">2.12.0</a>
+  
+    <li><a href="../../doc/release_notes/2_2_0_txt.html">2.2.0</a>
+  
+    <li><a href="../../doc/release_notes/2_3_0_txt.html">2.3.0</a>
+  
+    <li><a href="../../doc/release_notes/2_4_0_txt.html">2.4.0</a>
+  
+    <li><a href="../../doc/release_notes/2_5_0_txt.html">2.5.0</a>
+  
+    <li><a href="../../doc/release_notes/2_6_0_txt.html">2.6.0</a>
+  
+    <li><a href="../../doc/release_notes/2_7_0_txt.html">2.7.0</a>
+  
+    <li><a href="../../doc/release_notes/2_8_0_txt.html">2.8.0</a>
+  
+    <li><a href="../../doc/release_notes/2_9_0_txt.html">2.9.0</a>
+  
+    <li><a href="../../doc/release_notes/3_0_0_txt.html">3.0.0</a>
+  
+    <li><a href="../../doc/release_notes/3_1_0_txt.html">3.1.0</a>
+  
+    <li><a href="../../doc/release_notes/3_10_0_txt.html">3.10.0</a>
+  
+    <li><a href="../../doc/release_notes/3_11_0_txt.html">3.11.0</a>
+  
+    <li><a href="../../doc/release_notes/3_12_0_txt.html">3.12.0</a>
+  
+    <li><a href="../../doc/release_notes/3_13_0_txt.html">3.13.0</a>
+  
+    <li><a href="../../doc/release_notes/3_14_0_txt.html">3.14.0</a>
+  
+    <li><a href="../../doc/release_notes/3_15_0_txt.html">3.15.0</a>
+  
+    <li><a href="../../doc/release_notes/3_16_0_txt.html">3.16.0</a>
+  
+    <li><a href="../../doc/release_notes/3_17_0_txt.html">3.17.0</a>
+  
+    <li><a href="../../doc/release_notes/3_18_0_txt.html">3.18.0</a>
+  
+    <li><a href="../../doc/release_notes/3_19_0_txt.html">3.19.0</a>
+  
+    <li><a href="../../doc/release_notes/3_2_0_txt.html">3.2.0</a>
+  
+    <li><a href="../../doc/release_notes/3_20_0_txt.html">3.20.0</a>
+  
+    <li><a href="../../doc/release_notes/3_21_0_txt.html">3.21.0</a>
+  
+    <li><a href="../../doc/release_notes/3_22_0_txt.html">3.22.0</a>
+  
+    <li><a href="../../doc/release_notes/3_23_0_txt.html">3.23.0</a>
+  
+    <li><a href="../../doc/release_notes/3_24_0_txt.html">3.24.0</a>
+  
+    <li><a href="../../doc/release_notes/3_25_0_txt.html">3.25.0</a>
+  
+    <li><a href="../../doc/release_notes/3_26_0_txt.html">3.26.0</a>
+  
+    <li><a href="../../doc/release_notes/3_27_0_txt.html">3.27.0</a>
+  
+    <li><a href="../../doc/release_notes/3_28_0_txt.html">3.28.0</a>
+  
+    <li><a href="../../doc/release_notes/3_29_0_txt.html">3.29.0</a>
+  
+    <li><a href="../../doc/release_notes/3_3_0_txt.html">3.3.0</a>
+  
+    <li><a href="../../doc/release_notes/3_30_0_txt.html">3.30.0</a>
+  
+    <li><a href="../../doc/release_notes/3_31_0_txt.html">3.31.0</a>
+  
+    <li><a href="../../doc/release_notes/3_32_0_txt.html">3.32.0</a>
+  
+    <li><a href="../../doc/release_notes/3_33_0_txt.html">3.33.0</a>
+  
+    <li><a href="../../doc/release_notes/3_34_0_txt.html">3.34.0</a>
+  
+    <li><a href="../../doc/release_notes/3_35_0_txt.html">3.35.0</a>
+  
+    <li><a href="../../doc/release_notes/3_36_0_txt.html">3.36.0</a>
+  
+    <li><a href="../../doc/release_notes/3_37_0_txt.html">3.37.0</a>
+  
+    <li><a href="../../doc/release_notes/3_38_0_txt.html">3.38.0</a>
+  
+    <li><a href="../../doc/release_notes/3_39_0_txt.html">3.39.0</a>
+  
+    <li><a href="../../doc/release_notes/3_4_0_txt.html">3.4.0</a>
+  
+    <li><a href="../../doc/release_notes/3_40_0_txt.html">3.40.0</a>
+  
+    <li><a href="../../doc/release_notes/3_41_0_txt.html">3.41.0</a>
+  
+    <li><a href="../../doc/release_notes/3_42_0_txt.html">3.42.0</a>
+  
+    <li><a href="../../doc/release_notes/3_43_0_txt.html">3.43.0</a>
+  
+    <li><a href="../../doc/release_notes/3_44_0_txt.html">3.44.0</a>
+  
+    <li><a href="../../doc/release_notes/3_45_0_txt.html">3.45.0</a>
+  
+    <li><a href="../../doc/release_notes/3_46_0_txt.html">3.46.0</a>
+  
+    <li><a href="../../doc/release_notes/3_47_0_txt.html">3.47.0</a>
+  
+    <li><a href="../../doc/release_notes/3_48_0_txt.html">3.48.0</a>
+  
+    <li><a href="../../doc/release_notes/3_5_0_txt.html">3.5.0</a>
+  
+    <li><a href="../../doc/release_notes/3_6_0_txt.html">3.6.0</a>
+  
+    <li><a href="../../doc/release_notes/3_7_0_txt.html">3.7.0</a>
+  
+    <li><a href="../../doc/release_notes/3_8_0_txt.html">3.8.0</a>
+  
+    <li><a href="../../doc/release_notes/3_9_0_txt.html">3.9.0</a>
+  
+    <li><a href="../../doc/release_notes/4_0_0_txt.html">4.0.0</a>
+  
+    <li><a href="../../doc/release_notes/4_1_0_txt.html">4.1.0</a>
+  
+    <li><a href="../../doc/release_notes/4_10_0_txt.html">4.10.0</a>
+  
+    <li><a href="../../doc/release_notes/4_11_0_txt.html">4.11.0</a>
+  
+    <li><a href="../../doc/release_notes/4_12_0_txt.html">4.12.0</a>
+  
+    <li><a href="../../doc/release_notes/4_13_0_txt.html">4.13.0</a>
+  
+    <li><a href="../../doc/release_notes/4_14_0_txt.html">4.14.0</a>
+  
+    <li><a href="../../doc/release_notes/4_15_0_txt.html">4.15.0</a>
+  
+    <li><a href="../../doc/release_notes/4_16_0_txt.html">4.16.0</a>
+  
+    <li><a href="../../doc/release_notes/4_17_0_txt.html">4.17.0</a>
+  
+    <li><a href="../../doc/release_notes/4_18_0_txt.html">4.18.0</a>
+  
+    <li><a href="../../doc/release_notes/4_19_0_txt.html">4.19.0</a>
+  
+    <li><a href="../../doc/release_notes/4_2_0_txt.html">4.2.0</a>
+  
+    <li><a href="../../doc/release_notes/4_20_0_txt.html">4.20.0</a>
+  
+    <li><a href="../../doc/release_notes/4_21_0_txt.html">4.21.0</a>
+  
+    <li><a href="../../doc/release_notes/4_22_0_txt.html">4.22.0</a>
+  
+    <li><a href="../../doc/release_notes/4_23_0_txt.html">4.23.0</a>
+  
+    <li><a href="../../doc/release_notes/4_24_0_txt.html">4.24.0</a>
+  
+    <li><a href="../../doc/release_notes/4_25_0_txt.html">4.25.0</a>
+  
+    <li><a href="../../doc/release_notes/4_26_0_txt.html">4.26.0</a>
+  
+    <li><a href="../../doc/release_notes/4_27_0_txt.html">4.27.0</a>
+  
+    <li><a href="../../doc/release_notes/4_28_0_txt.html">4.28.0</a>
+  
+    <li><a href="../../doc/release_notes/4_29_0_txt.html">4.29.0</a>
+  
+    <li><a href="../../doc/release_notes/4_3_0_txt.html">4.3.0</a>
+  
+    <li><a href="../../doc/release_notes/4_30_0_txt.html">4.30.0</a>
+  
+    <li><a href="../../doc/release_notes/4_31_0_txt.html">4.31.0</a>
+  
+    <li><a href="../../doc/release_notes/4_32_0_txt.html">4.32.0</a>
+  
+    <li><a href="../../doc/release_notes/4_33_0_txt.html">4.33.0</a>
+  
+    <li><a href="../../doc/release_notes/4_34_0_txt.html">4.34.0</a>
+  
+    <li><a href="../../doc/release_notes/4_35_0_txt.html">4.35.0</a>
+  
+    <li><a href="../../doc/release_notes/4_36_0_txt.html">4.36.0</a>
+  
+    <li><a href="../../doc/release_notes/4_37_0_txt.html">4.37.0</a>
+  
+    <li><a href="../../doc/release_notes/4_38_0_txt.html">4.38.0</a>
+  
+    <li><a href="../../doc/release_notes/4_39_0_txt.html">4.39.0</a>
+  
+    <li><a href="../../doc/release_notes/4_4_0_txt.html">4.4.0</a>
+  
+    <li><a href="../../doc/release_notes/4_40_0_txt.html">4.40.0</a>
+  
+    <li><a href="../../doc/release_notes/4_41_0_txt.html">4.41.0</a>
+  
+    <li><a href="../../doc/release_notes/4_42_0_txt.html">4.42.0</a>
+  
+    <li><a href="../../doc/release_notes/4_43_0_txt.html">4.43.0</a>
+  
+    <li><a href="../../doc/release_notes/4_44_0_txt.html">4.44.0</a>
+  
+    <li><a href="../../doc/release_notes/4_45_0_txt.html">4.45.0</a>
+  
+    <li><a href="../../doc/release_notes/4_46_0_txt.html">4.46.0</a>
+  
+    <li><a href="../../doc/release_notes/4_47_0_txt.html">4.47.0</a>
+  
+    <li><a href="../../doc/release_notes/4_48_0_txt.html">4.48.0</a>
+  
+    <li><a href="../../doc/release_notes/4_49_0_txt.html">4.49.0</a>
+  
+    <li><a href="../../doc/release_notes/4_5_0_txt.html">4.5.0</a>
+  
+    <li><a href="../../doc/release_notes/4_6_0_txt.html">4.6.0</a>
+  
+    <li><a href="../../doc/release_notes/4_7_0_txt.html">4.7.0</a>
+  
+    <li><a href="../../doc/release_notes/4_8_0_txt.html">4.8.0</a>
+  
+    <li><a href="../../doc/release_notes/4_9_0_txt.html">4.9.0</a>
+  
+    <li><a href="../../doc/release_notes/5_0_0_txt.html">5.0.0</a>
+  
+    <li><a href="../../doc/release_notes/5_1_0_txt.html">5.1.0</a>
+  
+    <li><a href="../../doc/release_notes/5_10_0_txt.html">5.10.0</a>
+  
+    <li><a href="../../doc/release_notes/5_11_0_txt.html">5.11.0</a>
+  
+    <li><a href="../../doc/release_notes/5_12_0_txt.html">5.12.0</a>
+  
+    <li><a href="../../doc/release_notes/5_13_0_txt.html">5.13.0</a>
+  
+    <li><a href="../../doc/release_notes/5_14_0_txt.html">5.14.0</a>
+  
+    <li><a href="../../doc/release_notes/5_15_0_txt.html">5.15.0</a>
+  
+    <li><a href="../../doc/release_notes/5_16_0_txt.html">5.16.0</a>
+  
+    <li><a href="../../doc/release_notes/5_17_0_txt.html">5.17.0</a>
+  
+    <li><a href="../../doc/release_notes/5_18_0_txt.html">5.18.0</a>
+  
+    <li><a href="../../doc/release_notes/5_19_0_txt.html">5.19.0</a>
+  
+    <li><a href="../../doc/release_notes/5_2_0_txt.html">5.2.0</a>
+  
+    <li><a href="../../doc/release_notes/5_20_0_txt.html">5.20.0</a>
+  
+    <li><a href="../../doc/release_notes/5_21_0_txt.html">5.21.0</a>
+  
+    <li><a href="../../doc/release_notes/5_22_0_txt.html">5.22.0</a>
+  
+    <li><a href="../../doc/release_notes/5_23_0_txt.html">5.23.0</a>
+  
+    <li><a href="../../doc/release_notes/5_24_0_txt.html">5.24.0</a>
+  
+    <li><a href="../../doc/release_notes/5_25_0_txt.html">5.25.0</a>
+  
+    <li><a href="../../doc/release_notes/5_26_0_txt.html">5.26.0</a>
+  
+    <li><a href="../../doc/release_notes/5_27_0_txt.html">5.27.0</a>
+  
+    <li><a href="../../doc/release_notes/5_28_0_txt.html">5.28.0</a>
+  
+    <li><a href="../../doc/release_notes/5_29_0_txt.html">5.29.0</a>
+  
+    <li><a href="../../doc/release_notes/5_3_0_txt.html">5.3.0</a>
+  
+    <li><a href="../../doc/release_notes/5_30_0_txt.html">5.30.0</a>
+  
+    <li><a href="../../doc/release_notes/5_31_0_txt.html">5.31.0</a>
+  
+    <li><a href="../../doc/release_notes/5_32_0_txt.html">5.32.0</a>
+  
+    <li><a href="../../doc/release_notes/5_33_0_txt.html">5.33.0</a>
+  
+    <li><a href="../../doc/release_notes/5_34_0_txt.html">5.34.0</a>
+  
+    <li><a href="../../doc/release_notes/5_35_0_txt.html">5.35.0</a>
+  
+    <li><a href="../../doc/release_notes/5_36_0_txt.html">5.36.0</a>
+  
+    <li><a href="../../doc/release_notes/5_37_0_txt.html">5.37.0</a>
+  
+    <li><a href="../../doc/release_notes/5_38_0_txt.html">5.38.0</a>
+  
+    <li><a href="../../doc/release_notes/5_39_0_txt.html">5.39.0</a>
+  
+    <li><a href="../../doc/release_notes/5_4_0_txt.html">5.4.0</a>
+  
+    <li><a href="../../doc/release_notes/5_40_0_txt.html">5.40.0</a>
+  
+    <li><a href="../../doc/release_notes/5_41_0_txt.html">5.41.0</a>
+  
+    <li><a href="../../doc/release_notes/5_42_0_txt.html">5.42.0</a>
+  
+    <li><a href="../../doc/release_notes/5_43_0_txt.html">5.43.0</a>
+  
+    <li><a href="../../doc/release_notes/5_44_0_txt.html">5.44.0</a>
+  
+    <li><a href="../../doc/release_notes/5_45_0_txt.html">5.45.0</a>
+  
+    <li><a href="../../doc/release_notes/5_46_0_txt.html">5.46.0</a>
+  
+    <li><a href="../../doc/release_notes/5_47_0_txt.html">5.47.0</a>
+  
+    <li><a href="../../doc/release_notes/5_48_0_txt.html">5.48.0</a>
+  
+    <li><a href="../../doc/release_notes/5_49_0_txt.html">5.49.0</a>
+  
+    <li><a href="../../doc/release_notes/5_5_0_txt.html">5.5.0</a>
+  
+    <li><a href="../../doc/release_notes/5_50_0_txt.html">5.50.0</a>
+  
+    <li><a href="../../doc/release_notes/5_51_0_txt.html">5.51.0</a>
+  
+    <li><a href="../../doc/release_notes/5_52_0_txt.html">5.52.0</a>
+  
+    <li><a href="../../doc/release_notes/5_53_0_txt.html">5.53.0</a>
+  
+    <li><a href="../../doc/release_notes/5_54_0_txt.html">5.54.0</a>
+  
+    <li><a href="../../doc/release_notes/5_55_0_txt.html">5.55.0</a>
+  
+    <li><a href="../../doc/release_notes/5_6_0_txt.html">5.6.0</a>
+  
+    <li><a href="../../doc/release_notes/5_7_0_txt.html">5.7.0</a>
+  
+    <li><a href="../../doc/release_notes/5_8_0_txt.html">5.8.0</a>
+  
+    <li><a href="../../doc/release_notes/5_9_0_txt.html">5.9.0</a>
+  
+    <li><a href="../../doc/schema_modification_rdoc.html">schema_modification</a>
+  
+    <li><a href="../../doc/security_rdoc.html">security</a>
+  
+    <li><a href="../../doc/sharding_rdoc.html">sharding</a>
+  
+    <li><a href="../../doc/sql_rdoc.html">sql</a>
+  
+    <li><a href="../../doc/testing_rdoc.html">testing</a>
+  
+    <li><a href="../../doc/thread_safety_rdoc.html">thread_safety</a>
+  
+    <li><a href="../../doc/transactions_rdoc.html">transactions</a>
+  
+    <li><a href="../../doc/validations_rdoc.html">validations</a>
+  
+    <li><a href="../../doc/virtual_rows_rdoc.html">virtual_rows</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page doc/release_notes/3.10.0.txt">
+
+<p>New Features</p>
+<hr>
+<ul><li>
+<p>A real one_to_one association was added to <a href="../../Sequel.html"><code>Sequel</code></a>, replacing the previous :one_to_one option of the one_to_many association.</p>
+
+<p>This is a fully backwards incompatible change, any code that uses the :one_to_one option of one_to_many will be broken in <a href="../../Sequel.html"><code>Sequel</code></a> 3.10.0, as that option now raises an exception.  Keeping backwards compatibility was not possible, as even the name of the association needs to be changed.  Here are the code changes you need to make:</p>
+<ul><li>
+<p>The association definition needs to change from one_to_many to one_to_one, with no :one_to_one option, and with the association name changed from the plural form to the singular form:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Before</span>
+<span class="ruby-constant">Lyric</span>.<span class="ruby-identifier">one_to_many</span> <span class="ruby-value">:songs</span>, <span class="ruby-value">:one_to_one</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>
+<span class="ruby-comment"># After</span>
+<span class="ruby-constant">Lyric</span>.<span class="ruby-identifier">one_to_one</span> <span class="ruby-value">:song</span>
+</pre>
+</li><li>
+<p>All usage of the association when eager loading or when getting reflections need to use the new singular association name:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Before</span>
+<span class="ruby-constant">Lyric</span>.<span class="ruby-identifier">eager</span>(<span class="ruby-value">:songs</span>).<span class="ruby-identifier">all</span>
+<span class="ruby-constant">Lyric</span>.<span class="ruby-identifier">eager_graph</span>(<span class="ruby-value">:songs</span>).<span class="ruby-identifier">all</span>
+<span class="ruby-constant">Lyric</span>.<span class="ruby-identifier">association_reflection</span>(<span class="ruby-value">:songs</span>)
+<span class="ruby-comment"># After</span>
+<span class="ruby-constant">Lyric</span>.<span class="ruby-identifier">eager</span>(<span class="ruby-value">:song</span>).<span class="ruby-identifier">all</span>
+<span class="ruby-constant">Lyric</span>.<span class="ruby-identifier">eager_graph</span>(<span class="ruby-value">:song</span>).<span class="ruby-identifier">all</span>
+<span class="ruby-constant">Lyric</span>.<span class="ruby-identifier">association_reflection</span>(<span class="ruby-value">:song</span>)
+</pre>
+</li></ul>
+
+<p>Any <a href="../../Sequel.html"><code>Sequel</code></a> plugins or extensions that deal with the internals of associations need to be made aware of the one_to_one association, and how it is different than one_to_many&#39;s previous :one_to_one option.  Here are some internal changes that may affect you:</p>
+<ul><li>
+<p>one_to_one associations are now cached like many_to_one associations instead of like one_to_many associations.  So the cache includes the associated object or nil, instead of an array. Note that this change means that all custom :eager_loader options for one_to_one associations need to change to use this new caching scheme.</p>
+</li><li>
+<p>The one_to_one association setter method is now handled similarly to the many_to_one setter method, instead of using the internal one_to_many association add method.</p>
+</li><li>
+<p>Instead of raising an error when multiple rows are returned, one_to_one associations now use limit(1) to only return a single row.</p>
+</li></ul>
+
+<p>There were some other fixes made during these changes:</p>
+<ul><li>
+<p>The one_to_one setter now accepts nil to disassociate the record. Previously, this raised an error.</p>
+</li><li>
+<p>If the one_to_one association already had a separate object associated, and you assigned a different object in the setter method, <a href="../../Sequel.html"><code>Sequel</code></a> now disassociates the old object before associating the new object, fixing some potential issues if there is a UNIQUE constraint on the foreign key column.</p>
+</li><li>
+<p>Using the many_to_one association setter where the reciprocal association is a one_to_one association with a currently different cached associated object no longer raises an exception.</p>
+</li><li>
+<p>The nested_attributes and association_dependencies plugins both now correctly handle one_to_one associations.</p>
+</li></ul>
+
+<p>If you need any help migrating, please post on the <a href="../../Sequel.html"><code>Sequel</code></a> Google Group or ask in the sequel IRC channel.</p>
+</li><li>
+<p>Both many_to_one and one_to_one associations now use before_set and after_set callbacks instead of trying to make the one_to_many and many_to_many associations&#39; (before|after)_(add|remove) callbacks work.</p>
+
+<p>This change makes the code simpler, makes writing callbacks easier, and no longer requires <a href="../../Sequel.html"><code>Sequel</code></a> to send a query to the database to get the currently associated object in the many_to_one association setter method (you can still do so manually in a before_set callback if you want to).</p>
+</li><li>
+<p>Dataset#for_update was added as a default dataset method. Previously, it was only supported on PostgreSQL.  It has been tested to work on PostgreSQL, MySQL, SQLite (where it is ignored), H2, and MSSQL.</p>
+</li><li>
+<p>Dataset#lock_style was added as a backbone for Dataset#for_update, but allowing you to specify custom lock styles.  These can either be symbols recognized by the adapters, or strings which are treated as literal SQL.</p>
+</li><li>
+<p>Model#lock! was added, which uses Dataset#for_update to lock model rows for specific instances.  Combined with the Dataset#for_update, <a href="../../Sequel.html"><code>Sequel</code></a> now has an equivalent to ActiveRecord&#39;s pessimistic locking support.</p>
+</li><li>
+<p>A composition plugin was added, given similar functionality as ActiveRecord&#39;s composed_of.</p>
+
+<p>The composition plugin allows you to easily define getter and setter instance methods for a class where the backing data is composed of other getters and decomposed to other setters.</p>
+
+<p>A simple example of this is when you have a database table with separate columns for year, month, and day, but where you want to deal with Date objects in your ruby code.  This can be handled with:</p>
+
+<pre class="ruby"><span class="ruby-constant">Model</span>.<span class="ruby-identifier">composition</span> <span class="ruby-value">:date</span>, <span class="ruby-value">:mapping</span><span class="ruby-operator">=&gt;</span>[<span class="ruby-value">:year</span>, <span class="ruby-value">:month</span>, <span class="ruby-value">:day</span>]
+</pre>
+
+<p>The :mapping option is optional, but if not used, you need define custom composition and decomposition procs via the :composer and :decomposer options.</p>
+
+<p>Note that when using the composition object, you should not modify the underlying columns if you are also instantiating the composition, as otherwise the composition object values will override any underlying columns when the object is saved.</p>
+</li><li>
+<p>An rcte_tree plugin was added, which uses recursive common table expressions to load all ancestors and descendants in a single query.  If your database supports recursive common table expressions (PostgreSQL 8.4+, MSSQL 2005+, newer versions of Firebird), using recursive common table expressions to load all ancestors and descendants is significantly faster than storing trees as nested sets and using nested set queries.  Usage:</p>
+
+<pre class="ruby"><span class="ruby-constant">Model</span>.<span class="ruby-identifier">plugin</span> <span class="ruby-value">:rcte_tree</span>
+
+<span class="ruby-comment"># Lazy loading</span>
+<span class="ruby-identifier">model</span> = <span class="ruby-constant">Model</span>.<span class="ruby-identifier">first</span>
+<span class="ruby-identifier">model</span>.<span class="ruby-identifier">parent</span>
+<span class="ruby-identifier">model</span>.<span class="ruby-identifier">children</span>
+<span class="ruby-identifier">model</span>.<span class="ruby-identifier">ancestors</span> <span class="ruby-comment"># Populates :parent association as well</span>
+<span class="ruby-identifier">model</span>.<span class="ruby-identifier">descendants</span> <span class="ruby-comment"># Populates :children association as well</span>
+
+<span class="ruby-comment"># Eager loading - also populates the :parent and children</span>
+<span class="ruby-comment"># associations for all ancestors and descendants</span>
+<span class="ruby-constant">Model</span>.<span class="ruby-identifier">filter</span>(<span class="ruby-value">:id</span><span class="ruby-operator">=&gt;</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>]).<span class="ruby-identifier">eager</span>(<span class="ruby-value">:ancestors</span>, <span class="ruby-value">:descendants</span>).<span class="ruby-identifier">all</span>
+
+<span class="ruby-comment"># Eager loading children and grandchildren</span>
+<span class="ruby-constant">Model</span>.<span class="ruby-identifier">filter</span>(<span class="ruby-value">:id</span><span class="ruby-operator">=&gt;</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>]).<span class="ruby-identifier">eager</span>(<span class="ruby-value">:descendants</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">2</span>).<span class="ruby-identifier">all</span>
+<span class="ruby-comment"># Eager loading children, grandchildren, and great grandchildren</span>
+<span class="ruby-constant">Model</span>.<span class="ruby-identifier">filter</span>(<span class="ruby-value">:id</span><span class="ruby-operator">=&gt;</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>]).<span class="ruby-identifier">eager</span>(<span class="ruby-value">:descendants</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">3</span>).<span class="ruby-identifier">all</span>
+</pre>
+</li><li>
+<p>Dataset#first_source_table was added, giving you the unaliased version of the table for the first source.</p>
+</li><li>
+<p>Add Sequel::BasicObject.remove_methods!, useful on ruby 1.8 if you require other libraries after <a href="../../Sequel.html"><code>Sequel</code></a> that add methods to Object. For example, if YAML is required after sequel, then the following will raise an error:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:a</span>].<span class="ruby-identifier">filter</span>{<span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">y</span>}
+</pre>
+
+<p>because YAML adds the y method to all objects.  Now, you can call Sequel::BasicObject.remove_methods!, which will remove those methods from <a href="../../Sequel/BasicObject.html"><code>Sequel::BasicObject</code></a>, allowing them to be used as intended in the above DSL.</p>
+</li><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> associations now accept an :eager_loader_key option, which can be useful for associations to specify the column to use for the key_hash for custom :eager_loaders.</p>
+</li><li>
+<p>A JDBC subadapter for the AS400 database was added.</p>
+</li></ul>
+
+<p>Other Improvements</p>
+<hr>
+<ul><li>
+<p>The one_to_one setter method and the one_to_many and many_to_many remove_all methods now apply the association options (such as filters) on the appropriate dataset:</p>
+
+<pre class="ruby"><span class="ruby-constant">Artist</span>.<span class="ruby-identifier">one_to_many</span> <span class="ruby-value">:good_albums</span>, <span class="ruby-value">:class</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">:Album</span>,
+ <span class="ruby-value">:conditions</span><span class="ruby-operator">=&gt;</span>{<span class="ruby-value">:good</span><span class="ruby-operator">=&gt;</span><span class="ruby-keyword">true</span>}
+<span class="ruby-identifier">a</span> = <span class="ruby-constant">Artist</span>[<span class="ruby-value">10</span>]
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">remove_all_good_albums</span>
+<span class="ruby-comment"># Before: WHERE artist_id = 10</span>
+<span class="ruby-comment"># After:  WHERE artist_id = 10 AND good IS TRUE</span>
+</pre>
+</li><li>
+<p>Plugin loading now works correctly when the plugin module name is the same name as an already defined top level constant.  This means that the active_model plugin should now work correctly if you require active_model before loading the <a href="../../Sequel.html"><code>Sequel</code></a> plugin.</p>
+</li><li>
+<p>The nested_attributes plugin now preserves nested attributes for *_to_one associations on validation failures.</p>
+</li><li>
+<p>Transactions now work correctly on Oracle when using the JDBC adapter.</p>
+</li><li>
+<p>Dataset#limit once again works correctly on MSSQL 2000.  It was broken in <a href="../../Sequel.html"><code>Sequel</code></a> 3.9.0.</p>
+</li><li>
+<p>many_to_one associations now use limit(1) to ensure only one record is returned.  If you don&#39;t want this (because maybe you are using the :eager_graph association option), you need to set the :key option to nil and use a custom :dataset option.</p>
+</li><li>
+<p>many_to_one and one_to_many associations now work correctly with the association :eager option to eagerly load associations specified by :eager when lazy loading the association.</p>
+</li><li>
+<p>The typecast_on_load plugin now correctly handles reloading/refreshing the object, both explicitly and implicitly on object creation.</p>
+</li><li>
+<p>The schema parser and dumper now return tinyint columns as booleans when connecting to mysql using the do adapter, since DataObjects now returns the columns as booleans.</p>
+</li><li>
+<p>The schema dumper now deals better with unusual or database specific primary key types when using the :same_db option.</p>
+</li><li>
+<p>On ruby 1.8, <a href="../../Sequel/BasicObject.html"><code>Sequel::BasicObject</code></a> now undefs private methods in addition to public and protected methods.  So the following code now works as expected:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:a</span>].<span class="ruby-identifier">filter</span>{<span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">p</span>} <span class="ruby-comment"># WHERE x &gt; p</span>
+</pre>
+</li><li>
+<p>Sequel.connect with a block now returns the value of the block:</p>
+
+<pre class="ruby"><span class="ruby-identifier">max_price</span> = <span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-string">&#39;sqlite://items.db&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">db</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">db</span>[<span class="ruby-value">:items</span>].<span class="ruby-identifier">max</span>(<span class="ruby-value">:price</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+</li><li>
+<p>MSSQL emulated offset support now works correctly when Sequel&#39;s core extensions are not loaded.</p>
+</li><li>
+<p><a href="../../Sequel/BasicObject.html"><code>Sequel::BasicObject</code></a> now works correctly on rubinius, and almost all <a href="../../Sequel.html"><code>Sequel</code></a> specs now pass on rubinius.</p>
+</li><li>
+<p>The nested_attributes plugin now uses a better exception message no matching associated object is found.</p>
+</li><li>
+<p><a href="../../Sequel.html"><code>Sequel</code></a> now raises a more informative error if you attempt to use the native sqlite adapter with the sqlite3 gem instead of the sqlite3-ruby gem.</p>
+</li><li>
+<p>Multiple complex expressions with the same operator are now combined for simpler SQL:</p>
+
+<pre class="ruby"><span class="ruby-constant">DB</span>[<span class="ruby-value">:a</span>].<span class="ruby-identifier">filter</span>(<span class="ruby-value">:a</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">1</span>, <span class="ruby-value">:b</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">2</span>).<span class="ruby-identifier">filter</span>(<span class="ruby-value">:c</span><span class="ruby-operator">=&gt;</span><span class="ruby-value">3</span>)
+<span class="ruby-comment"># Before: (((a = 1) AND (b = 2)) AND (c = 3))</span>
+<span class="ruby-comment"># After:  ((a = 1) AND (b = 2) AND (c = 3))</span>
+</pre>
+</li><li>
+<p>The <a href="../../Sequel/Model.html"><code>Sequel::Model</code></a> dataset methods (class methods proxied to the model&#39;s dataset) and the <a href="../../Sequel/Dataset.html"><code>Sequel::Dataset</code></a> mutation methods (methods that have a ! counterpart to modify the object in place) have both been updated to use new dataset methods added in recent versions.</p>
+</li></ul>
+
+<p>Backwards Compatibility</p>
+<hr>
+<ul><li>
+<p>The :one_to_one option of the one_to_many associations now raises an exception.  Please see the section above about the new real one_to_one association.</p>
+</li><li>
+<p>The change to apply the association options to the one_to_many and many_to_many remove_all methods has the potential to break some code that uses the remove_all method on associations that use association options. This is especially true for many_to_many associations, as filters in many_to_many associations will often reference columns in the associated table, while the dataset used in the remove_all method only contains the join table.  Such cases should be handled by manually overriding the _remove_all association instance method in the class.  It was determined that it was better to issue possibly invalid queries than to issue queries that make unexpected modifications.</p>
+</li><li>
+<p>Dataset#group_and_count now longer orders the dataset by the count. Since it returns a modified dataset, if you want to order the dataset, just call order on the returned dataset.</p>
+</li><li>
+<p>many_to_one associations now require a working :class option. Previously, if you provided a custom :dataset option, a working :class option was not required in some cases.</p>
+</li><li>
+<p>The MSSQL shared adapter dataset methods switched from using the :table_options internal option key to using the :lock internal option key.</p>
+</li></ul>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

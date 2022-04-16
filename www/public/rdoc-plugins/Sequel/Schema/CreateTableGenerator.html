@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::Schema::CreateTableGenerator - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-dump_columns">#dump_columns</a>
+    
+    <li ><a href="#method-i-dump_constraints">#dump_constraints</a>
+    
+    <li ><a href="#method-i-dump_indexes">#dump_indexes</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::Schema::CreateTableGenerator">
+  <h1 id="class-Sequel::Schema::CreateTableGenerator" class="class">
+    class Sequel::Schema::CreateTableGenerator
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-dump_columns" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dump_columns</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Dump this generator&#39;s columns to a string that could be evaled inside another instance to represent the same columns</p>
+          
+          
+
+          
+          <div class="method-source-code" id="dump_columns-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/schema_dumper.rb</span>
+<span class="line-num">407</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">dump_columns</span>
+<span class="line-num">408</span>   <span class="ruby-identifier">strings</span> = []
+<span class="line-num">409</span>   <span class="ruby-identifier">cols</span> = <span class="ruby-identifier">columns</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">410</span>   <span class="ruby-identifier">cols</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+<span class="line-num">411</span>     <span class="ruby-identifier">x</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:on_delete</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>[<span class="ruby-value">:on_delete</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:no_action</span>
+<span class="line-num">412</span>     <span class="ruby-identifier">x</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:on_update</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>[<span class="ruby-value">:on_update</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:no_action</span>
+<span class="line-num">413</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">414</span>   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">pkn</span> = <span class="ruby-identifier">primary_key_name</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@primary_key</span>[<span class="ruby-value">:keep_order</span>]
+<span class="line-num">415</span>     <span class="ruby-identifier">cols</span>.<span class="ruby-identifier">delete_if</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>[<span class="ruby-value">:name</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">pkn</span>}
+<span class="line-num">416</span>     <span class="ruby-identifier">pk</span> = <span class="ruby-ivar">@primary_key</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">417</span>     <span class="ruby-identifier">pkname</span> = <span class="ruby-identifier">pk</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:name</span>)
+<span class="line-num">418</span>     <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">serial_primary_key_options</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pk</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">pk</span>[<span class="ruby-identifier">k</span>]}
+<span class="line-num">419</span>     <span class="ruby-identifier">strings</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;primary_key #{pkname.inspect}#{opts_inspect(pk)}&quot;</span>
+<span class="line-num">420</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">421</span>   <span class="ruby-identifier">cols</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+<span class="line-num">422</span>     <span class="ruby-identifier">c</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">423</span>     <span class="ruby-identifier">name</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:name</span>)
+<span class="line-num">424</span>     <span class="ruby-identifier">strings</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">table</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:table</span>)
+<span class="line-num">425</span>       <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:type</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:type</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Integer</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:type</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;integer&#39;</span>
+<span class="line-num">426</span>       <span class="ruby-node">&quot;foreign_key #{name.inspect}, #{table.inspect}#{opts_inspect(c)}&quot;</span>
+<span class="line-num">427</span>     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">pkn</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">name</span>
+<span class="line-num">428</span>       <span class="ruby-ivar">@db</span>.<span class="ruby-identifier">serial_primary_key_options</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">c</span>[<span class="ruby-identifier">k</span>]}
+<span class="line-num">429</span>       <span class="ruby-node">&quot;primary_key #{name.inspect}#{opts_inspect(c)}&quot;</span>
+<span class="line-num">430</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">431</span>       <span class="ruby-identifier">type</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:type</span>)
+<span class="line-num">432</span>       <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">opts_inspect</span>(<span class="ruby-identifier">c</span>)
+<span class="line-num">433</span>       <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
+<span class="line-num">434</span>       <span class="ruby-keyword">when</span> <span class="ruby-constant">Class</span>
+<span class="line-num">435</span>         <span class="ruby-node">&quot;#{type.name} #{name.inspect}#{opts}&quot;</span>
+<span class="line-num">436</span>       <span class="ruby-keyword">when</span> <span class="ruby-value">:Bignum</span>
+<span class="line-num">437</span>         <span class="ruby-node">&quot;Bignum #{name.inspect}#{opts}&quot;</span>
+<span class="line-num">438</span>       <span class="ruby-keyword">else</span>
+<span class="line-num">439</span>         <span class="ruby-node">&quot;column #{name.inspect}, #{type.inspect}#{opts}&quot;</span>
+<span class="line-num">440</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">441</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">442</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">443</span>   <span class="ruby-identifier">strings</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+<span class="line-num">444</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-dump_constraints" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dump_constraints</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Dump this generator&#39;s constraints to a string that could be evaled inside another instance to represent the same constraints</p>
+          
+          
+
+          
+          <div class="method-source-code" id="dump_constraints-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/schema_dumper.rb</span>
+<span class="line-num">448</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">dump_constraints</span>
+<span class="line-num">449</span>   <span class="ruby-identifier">cs</span> = <span class="ruby-identifier">constraints</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+<span class="line-num">450</span>     <span class="ruby-identifier">c</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">451</span>     <span class="ruby-identifier">type</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:type</span>)
+<span class="line-num">452</span>     <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
+<span class="line-num">453</span>     <span class="ruby-keyword">when</span> <span class="ruby-value">:check</span>
+<span class="line-num">454</span>       <span class="ruby-identifier">raise</span>(<span class="ruby-constant">Error</span>, <span class="ruby-string">&quot;can&#39;t dump check/constraint specified with Proc&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:check</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Proc</span>)
+<span class="line-num">455</span>       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:name</span>)
+<span class="line-num">456</span>       <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">name</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:check</span>].<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:check</span>].<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+<span class="line-num">457</span>         <span class="ruby-node">&quot;check #{c[:check].first.inspect[1...-1]}&quot;</span>
+<span class="line-num">458</span>       <span class="ruby-keyword">else</span>
+<span class="line-num">459</span>         <span class="ruby-node">&quot;#{name ? &quot;constraint #{name.inspect},&quot; : &#39;check&#39;} #{c[:check].map(&amp;:inspect).join(&#39;, &#39;)}&quot;</span>
+<span class="line-num">460</span>       <span class="ruby-keyword">end</span>
+<span class="line-num">461</span>     <span class="ruby-keyword">when</span> <span class="ruby-value">:foreign_key</span>
+<span class="line-num">462</span>       <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:on_delete</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:on_delete</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:no_action</span>
+<span class="line-num">463</span>       <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:on_update</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:on_update</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:no_action</span>
+<span class="line-num">464</span>       <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:deferrable</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:deferrable</span>]
+<span class="line-num">465</span>       <span class="ruby-identifier">cols</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:columns</span>)
+<span class="line-num">466</span>       <span class="ruby-identifier">table</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:table</span>)
+<span class="line-num">467</span>       <span class="ruby-node">&quot;#{type} #{cols.inspect}, #{table.inspect}#{opts_inspect(c)}&quot;</span>
+<span class="line-num">468</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">469</span>       <span class="ruby-identifier">cols</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:columns</span>)
+<span class="line-num">470</span>       <span class="ruby-node">&quot;#{type} #{cols.inspect}#{opts_inspect(c)}&quot;</span>
+<span class="line-num">471</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">472</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">473</span>   <span class="ruby-identifier">cs</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+<span class="line-num">474</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-dump_indexes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dump_indexes</span><span
+            class="method-args">(options=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Dump this generator&#39;s indexes to a string that could be evaled inside another instance to represent the same indexes. Options:</p>
+<dl class="rdoc-list note-list"><dt>:add_index 
+<dd>
+<p>Use add_index instead of index, so the methods can be called outside of a generator but inside a migration. The value of this option should be the table name to use.</p>
+</dd><dt>:drop_index 
+<dd>
+<p>Same as add_index, but create drop_index statements.</p>
+</dd><dt>:ignore_errors 
+<dd>
+<p>Add the ignore_errors option to the outputted indexes</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="dump_indexes-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/extensions/schema_dumper.rb</span>
+<span class="line-num">483</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">dump_indexes</span>(<span class="ruby-identifier">options</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">484</span>   <span class="ruby-identifier">is</span> = <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+<span class="line-num">485</span>     <span class="ruby-identifier">c</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">dup</span>
+<span class="line-num">486</span>     <span class="ruby-identifier">cols</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:columns</span>)
+<span class="line-num">487</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">table</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:add_index</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:drop_index</span>]
+<span class="line-num">488</span>       <span class="ruby-node">&quot;#{options[:drop_index] ? &#39;drop&#39; : &#39;add&#39;}_index #{table.inspect}, #{cols.inspect}#{&#39;, :ignore_errors=&gt;true&#39; if options[:ignore_errors]}#{opts_inspect(c)}&quot;</span>
+<span class="line-num">489</span>     <span class="ruby-keyword">else</span>
+<span class="line-num">490</span>       <span class="ruby-node">&quot;index #{cols.inspect}#{opts_inspect(c)}&quot;</span>
+<span class="line-num">491</span>     <span class="ruby-keyword">end</span>
+<span class="line-num">492</span>   <span class="ruby-keyword">end</span>
+<span class="line-num">493</span>   <span class="ruby-identifier">is</span> = <span class="ruby-identifier">is</span>.<span class="ruby-identifier">reverse</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:drop_index</span>]
+<span class="line-num">494</span>   <span class="ruby-identifier">is</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+<span class="line-num">495</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

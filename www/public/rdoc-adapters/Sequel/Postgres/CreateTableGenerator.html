@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sequel::Postgres::CreateTableGenerator - Sequel: The Database Toolkit for Ruby</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Sequel::Schema::CreateTableGenerator
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-exclude">#exclude</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sequel::Postgres::CreateTableGenerator">
+  <h1 id="class-Sequel::Postgres::CreateTableGenerator" class="class">
+    class Sequel::Postgres::CreateTableGenerator
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-exclude" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">exclude</span><span
+            class="method-args">(elements, opts=OPTS)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Add an exclusion constraint when creating the table. Elements should be an array of 2 element arrays, with the first element being the column or expression the exclusion constraint is applied to, and the second element being the operator to use for the column/expression to check for exclusion:</p>
+
+<pre class="ruby"><span class="ruby-identifier">exclude</span>([[<span class="ruby-value">:col1</span>, <span class="ruby-string">&#39;&amp;&amp;&#39;</span>], [<span class="ruby-value">:col2</span>, <span class="ruby-string">&#39;=&#39;</span>]])
+<span class="ruby-comment"># EXCLUDE USING gist (col1 WITH &amp;&amp;, col2 WITH =)</span>
+</pre>
+
+<p>To use a custom operator class, you need to use Sequel.lit with the expression and operator class:</p>
+
+<pre class="ruby"><span class="ruby-identifier">exclude</span>([[<span class="ruby-constant">Sequel</span>.<span class="ruby-identifier">lit</span>(<span class="ruby-string">&#39;col1 inet_ops&#39;</span>), <span class="ruby-string">&#39;&amp;&amp;&#39;</span>], [<span class="ruby-value">:col2</span>, <span class="ruby-string">&#39;=&#39;</span>]])
+<span class="ruby-comment"># EXCLUDE USING gist (col1 inet_ops WITH &amp;&amp;, col2 WITH =)</span>
+</pre>
+
+<p>Options supported:</p>
+<dl class="rdoc-list note-list"><dt>:name 
+<dd>
+<p>Name the constraint with the given name (useful if you may need to drop the constraint later)</p>
+</dd><dt>:using 
+<dd>
+<p>Override the index_method for the exclusion constraint (defaults to gist).</p>
+</dd><dt>:where 
+<dd>
+<p>Create a partial exclusion constraint, which only affects a subset of table rows, value should be a filter expression.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="exclude-source">
+            <pre>    <span class="ruby-comment"># File lib/sequel/adapters/shared/postgres.rb</span>
+<span class="line-num">118</span> <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">exclude</span>(<span class="ruby-identifier">elements</span>, <span class="ruby-identifier">opts</span>=<span class="ruby-constant">OPTS</span>)
+<span class="line-num">119</span>   <span class="ruby-identifier">constraints</span> <span class="ruby-operator">&lt;&lt;</span> {<span class="ruby-value">:type</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:exclude</span>, <span class="ruby-value">:elements</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">elements</span>}.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">opts</span>)
+<span class="line-num">120</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
